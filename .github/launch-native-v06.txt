@@ -1,0 +1,1 @@
+Compile independent C++17 alpha-beta and quiescence GM-1000 search against pinned chess-library rule generator. Verify perft, five UCI legal moves, and compare completed depth at 200 milliseconds with Python engine; preserve Python fallback, do not promote to best engine without playing strength evidence.
