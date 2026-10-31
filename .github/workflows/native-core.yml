@@ -29,7 +29,7 @@ jobs:
       - name: Run Python-vs-native cross-checks
         run: |
           if [ -f tests/test_native_core.py ]; then
-            python -m pytest tests/test_native_core.py tests/test_native_v010_draw.py -q
+            python -m pytest tests/test_native_core.py tests/test_native_v09.py tests/test_native_v010_draw.py -q
           fi
       - name: Archive vendored dependency and native binary
         if: always()
