@@ -1,0 +1,93 @@
+name: Study 400 Stockfish 19 Skill 20 matches and reconcile position memory
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/launch-stockfish19-400.txt'
+permissions:
+  contents: write
+concurrency:
+  group: gm1000-stockfish19-position-study
+  cancel-in-progress: false
+jobs:
+  study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install and test Python modules
+        run: |
+          python -m pip install -r requirements.txt pytest
+          python -m pytest -q
+      - name: Install official pinned Stockfish 19 stable release at Skill Level 20
+        shell: bash
+        run: |
+          set -euo pipefail
+          url='https://github.com/official-stockfish/Stockfish/releases/download/sf_19/stockfish-linux-x86-64-universal.tar.gz'
+          curl --fail --location --retry 3 --connect-timeout 30 --max-time 300 "$url" -o "$RUNNER_TEMP/stockfish19.tar.gz"
+          mkdir -p "$RUNNER_TEMP/stockfish19"
+          tar -xzf "$RUNNER_TEMP/stockfish19.tar.gz" -C "$RUNNER_TEMP/stockfish19"
+          echo 'Extracted official Stockfish 19 release:'
+          find "$RUNNER_TEMP/stockfish19" -maxdepth 4 -type f -name 'stockfish*' -print
+          bin=$(find "$RUNNER_TEMP/stockfish19" -type f -name 'stockfish*' ! -name '*.txt' ! -name '*.md' | head -n 1)
+          test -n "$bin"
+          chmod +x "$bin"
+          echo "STOCKFISH_PATH=$bin" >> "$GITHUB_ENV"
+          printf 'uci\nquit\n' | "$bin" | grep -E '^id name Stockfish 19'
+      - name: Generate 400 original Stockfish 19 Skill 20 games
+        run: |
+          python scripts/stockfish19_selfplay400.py \
+            --games 400 --skill 20 --move-time 0.025 --max-plies 240
+      - name: Reconcile old GM positions and Stockfish outcomes with engine analysis
+        run: |
+          python scripts/reconcile_stockfish19_memory.py --eval-time 0.04
+      - name: Verify all 400 games and position-memory integrity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          original = json.loads(Path('data/position_memory.json').read_text())
+          saved = json.loads(Path('data/stockfish19_position_memory.json').read_text())
+          report = json.loads(Path('data/stockfish19_position_memory_report.json').read_text())
+          games = json.loads(Path('reports/stockfish19-skill20-400/games_report.json').read_text())
+          assert original['source_games'] == 560 and original['positions_count'] == 32233
+          assert games['games_recorded'] == 400 and games['errors'] == 0
+          assert saved['schema'] == 1 and saved['engine_version'].startswith('Stockfish 19')
+          assert saved['games'] == 400 and saved['stockfish_skill'] == 20
+          assert saved['positions_count'] == len(saved['positions']) > 0
+          assert saved['historical_gm_positions'] == original['positions_count']
+          assert report['original_gm_memory_unchanged'] is True
+          assert saved['gm_preferences_changed']+saved['gm_preferences_preserved']+saved['gm_preferences_agreed'] <= saved['positions_count']
+          assert sum(1 for x in saved['positions'].values() if x['preferred_move'] not in x['candidates']) == 0
+          print('AUDIT 400 games:', games['completed'], 'completed,', games['incomplete'], 'incomplete')
+          print('POSITIONS', saved['positions_count'], 'CONFLICTS', saved['conflicting_positions'])
+          print('REPLACED', saved['gm_preferences_changed'], 'PRESERVED', saved['gm_preferences_preserved'])
+          PY
+      - name: Upload PGNs, opening seeds, games and full audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stockfish19-skill20-400-games-and-memory
+          path: |
+            reports/stockfish19-skill20-400/
+            data/stockfish19_position_memory.json
+            data/stockfish19_position_memory_report.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Commit the 400 games, reconciled positions and decision evidence
+        if: success()
+        run: |
+          cp reports/stockfish19-skill20-400/matches.pgn data/stockfish19_skill20_400_games.pgn
+          cp reports/stockfish19-skill20-400/games_report.json data/stockfish19_skill20_400_games_report.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/stockfish19_position_memory.json data/stockfish19_position_memory_report.json \
+            data/stockfish19_skill20_400_games.pgn data/stockfish19_skill20_400_games_report.json
+          git commit -m 'Study 400 Stockfish 19 skill-20 games and reconcile stored positions'
+          git push
