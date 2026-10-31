@@ -16,7 +16,7 @@ def test_stored_grandmaster_memory_available_during_real_search():
     remembered = engine.memory_moves(board)
     assert remembered, 'Expected some stored named-grandmaster first moves'
     assert all(move in board.legal_moves and observations > 0 for move, observations in remembered)
-    assert engine._memory['source_games'] == 160
+    assert engine._memory['source_games'] == 560
     assert engine._memory['holdout_games_excluded'] == 40
     result = engine.search(board, time_limit=None, depth=1, allow_book=True)
     assert result.move in board.legal_moves
