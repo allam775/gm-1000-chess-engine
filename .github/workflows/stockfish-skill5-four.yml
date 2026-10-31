@@ -1,0 +1,54 @@
+name: GM-1000 four tournaments vs Stockfish Skill 5 both memories
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/launch-stockfish-skill5-four.txt'
+permissions:
+  contents: write
+concurrency:
+  group: gm1000-skill5-four-both-memory
+  cancel-in-progress: false
+jobs:
+  arena:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install dependencies and run engine tests
+        run: |
+          python -m pip install -r requirements.txt pytest
+          python -m pytest -q
+      - name: Install Stockfish Skill Level 5 opponent
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y stockfish
+          echo 'STOCKFISH_PATH=/usr/games/stockfish' >> "$GITHUB_ENV"
+      - name: Run four four-game tournaments with both memories enabled
+        run: |
+          python scripts/run_stockfish5_four_tournaments.py \
+            --tournaments 4 --games-per-tournament 4 --skill 5 \
+            --seconds-per-move 0.2 --max-plies 300
+      - name: Upload all PGNs, progress and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-stockfish-skill5-four-tournaments
+          path: reports/stockfish-skill5-four/
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Persist tournament results without changing model memory
+        if: success()
+        run: |
+          cp reports/stockfish-skill5-four/summary.json data/stockfish_skill5_four_tournaments_report.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/stockfish_skill5_four_tournaments_report.json
+          git commit -m 'Record 4 tournaments vs Stockfish Skill 5 with both memories enabled'
+          git push
