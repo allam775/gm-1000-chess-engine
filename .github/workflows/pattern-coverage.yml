@@ -1,0 +1,21 @@
+name: Audit v0.4 real-game position-pattern coverage
+on:
+  push:
+    paths:
+      - '.github/launch-pattern-coverage.txt'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: python -m pip install -r requirements.txt pytest
+      - name: Check pattern recall on all sixteen real Skill5 games
+        run: python -m scripts.audit_v04_memory_coverage
