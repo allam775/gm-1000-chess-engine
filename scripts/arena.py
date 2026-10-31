@@ -44,10 +44,12 @@ def run(args: argparse.Namespace) -> dict:
                 game.headers['GM1000Version'] = '0.3-position-memory'
                 game.headers['StockfishSkill'] = str(args.stockfish_skill)
                 game.headers['PositionMemory'] = 'enabled' if getattr(args, 'position_memory', True) else 'disabled'
+                game.headers['StockfishMemory'] = 'enabled' if getattr(args, 'stockfish_memory', True) else 'disabled'
                 game.headers['SecondsPerMove'] = str(args.seconds_per_move)
                 gm.configure({'OwnBook': args.own_book,
                               'Learning': getattr(args, 'learning', True),
-                              'PositionMemory': getattr(args, 'position_memory', True)})
+                              'PositionMemory': getattr(args, 'position_memory', True),
+                              'StockfishMemory': getattr(args, 'stockfish_memory', True)})
                 game_token = object()  # python-chess sends ucinewgame on token change.
                 node = game
                 errors = []
@@ -102,7 +104,8 @@ def run(args: argparse.Namespace) -> dict:
         'config': {'games': args.games, 'stockfish_skill': args.stockfish_skill,
                    'seconds_per_move': args.seconds_per_move,
                    'max_plies': args.max_plies, 'own_book': args.own_book,
-                   'position_memory': getattr(args, 'position_memory', True)},
+                   'position_memory': getattr(args, 'position_memory', True),
+                   'stockfish_memory': getattr(args, 'stockfish_memory', True)},
         'completed_games': completed, 'wins': counts['wins'], 'draws': counts['draws'],
         'losses': counts['losses'], 'errors': counts['errors'],
         'incomplete': counts['incomplete'],
@@ -124,6 +127,7 @@ def main() -> None:
     parser.add_argument('--own-book', action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument('--learning', action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument('--position-memory', action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument('--stockfish-memory', action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument('--output-dir', type=Path, default=ROOT / 'reports')
     args = parser.parse_args()
     if not 0 <= args.stockfish_skill <= 20:
