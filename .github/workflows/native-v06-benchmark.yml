@@ -1,0 +1,55 @@
+name: GM-1000 v0.6 native paired strength benchmark
+on:
+  push:
+    paths:
+      - '.github/launch-native-v06-benchmark.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: gm1000-v06-native-paired
+  cancel-in-progress: false
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install and test full engine
+        run: |
+          python -m pip install -r requirements.txt pytest
+          python -m pytest -q
+      - name: Compile independent C++ search
+        run: |
+          mkdir -p native/bin
+          g++ -std=c++17 -O3 -DNDEBUG -pthread -Wall -Wextra -Werror \
+            -I native/third_party native/gm1000.cpp -o native/bin/gm1000-native
+      - name: Paired opening speed and native-versus-Python 24-game strength contest
+        run: |
+          python -m scripts.benchmark_native_v06 --seconds 0.2 --pairs 12 --profile-positions 16
+      - name: Preserve PGNs and analysis even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v06-native-paired-24-games
+          path: reports/native-v06/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Publish official v0.6 diagnostic report
+        if: success()
+        run: |
+          cp reports/native-v06/summary.json data/native_v06_benchmark_report.json
+          cp reports/native-v06/speed.json data/native_v06_speed_report.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/native_v06_benchmark_report.json data/native_v06_speed_report.json
+          git commit -m 'Record audited 24-game native-vs-Python matched-openings tournament'
+          git fetch origin main
+          git rebase origin/main
+          git push
