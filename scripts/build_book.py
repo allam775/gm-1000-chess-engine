@@ -125,7 +125,7 @@ def parse_candidates(pgn_text: str, player: str, cap: int) -> tuple[list[Candida
 def select_round_robin(by_player: dict[str, list[Candidate]], count: int) -> list[Candidate]:
     seen = set()
     selected = []
-    positions = {name: 0 for name in by_player}
+    positions = {name: 0 for name in PLAYERS}  # Missing archives are valid in a restricted GM study.
     while len(selected) < count:
         progressed = False
         for player in PLAYERS:
