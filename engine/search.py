@@ -155,7 +155,8 @@ class Engine:
     def __init__(self, hash_mb: int = 32, book_path: str | Path = "data/opening_book.json",
                  learning_path: str | Path = "data/approved_model.json",
                  memory_path: str | Path = "data/position_memory.json",
-                 stockfish_memory_path: str | Path = "data/stockfish19_position_memory.json"):
+                 stockfish_memory_path: str | Path = "data/stockfish19_position_memory.json",
+                 learned_eval_path: str | Path = "data/learned_eval_v05_candidate.json"):
         self.hash_mb = max(1, hash_mb)
         self.table: dict[int, TTEntry] = {}
         self.killers: dict[int, list[chess.Move]] = {}
@@ -175,6 +176,9 @@ class Engine:
         self.stockfish_memory_enabled = True
         self._stockfish_memory: dict | None = None
         self._stockfish_pattern_index: dict | None = None
+        self.learned_eval_enabled = False  # Candidate OFF until independent playing validation.
+        self.learned_eval_path = Path(learned_eval_path)
+        self._learned_evaluator = None
 
     def new_game(self) -> None:
         self.table.clear()
@@ -183,6 +187,7 @@ class Engine:
         self._memory = None  # New memory database becomes visible next game.
         self._stockfish_memory = None
         self._stockfish_pattern_index = None
+        self._learned_evaluator = None
 
     def _load_book(self) -> dict:
         if self._book is None:
@@ -313,6 +318,11 @@ class Engine:
         return None
 
     def evaluation(self, board: chess.Board) -> int:
+        if self.learned_eval_enabled:
+            if self._learned_evaluator is None:
+                from .learned_eval import LinearEvaluator
+                self._learned_evaluator = LinearEvaluator.load(self.learned_eval_path)
+            return self._learned_evaluator.evaluate(board)
         weights = self._load_learning().get('weights', {}) if self.learning_enabled else {}
         return evaluate(board, weights)
 
