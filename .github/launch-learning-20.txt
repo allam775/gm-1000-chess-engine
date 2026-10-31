@@ -1,0 +1,1 @@
+Start controlled 20 sequential GM-1000 vs Stockfish mini-tournaments: 4 training games per round, update learned opening experience and evaluation after each; 8+8 holdout games. Keep manual workflow dispatch for future experiments.
