@@ -15,7 +15,7 @@ import chess.engine
 import pytest
 
 ROOT=Path(__file__).resolve().parents[1]
-BINARY=ROOT/'native/bin/gm1000-native'
+BINARY=ROOT/'native/bin'/('gm1000-native.exe' if sys.platform == 'win32' else 'gm1000-native')
 START=chess.STARTING_FEN
 KIWIPETE='r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1'
 PROMOTIONS='rnbq1k1r/pp1Pbppp/2p5/8/2B5/8/PPP1NnPP/RNBQK2R w KQ - 1 8'
