@@ -222,7 +222,7 @@ jobs:
           target=pathlib.Path('data/native_v08_skill5_skill10_extended_report.json')
           target.write_text(json.dumps(report,indent=2)+'\n')
           print('FINAL_V08_EXPANDED',json.dumps({k:{'scores':v['scores'],'delta':v['score_advantage_v08_percentage_points'],
-                  'approx_CI':v['approximate_95pct_ci_opening_clustered_pct'} for k,v in stage.items()},indent=2))
+                  'approx_CI':v['approximate_95pct_ci_opening_clustered_pct']} for k,v in stage.items()},indent=2))
           PY
       - name: Archive final report and both source-stage reports
         if: always()
