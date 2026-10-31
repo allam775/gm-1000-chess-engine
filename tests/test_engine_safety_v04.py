@@ -14,10 +14,12 @@ def test_in_check_quiescence_never_returns_illegal_standpat(monkeypatch):
     b = chess.Board("4k3/8/8/8/8/8/4R3/K7 b - - 0 1")
     engine = Engine()
     engine.deadline = None
-    static = engine.evaluation(b)
+    # A constant evaluation lets us prove that search negates a score
+    # computed *after a legal evasion*, not static stand-pat in check.
+    monkeypatch.setattr(engine, "evaluation", lambda position: 123)
     result = engine._quiescence(b, -32000, 32000, 1, qdepth=12)
     assert b.fen() == "4k3/8/8/8/8/8/4R3/K7 b - - 0 1"
-    assert result != static
+    assert result == -123
 
 
 def test_timeout_does_not_pick_first_legal_move(monkeypatch):
