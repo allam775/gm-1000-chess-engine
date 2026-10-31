@@ -1,0 +1,119 @@
+name: Forensic verification of 30 GM-1000 v0.7 Skill5 losses
+on:
+  push:
+    branches:
+      - experiment/native-tactical-v07
+    paths:
+      - '.github/launch-v07-loss-forensic.txt'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: gm1000-v07-30-loss-audit
+  cancel-in-progress: false
+jobs:
+  audit:
+    name: Verify and analyze shard ${{ matrix.shard }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        shard: [0, 1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install chess parser and test audit syntax
+        run: |
+          python -m pip install -r requirements.txt pytest
+          python -m py_compile scripts/audit_skill5_v07_losses.py
+          python -m pytest -q tests/test_skill5_200_match.py
+      - name: Download original 40-game PGN and scorecard from immutable GitHub Actions run
+        uses: actions/download-artifact@v4
+        with:
+          name: gm1000-skill5-200-shard-${{ matrix.shard }}
+          run-id: 41209206000
+          repository: allam775/gm-1000-chess-engine
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: reports/source-shard
+      - name: Obtain separate official Stockfish 19 full-strength analyst
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 --connect-timeout 30 --max-time 300 \
+            https://github.com/official-stockfish/Stockfish/releases/download/sf_19/stockfish-linux-x86-64-universal.tar.gz \
+            -o "$RUNNER_TEMP/stockfish19.tar.gz"
+          mkdir -p "$RUNNER_TEMP/sf19"
+          tar -xzf "$RUNNER_TEMP/stockfish19.tar.gz" -C "$RUNNER_TEMP/sf19"
+          sf=$(find "$RUNNER_TEMP/sf19" -type f -name 'stockfish*' ! -name '*.md' ! -name '*.txt' | head -n 1)
+          test -n "$sf"
+          chmod +x "$sf"
+          printf 'uci\nquit\n' | "$sf" | grep '^id name Stockfish 19'
+          echo "STOCKFISH_PATH=$sf" >> "$GITHUB_ENV"
+      - name: Verify every PGN/legality/terminal result and audit all candidate losses
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m scripts.audit_skill5_v07_losses shard \
+            --shard ${{ matrix.shard }} \
+            --pgn reports/source-shard/all-games.pgn \
+            --shard-summary reports/source-shard/summary.json \
+            --stockfish "$STOCKFISH_PATH" \
+            --seconds .07 --deep-seconds 1.0 --control-plies 48 \
+            --out reports/v07-loss-audit/shard-${{ matrix.shard }}
+      - name: Upload full per-move forensic evidence even on error
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shard-${{ matrix.shard }}
+          path: reports/v07-loss-audit/shard-${{ matrix.shard }}/
+          retention-days: 90
+          if-no-files-found: warn
+  aggregate:
+    name: Verify exactly 30 losses and publish verified report
+    needs: audit
+    if: success()
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Download all independent shard forensic audits
+        uses: actions/download-artifact@v4
+        with:
+          pattern: shard-*
+          path: reports/v07-loss-audit-inputs
+          merge-multiple: false
+      - name: Verify all 200 source games and 30 losses, aggregate by color and phase
+        run: |
+          python -m pip install -r requirements.txt
+          python -m scripts.audit_skill5_v07_losses aggregate \
+            --inputs reports/v07-loss-audit-inputs \
+            --out data/native_v07_skill5_losses_forensic.json
+      - name: Preserve final report
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v07-30-losses-final-forensic-report
+          path: data/native_v07_skill5_losses_forensic.json
+          retention-days: 90
+      - name: Commit forensic results on experimental branch only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/native_v07_skill5_losses_forensic.json
+          git commit -m 'Verify 30 GM1000 v0.7 losses and analyze original PGNs with Stockfish19'
+          git fetch origin experiment/native-tactical-v07
+          git rebase origin/experiment/native-tactical-v07
+          git push origin HEAD:experiment/native-tactical-v07
