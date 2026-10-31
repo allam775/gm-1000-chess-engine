@@ -1,4 +1,4 @@
-/* GM-1000 v0.9 experimental persistent, selective search (independent implementation).
+/* GM-1000 v0.11 audit corrections: legal exchange ordering (independent implementation).
  * Rule generation: pinned MIT Disservin/chess-library, NOT Stockfish search.
  * This engine intentionally has no historical move memories: isolates search.
  */
@@ -92,64 +92,42 @@ int evaluate(const Board& b) {
     return b.sideToMove() == Color::WHITE ? white_score : -white_score;
 }
 
-// Standalone static-exchange evaluation. It simulates a least-valuable-attacker
-// recapture sequence with x-rays on a changing occupancy, independently of the
-// position's strategic/king-safety evaluation. Not an oracle: pinned recaptures
-// and complex promotion lines are fully resolved by the later legal search.
+// Legal least-valuable-attacker exchange estimate, used ONLY for ordering.
+// LVA is not an exact tactical oracle: never discard a move using this score.
 int static_exchange(const Board& b, Move m) {
     if (!b.isCapture(m)) return 0;
-    const Square target = m.to();
-    const PieceType victim = b.getCapturing<PieceType>(m);
     auto value = [](PieceType p) {
-        int k = static_cast<int>(p.internal());
+        const int k = static_cast<int>(p.internal());
         return k == 5 ? 20000 : VALUE[k];
     };
-    PieceType occupying = m.typeOf() == Move::PROMOTION ? m.promotionType() : b.at<PieceType>(m.from());
-    int gain[24] = {};
-    gain[0] = value(victim);
-    if (m.typeOf() == Move::PROMOTION) gain[0] += value(occupying) - VALUE[0];
-    Bitboard occ = b.occ();
-    occ.clear(m.from().index());
-    if (m.typeOf() == Move::ENPASSANT) occ.clear(m.to().ep_square().index());
-    Color side = ~b.sideToMove();
+    auto promotion_gain = [&](Move move) {
+        return move.typeOf() == Move::PROMOTION ? value(move.promotionType()) - VALUE[0] : 0;
+    };
+    const Square target = m.to();
+    int gain[32] = {};
+    gain[0] = value(b.getCapturing<PieceType>(m)) + promotion_gain(m);
+    Board exchange = b;
+    exchange.makeMove(m);
     int depth = 0;
-    for (; depth < 22; ) {
-        const auto attackers = [&](PieceType pt) -> Bitboard {
-            Bitboard attacks_to = 0ull;
-            switch (pt.internal()) {
-                case PieceType::PAWN: attacks_to = attacks::pawn(~side, target); break;
-                case PieceType::KNIGHT: attacks_to = attacks::knight(target); break;
-                case PieceType::BISHOP: attacks_to = attacks::bishop(target, occ); break;
-                case PieceType::ROOK: attacks_to = attacks::rook(target, occ); break;
-                case PieceType::QUEEN: attacks_to = attacks::queen(target, occ); break;
-                case PieceType::KING: attacks_to = attacks::king(target); break;
-                default: return Bitboard(0ull);
-            }
-            return attacks_to & b.pieces(pt, side) & occ;
-        };
-        int origin = -1;
-        PieceType next;
-        for (int type = 0; type != 6; ++type) {
-            const PieceType pt(static_cast<PieceType::underlying>(type));
-            Bitboard possible = attackers(pt);
-            if (possible) {
-                origin = possible.lsb(); next = pt; break;
+    while (depth < 30) {
+        Movelist captures;
+        movegen::legalmoves<movegen::MoveGenType::CAPTURE>(captures, exchange);
+        Move selected{};
+        int cheapest = INF;
+        for (Move candidate : captures) {
+            if (candidate.to() != target) continue;
+            const int cost = value(exchange.at<PieceType>(candidate.from()));
+            if (cost < cheapest || (cost == cheapest &&
+                promotion_gain(candidate) > promotion_gain(selected))) {
+                cheapest = cost;
+                selected = candidate;
             }
         }
-        if (origin < 0) break;
+        if (selected.move() == Move::NO_MOVE) break;
         ++depth;
-        gain[depth] = value(occupying) - gain[depth-1];
-        if (next == PieceType::KING) {
-            // A king cannot legally recapture if target is still defended.
-            // Only trust the king exchange at zero additional attacker depth.
-            occ.clear(origin);
-            occupying = next;
-            side = ~side;
-            break;
-        }
-        occ.clear(origin);
-        occupying = next;
-        side = ~side;
+        gain[depth] = value(exchange.getCapturing<PieceType>(selected)) +
+                      promotion_gain(selected) - gain[depth-1];
+        exchange.makeMove(selected);
     }
     while (depth > 0) {
         --depth;
@@ -309,12 +287,8 @@ struct Search {
         for (Move m : moves) {
             if (!checked && !b.isCapture(m) && m.typeOf() != Move::PROMOTION &&
                 !(qdepth == 0 && b.givesCheck(m) != CheckType::NO_CHECK)) continue;
-            // At noisy leaves, ignore clearly losing recaptures, but never
-            // discard promotions, checking captures, or in-check evasions.
-            if (!checked && qdepth >= 1 && b.isCapture(m) &&
-                m.typeOf() != Move::PROMOTION &&
-                static_exchange(b, m) < -160 &&
-                b.givesCheck(m) == CheckType::NO_CHECK) continue;
+            // SEE is an ordering estimate, not a proof that a capture is bad.
+            // Search every legal tactical continuation, including pinned/king cases.
             b.makeMove(m);
             int score;
             try { score = -quiescence(b, -beta, -alpha, ply+1, qdepth+1); }
@@ -578,7 +552,7 @@ int main(int argc, char** argv) {
         std::istringstream stream(line);
         std::string cmd; stream >> cmd;
         if(cmd=="uci") {
-            output("id name GM-1000 v0.9 Persistent Search Candidate");
+            output("id name GM-1000 v0.11 Audit Corrections Candidate");
             output("id author GM-1000 project");
             output("uciok");
         } else if(cmd=="isready") output("readyok");
