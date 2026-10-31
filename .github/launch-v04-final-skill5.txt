@@ -1,0 +1,1 @@
+Final post-fix 4x4-game tournament vs Stockfish Skill Level 5: GM1000 both memories enabled, corrected quiescence and timeout fallback, safe opening book search, moderate evaluation, near-position pattern hints that never override root search; 0.2 seconds/move, W/B alternating. Save independent audited PGN and final report.
