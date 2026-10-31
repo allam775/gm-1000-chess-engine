@@ -1,0 +1,42 @@
+name: Native GM-1000 Core CI
+on:
+  push:
+    paths:
+      - 'native/**'
+      - 'tests/test_native_core.py'
+      - 'scripts/benchmark_native_v06.py'
+      - '.github/workflows/native-core.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install python chess reference
+        run: python -m pip install -r requirements.txt pytest
+      - name: Build standalone GM-1000 native engine
+        run: |
+          if [ -f native/gm1000.cpp ]; then
+            mkdir -p native/bin
+            g++ -std=c++17 -O3 -DNDEBUG -pthread -Wall -Wextra -Werror -I native/third_party native/gm1000.cpp -o native/bin/gm1000-native
+          fi
+      - name: Run Python-vs-native cross-checks
+        run: |
+          if [ -f tests/test_native_core.py ]; then
+            python -m pytest tests/test_native_core.py -q
+          fi
+      - name: Archive vendored dependency and native binary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-native-core-ci
+          path: |
+            native/third_party/chess.hpp
+            native/bin/gm1000-native
+          retention-days: 7
