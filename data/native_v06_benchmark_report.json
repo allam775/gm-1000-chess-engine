@@ -1,0 +1,258 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-31T12:42:38.191741+00:00",
+  "experiment": "GM-1000 native C++ v0.6 compared with Python v0.5 no memories/book",
+  "seconds_per_move": 0.2,
+  "speed": {
+    "positions": 16,
+    "median_python_depth": 2.0,
+    "median_native_depth": 6.0,
+    "median_python_nps": 7506.5,
+    "median_native_nps": 3566346.0
+  },
+  "match": {
+    "total_games": 24,
+    "played": 24,
+    "completed": 24,
+    "native_wins": 24,
+    "python_wins": 0,
+    "draws": 0,
+    "errors": 0,
+    "incomplete": 0,
+    "native_score_percent": 100.0,
+    "games": [
+      {
+        "index": 1,
+        "opening_pair": 1,
+        "color": "white",
+        "result": "1-0",
+        "termination": "CHECKMATE",
+        "plies": 37,
+        "error": null
+      },
+      {
+        "index": 2,
+        "opening_pair": 1,
+        "color": "black",
+        "result": "0-1",
+        "termination": "CHECKMATE",
+        "plies": 106,
+        "error": null
+      },
+      {
+        "index": 3,
+        "opening_pair": 2,
+        "color": "white",
+        "result": "1-0",
+        "termination": "CHECKMATE",
+        "plies": 101,
+        "error": null
+      },
+      {
+        "index": 4,
+        "opening_pair": 2,
+        "color": "black",
+        "result": "0-1",
+        "termination": "CHECKMATE",
+        "plies": 42,
+        "error": null
+      },
+      {
+        "index": 5,
+        "opening_pair": 3,
+        "color": "white",
+        "result": "1-0",
+        "termination": "CHECKMATE",
+        "plies": 91,
+        "error": null
+      },
+      {
+        "index": 6,
+        "opening_pair": 3,
+        "color": "black",
+        "result": "0-1",
+        "termination": "CHECKMATE",
+        "plies": 100,
+        "error": null
+      },
+      {
+        "index": 7,
+        "opening_pair": 4,
+        "color": "white",
+        "result": "1-0",
+        "termination": "CHECKMATE",
+        "plies": 47,
+        "error": null
+      },
+      {
+        "index": 8,
+        "opening_pair": 4,
+        "color": "black",
+        "result": "0-1",
+        "termination": "CHECKMATE",
+        "plies": 90,
+        "error": null
+      },
+      {
+        "index": 9,
+        "opening_pair": 5,
+        "color": "white",
+        "result": "1-0",
+        "termination": "CHECKMATE",
+        "plies": 47,
+        "error": null
+      },
+      {
+        "index": 10,
+        "opening_pair": 5,
+        "color": "black",
+        "result": "0-1",
+        "termination": "CHECKMATE",
+        "plies": 68,
+        "error": null
+      },
+      {
+        "index": 11,
+        "opening_pair": 6,
+        "color": "white",
+        "result": "1-0",
+        "termination": "CHECKMATE",
+        "plies": 77,
+        "error": null
+      },
+      {
+        "index": 12,
+        "opening_pair": 6,
+        "color": "black",
+        "result": "0-1",
+        "termination": "CHECKMATE",
+        "plies": 76,
+        "error": null
+      },
+      {
+        "index": 13,
+        "opening_pair": 7,
+        "color": "white",
+        "result": "1-0",
+        "termination": "CHECKMATE",
+        "plies": 39,
+        "error": null
+      },
+      {
+        "index": 14,
+        "opening_pair": 7,
+        "color": "black",
+        "result": "0-1",
+        "termination": "CHECKMATE",
+        "plies": 120,
+        "error": null
+      },
+      {
+        "index": 15,
+        "opening_pair": 8,
+        "color": "white",
+        "result": "1-0",
+        "termination": "CHECKMATE",
+        "plies": 55,
+        "error": null
+      },
+      {
+        "index": 16,
+        "opening_pair": 8,
+        "color": "black",
+        "result": "0-1",
+        "termination": "CHECKMATE",
+        "plies": 52,
+        "error": null
+      },
+      {
+        "index": 17,
+        "opening_pair": 9,
+        "color": "white",
+        "result": "1-0",
+        "termination": "CHECKMATE",
+        "plies": 89,
+        "error": null
+      },
+      {
+        "index": 18,
+        "opening_pair": 9,
+        "color": "black",
+        "result": "0-1",
+        "termination": "CHECKMATE",
+        "plies": 58,
+        "error": null
+      },
+      {
+        "index": 19,
+        "opening_pair": 10,
+        "color": "white",
+        "result": "1-0",
+        "termination": "CHECKMATE",
+        "plies": 117,
+        "error": null
+      },
+      {
+        "index": 20,
+        "opening_pair": 10,
+        "color": "black",
+        "result": "0-1",
+        "termination": "CHECKMATE",
+        "plies": 42,
+        "error": null
+      },
+      {
+        "index": 21,
+        "opening_pair": 11,
+        "color": "white",
+        "result": "1-0",
+        "termination": "CHECKMATE",
+        "plies": 77,
+        "error": null
+      },
+      {
+        "index": 22,
+        "opening_pair": 11,
+        "color": "black",
+        "result": "0-1",
+        "termination": "CHECKMATE",
+        "plies": 44,
+        "error": null
+      },
+      {
+        "index": 23,
+        "opening_pair": 12,
+        "color": "white",
+        "result": "1-0",
+        "termination": "CHECKMATE",
+        "plies": 69,
+        "error": null
+      },
+      {
+        "index": 24,
+        "opening_pair": 12,
+        "color": "black",
+        "result": "0-1",
+        "termination": "CHECKMATE",
+        "plies": 112,
+        "error": null
+      }
+    ],
+    "opening_fens": [
+      "r2qkbnr/pb1p1ppp/1pn1p3/2p5/3PP3/2PB3N/PP3PPP/RNBQK2R w KQkq - 1 6",
+      "r1bqk2r/pp3ppp/2nbpn2/2pp4/3P4/2P2NP1/PP2PPBP/RNBQ1RK1 w kq - 2 7",
+      "rn1qkb1r/p3pppp/1p3n2/3p4/3N4/6P1/PPP1PPKP/RNBQ1R2 w kq - 0 8",
+      "rnb1k1nr/ppq2ppp/4p3/2ppP3/3P4/P1P5/2P2PPP/R1BQKBNR w KQkq - 1 7",
+      "r2qk2r/1pp2pp1/p2bbn1p/4p3/P1p1P3/2NPBN1P/1PP2PP1/R2QK2R w KQkq - 0 11",
+      "rnbqk2r/ppp2ppp/4pn2/3p4/1bPP4/2N2N2/PP2PPPP/R1BQKB1R w KQkq - 3 5",
+      "r1bqkb1r/pp3ppp/2n1pn2/2pp4/2PP4/2N1PN2/PP3PPP/R1BQKB1R w KQkq - 2 6",
+      "r1bqkbnr/pp3ppp/2p1pn2/6N1/2BP4/8/PPP2PPP/R1BQK1NR w KQkq - 0 7",
+      "rnbq1rk1/1p2bppp/2p1pn2/p2p2B1/P1PP4/2N1PN2/1P2BPPP/R2QK2R w KQ - 2 9",
+      "rn1qk1nr/pp3ppp/2pb4/3p3b/3P4/3B1N1P/PPP2PP1/RNBQ1RK1 w kq - 1 8",
+      "r1bqk2r/pppn1ppp/3ppn2/6B1/1bPP4/2N5/PPQ1PPPP/R3KBNR w KQkq - 2 6",
+      "r3kbnr/pp1n1ppp/1qp5/3p4/6b1/1Q3NP1/PP1PPPBP/RNB2RK1 w kq - 2 8"
+    ]
+  },
+  "native_version": "v0.6-experimental",
+  "limitations": "Evaluation differences confound search-only causal comparison. 24 games are a small skill sample, not Elo. Match from paired historical book FENs."
+}

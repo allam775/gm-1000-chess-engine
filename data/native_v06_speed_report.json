@@ -1,0 +1,153 @@
+{
+  "positions": 16,
+  "median_python_depth": 2.0,
+  "median_native_depth": 6.0,
+  "median_python_nps": 7506.5,
+  "median_native_nps": 3566346.0,
+  "positions_detail": [
+    {
+      "id": "T1G1-P20",
+      "python_depth": 1,
+      "python_nodes": 1248,
+      "python_nps": 5989,
+      "native_depth": 5,
+      "native_nodes": 674816,
+      "native_nps": 3371967
+    },
+    {
+      "id": "T1G1-P36",
+      "python_depth": 2,
+      "python_nodes": 1568,
+      "python_nps": 7596,
+      "native_depth": 6,
+      "native_nodes": 654592,
+      "native_nps": 3271220
+    },
+    {
+      "id": "T1G2-P20",
+      "python_depth": 1,
+      "python_nodes": 1344,
+      "python_nps": 6410,
+      "native_depth": 6,
+      "native_nodes": 655360,
+      "native_nps": 3275337
+    },
+    {
+      "id": "T1G2-P36",
+      "python_depth": 2,
+      "python_nodes": 1600,
+      "python_nps": 7669,
+      "native_depth": 5,
+      "native_nodes": 692480,
+      "native_nps": 3460774
+    },
+    {
+      "id": "T1G3-P20",
+      "python_depth": 0,
+      "python_nodes": 1280,
+      "python_nps": 6100,
+      "native_depth": 5,
+      "native_nodes": 687104,
+      "native_nps": 3433574
+    },
+    {
+      "id": "T1G3-P36",
+      "python_depth": 1,
+      "python_nodes": 1536,
+      "python_nps": 7347,
+      "native_depth": 6,
+      "native_nodes": 785920,
+      "native_nps": 3928418
+    },
+    {
+      "id": "T1G4-P20",
+      "python_depth": 1,
+      "python_nodes": 1344,
+      "python_nps": 6408,
+      "native_depth": 5,
+      "native_nodes": 614144,
+      "native_nps": 3069326
+    },
+    {
+      "id": "T1G4-P36",
+      "python_depth": 2,
+      "python_nodes": 1792,
+      "python_nps": 8726,
+      "native_depth": 6,
+      "native_nodes": 736256,
+      "native_nps": 3680385
+    },
+    {
+      "id": "T2G1-P20",
+      "python_depth": 3,
+      "python_nodes": 2208,
+      "python_nps": 10637,
+      "native_depth": 7,
+      "native_nodes": 850944,
+      "native_nps": 4252318
+    },
+    {
+      "id": "T2G1-P36",
+      "python_depth": 2,
+      "python_nodes": 1632,
+      "python_nps": 8108,
+      "native_depth": 7,
+      "native_nodes": 988672,
+      "native_nps": 4941826
+    },
+    {
+      "id": "T2G2-P13",
+      "python_depth": 2,
+      "python_nodes": 1824,
+      "python_nps": 8820,
+      "native_depth": 7,
+      "native_nodes": 912128,
+      "native_nps": 4557914
+    },
+    {
+      "id": "T2G2-P25",
+      "python_depth": 2,
+      "python_nodes": 113,
+      "python_nps": 9222,
+      "native_depth": 2,
+      "native_nodes": 114,
+      "native_nps": 3131179
+    },
+    {
+      "id": "T2G3-P20",
+      "python_depth": 2,
+      "python_nodes": 1440,
+      "python_nps": 7035,
+      "native_depth": 7,
+      "native_nodes": 781312,
+      "native_nps": 3905581
+    },
+    {
+      "id": "T2G3-P36",
+      "python_depth": 1,
+      "python_nodes": 1536,
+      "python_nps": 7417,
+      "native_depth": 5,
+      "native_nodes": 734720,
+      "native_nps": 3671918
+    },
+    {
+      "id": "T2G4-P20",
+      "python_depth": 2,
+      "python_nodes": 1792,
+      "python_nps": 8685,
+      "native_depth": 6,
+      "native_nodes": 845056,
+      "native_nps": 4224056
+    },
+    {
+      "id": "T2G4-P36",
+      "python_depth": 1,
+      "python_nodes": 1472,
+      "python_nps": 7101,
+      "native_depth": 5,
+      "native_nodes": 585216,
+      "native_nps": 2924395
+    }
+  ]
+}
