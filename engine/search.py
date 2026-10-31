@@ -482,7 +482,9 @@ class Engine:
         if allow_book and not recalled:
             bm = self.book_move(board)
             if bm:
-                return SearchResult(bm, book=True, pv=(bm,))
+                # Opening choices are historical priors, not proof of safety.
+                # Previously they bypassed tactical search entirely.
+                recalled = [(bm, 1)]
         legal = list(board.legal_moves)
         if not legal:
             return SearchResult(None)
