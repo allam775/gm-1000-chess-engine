@@ -156,8 +156,24 @@ struct Search {
         node();
         const bool checked = b.inCheck();
         Movelist moves;
-        movegen::legalmoves(moves, b);
-        if (moves.empty()) return checked ? -MATE + ply : 0;
+        // Do not generate and score all quiet moves on the vast majority of
+        // quiescence nodes. Preserve all legal evasions while checked.
+        if (checked) {
+            movegen::legalmoves(moves, b);
+            if (moves.empty()) return -MATE + ply;
+        } else {
+            movegen::legalmoves<movegen::MoveGenType::CAPTURE>(moves, b);
+            // The captures-only generator omits non-capturing promotions.
+            auto pawns = b.pieces(PieceType::PAWN, b.sideToMove());
+            const Rank prepromotion = b.sideToMove() == Color::WHITE ? Rank::RANK_7 : Rank::RANK_2;
+            if (static_cast<bool>(pawns & Bitboard(prepromotion))) {
+                Movelist pushes;
+                movegen::legalmoves<movegen::MoveGenType::QUIET>(pushes, b, PieceGenType::PAWN);
+                for (auto pm : pushes) if (pm.typeOf()==Move::PROMOTION) moves.add(pm);
+            }
+            // Stalemate is a draw even if the static evaluation is nonzero.
+            if (moves.empty() && !movegen::anylegalmoves(b)) return 0;
+        }
         if (is_draw(b)) return 0;
         if (!checked) {
             int stand = evaluate(b);
@@ -190,6 +206,20 @@ struct Search {
             return 0;
         }
         if (depth <= 0) return quiescence(b, alpha, beta, ply, 0);
+        // Verified, guarded null-move cutoff: when the side already has
+        // something better than beta without making any move, searching all
+        // ordinary moves is usually unnecessary. Forbid in-check and
+        // pawn-only endings (zugzwang), and never trust mate-range bounds.
+        if (depth >= 3 && ply >= 1 && !checked &&
+            b.hasNonPawnMaterial(b.sideToMove()) &&
+            beta < MATE - 512 && alpha > -MATE + 512) {
+            b.makeNullMove();
+            int null_score;
+            try { null_score = -negamax(b, depth - 3, -beta, -beta + 1, ply + 1); }
+            catch (...) { b.unmakeNullMove(); throw; }
+            b.unmakeNullMove();
+            if (null_score >= beta) return beta;
+        }
         const int old_alpha = alpha;
         auto& entry = tt[b.hash() & (tt.size()-1)];
         Move hashmove{};
@@ -209,12 +239,24 @@ struct Search {
         order(moves, b, hashmove, ply);
         int best = -INF;
         Move selected{};
+        int searched_moves = 0;
         for (Move m : moves) {
+            const bool quiet = !b.isCapture(m) && m.typeOf()!=Move::PROMOTION;
             b.makeMove(m);
             int score;
-            try { score = -negamax(b, depth-1, -beta, -alpha, ply+1); }
-            catch (...) { b.unmakeMove(m); throw; }
+            try {
+                // Late-move reduction with mandatory full-depth verification
+                // whenever a reduced quiet move threatens to raise alpha.
+                const bool reduce = depth>=4 && searched_moves>=4 &&
+                    !checked && quiet && !b.inCheck() &&
+                    alpha > -MATE+512 && beta < MATE-512;
+                if (reduce) {
+                    score = -negamax(b, depth-2, -alpha-1, -alpha, ply+1);
+                    if (score>alpha) score = -negamax(b, depth-1, -beta, -alpha, ply+1);
+                } else score = -negamax(b, depth-1, -beta, -alpha, ply+1);
+            } catch (...) { b.unmakeMove(m); throw; }
             b.unmakeMove(m);
+            ++searched_moves;
             if (score > best) { best = score; selected = m; }
             alpha = std::max(alpha, score);
             if (alpha >= beta) {
