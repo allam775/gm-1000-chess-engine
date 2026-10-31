@@ -37,7 +37,7 @@ jobs:
           python -m pip install -r requirements.txt pytest
           python -m py_compile scripts/validate_v09_stockfish_levels.py
           python -m pytest -q tests/test_v09_holdout.py
-          mkdir -p build/tournament
+          mkdir -p build/tournament native/bin
           git show 043c2c2a22e854ddba30a9e05938787a68d7163f:native/gm1000.cpp > build/tournament/v08.cpp
           git show c10510c833f9736130de420bcceaf945d0f88651:native/gm1000.cpp > build/tournament/v09.cpp
           test "$(sha256sum build/tournament/v08.cpp | cut -d' ' -f1)" != "$(sha256sum build/tournament/v09.cpp | cut -d' ' -f1)"
@@ -128,7 +128,7 @@ jobs:
           set -euo pipefail
           python -m pip install -r requirements.txt pytest
           python -m pytest -q tests/test_v09_holdout.py
-          mkdir -p build/tournament
+          mkdir -p build/tournament native/bin
           git show 043c2c2a22e854ddba30a9e05938787a68d7163f:native/gm1000.cpp > build/tournament/v08.cpp
           git show c10510c833f9736130de420bcceaf945d0f88651:native/gm1000.cpp > build/tournament/v09.cpp
           for v in v08 v09; do
