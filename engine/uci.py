@@ -13,7 +13,7 @@ class UCI:
     def __init__(self) -> None:
         self.board = chess.Board()
         self.engine = Engine(book_path=Path(__file__).resolve().parents[1] / 'data/opening_book.json',
-                             learning_path=Path(__file__).resolve().parents[1] / 'data/learning_state.json')
+                             learning_path=Path(__file__).resolve().parents[1] / 'data/approved_model.json')
         self.worker: threading.Thread | None = None
         self.print_lock = threading.Lock()
 

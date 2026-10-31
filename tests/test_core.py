@@ -155,49 +155,72 @@ def test_evaluation_components_reconstruct_original():
     assert evaluate(b, {name: 1.0 for name in comps}) == expected
 
 
-def test_outcome_learning_persists_and_affects_opening(tmp_path):
-    from engine.learning import empty_state, load_state, save_state, train_completed_pgn
-    from engine.search import LEARNABLE_FEATURES
-    game = chess.pgn.Game()
-    game.headers['White'] = 'GM-1000'
-    game.headers['Black'] = 'Stockfish'
-    game.headers['Result'] = '1-0'
-    board = game.board()
-    node = game
-    for san in ('e4', 'e5', 'Nf3', 'Nc6', 'Bc4', 'Bc5', 'c3', 'Nf6',
-                'd4', 'exd4', 'cxd4', 'Bb4+', 'Nc3', 'Nxe4', 'O-O', 'Bxc3',
-                'bxc3', 'd5', 'Ba3', 'dxc4'):
-        move = board.parse_san(san)
-        node = node.add_variation(move)
-        board.push(move)
-    pgn_path = tmp_path / 'one.pgn'
-    pgn_path.write_text(str(game) + '\n\n', encoding='utf-8')
-    state = empty_state()
-    update = train_completed_pgn(pgn_path, state)
-    assert update['learned_games'] == 1
-    assert state['epochs'] == 1
-    assert update['learning_samples'] > 0
-    first = state['opening_moves'][book_key(chess.Board())]['e2e4']
-    assert first['visits'] == 1 and first['reward_sum'] == 1
-    assert any(state['weights'][k] != 1.0 for k in LEARNABLE_FEATURES)
-    path = tmp_path / 'learning.json'
-    save_state(path, state)
-    assert load_state(path)['epochs'] == 1
-    bot = Engine(book_path=tmp_path / 'missing.json', learning_path=path)
-    assert bot.book_move(chess.Board()) == chess.Move.from_uci('e2e4')
-    bot.learning_enabled = False
-    assert bot.book_move(chess.Board()) is None
-
-
-def test_incomplete_games_do_not_train(tmp_path):
+def test_retired_outcome_learning_is_blocked(tmp_path):
     from engine.learning import empty_state, train_completed_pgn
-    game = chess.pgn.Game()
-    game.headers['White'] = 'GM-1000'
-    game.headers['Black'] = 'Stockfish'
-    game.headers['Result'] = '*'
-    path = tmp_path / 'incomplete.pgn'
-    path.write_text(str(game) + '\n\n', encoding='utf-8')
+    with pytest.raises(RuntimeError, match='retired'):
+        train_completed_pgn(tmp_path / 'does-not-matter.pgn', empty_state())
+
+
+def test_gm_position_sampling_is_champion_side_only():
+    from scripts.study_gm_games import sample_plys, expert_color
+    from scripts.build_book import Candidate
+    g = Candidate('Carlsen', {'White': 'Carlsen, Magnus', 'Black': 'Other'},
+                  tuple(['e2e4']*70), 'test-sha', 1.0)
+    assert expert_color(g) == chess.WHITE
+    assert all(p % 2 == 0 and p >= 24 for p in sample_plys(70, chess.WHITE))
+    assert all(p % 2 == 1 and p >= 24 for p in sample_plys(70, chess.BLACK))
+
+
+def test_pairwise_logistic_train_and_bounds():
+    from scripts.study_gm_games import Sample, assess, optimize, softplus, sigmoid_minus
+    n = 9
+    expert = (1.0,) + (0.0,) * (n-1)
+    alternative = (-1.0,) + (0.0,) * (n-1)
+    samples = [Sample(str(i), 26, expert, (alternative,), 0.0, (0.0,))
+               for i in range(35)]
+    weights, history = optimize(samples, epochs=6, learning_rate=.05)
+    assert weights['bishop_pair'] > 1.0
+    assert all(.7 <= x <= 1.3 for x in weights.values())
+    assert assess(samples, weights)['mean_pairwise_log_loss'] < assess(samples, {
+        key: 1.0 for key in weights})['mean_pairwise_log_loss']
+    assert 0 < sigmoid_minus(1) < .5
+    assert abs(softplus(0)-0.6931471805599453) < 1e-9
+    assert len(history) == 6
+
+
+def test_untrained_default_ignores_legacy_outcome_file(tmp_path, monkeypatch):
+    # New approved-only default is separate from old experimental state.
+    from engine.search import Engine
+    bot = Engine()
+    assert bot.learning_path.name == 'approved_model.json'
+    assert bot._load_learning()['weights'] == {}
+    bot.new_game()
+    assert bot._learning is None
+
+
+def test_promotion_gate_rejects_weak_and_mismatched_results():
+    from engine.promotion import check_strength_gate
+    conf = {'stockfish_skill': 5, 'seconds_per_move': .2,
+            'own_book': True, 'max_plies': 260}
+    def result(wins, losses):
+        return {'wins': wins, 'draws': 0, 'losses': losses, 'completed_games': wins+losses,
+                'errors': 0, 'incomplete': 0, 'opponent': 'Stockfish', 'config': dict(conf)}
+    report = {'offline_validation_gate': {'passes': True}}
+    original, improved = result(20, 180), result(170, 30)
+    assert check_strength_gate(report, original, improved)['promote']
+    assert not check_strength_gate(report, result(110, 90), result(105, 95))['promote']
+    wrong = result(170, 30)
+    wrong['config']['stockfish_skill'] = 0
+    assert not check_strength_gate(report, original, wrong)['promote']
+    assert not check_strength_gate({'offline_validation_gate': {'passes': False}},
+                                   original, improved)['promote']
+
+
+def test_legacy_trainer_cannot_run_on_incomplete_games(tmp_path):
+    from engine.learning import empty_state, train_completed_pgn
+    p = tmp_path / 'incomplete.pgn'
+    p.write_text('[Result "*"]\n\n*\n', encoding='utf-8')
     state = empty_state()
-    with pytest.raises(ValueError, match='No completed games'):
-        train_completed_pgn(path, state)
+    with pytest.raises(RuntimeError, match='retired'):
+        train_completed_pgn(p, state)
     assert state['epochs'] == 0

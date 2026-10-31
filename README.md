@@ -4,6 +4,44 @@
 
 > **حالة المشروع:** نموذج أولي قابل للاختبار، وليس محركًا مثبتًا بمستوى Grandmaster. يملك خوارزمية بحث وتقييم خاصة به، ويستخدم مكتبة `python-chess` لتطبيق قواعد اللعبة والتواصل مع محركات الشطرنج. لا يستخدم Stockfish لاتخاذ نقلاته؛ يُستخدم Stockfish **كمنافس** في الاختبارات.
 
+## ♟️ GM-1000 v0.2 — 200 titled-grandmaster game study
+
+The previous v0.1 outcome-only learning algorithm was **retired** after its
+20-tournament audit (80 games; 25 wins, 9 draws, 46 losses against Stockfish
+Skill 0). It incorrectly assigned the final match outcome to every earlier
+opening move and used an incomplete evaluation gradient. Those historical
+results remain in `data/learning_report.json` and `data/learning_state.json`,
+but **they are not the approved engine's weights**.
+
+The v0.2 implementation:
+
+- Selects **at least 200 unique, fully recorded titled-GM games** from eight
+  champion player archives (Carlsen, Kasparov, Fischer, Karpov, Anand, Tal,
+  Botvinnik, Alekhine), and records a fingerprint and source for each.
+- Splits games by player into a deterministic, disjoint 80% training and
+  20% holdout. Samples middle/late-game positions from the **named GM's own
+  side**, rather than pretending every opponent's move is a GM move.
+- Ranks each observed GM move against the strongest-looking legal alternatives
+  using a **correct pairwise logistic gradient**. Material is kept fixed;
+  positional-feature weights stay bounded and regularized.
+- Writes a detailed report, 200-game provenance index, and an **unapproved
+  candidate**, never `data/approved_model.json`. GM imitation does **not** prove
+  chess strength: GMs can blunder, and a one-ply static comparison is not a
+  tactical search or an Elo evaluation.
+- Retains an independent **promotion gate**: offline validation must improve
+  and the candidate must convincingly outperform the unchanged control in
+  two matched-setting 100+ game tournament samples before someone explicitly
+  approves it. A conservative 99%-confidence margin is enforced by
+  `scripts/promote_candidate.py`. No automatic promotion occurs in the study.
+- Loads only `data/approved_model.json` in default UCI play. If none exists,
+  the engine uses the stable v0.1 evaluation, not the poorly trained weights.
+
+Run manually from GitHub Actions: **GM-1000 v0.2 study 200 grandmaster games**.
+On completion inspect `data/gm_study_report_v02.json`,
+`data/gm_study_game_index_v02.json` and
+`data/candidates/gm200-v02-candidate.json`. The historical 20-tournament
+outcome trainer is disabled to prevent accidental retraining or promotion.
+
 ## 🎯 ما الهدف؟
 
 تطوير محرك شطرنج مستقل يتدرج في القوة عبر ثلاث ركائز:

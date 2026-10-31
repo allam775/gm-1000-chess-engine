@@ -125,7 +125,7 @@ def evaluate(board: chess.Board, weights: dict[str, float] | None = None) -> int
 
 class Engine:
     def __init__(self, hash_mb: int = 32, book_path: str | Path = "data/opening_book.json",
-                 learning_path: str | Path = "data/learning_state.json"):
+                 learning_path: str | Path = "data/approved_model.json"):
         self.hash_mb = max(1, hash_mb)
         self.table: dict[int, TTEntry] = {}
         self.killers: dict[int, list[chess.Move]] = {}
@@ -142,6 +142,7 @@ class Engine:
     def new_game(self) -> None:
         self.table.clear()
         self.killers.clear()
+        self._learning = None  # Approved model updates are reloaded between games.
 
     def _load_book(self) -> dict:
         if self._book is None:
@@ -185,8 +186,10 @@ class Engine:
             # Historical counts are prior, match outcomes are incremental evidence.
             # No reliance on Stockfish's move suggestions or evaluation.
             score = .13 * math.log1p(choices.get(uci, 0))
-            if visits:
-                score += reward / (visits + 2) + .035 * math.log1p(visits)
+            # Legacy outcome rewards are extremely noisy; use only adequately
+            # sampled moves and cap their impact against historical evidence.
+            if visits >= 12:
+                score += max(-0.15, min(0.15, 0.15 * reward / visits))
             scores.append((score, uci, move))
         if scores:
             return max(scores, key=lambda item: (item[0], item[1]))[2]
