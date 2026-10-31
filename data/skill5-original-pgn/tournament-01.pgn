@@ -1,0 +1,64 @@
+[Event "GM-1000 Baseline Arena"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "1"]
+[White "GM-1000"]
+[Black "Stockfish"]
+[Result "0-1"]
+[GM1000Version "0.3-position-memory"]
+[StockfishSkill "5"]
+[PositionMemory "enabled"]
+[StockfishMemory "enabled"]
+[SecondsPerMove "0.2"]
+[Termination "CHECKMATE"]
+
+1. e4 c5 2. Nf3 e6 3. c4 Qb6 4. Nc3 Nc6 5. Bd3 g6 6. h4 h5 7. a4 Bg7 8. g3 Nge7 9. b3 d6 10. Rh3 d5 11. Ra3 e5 12. Rh2 Nb4 13. Be2 dxe4 14. Nxe4 Bf5 15. a5 Qc7 16. d3 O-O-O 17. Nfg5 f6 18. g4 fxg5 19. gxf5 gxf5 20. Nxg5 Qd7 21. Nf7 f4 22. Nxh8 Qf5 23. Bxf4 exf4 24. Nf7 f3 25. Nxd8 Bc3+ 26. Kf1 Qf4 27. Bxf3 Qxh2 28. Nxb7 Ng6 29. Nxc5 Bd4 30. Bg4+ Kb8 31. Nd7+ Kc8 32. Nc5+ Kb8 33. Na6+ Kb7 34. Qf3+ Nc6 35. Bc8+ Kxc8 36. Qxc6+ Kd8 37. Qd5+ Ke8 38. Qxd4 Nf4 39. Qe3+ Kf8 40. Qc5+ Kg8 41. Qg5+ Kh7 42. Qe7+ Kg6 43. Qg5+ Kh7 44. Qe7+ Kg8 45. Qd8+ Kf7 46. Qc7+ Kf8 47. Qb8+ Ke7 48. Qxa7+ Kf8 49. Qc5+ Kg8 50. Qg5+ Kf8 51. Qf6+ Ke8 52. Nc7+ Kd7 53. Qf7+ Kc6 54. f3 Qg2+ 55. Ke1 Qe2# 0-1
+
+[Event "GM-1000 Baseline Arena"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "2"]
+[White "Stockfish"]
+[Black "GM-1000"]
+[Result "1-0"]
+[GM1000Version "0.3-position-memory"]
+[StockfishSkill "5"]
+[PositionMemory "enabled"]
+[StockfishMemory "enabled"]
+[SecondsPerMove "0.2"]
+[Termination "CHECKMATE"]
+
+1. Nf3 Nf6 2. d4 e6 3. c4 d5 4. Bg5 h6 5. Bxf6 Qxf6 6. Qb3 Nc6 7. e3 Bb4+ 8. Nc3 dxc4 9. Qxc4 g5 10. h3 a5 11. Be2 Bd7 12. a3 b5 13. Qb3 Bxc3+ 14. Qxc3 Qf5 15. d5 f6 16. dxc6 Bc8 17. Qc1 h5 18. Nd4 Qd5 19. O-O Ba6 20. a4 b4 21. Nb5 Bxb5 22. Bxb5 f5 23. Qd1 Qxd1 24. Raxd1 h4 25. Rd7 Ra7 26. Rfd1 Rh5 27. Kf1 Kf8 28. Bc4 Rh6 29. Rd8+ Kf7 30. R1d7+ Kg6 31. Rf8 f4 32. Ke2 fxe3 33. Bd3+ Kh5 34. Kxe3 e5 35. Rg8 Rxc6 36. Rh7+ Rh6 37. Bg6# 1-0
+
+[Event "GM-1000 Baseline Arena"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "3"]
+[White "GM-1000"]
+[Black "Stockfish"]
+[Result "1-0"]
+[GM1000Version "0.3-position-memory"]
+[StockfishSkill "5"]
+[PositionMemory "enabled"]
+[StockfishMemory "enabled"]
+[SecondsPerMove "0.2"]
+[Termination "CHECKMATE"]
+
+1. e4 e5 2. Nf3 d6 3. d4 Nd7 4. Nc3 Be7 5. Bb5 Nf6 6. dxe5 Ng4 7. Bf4 a6 8. exd6 cxd6 9. Nd4 Nf6 10. Bc4 Nc5 11. f3 O-O 12. h4 Bd7 13. g4 Be6 14. Qe2 Rc8 15. Nxe6 fxe6 16. b4 Nxg4 17. bxc5 Bxh4+ 18. Kf1 Qe7 19. cxd6 Qf6 20. Rxh4 Qxc3 21. Bxe6+ Rf7 22. Bxf7+ Kxf7 23. Rb1 Ne5 24. Bxe5 Qxe5 25. d7 Rf8 26. Rxb7 Kg8 27. c4 Qd6 28. e5 Qe7 29. Rd4 Qe6 30. d8=Q Qf5 31. Qd5+ Kh8 32. Ra7 Qh3+ 33. Kg1 Qh6 34. e6 Qh3 35. Rg4 Qh6 36. Rg5 Re8 37. a4 Rf8 38. c5 a5 39. e7 Qxg5+ 40. Qxg5 Rf5 41. e8=Q+ Rf8 42. Qxf8# 1-0
+
+[Event "GM-1000 Baseline Arena"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "4"]
+[White "Stockfish"]
+[Black "GM-1000"]
+[Result "0-1"]
+[GM1000Version "0.3-position-memory"]
+[StockfishSkill "5"]
+[PositionMemory "enabled"]
+[StockfishMemory "enabled"]
+[SecondsPerMove "0.2"]
+[Termination "CHECKMATE"]
+
+1. e4 e5 2. Nc3 Nf6 3. Bc4 Nxe4 4. Nxe4 d5 5. Bd3 dxe4 6. Bf1 Nc6 7. c3 Bf5 8. b4 a5 9. Bc4 axb4 10. a3 bxa3 11. Bxa3 Rxa3 12. Rxa3 Bxa3 13. Qb3 Qd6 14. Bxf7+ Kf8 15. Ne2 Bc5 16. Qa2 h5 17. Bb3 g5 18. h4 g4 19. Bf7 b5 20. Bb3 Ne7 21. Bc2 Nd5 22. Bb3 c6 23. Qa6 Qd7 24. Ng3 Nf4 25. O-O Bg6 26. Nxe4 Bxe4 27. d4 exd4 28. f3 dxc3+ 29. Rf2 Bxf2+ 30. Kh1 gxf3 31. Qa8+ Kg7 32. Kh2 Rxa8 33. Be6 fxg2 34. Bc4 g1=Q# 0-1
+

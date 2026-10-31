@@ -1,0 +1,1339 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-31T11:30:25.586865+00:00",
+  "source_run_id": 41195883523,
+  "source_artifact": "gm1000-stockfish-skill5-four-tournaments",
+  "original_pgn_sha256": {
+    "tournament-01/matches.pgn": "c7a44188d56654defac507b7e270d013817fa02c8e07cf997a73d9ae430f6e28",
+    "tournament-02/matches.pgn": "990fd568e74b58b3de0aca344618e2309ad8a24a56d424593320d0430c3d1cb0",
+    "tournament-03/matches.pgn": "8a7316c41eb86c04e9409c6010f0d3710fec2a30f51a0e84db2f09526ca89ec8",
+    "tournament-04/matches.pgn": "0a22217427af21b38b6dfda8c16a876ffd3d61d01166abc19dd894c4c04a2343"
+  },
+  "stockfish_analyst": "Stockfish 19",
+  "analyst_skill_level": 20,
+  "analysis_seconds_per_root": 0.08,
+  "analyst_method": "best-move root search vs forced-played-move root search; same time per root; cp_loss=max(0,best_cp-played_cp)",
+  "opponent_in_original_games": "Stockfish Ubuntu package Skill Level 5; 0.2s per move",
+  "games": 16,
+  "outcomes": {
+    "loss": 12,
+    "win": 2,
+    "draw": 2
+  },
+  "by_result": {
+    "win": {
+      "games": 2,
+      "game_ids": [
+        "T1G3",
+        "T1G4"
+      ],
+      "gm": {
+        "moves_analyzed": 76,
+        "mean_cp_loss": 357.39,
+        "median_cp_loss": 27.5,
+        "inaccuracies_100cp": 17,
+        "mistakes_200cp": 7,
+        "severe_300cp": 6,
+        "by_phase": {
+          "opening": {
+            "moves": 20,
+            "mean_cp_loss": 33.75,
+            "mistakes_200cp": 1
+          },
+          "middlegame": {
+            "moves": 40,
+            "mean_cp_loss": 71.78,
+            "mistakes_200cp": 1
+          },
+          "late": {
+            "moves": 16,
+            "mean_cp_loss": 1476,
+            "mistakes_200cp": 5
+          }
+        }
+      },
+      "opponent": {
+        "moves_analyzed": 75,
+        "mean_cp_loss": 353.43,
+        "median_cp_loss": 21,
+        "inaccuracies_100cp": 20,
+        "mistakes_200cp": 10,
+        "severe_300cp": 6,
+        "by_phase": {
+          "opening": {
+            "moves": 20,
+            "mean_cp_loss": 66.15,
+            "mistakes_200cp": 2
+          },
+          "middlegame": {
+            "moves": 40,
+            "mean_cp_loss": 303.68,
+            "mistakes_200cp": 5
+          },
+          "late": {
+            "moves": 15,
+            "mean_cp_loss": 869.13,
+            "mistakes_200cp": 3
+          }
+        }
+      },
+      "memory": {
+        "gm_moves_total": 76,
+        "gm_exact_positions_seen": 3,
+        "stockfish19_exact_positions_seen": 0,
+        "gm_memory_top_move_followed": 2,
+        "sf_overlay_preferred_move_followed": 0,
+        "sf_overlay_preferred_move_disagreed": 0
+      },
+      "first_gm_mistake_200cp_mean_ply": 13,
+      "games_with_gm_200cp_mistake": 1,
+      "mean_length_plies": 75.5
+    },
+    "draw": {
+      "games": 2,
+      "game_ids": [
+        "T3G2",
+        "T4G2"
+      ],
+      "gm": {
+        "moves_analyzed": 69,
+        "mean_cp_loss": 550.72,
+        "median_cp_loss": 21,
+        "inaccuracies_100cp": 14,
+        "mistakes_200cp": 6,
+        "severe_300cp": 5,
+        "by_phase": {
+          "opening": {
+            "moves": 20,
+            "mean_cp_loss": 74.65,
+            "mistakes_200cp": 1
+          },
+          "middlegame": {
+            "moves": 38,
+            "mean_cp_loss": 508.68,
+            "mistakes_200cp": 3
+          },
+          "late": {
+            "moves": 11,
+            "mean_cp_loss": 1561.55,
+            "mistakes_200cp": 2
+          }
+        }
+      },
+      "opponent": {
+        "moves_analyzed": 69,
+        "mean_cp_loss": 416.45,
+        "median_cp_loss": 6,
+        "inaccuracies_100cp": 8,
+        "mistakes_200cp": 5,
+        "severe_300cp": 3,
+        "by_phase": {
+          "opening": {
+            "moves": 20,
+            "mean_cp_loss": 24.65,
+            "mistakes_200cp": 1
+          },
+          "middlegame": {
+            "moves": 38,
+            "mean_cp_loss": 270.34,
+            "mistakes_200cp": 2
+          },
+          "late": {
+            "moves": 11,
+            "mean_cp_loss": 1633.55,
+            "mistakes_200cp": 2
+          }
+        }
+      },
+      "memory": {
+        "gm_moves_total": 69,
+        "gm_exact_positions_seen": 2,
+        "stockfish19_exact_positions_seen": 0,
+        "gm_memory_top_move_followed": 1,
+        "sf_overlay_preferred_move_followed": 0,
+        "sf_overlay_preferred_move_disagreed": 0
+      },
+      "first_gm_mistake_200cp_mean_ply": 36,
+      "games_with_gm_200cp_mistake": 2,
+      "mean_length_plies": 69
+    },
+    "loss": {
+      "games": 12,
+      "game_ids": [
+        "T1G1",
+        "T1G2",
+        "T2G1",
+        "T2G2",
+        "T2G3",
+        "T2G4",
+        "T3G1",
+        "T3G3",
+        "T3G4",
+        "T4G1",
+        "T4G3",
+        "T4G4"
+      ],
+      "gm": {
+        "moves_analyzed": 427,
+        "mean_cp_loss": 386.87,
+        "median_cp_loss": 15,
+        "inaccuracies_100cp": 93,
+        "mistakes_200cp": 50,
+        "severe_300cp": 33,
+        "by_phase": {
+          "opening": {
+            "moves": 120,
+            "mean_cp_loss": 41.36,
+            "mistakes_200cp": 7
+          },
+          "middlegame": {
+            "moves": 202,
+            "mean_cp_loss": 380.32,
+            "mistakes_200cp": 28
+          },
+          "late": {
+            "moves": 105,
+            "mean_cp_loss": 794.34,
+            "mistakes_200cp": 15
+          }
+        }
+      },
+      "opponent": {
+        "moves_analyzed": 432,
+        "mean_cp_loss": 202.58,
+        "median_cp_loss": 5.0,
+        "inaccuracies_100cp": 52,
+        "mistakes_200cp": 32,
+        "severe_300cp": 16,
+        "by_phase": {
+          "opening": {
+            "moves": 120,
+            "mean_cp_loss": 23.06,
+            "mistakes_200cp": 3
+          },
+          "middlegame": {
+            "moves": 205,
+            "mean_cp_loss": 86.46,
+            "mistakes_200cp": 16
+          },
+          "late": {
+            "moves": 107,
+            "mean_cp_loss": 626.38,
+            "mistakes_200cp": 13
+          }
+        }
+      },
+      "memory": {
+        "gm_moves_total": 427,
+        "gm_exact_positions_seen": 45,
+        "stockfish19_exact_positions_seen": 0,
+        "gm_memory_top_move_followed": 39,
+        "sf_overlay_preferred_move_followed": 0,
+        "sf_overlay_preferred_move_disagreed": 0
+      },
+      "first_gm_mistake_200cp_mean_ply": 24.08,
+      "games_with_gm_200cp_mistake": 12,
+      "mean_length_plies": 71.58
+    }
+  },
+  "by_color": {
+    "white": {
+      "games": 8,
+      "game_ids": [
+        "T1G1",
+        "T1G3",
+        "T2G1",
+        "T2G3",
+        "T3G1",
+        "T3G3",
+        "T4G1",
+        "T4G3"
+      ],
+      "gm": {
+        "moves_analyzed": 326,
+        "mean_cp_loss": 398.1,
+        "median_cp_loss": 17.0,
+        "inaccuracies_100cp": 76,
+        "mistakes_200cp": 43,
+        "severe_300cp": 30,
+        "by_phase": {
+          "opening": {
+            "moves": 80,
+            "mean_cp_loss": 41.74,
+            "mistakes_200cp": 5
+          },
+          "middlegame": {
+            "moves": 145,
+            "mean_cp_loss": 317.51,
+            "mistakes_200cp": 21
+          },
+          "late": {
+            "moves": 101,
+            "mean_cp_loss": 796.07,
+            "mistakes_200cp": 17
+          }
+        }
+      },
+      "opponent": {
+        "moves_analyzed": 325,
+        "mean_cp_loss": 251.18,
+        "median_cp_loss": 7,
+        "inaccuracies_100cp": 53,
+        "mistakes_200cp": 35,
+        "severe_300cp": 18,
+        "by_phase": {
+          "opening": {
+            "moves": 80,
+            "mean_cp_loss": 31.29,
+            "mistakes_200cp": 4
+          },
+          "middlegame": {
+            "moves": 145,
+            "mean_cp_loss": 119.4,
+            "mistakes_200cp": 17
+          },
+          "late": {
+            "moves": 100,
+            "mean_cp_loss": 618.19,
+            "mistakes_200cp": 14
+          }
+        }
+      },
+      "memory": {
+        "gm_moves_total": 326,
+        "gm_exact_positions_seen": 30,
+        "stockfish19_exact_positions_seen": 0,
+        "gm_memory_top_move_followed": 28,
+        "sf_overlay_preferred_move_followed": 0,
+        "sf_overlay_preferred_move_disagreed": 0
+      },
+      "first_gm_mistake_200cp_mean_ply": 20.75,
+      "games_with_gm_200cp_mistake": 8,
+      "mean_length_plies": 81.38
+    },
+    "black": {
+      "games": 8,
+      "game_ids": [
+        "T1G2",
+        "T1G4",
+        "T2G2",
+        "T2G4",
+        "T3G2",
+        "T3G4",
+        "T4G2",
+        "T4G4"
+      ],
+      "gm": {
+        "moves_analyzed": 246,
+        "mean_cp_loss": 408.84,
+        "median_cp_loss": 18.5,
+        "inaccuracies_100cp": 48,
+        "mistakes_200cp": 20,
+        "severe_300cp": 14,
+        "by_phase": {
+          "opening": {
+            "moves": 80,
+            "mean_cp_loss": 47.4,
+            "mistakes_200cp": 4
+          },
+          "middlegame": {
+            "moves": 135,
+            "mean_cp_loss": 392.49,
+            "mistakes_200cp": 11
+          },
+          "late": {
+            "moves": 31,
+            "mean_cp_loss": 1412.77,
+            "mistakes_200cp": 5
+          }
+        }
+      },
+      "opponent": {
+        "moves_analyzed": 251,
+        "mean_cp_loss": 243.51,
+        "median_cp_loss": 6,
+        "inaccuracies_100cp": 27,
+        "mistakes_200cp": 12,
+        "severe_300cp": 7,
+        "by_phase": {
+          "opening": {
+            "moves": 80,
+            "mean_cp_loss": 26,
+            "mistakes_200cp": 2
+          },
+          "middlegame": {
+            "moves": 138,
+            "mean_cp_loss": 165.45,
+            "mistakes_200cp": 6
+          },
+          "late": {
+            "moves": 33,
+            "mean_cp_loss": 1097.27,
+            "mistakes_200cp": 4
+          }
+        }
+      },
+      "memory": {
+        "gm_moves_total": 246,
+        "gm_exact_positions_seen": 20,
+        "stockfish19_exact_positions_seen": 0,
+        "gm_memory_top_move_followed": 14,
+        "sf_overlay_preferred_move_followed": 0,
+        "sf_overlay_preferred_move_disagreed": 0
+      },
+      "first_gm_mistake_200cp_mean_ply": 29.71,
+      "games_with_gm_200cp_mistake": 7,
+      "mean_length_plies": 62.12
+    }
+  },
+  "earliest_major_errors_by_game": [
+    {
+      "game": "T1G1",
+      "result": "loss",
+      "gm_color": "white",
+      "first_gm_200cp": {
+        "ply": 19,
+        "san": "Rh3",
+        "uci": "h1h3",
+        "best_san": "O-O",
+        "cp_loss": 201,
+        "phase": "opening",
+        "fen": "r1b1k2r/pp2npb1/1qnpp1p1/2p4p/P1P1P2P/1PNB1NP1/3P1P2/R1BQK2R w KQkq - 0 10"
+      },
+      "gm_200cp_count": 8,
+      "gm_moves": 55
+    },
+    {
+      "game": "T1G2",
+      "result": "loss",
+      "gm_color": "black",
+      "first_gm_200cp": {
+        "ply": 28,
+        "san": "Qf5",
+        "uci": "f6f5",
+        "best_san": "Rb8",
+        "cp_loss": 487,
+        "phase": "middlegame",
+        "fen": "r3k2r/2pb1p2/2n1pq1p/pp4p1/3P4/P1Q1PN1P/1P2BPP1/R3K2R b KQkq - 0 14"
+      },
+      "gm_200cp_count": 3,
+      "gm_moves": 36
+    },
+    {
+      "game": "T1G3",
+      "result": "win",
+      "gm_color": "white",
+      "first_gm_200cp": {
+        "ply": 13,
+        "san": "Bf4",
+        "uci": "c1f4",
+        "best_san": "e6",
+        "cp_loss": 242,
+        "phase": "opening",
+        "fen": "r1bqk2r/pppnbppp/3p4/1B2P3/4P1n1/2N2N2/PPP2PPP/R1BQK2R w KQkq - 1 7"
+      },
+      "gm_200cp_count": 7,
+      "gm_moves": 42
+    },
+    {
+      "game": "T1G4",
+      "result": "win",
+      "gm_color": "black",
+      "first_gm_200cp": null,
+      "gm_200cp_count": 0,
+      "gm_moves": 34
+    },
+    {
+      "game": "T2G1",
+      "result": "loss",
+      "gm_color": "white",
+      "first_gm_200cp": {
+        "ply": 25,
+        "san": "Qg4",
+        "uci": "d1g4",
+        "best_san": "Nf3",
+        "cp_loss": 392,
+        "phase": "middlegame",
+        "fen": "r1b1k2q/pp1pbp2/2n5/2p1p1N1/P1P1P3/3B4/1P1P1PP1/R1BQK3 w Qq - 1 13"
+      },
+      "gm_200cp_count": 5,
+      "gm_moves": 25
+    },
+    {
+      "game": "T2G2",
+      "result": "loss",
+      "gm_color": "black",
+      "first_gm_200cp": {
+        "ply": 14,
+        "san": "Bxc3+",
+        "uci": "b4c3",
+        "best_san": "Nxe4",
+        "cp_loss": 294,
+        "phase": "opening",
+        "fen": "r1bqk2r/pppp1ppp/5n2/4P3/1b2P3/2N5/PPP2PPP/R1BQKB1R b KQkq - 0 7"
+      },
+      "gm_200cp_count": 3,
+      "gm_moves": 13
+    },
+    {
+      "game": "T2G3",
+      "result": "loss",
+      "gm_color": "white",
+      "first_gm_200cp": {
+        "ply": 37,
+        "san": "Bxb7",
+        "uci": "e4b7",
+        "best_san": "Nc3",
+        "cp_loss": 288,
+        "phase": "middlegame",
+        "fen": "r3k2r/1ppbbp1p/p7/PNq1p3/2P1B3/1P4P1/4KP1P/R2Q3R w kq - 1 19"
+      },
+      "gm_200cp_count": 6,
+      "gm_moves": 37
+    },
+    {
+      "game": "T2G4",
+      "result": "loss",
+      "gm_color": "black",
+      "first_gm_200cp": {
+        "ply": 32,
+        "san": "f5",
+        "uci": "f7f5",
+        "best_san": "c5",
+        "cp_loss": 213,
+        "phase": "middlegame",
+        "fen": "r1bqk2r/p4p2/2p1p3/np1nN2p/3P2pP/P3P1P1/1P1N1PB1/R2QK2R b KQkq - 1 16"
+      },
+      "gm_200cp_count": 3,
+      "gm_moves": 25
+    },
+    {
+      "game": "T3G1",
+      "result": "loss",
+      "gm_color": "white",
+      "first_gm_200cp": {
+        "ply": 27,
+        "san": "b3",
+        "uci": "b2b3",
+        "best_san": "O-O",
+        "cp_loss": 273,
+        "phase": "middlegame",
+        "fen": "1rq1k2r/1p2ppb1/p1np1np1/7p/P1BNPPbP/3QB1P1/1PP1N3/R3K2R w KQk - 5 14"
+      },
+      "gm_200cp_count": 4,
+      "gm_moves": 43
+    },
+    {
+      "game": "T3G2",
+      "result": "draw",
+      "gm_color": "black",
+      "first_gm_200cp": {
+        "ply": 16,
+        "san": "h5",
+        "uci": "h7h5",
+        "best_san": "Nf6",
+        "cp_loss": 270,
+        "phase": "opening",
+        "fen": "r1bqkb1r/1pppp2p/6p1/p4p2/1nPPn3/4P2N/PP1NBPPP/R1BQK2R b KQkq - 1 8"
+      },
+      "gm_200cp_count": 2,
+      "gm_moves": 28
+    },
+    {
+      "game": "T3G3",
+      "result": "loss",
+      "gm_color": "white",
+      "first_gm_200cp": {
+        "ply": 5,
+        "san": "c4",
+        "uci": "c2c4",
+        "best_san": "exd5",
+        "cp_loss": 328,
+        "phase": "opening",
+        "fen": "rnbqkbnr/ppp2ppp/8/3pp3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 0 3"
+      },
+      "gm_200cp_count": 4,
+      "gm_moves": 20
+    },
+    {
+      "game": "T3G4",
+      "result": "loss",
+      "gm_color": "black",
+      "first_gm_200cp": {
+        "ply": 18,
+        "san": "Nd7",
+        "uci": "b8d7",
+        "best_san": "Qd6",
+        "cp_loss": 457,
+        "phase": "opening",
+        "fen": "rnb1k2r/pp3ppp/2p5/4p3/1b1qB3/3P4/PPP1KPPP/R1BQ2NR b kq - 2 9"
+      },
+      "gm_200cp_count": 3,
+      "gm_moves": 40
+    },
+    {
+      "game": "T4G1",
+      "result": "loss",
+      "gm_color": "white",
+      "first_gm_200cp": {
+        "ply": 19,
+        "san": "Nf3",
+        "uci": "g1f3",
+        "best_san": "Ng3",
+        "cp_loss": 241,
+        "phase": "opening",
+        "fen": "rnb1k2r/pp3pp1/2p4p/3p4/1b1PN2q/2PB4/PP3PPP/R2QK1NR w KQkq - 0 10"
+      },
+      "gm_200cp_count": 7,
+      "gm_moves": 41
+    },
+    {
+      "game": "T4G2",
+      "result": "draw",
+      "gm_color": "black",
+      "first_gm_200cp": {
+        "ply": 56,
+        "san": "d5",
+        "uci": "d7d5",
+        "best_san": "Ba6",
+        "cp_loss": 9270,
+        "phase": "middlegame",
+        "fen": "r1k3r1/pb1p1Npp/2p2p2/8/8/6B1/P4PPP/R3R1K1 b - - 3 28"
+      },
+      "gm_200cp_count": 4,
+      "gm_moves": 41
+    },
+    {
+      "game": "T4G3",
+      "result": "loss",
+      "gm_color": "white",
+      "first_gm_200cp": {
+        "ply": 21,
+        "san": "Ng5",
+        "uci": "f3g5",
+        "best_san": "Qe2",
+        "cp_loss": 296,
+        "phase": "middlegame",
+        "fen": "rn1qk2r/1b2ppbp/p1p3p1/1P2P3/6n1/2NB1N2/1PP2PPP/R1BQK2R w KQkq - 1 11"
+      },
+      "gm_200cp_count": 2,
+      "gm_moves": 63
+    },
+    {
+      "game": "T4G4",
+      "result": "loss",
+      "gm_color": "black",
+      "first_gm_200cp": {
+        "ply": 44,
+        "san": "Rab8",
+        "uci": "a8b8",
+        "best_san": "c5",
+        "cp_loss": 483,
+        "phase": "middlegame",
+        "fen": "r5k1/p3qp1p/1rpp4/4n3/2P1pR2/2Q1P1PB/1P2P2P/3R2K1 b - - 1 22"
+      },
+      "gm_200cp_count": 2,
+      "gm_moves": 29
+    }
+  ],
+  "top_30_gm_errors": [
+    {
+      "game": "T1G1",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 107,
+      "move_number": 54,
+      "phase": "late",
+      "side": "gm",
+      "san": "f3",
+      "uci": "f2f3",
+      "best_uci": "f7e8",
+      "best_san": "Qe8+",
+      "cp_loss": 10856,
+      "best_cp": 858,
+      "played_cp": -9998,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "8/2N2Q2/2k5/P6p/2P2n1P/RP1P4/5P1q/5K2 w - - 11 54"
+    },
+    {
+      "game": "T4G4",
+      "result": "loss",
+      "gm_color": "black",
+      "ply": 48,
+      "move_number": 24,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "Nxd7",
+      "uci": "e5d7",
+      "best_uci": "e7g5",
+      "best_san": "Qg5",
+      "cp_loss": 9402,
+      "best_cp": -590,
+      "played_cp": -9992,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "1r4k1/p2Rqp1p/1rp5/2p1n3/4pR2/2Q1P1PB/1P2P2P/6K1 b - - 1 24"
+    },
+    {
+      "game": "T4G2",
+      "result": "draw",
+      "gm_color": "black",
+      "ply": 56,
+      "move_number": 28,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "d5",
+      "uci": "d7d5",
+      "best_uci": "b7a6",
+      "best_san": "Ba6",
+      "cp_loss": 9270,
+      "best_cp": -722,
+      "played_cp": -9992,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "r1k3r1/pb1p1Npp/2p2p2/8/8/6B1/P4PPP/R3R1K1 b - - 3 28"
+    },
+    {
+      "game": "T2G2",
+      "result": "loss",
+      "gm_color": "black",
+      "ply": 24,
+      "move_number": 12,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "Rf7",
+      "uci": "f8f7",
+      "best_uci": "d7d6",
+      "best_san": "d6",
+      "cp_loss": 9234,
+      "best_cp": -764,
+      "played_cp": -9998,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "r1bqkr2/pppp2Qp/5P2/6B1/8/2n5/P1P2PPP/R3KB1R b KQq - 0 12"
+    },
+    {
+      "game": "T2G4",
+      "result": "loss",
+      "gm_color": "black",
+      "ply": 46,
+      "move_number": 23,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "Nxb3",
+      "uci": "d4b3",
+      "best_uci": "d4f5",
+      "best_san": "Nf5",
+      "cp_loss": 8982,
+      "best_cp": -1009,
+      "played_cp": -9991,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "r2qk2r/p2b4/2p1p3/1p2N2p/1P1nQ1pP/PN4P1/5PBK/R4R2 b kq - 0 23"
+    },
+    {
+      "game": "T1G2",
+      "result": "loss",
+      "gm_color": "black",
+      "ply": 62,
+      "move_number": 31,
+      "phase": "late",
+      "side": "gm",
+      "san": "f4",
+      "uci": "f5f4",
+      "best_uci": "a7a8",
+      "best_san": "Ra8",
+      "cp_loss": 8962,
+      "best_cp": -1032,
+      "played_cp": -9994,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "5R2/r1pR4/2P1p1kr/p4pp1/PpB4p/4P2P/1P3PP1/5K2 b - - 13 31"
+    },
+    {
+      "game": "T1G2",
+      "result": "loss",
+      "gm_color": "black",
+      "ply": 64,
+      "move_number": 32,
+      "phase": "late",
+      "side": "gm",
+      "san": "fxe3",
+      "uci": "f4e3",
+      "best_uci": "g6h5",
+      "best_san": "Kh5",
+      "cp_loss": 8902,
+      "best_cp": -1092,
+      "played_cp": -9994,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "5R2/r1pR4/2P1p1kr/p5p1/PpB2p1p/4P2P/1P2KPP1/8 b - - 1 32"
+    },
+    {
+      "game": "T3G1",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 81,
+      "move_number": 41,
+      "phase": "late",
+      "side": "gm",
+      "san": "Kf4",
+      "uci": "f3f4",
+      "best_uci": "f3g2",
+      "best_san": "Kg2",
+      "cp_loss": 8858,
+      "best_cp": -1137,
+      "played_cp": -9995,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "7r/n1B2p1k/1R4p1/p6p/P1Pb3P/1P2rK2/8/8 w - - 1 41"
+    },
+    {
+      "game": "T4G2",
+      "result": "draw",
+      "gm_color": "black",
+      "ply": 72,
+      "move_number": 36,
+      "phase": "late",
+      "side": "gm",
+      "san": "Kd8",
+      "uci": "c8d8",
+      "best_uci": "c8d8",
+      "best_san": "Kd8",
+      "cp_loss": 8818,
+      "best_cp": -1172,
+      "played_cp": -9990,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "2k3r1/4R1pp/r1pN1p2/1p1p4/8/6B1/5PPP/2R3K1 b - - 7 36"
+    },
+    {
+      "game": "T2G1",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 37,
+      "move_number": 19,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "Ke2",
+      "uci": "e1e2",
+      "best_uci": "h3f2",
+      "best_san": "Nf2",
+      "cp_loss": 8743,
+      "best_cp": -1250,
+      "played_cp": -9993,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "r3k3/pp1b1p2/3p4/2p1n3/P1P1P2q/3B3N/1P1P2P1/R1B1K3 w Qq - 0 19"
+    },
+    {
+      "game": "T2G1",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 39,
+      "move_number": 20,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "gxh3",
+      "uci": "g2h3",
+      "best_uci": "e2d1",
+      "best_san": "Kd1",
+      "cp_loss": 8720,
+      "best_cp": -1274,
+      "played_cp": -9994,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "r3k3/pp3p2/3p4/2p1n3/P1P1P2q/3B3b/1P1PK1P1/R1B5 w q - 0 20"
+    },
+    {
+      "game": "T3G4",
+      "result": "loss",
+      "gm_color": "black",
+      "ply": 64,
+      "move_number": 32,
+      "phase": "late",
+      "side": "gm",
+      "san": "Qxa4",
+      "uci": "b5a4",
+      "best_uci": "b5b4",
+      "best_san": "Qxb4",
+      "cp_loss": 8700,
+      "best_cp": -1295,
+      "played_cp": -9995,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "2b5/1pk5/2p5/1q2prpB/NB3p1p/p1R4P/P2Q1PP1/1R4K1 b - - 0 32"
+    },
+    {
+      "game": "T2G3",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 67,
+      "move_number": 34,
+      "phase": "late",
+      "side": "gm",
+      "san": "Rxc7",
+      "uci": "a7c7",
+      "best_uci": "b5d7",
+      "best_san": "Bd7",
+      "cp_loss": 8665,
+      "best_cp": -1332,
+      "played_cp": -9997,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "3r2k1/R1p2p1p/8/1B6/2P5/1P4PK/4q2P/8 w - - 1 34"
+    },
+    {
+      "game": "T4G2",
+      "result": "draw",
+      "gm_color": "black",
+      "ply": 60,
+      "move_number": 30,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "Bb5",
+      "uci": "a6b5",
+      "best_uci": "a6b5",
+      "best_san": "Bb5",
+      "cp_loss": 8657,
+      "best_cp": -1333,
+      "played_cp": -9990,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "r1k3r1/p3RNpp/b1p2p2/3p4/8/6B1/P4PPP/1R4K1 b - - 3 30"
+    },
+    {
+      "game": "T3G3",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 33,
+      "move_number": 17,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "a3",
+      "uci": "a2a3",
+      "best_uci": "a2a4",
+      "best_san": "a4",
+      "cp_loss": 8543,
+      "best_cp": -1453,
+      "played_cp": -9996,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "5rk1/p1Q2ppp/8/2b5/2P1P1b1/8/PP1r2PP/RKBq1B1R w - - 0 17"
+    },
+    {
+      "game": "T2G3",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 65,
+      "move_number": 33,
+      "phase": "late",
+      "side": "gm",
+      "san": "Rxa7",
+      "uci": "a1a7",
+      "best_uci": "a1a6",
+      "best_san": "Ra6",
+      "cp_loss": 8505,
+      "best_cp": -1488,
+      "played_cp": -9993,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "3r2k1/b1p2p1p/8/1B6/2P5/1P4PK/3q3P/R7 w - - 0 33"
+    },
+    {
+      "game": "T4G2",
+      "result": "draw",
+      "gm_color": "black",
+      "ply": 64,
+      "move_number": 32,
+      "phase": "late",
+      "side": "gm",
+      "san": "axb5",
+      "uci": "a6b5",
+      "best_uci": "a6b5",
+      "best_san": "axb5",
+      "cp_loss": 8284,
+      "best_cp": -1707,
+      "played_cp": -9991,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "r1k3r1/4RNpp/p1p2p2/1P1p4/8/6B1/5PPP/1R4K1 b - - 0 32"
+    },
+    {
+      "game": "T2G3",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 63,
+      "move_number": 32,
+      "phase": "late",
+      "side": "gm",
+      "san": "a7",
+      "uci": "a6a7",
+      "best_uci": "a1a2",
+      "best_san": "Ra2",
+      "cp_loss": 8262,
+      "best_cp": -1733,
+      "played_cp": -9995,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "3r2k1/2p2p1p/P7/1Bb5/2P5/1P4PK/3q3P/R7 w - - 2 32"
+    },
+    {
+      "game": "T1G3",
+      "result": "win",
+      "gm_color": "white",
+      "ply": 71,
+      "move_number": 36,
+      "phase": "late",
+      "side": "gm",
+      "san": "Rg5",
+      "uci": "g4g5",
+      "best_uci": "a7a8",
+      "best_san": "Ra8",
+      "cp_loss": 8155,
+      "best_cp": 9994,
+      "played_cp": 1839,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "5r1k/R5pp/p3P2q/3Q4/2P3R1/5P2/P3Q3/6K1 w - - 3 36"
+    },
+    {
+      "game": "T2G3",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 59,
+      "move_number": 30,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "Rxd2",
+      "uci": "d1d2",
+      "best_uci": "d1d2",
+      "best_san": "Rxd2",
+      "cp_loss": 8111,
+      "best_cp": -1877,
+      "played_cp": -9988,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "1r4k1/2p2p1p/P7/1Bb5/2P5/1P4P1/1q1r2KP/R2R4 w - - 0 30"
+    },
+    {
+      "game": "T4G1",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 61,
+      "move_number": 31,
+      "phase": "late",
+      "side": "gm",
+      "san": "Kc1",
+      "uci": "d1c1",
+      "best_uci": "d2c2",
+      "best_san": "Qc2",
+      "cp_loss": 8110,
+      "best_cp": -1882,
+      "played_cp": -9992,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "3rr1k1/3N1pp1/b7/p6p/P4P1P/1q6/1P1Q2P1/R2K3R w - - 3 31"
+    },
+    {
+      "game": "T1G3",
+      "result": "win",
+      "gm_color": "white",
+      "ply": 73,
+      "move_number": 37,
+      "phase": "late",
+      "side": "gm",
+      "san": "a4",
+      "uci": "a2a4",
+      "best_uci": "e2e5",
+      "best_san": "Qee5",
+      "cp_loss": 7998,
+      "best_cp": 9996,
+      "played_cp": 1998,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "4r2k/R5pp/p3P2q/3Q2R1/2P5/5P2/P3Q3/6K1 w - - 5 37"
+    },
+    {
+      "game": "T1G3",
+      "result": "win",
+      "gm_color": "white",
+      "ply": 75,
+      "move_number": 38,
+      "phase": "late",
+      "side": "gm",
+      "san": "c5",
+      "uci": "c4c5",
+      "best_uci": "e2e5",
+      "best_san": "Qee5",
+      "cp_loss": 5640,
+      "best_cp": 9996,
+      "played_cp": 4356,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "5r1k/R5pp/p3P2q/3Q2R1/P1P5/5P2/4Q3/6K1 w - - 1 38"
+    },
+    {
+      "game": "T1G3",
+      "result": "win",
+      "gm_color": "white",
+      "ply": 63,
+      "move_number": 32,
+      "phase": "late",
+      "side": "gm",
+      "san": "Ra7",
+      "uci": "b7a7",
+      "best_uci": "e5e6",
+      "best_san": "e6",
+      "cp_loss": 1247,
+      "best_cp": 2545,
+      "played_cp": 1298,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "5r1k/1R4pp/p7/3QPq2/2PR4/5P2/P3Q3/5K2 w - - 3 32"
+    },
+    {
+      "game": "T1G3",
+      "result": "win",
+      "gm_color": "white",
+      "ply": 57,
+      "move_number": 29,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "Rd4",
+      "uci": "h4d4",
+      "best_uci": "e2e4",
+      "best_san": "Qe4",
+      "cp_loss": 880,
+      "best_cp": 1816,
+      "played_cp": 936,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "5rk1/1R1Pq1pp/p7/4P3/2P4R/5P2/P3Q3/5K2 w - - 1 29"
+    },
+    {
+      "game": "T3G1",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 45,
+      "move_number": 23,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "Qc3",
+      "uci": "d3c3",
+      "best_uci": "f2g2",
+      "best_san": "Kg2",
+      "cp_loss": 562,
+      "best_cp": -449,
+      "played_cp": -1011,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "1r3k1r/1p3pb1/p4np1/nB1p3p/P2N1PqP/1P1QB1P1/2P2K2/R6R w - - 2 23"
+    },
+    {
+      "game": "T2G1",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 31,
+      "move_number": 16,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "fxe5",
+      "uci": "f4e5",
+      "best_uci": "g5f3",
+      "best_san": "Nf3",
+      "cp_loss": 503,
+      "best_cp": -310,
+      "played_cp": -813,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "r3k3/pp1bbp2/2np3q/2p1p1N1/P1P1PP2/3B2Q1/1P1P2P1/R1B1K3 w Qq - 1 16"
+    },
+    {
+      "game": "T1G2",
+      "result": "loss",
+      "gm_color": "black",
+      "ply": 28,
+      "move_number": 14,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "Qf5",
+      "uci": "f6f5",
+      "best_uci": "a8b8",
+      "best_san": "Rb8",
+      "cp_loss": 487,
+      "best_cp": -314,
+      "played_cp": -801,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "r3k2r/2pb1p2/2n1pq1p/pp4p1/3P4/P1Q1PN1P/1P2BPP1/R3K2R b KQkq - 0 14"
+    },
+    {
+      "game": "T4G4",
+      "result": "loss",
+      "gm_color": "black",
+      "ply": 44,
+      "move_number": 22,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "Rab8",
+      "uci": "a8b8",
+      "best_uci": "c6c5",
+      "best_san": "c5",
+      "cp_loss": 483,
+      "best_cp": -4,
+      "played_cp": -487,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "r5k1/p3qp1p/1rpp4/4n3/2P1pR2/2Q1P1PB/1P2P2P/3R2K1 b - - 1 22"
+    },
+    {
+      "game": "T1G1",
+      "result": "loss",
+      "gm_color": "white",
+      "ply": 45,
+      "move_number": 23,
+      "phase": "middlegame",
+      "side": "gm",
+      "san": "Bxf4",
+      "uci": "c1f4",
+      "best_uci": "h8f7",
+      "best_san": "Nf7",
+      "cp_loss": 459,
+      "best_cp": -81,
+      "played_cp": -540,
+      "in_gm_memory": false,
+      "in_sf_memory": false,
+      "gm_top_uci": null,
+      "sf_preferred_uci": null,
+      "followed_gm_top": false,
+      "followed_sf_preferred": false,
+      "fen": "2kr3N/pp2n1b1/8/P1p1pq1p/1nP2p1P/RP1P4/4BP1R/2BQK3 w - - 1 23"
+    }
+  ],
+  "limitations": [
+    "Short independent analysis time; evaluation and cp loss can fluctuate at larger search depths.",
+    "One forced-root evaluation and one independent best-root evaluation per move; they can differ in depth and evaluation volatility.",
+    "Mate scores use 10000cp cap, so checkmate mistakes can dominate average cp loss; use medians and counts also.",
+    "Game outcome does not establish which earlier move caused the result.",
+    "Only two wins and two draws; no claim about Elo or statistically reliable strength differences.",
+    "No engine-model or grandmaster/Stockfish memory changed by this experiment."
+  ]
+}
