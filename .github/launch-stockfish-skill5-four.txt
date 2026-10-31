@@ -1,0 +1,1 @@
+Start four tournaments against Stockfish Skill Level 5, each with four games, alternating GM-1000 White/Black. Keep BOTH grandmaster (560 games, 32,233 positions) and Stockfish 19 (400 studied games, 43,702 positions) memories enabled in all 16 games. Use 0.2 seconds per move and archive per-tournament PGNs plus independent summary, without changing memory databases.
