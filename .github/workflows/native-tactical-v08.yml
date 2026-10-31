@@ -1,0 +1,174 @@
+name: GM-1000 v0.8 tactical candidate - frozen v0.7 and Skill5 validation
+on:
+  push:
+    branches:
+      - experiment/native-tactical-v08
+    paths:
+      - '.github/launch-native-tactical-v08.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: gm1000-native-v08-validation
+  cancel-in-progress: false
+jobs:
+  direct:
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Dependencies and compile two independently authored C++ search engines
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install -r requirements.txt pytest
+          mkdir -p build/tournament native/bin
+          git show 26cdee9b59641a24be88a8574418d9d12e25c3e0:native/gm1000.cpp > build/tournament/v07.cpp
+          test "$(sha256sum build/tournament/v07.cpp | cut -d' ' -f1)" != "$(sha256sum native/gm1000.cpp | cut -d' ' -f1)"
+          g++ -std=c++17 -O3 -DNDEBUG -pthread -Wall -Wextra -Werror \
+            -I native/third_party build/tournament/v07.cpp -o build/tournament/v07
+          g++ -std=c++17 -O3 -DNDEBUG -pthread -Wall -Wextra -Werror \
+            -I native/third_party native/gm1000.cpp -o build/tournament/v08
+          cp build/tournament/v08 native/bin/gm1000-native
+      - name: Perft legality, 6 forensic FENs, promotion and checkmate
+        run: |
+          python -m pytest -q tests/test_native_core.py tests/test_native_tactical_v07.py tests/test_native_tactical_v08.py
+      - name: Fresh 32-game matched-opening v08 vs frozen v07
+        run: |
+          python -m scripts.benchmark_native_tactical_v08 \
+            --pairs 16 --seed 26103208 --seconds 0.2 --max-plies 280
+      - name: Upload raw evidence even if match aborts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v08-v07-direct-32games
+          path: reports/native-v08-direct/
+          retention-days: 90
+          if-no-files-found: warn
+
+  skill5:
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install dependencies and frozen native versions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install -r requirements.txt pytest
+          mkdir -p build/tournament
+          git show 26cdee9b59641a24be88a8574418d9d12e25c3e0:native/gm1000.cpp > build/tournament/v07.cpp
+          g++ -std=c++17 -O3 -DNDEBUG -pthread -Wall -Wextra -Werror \
+            -I native/third_party build/tournament/v07.cpp -o build/tournament/v07
+          g++ -std=c++17 -O3 -DNDEBUG -pthread -Wall -Wextra -Werror \
+            -I native/third_party native/gm1000.cpp -o build/tournament/v08
+      - name: Install fixed independent Stockfish Skill Level 5 opponent
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y stockfish
+          echo 'STOCKFISH_PATH=/usr/games/stockfish' >> "$GITHUB_ENV"
+      - name: Frozen v07 vs Skill5 - 24 games in twelve fresh opening pairs
+        run: |
+          python -m scripts.benchmark_native_skill5_v06 --native-only \
+            --native build/tournament/v07 --pairs 12 --seed 26103209 \
+            --seconds .2 --max-plies 280 --out reports/native-v08-skill5/v07
+      - name: Experimental v08 vs Skill5 - same 24 positions and colors
+        run: |
+          python -m scripts.benchmark_native_skill5_v06 --native-only \
+            --native build/tournament/v08 --pairs 12 --seed 26103209 \
+            --seconds .2 --max-plies 280 --out reports/native-v08-skill5/v08
+      - name: Validate results and create comparison
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, pathlib, datetime
+          d=pathlib.Path('reports/native-v08-skill5')
+          results={k:json.loads((d/k/'summary.json').read_text()) for k in ('v07','v08')}
+          assert results['v07']['paired_opening_fens']==results['v08']['paired_opening_fens']
+          out={}
+          for k,x in results.items():
+              v=x['variants']['native']
+              assert v['completed']==24 and v['errors']==0 and v['incomplete']==0
+              assert len(v['games'])==24
+              out[k]={y:v[y] for y in ('completed','wins','draws','losses','score_percent','errors','incomplete')}
+              out[k]['by_color']={}
+              for color in ('white','black'):
+                  games=[z for z in v['games'] if z['gm_color']==color]
+                  winning_result='1-0' if color=='white' else '0-1'
+                  assert len(games)==12
+                  out[k]['by_color'][color]={
+                    'wins':sum(z['result']==winning_result for z in games),
+                    'draws':sum(z['result']=='1/2-1/2' for z in games),
+                    'losses':sum(z['result'] not in (winning_result,'1/2-1/2') for z in games)}
+          data={'schema':1,'date_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+             'experiment':'v0.8 vs frozen v0.7, matched openings, Stockfish Skill Level 5',
+             'opening_seed':26103209,'games_per_version':24,'opponent_skill':5,'seconds_per_move':.2,
+             'scores':out,'candidate_minus_baseline_pct':round(out['v08']['score_percent']-out['v07']['score_percent'],2),
+             'not_elo':'Small exploratory tournament. No automatic promotion or Elo inference.'}
+          (d/'summary.json').write_text(json.dumps(data,indent=2)+'\n')
+          print('V08_SKILL5_COMPARISON',json.dumps(data,indent=2))
+          PY
+      - name: Upload both original PGNs and reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v08-v07-skill5-48games
+          path: reports/native-v08-skill5/
+          retention-days: 90
+          if-no-files-found: warn
+
+  publish:
+    needs: [direct, skill5]
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: gm1000-v08-v07-direct-32games
+          path: reports/collected/direct
+      - uses: actions/download-artifact@v4
+        with:
+          name: gm1000-v08-v07-skill5-48games
+          path: reports/collected/skill5
+      - name: Verify and publish independent v08 experiment report ONLY to candidate branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,pathlib,datetime
+          d=pathlib.Path('reports/collected')
+          a=json.loads((d/'direct'/'summary.json').read_text())
+          b=json.loads((d/'skill5'/'summary.json').read_text())
+          assert a['completed']==32 and a['counts'].get('error',0)==0 and a['counts'].get('incomplete',0)==0
+          assert b['games_per_version']==24 and all(v['completed']==24 for v in b['scores'].values())
+          r={'schema':1,'created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+             'trial':'v0.8 provisional tactical change from v0.7, main preserved unchanged',
+             'base_v07_sha':'26cdee9b59641a24be88a8574418d9d12e25c3e0',
+             'direct':{k:v for k,v in a.items() if k not in ('fens','games')},'skill5':b,
+             'promotion':'NOT AUTOMATIC; strength results must be examined including White and Black splits'}
+          pathlib.Path('data/native_v08_validation_report.json').write_text(json.dumps(r,indent=2)+'\n')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/native_v08_validation_report.json
+          git commit -m 'Record independent GM1000 v08 tactical candidate match results'
+          git fetch origin experiment/native-tactical-v08
+          git rebase origin/experiment/native-tactical-v08
+          git push origin HEAD:experiment/native-tactical-v08

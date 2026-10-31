@@ -1,4 +1,4 @@
-/* GM-1000 v0.6 native search prototype (independent implementation).
+/* GM-1000 v0.8 experimental threat-aware native search (independent implementation).
  * Rule generation: pinned MIT Disservin/chess-library, NOT Stockfish search.
  * This engine intentionally has no historical move memories: isolates search.
  */
@@ -73,6 +73,21 @@ int evaluate(const Board& b) {
                 (file == 7 || !pawns[c][file + 1])) scores[c] -= 12 * pawns[c][file];
         }
     }
+    // A king with its surrounding flight squares controlled by enemy pieces
+    // needs defensive resources. Apply only while major pieces are around.
+    for (int c=0; c<2; ++c) {
+        const auto color = c ? Color::BLACK : Color::WHITE;
+        const auto enemy = ~color;
+        if (b.pieces(PieceType::QUEEN, enemy).count()==0 &&
+            b.pieces(PieceType::ROOK, enemy).count()<2) continue;
+        auto ring = attacks::king(b.kingSq(color));
+        int threats=0;
+        while (ring) {
+            auto sq = Square(static_cast<Square::underlying>(ring.pop()));
+            if (b.isAttacked(sq, enemy)) ++threats;
+        }
+        scores[c] -= 18 * std::min(threats, 5);
+    }
     const int white_score = scores[0] - scores[1];
     return b.sideToMove() == Color::WHITE ? white_score : -white_score;
 }
@@ -107,6 +122,7 @@ struct Search {
     bool timed = false;
     uint64_t nodes = 0;
     bool interrupted = false;
+    bool null_verification = false;
 
     explicit Search(std::atomic<bool>& s, size_t tt_entries=1 << 18) :
         tt(tt_entries), stop(s) {}
@@ -183,9 +199,26 @@ struct Search {
         } else if (qdepth >= 16) {
             return static_evasion(b, moves, ply);
         }
+        // Search a bounded number of quiet checking moves at the initial
+        // tactical horizon.  The previous engine only searched captures and
+        // promotions, which missed forcing checks and defensive necessities.
+        // Prevent checking-move explosions by limiting this to qdepth zero.
+        if (!checked && qdepth == 0 && ply < 40 &&
+            b.hasNonPawnMaterial(b.sideToMove())) {
+            Movelist checks;
+            movegen::legalmoves<movegen::MoveGenType::QUIET>(checks, b);
+            int added = 0;
+            for (Move m : checks) {
+                if (m.typeOf() == Move::PROMOTION) continue; // already included
+                if (b.givesCheck(m) == CheckType::NO_CHECK) continue;
+                moves.add(m);
+                if (++added == 3) break;
+            }
+        }
         order(moves, b, Move{}, ply);
         for (Move m : moves) {
-            if (!checked && !b.isCapture(m) && m.typeOf() != Move::PROMOTION) continue;
+            if (!checked && !b.isCapture(m) && m.typeOf() != Move::PROMOTION &&
+                !(qdepth == 0 && b.givesCheck(m) != CheckType::NO_CHECK)) continue;
             b.makeMove(m);
             int score;
             try { score = -quiescence(b, -beta, -alpha, ply+1, qdepth+1); }
@@ -210,7 +243,7 @@ struct Search {
         // something better than beta without making any move, searching all
         // ordinary moves is usually unnecessary. Forbid in-check and
         // pawn-only endings (zugzwang), and never trust mate-range bounds.
-        if (depth >= 3 && ply >= 1 && !checked &&
+        if (!null_verification && depth >= 3 && ply >= 1 && !checked &&
             b.hasNonPawnMaterial(b.sideToMove()) &&
             beta < MATE - 512 && alpha > -MATE + 512) {
             b.makeNullMove();
@@ -218,7 +251,17 @@ struct Search {
             try { null_score = -negamax(b, depth - 3, -beta, -beta + 1, ply + 1); }
             catch (...) { b.unmakeNullMove(); throw; }
             b.unmakeNullMove();
-            if (null_score >= beta) return beta;
+            if (null_score >= beta) {
+                if (depth <= 4) return beta;
+                // A null pass can overlook only-move defenses. Confirm a
+                // depth-reduced ordinary search, without recursive null moves.
+                null_verification = true;
+                int verify;
+                try { verify = negamax(b, depth-3, beta-1, beta, ply); }
+                catch (...) { null_verification = false; throw; }
+                null_verification = false;
+                if (verify >= beta) return beta;
+            }
         }
         const int old_alpha = alpha;
         auto& entry = tt[b.hash() & (tt.size()-1)];
@@ -247,7 +290,7 @@ struct Search {
             try {
                 // Late-move reduction with mandatory full-depth verification
                 // whenever a reduced quiet move threatens to raise alpha.
-                const bool reduce = depth>=4 && searched_moves>=4 &&
+                const bool reduce = depth>=5 && searched_moves>=5 &&
                     !checked && quiet && !b.inCheck() &&
                     alpha > -MATE+512 && beta < MATE-512;
                 if (reduce) {
@@ -406,7 +449,7 @@ int main(int argc, char** argv) {
         std::istringstream stream(line);
         std::string cmd; stream >> cmd;
         if(cmd=="uci") {
-            output("id name GM-1000 v0.6 Native Experimental");
+            output("id name GM-1000 v0.8 King Safety Candidate");
             output("id author GM-1000 project");
             output("uciok");
         } else if(cmd=="isready") output("readyok");
