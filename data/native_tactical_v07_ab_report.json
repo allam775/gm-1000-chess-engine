@@ -1,0 +1,347 @@
+{
+  "schema": 1,
+  "created_at_utc": "2026-10-31T14:05:02.219242+00:00",
+  "experiment": "Candidate native tactical v0.7 vs frozen native v0.6; direct paired openings",
+  "baseline_commit_sha": "0d5568e39c643a657d669b320e9463359bab06be",
+  "opening_seed": 26103171,
+  "opening_fens": [
+    "r1bqkb1r/pp1npppp/2p5/3n2N1/2B5/5N2/PPPP1PPP/R1BQK2R w KQkq - 5 7",
+    "rn1qk2r/1pp1bppp/p2p1n2/3Pp3/4P1b1/2P2N2/PPB2PPP/RNBQ1RK1 w kq - 3 10",
+    "r1b1kb1r/pp1npp1p/2pp1np1/q7/3PP3/2N1B3/PPPQ1PPP/2KR1BNR w kq - 4 7",
+    "rn1qkbnr/pb1p1ppp/1p2p3/8/3pP3/2PB3N/PP3PPP/RNBQK2R w KQkq - 0 6",
+    "rn1qk2r/ppp2ppp/3bpn2/3p4/2PP1B2/4PN2/PP3PPP/RQ1K1B1R w kq - 3 8",
+    "rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 6",
+    "r1bq1rk1/pppn1pbp/3p1np1/8/2PpP3/2N1BN2/PP2BPPP/R2Q1RK1 w - - 0 9",
+    "r3kb1r/ppqn1ppp/4p3/3p4/Q1pP1Pn1/2PBP3/PP4PP/RNB1K2R w KQkq - 0 10",
+    "r1bqkb1r/1pp2ppp/p1p1n3/4P3/3N4/8/PPP2PPP/RNBQ1RK1 w kq - 1 10",
+    "rnb1kb1r/ppq1pppp/5n2/2pp4/3P4/2PBP3/PP3PPP/RNBQK1NR w KQkq - 1 5",
+    "rn1qk2r/p1pp1ppp/bp2pn2/8/1bPP4/1P3NP1/P3PP1P/RNBQKB1R w KQkq - 1 6",
+    "r1bq1rk1/pppn1pbp/3p1np1/4p3/3PP3/2PB1N1P/PP3PP1/RNBQ1RK1 w - - 0 8",
+    "rn1qkb1r/ppp2ppp/4b3/3np3/8/P1N1P3/1P1P1PPP/R1BQKBNR w KQkq - 1 6",
+    "r1bqkb1r/pp2ppp1/1np4p/3n4/2BPN3/5N2/PPP2PPP/R1BQK2R w KQkq - 2 9",
+    "r4rk1/pppqb1pp/2n1bp2/3np3/8/P1NP1NP1/1P1BPPBP/R2Q1RK1 w - - 0 11",
+    "rnbqk2r/ppp1ppbp/6p1/3p4/2PP1B2/2n2N2/PP2PPPP/R2QKB1R w KQkq - 0 7"
+  ],
+  "paired_openings": 16,
+  "seconds_per_move": 0.2,
+  "max_plies_after_seed": 220,
+  "candidate": {
+    "wins": 11,
+    "draws": 12,
+    "losses": 9,
+    "completed": 32,
+    "errors": 0,
+    "incomplete": 0,
+    "score_percent": 53.12
+  },
+  "candidate_by_color": {
+    "white": {
+      "games": 16,
+      "wins": 6,
+      "draws": 4,
+      "losses": 6,
+      "errors": 0,
+      "incomplete": 0
+    },
+    "black": {
+      "games": 16,
+      "wins": 5,
+      "draws": 8,
+      "losses": 3,
+      "errors": 0,
+      "incomplete": 0
+    }
+  },
+  "source_pgn_sha256": "8e1e2751a7acd3abe3dd85723f5ddd7012da56ff18f515b4e19160a295026c71",
+  "games": [
+    {
+      "game": 1,
+      "opening_pair": 1,
+      "candidate_color": "white",
+      "result": "win",
+      "chess_result": "1-0",
+      "plies_after_seed": 97,
+      "error": null
+    },
+    {
+      "game": 2,
+      "opening_pair": 1,
+      "candidate_color": "black",
+      "result": "draw",
+      "chess_result": "1/2-1/2",
+      "plies_after_seed": 164,
+      "error": null
+    },
+    {
+      "game": 3,
+      "opening_pair": 2,
+      "candidate_color": "white",
+      "result": "loss",
+      "chess_result": "0-1",
+      "plies_after_seed": 98,
+      "error": null
+    },
+    {
+      "game": 4,
+      "opening_pair": 2,
+      "candidate_color": "black",
+      "result": "loss",
+      "chess_result": "1-0",
+      "plies_after_seed": 107,
+      "error": null
+    },
+    {
+      "game": 5,
+      "opening_pair": 3,
+      "candidate_color": "white",
+      "result": "loss",
+      "chess_result": "0-1",
+      "plies_after_seed": 166,
+      "error": null
+    },
+    {
+      "game": 6,
+      "opening_pair": 3,
+      "candidate_color": "black",
+      "result": "draw",
+      "chess_result": "1/2-1/2",
+      "plies_after_seed": 67,
+      "error": null
+    },
+    {
+      "game": 7,
+      "opening_pair": 4,
+      "candidate_color": "white",
+      "result": "win",
+      "chess_result": "1-0",
+      "plies_after_seed": 89,
+      "error": null
+    },
+    {
+      "game": 8,
+      "opening_pair": 4,
+      "candidate_color": "black",
+      "result": "draw",
+      "chess_result": "1/2-1/2",
+      "plies_after_seed": 102,
+      "error": null
+    },
+    {
+      "game": 9,
+      "opening_pair": 5,
+      "candidate_color": "white",
+      "result": "draw",
+      "chess_result": "1/2-1/2",
+      "plies_after_seed": 91,
+      "error": null
+    },
+    {
+      "game": 10,
+      "opening_pair": 5,
+      "candidate_color": "black",
+      "result": "win",
+      "chess_result": "0-1",
+      "plies_after_seed": 104,
+      "error": null
+    },
+    {
+      "game": 11,
+      "opening_pair": 6,
+      "candidate_color": "white",
+      "result": "win",
+      "chess_result": "1-0",
+      "plies_after_seed": 97,
+      "error": null
+    },
+    {
+      "game": 12,
+      "opening_pair": 6,
+      "candidate_color": "black",
+      "result": "draw",
+      "chess_result": "1/2-1/2",
+      "plies_after_seed": 86,
+      "error": null
+    },
+    {
+      "game": 13,
+      "opening_pair": 7,
+      "candidate_color": "white",
+      "result": "win",
+      "chess_result": "1-0",
+      "plies_after_seed": 115,
+      "error": null
+    },
+    {
+      "game": 14,
+      "opening_pair": 7,
+      "candidate_color": "black",
+      "result": "draw",
+      "chess_result": "1/2-1/2",
+      "plies_after_seed": 96,
+      "error": null
+    },
+    {
+      "game": 15,
+      "opening_pair": 8,
+      "candidate_color": "white",
+      "result": "loss",
+      "chess_result": "0-1",
+      "plies_after_seed": 108,
+      "error": null
+    },
+    {
+      "game": 16,
+      "opening_pair": 8,
+      "candidate_color": "black",
+      "result": "win",
+      "chess_result": "0-1",
+      "plies_after_seed": 54,
+      "error": null
+    },
+    {
+      "game": 17,
+      "opening_pair": 9,
+      "candidate_color": "white",
+      "result": "draw",
+      "chess_result": "1/2-1/2",
+      "plies_after_seed": 83,
+      "error": null
+    },
+    {
+      "game": 18,
+      "opening_pair": 9,
+      "candidate_color": "black",
+      "result": "win",
+      "chess_result": "0-1",
+      "plies_after_seed": 76,
+      "error": null
+    },
+    {
+      "game": 19,
+      "opening_pair": 10,
+      "candidate_color": "white",
+      "result": "loss",
+      "chess_result": "0-1",
+      "plies_after_seed": 106,
+      "error": null
+    },
+    {
+      "game": 20,
+      "opening_pair": 10,
+      "candidate_color": "black",
+      "result": "draw",
+      "chess_result": "1/2-1/2",
+      "plies_after_seed": 85,
+      "error": null
+    },
+    {
+      "game": 21,
+      "opening_pair": 11,
+      "candidate_color": "white",
+      "result": "loss",
+      "chess_result": "0-1",
+      "plies_after_seed": 112,
+      "error": null
+    },
+    {
+      "game": 22,
+      "opening_pair": 11,
+      "candidate_color": "black",
+      "result": "draw",
+      "chess_result": "1/2-1/2",
+      "plies_after_seed": 103,
+      "error": null
+    },
+    {
+      "game": 23,
+      "opening_pair": 12,
+      "candidate_color": "white",
+      "result": "draw",
+      "chess_result": "1/2-1/2",
+      "plies_after_seed": 28,
+      "error": null
+    },
+    {
+      "game": 24,
+      "opening_pair": 12,
+      "candidate_color": "black",
+      "result": "loss",
+      "chess_result": "1-0",
+      "plies_after_seed": 87,
+      "error": null
+    },
+    {
+      "game": 25,
+      "opening_pair": 13,
+      "candidate_color": "white",
+      "result": "draw",
+      "chess_result": "1/2-1/2",
+      "plies_after_seed": 104,
+      "error": null
+    },
+    {
+      "game": 26,
+      "opening_pair": 13,
+      "candidate_color": "black",
+      "result": "draw",
+      "chess_result": "1/2-1/2",
+      "plies_after_seed": 107,
+      "error": null
+    },
+    {
+      "game": 27,
+      "opening_pair": 14,
+      "candidate_color": "white",
+      "result": "win",
+      "chess_result": "1-0",
+      "plies_after_seed": 89,
+      "error": null
+    },
+    {
+      "game": 28,
+      "opening_pair": 14,
+      "candidate_color": "black",
+      "result": "win",
+      "chess_result": "0-1",
+      "plies_after_seed": 142,
+      "error": null
+    },
+    {
+      "game": 29,
+      "opening_pair": 15,
+      "candidate_color": "white",
+      "result": "win",
+      "chess_result": "1-0",
+      "plies_after_seed": 109,
+      "error": null
+    },
+    {
+      "game": 30,
+      "opening_pair": 15,
+      "candidate_color": "black",
+      "result": "loss",
+      "chess_result": "1-0",
+      "plies_after_seed": 105,
+      "error": null
+    },
+    {
+      "game": 31,
+      "opening_pair": 16,
+      "candidate_color": "white",
+      "result": "loss",
+      "chess_result": "0-1",
+      "plies_after_seed": 124,
+      "error": null
+    },
+    {
+      "game": 32,
+      "opening_pair": 16,
+      "candidate_color": "black",
+      "result": "win",
+      "chess_result": "0-1",
+      "plies_after_seed": 76,
+      "error": null
+    }
+  ],
+  "limitations": "Two different native search strategies, same handcrafted eval, small paired test; not Elo; timed results may vary with CPU load. No automatic promotion."
+}
