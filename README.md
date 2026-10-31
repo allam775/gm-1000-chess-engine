@@ -1,5 +1,9 @@
 # ♟️ GM-1000 Chess Engine
 
+## 🚀 NEW: GM-1000 v0.6 native C++ search (experimental)
+
+A standalone C++17 UCI engine is available under [`native/`](native/README.md), using a pinned MIT chess-rule library and an independently written evaluation and search. It reached median depth **6 vs 2** for the Python engine on the same 16 test positions under 0.2s/move, and won **24/24** paired-opening games directly against the Python baseline with both histories off. This is *not* a 2500 Elo claim or automatic promotion. The native engine is **experimental and opt-in**; default play remains the Python implementation until independent tournament validation. [Evidence](data/native_v06_benchmark_report.json) · [Windows/Linux builds](https://github.com/allam775/gm-1000-chess-engine/actions/workflows/native-portable.yml).
+
 **محرك شطرنج تجريبي مستقل | النسخة `v0.1` | ميزانية المشروع: 0 جنيه**
 
 > **حالة المشروع:** نموذج أولي قابل للاختبار، وليس محركًا مثبتًا بمستوى Grandmaster. يملك خوارزمية بحث وتقييم خاصة به، ويستخدم مكتبة `python-chess` لتطبيق قواعد اللعبة والتواصل مع محركات الشطرنج. لا يستخدم Stockfish لاتخاذ نقلاته؛ يُستخدم Stockfish **كمنافس** في الاختبارات.
