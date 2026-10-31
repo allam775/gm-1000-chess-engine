@@ -1,0 +1,1 @@
+Start one audited append-only expansion by 400 additional unique titled grandmaster games; exclude prior 200 GM study games (including 40 holdout) and the 1000 original book games; preserve original learned position memory and validate cumulative totals.
