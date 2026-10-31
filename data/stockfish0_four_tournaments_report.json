@@ -1,0 +1,218 @@
+{
+  "schema": 1,
+  "timestamp_utc": "2026-10-31T10:26:55.283382+00:00",
+  "opponent": "Stockfish (system package)",
+  "stockfish_skill": 0,
+  "seconds_per_move": 0.2,
+  "games_per_tournament": 4,
+  "tournaments": 4,
+  "total_scheduled_games": 16,
+  "max_plies": 300,
+  "engine": "GM-1000 position-memory build",
+  "memory_source_games": 560,
+  "memory_positions": 32233,
+  "memory_sha256": "2ad154c35ad6bd2e464b9f622b96eed1b522795d01edd416ed2f0312c83939b1",
+  "memory_enabled": {
+    "wins": 4,
+    "draws": 1,
+    "losses": 3,
+    "completed_games": 8,
+    "errors": 0,
+    "incomplete": 0,
+    "score_percent": 56.25,
+    "tournaments": 2
+  },
+  "memory_disabled": {
+    "wins": 4,
+    "draws": 0,
+    "losses": 4,
+    "completed_games": 8,
+    "errors": 0,
+    "incomplete": 0,
+    "score_percent": 50.0,
+    "tournaments": 2
+  },
+  "rounds": [
+    {
+      "tournament": 1,
+      "position_memory": "enabled",
+      "wins": 2,
+      "draws": 0,
+      "losses": 2,
+      "completed_games": 4,
+      "errors": 0,
+      "incomplete": 0,
+      "score_percent": 50.0,
+      "games": [
+        {
+          "game": 1,
+          "gm_color": "white",
+          "result": "0-1",
+          "plies": 76,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 2,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 64,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 3,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 61,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 4,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 109,
+          "termination": "CHECKMATE",
+          "errors": []
+        }
+      ]
+    },
+    {
+      "tournament": 2,
+      "position_memory": "disabled",
+      "wins": 2,
+      "draws": 0,
+      "losses": 2,
+      "completed_games": 4,
+      "errors": 0,
+      "incomplete": 0,
+      "score_percent": 50.0,
+      "games": [
+        {
+          "game": 1,
+          "gm_color": "white",
+          "result": "0-1",
+          "plies": 110,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 2,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 82,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 3,
+          "gm_color": "white",
+          "result": "0-1",
+          "plies": 62,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 4,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 60,
+          "termination": "CHECKMATE",
+          "errors": []
+        }
+      ]
+    },
+    {
+      "tournament": 3,
+      "position_memory": "enabled",
+      "wins": 2,
+      "draws": 1,
+      "losses": 1,
+      "completed_games": 4,
+      "errors": 0,
+      "incomplete": 0,
+      "score_percent": 62.5,
+      "games": [
+        {
+          "game": 1,
+          "gm_color": "white",
+          "result": "0-1",
+          "plies": 120,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 2,
+          "gm_color": "black",
+          "result": "1/2-1/2",
+          "plies": 64,
+          "termination": "THREEFOLD_REPETITION",
+          "errors": []
+        },
+        {
+          "game": 3,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 85,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 4,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 38,
+          "termination": "CHECKMATE",
+          "errors": []
+        }
+      ]
+    },
+    {
+      "tournament": 4,
+      "position_memory": "disabled",
+      "wins": 2,
+      "draws": 0,
+      "losses": 2,
+      "completed_games": 4,
+      "errors": 0,
+      "incomplete": 0,
+      "score_percent": 50.0,
+      "games": [
+        {
+          "game": 1,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 67,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 2,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 27,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 3,
+          "gm_color": "white",
+          "result": "0-1",
+          "plies": 90,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 4,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 68,
+          "termination": "CHECKMATE",
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "limitations": "Only eight games per variant; no reliable Elo or strength conclusion. All games use the standard starting position, with alternated colors. Different Stockfish random choices can affect results; no paired-opening random seeds. This experiment does not train or modify model parameters."
+}
