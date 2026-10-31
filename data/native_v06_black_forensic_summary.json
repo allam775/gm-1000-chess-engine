@@ -1,0 +1,1177 @@
+{
+  "schema": 1,
+  "generated_at": "2026-10-31T13:36:21.855365+00:00",
+  "original_run_id": 41203570679,
+  "teacher": "Stockfish 19 Skill20",
+  "analysis_time_per_root": 0.035,
+  "source_sha256": "237f723851a07e7615fc9c7759893fa86dc10da160c33d87a674ae7c4040585c",
+  "games": 40,
+  "analysis_scope": "Black full games, White up to first 70 plies",
+  "by_color_outcome": {
+    "black": {
+      "win": {
+        "games": 5,
+        "ids": [
+          2,
+          6,
+          24,
+          26,
+          40
+        ],
+        "ours": {
+          "analyzed": 151,
+          "nonmate": 131,
+          "major_200cp": 6,
+          "median_cpl": 2,
+          "by_phase": {
+            "opening": {
+              "moves": 60,
+              "major_200cp": 1,
+              "major_rate_pct": 1.7
+            },
+            "middlegame": {
+              "moves": 52,
+              "major_200cp": 5,
+              "major_rate_pct": 9.6
+            },
+            "late": {
+              "moves": 19,
+              "major_200cp": 0,
+              "major_rate_pct": 0.0
+            }
+          }
+        },
+        "stockfish5": {
+          "analyzed": 151,
+          "nonmate": 133,
+          "major_200cp": 13,
+          "median_cpl": 30,
+          "by_phase": {
+            "opening": {
+              "moves": 60,
+              "major_200cp": 6,
+              "major_rate_pct": 10.0
+            },
+            "middlegame": {
+              "moves": 53,
+              "major_200cp": 6,
+              "major_rate_pct": 11.3
+            },
+            "late": {
+              "moves": 20,
+              "major_200cp": 1,
+              "major_rate_pct": 5.0
+            }
+          }
+        },
+        "castled_early": 1,
+        "mean_queen_moves_first24plies": 2.6,
+        "mean_first_major_ply": 24.5,
+        "games_with_major": 4
+      },
+      "draw": {
+        "games": 5,
+        "ids": [
+          8,
+          12,
+          14,
+          18,
+          38
+        ],
+        "ours": {
+          "analyzed": 196,
+          "nonmate": 182,
+          "major_200cp": 14,
+          "median_cpl": 18.5,
+          "by_phase": {
+            "opening": {
+              "moves": 60,
+              "major_200cp": 3,
+              "major_rate_pct": 5.0
+            },
+            "middlegame": {
+              "moves": 74,
+              "major_200cp": 9,
+              "major_rate_pct": 12.2
+            },
+            "late": {
+              "moves": 48,
+              "major_200cp": 2,
+              "major_rate_pct": 4.2
+            }
+          }
+        },
+        "stockfish5": {
+          "analyzed": 196,
+          "nonmate": 181,
+          "major_200cp": 10,
+          "median_cpl": 16,
+          "by_phase": {
+            "opening": {
+              "moves": 60,
+              "major_200cp": 2,
+              "major_rate_pct": 3.3
+            },
+            "middlegame": {
+              "moves": 73,
+              "major_200cp": 5,
+              "major_rate_pct": 6.8
+            },
+            "late": {
+              "moves": 48,
+              "major_200cp": 3,
+              "major_rate_pct": 6.2
+            }
+          }
+        },
+        "castled_early": 1,
+        "mean_queen_moves_first24plies": 0.8,
+        "mean_first_major_ply": 21.33,
+        "games_with_major": 3
+      },
+      "loss": {
+        "games": 10,
+        "ids": [
+          4,
+          10,
+          16,
+          20,
+          22,
+          28,
+          30,
+          32,
+          34,
+          36
+        ],
+        "ours": {
+          "analyzed": 432,
+          "nonmate": 328,
+          "major_200cp": 36,
+          "median_cpl": 33.0,
+          "by_phase": {
+            "opening": {
+              "moves": 120,
+              "major_200cp": 14,
+              "major_rate_pct": 11.7
+            },
+            "middlegame": {
+              "moves": 160,
+              "major_200cp": 16,
+              "major_rate_pct": 10.0
+            },
+            "late": {
+              "moves": 48,
+              "major_200cp": 6,
+              "major_rate_pct": 12.5
+            }
+          }
+        },
+        "stockfish5": {
+          "analyzed": 442,
+          "nonmate": 332,
+          "major_200cp": 29,
+          "median_cpl": 12.5,
+          "by_phase": {
+            "opening": {
+              "moves": 120,
+              "major_200cp": 8,
+              "major_rate_pct": 6.7
+            },
+            "middlegame": {
+              "moves": 164,
+              "major_200cp": 14,
+              "major_rate_pct": 8.5
+            },
+            "late": {
+              "moves": 48,
+              "major_200cp": 7,
+              "major_rate_pct": 14.6
+            }
+          }
+        },
+        "castled_early": 5,
+        "mean_queen_moves_first24plies": 1.9,
+        "mean_first_major_ply": 24.8,
+        "games_with_major": 10
+      }
+    },
+    "white": {
+      "win": {
+        "games": 9,
+        "ids": [
+          1,
+          9,
+          11,
+          17,
+          19,
+          25,
+          27,
+          37,
+          39
+        ],
+        "ours": {
+          "analyzed": 289,
+          "nonmate": 262,
+          "major_200cp": 10,
+          "median_cpl": 8.0,
+          "by_phase": {
+            "opening": {
+              "moves": 108,
+              "major_200cp": 2,
+              "major_rate_pct": 1.9
+            },
+            "middlegame": {
+              "moves": 154,
+              "major_200cp": 8,
+              "major_rate_pct": 5.2
+            },
+            "late": {
+              "moves": 0,
+              "major_200cp": 0,
+              "major_rate_pct": null
+            }
+          }
+        },
+        "stockfish5": {
+          "analyzed": 284,
+          "nonmate": 255,
+          "major_200cp": 21,
+          "median_cpl": 22,
+          "by_phase": {
+            "opening": {
+              "moves": 108,
+              "major_200cp": 6,
+              "major_rate_pct": 5.6
+            },
+            "middlegame": {
+              "moves": 147,
+              "major_200cp": 15,
+              "major_rate_pct": 10.2
+            },
+            "late": {
+              "moves": 0,
+              "major_200cp": 0,
+              "major_rate_pct": null
+            }
+          }
+        },
+        "castled_early": 4,
+        "mean_queen_moves_first24plies": 1.44,
+        "mean_first_major_ply": 35.67,
+        "games_with_major": 6
+      },
+      "draw": {
+        "games": 5,
+        "ids": [
+          3,
+          7,
+          23,
+          29,
+          31
+        ],
+        "ours": {
+          "analyzed": 175,
+          "nonmate": 173,
+          "major_200cp": 15,
+          "median_cpl": 21,
+          "by_phase": {
+            "opening": {
+              "moves": 60,
+              "major_200cp": 2,
+              "major_rate_pct": 3.3
+            },
+            "middlegame": {
+              "moves": 113,
+              "major_200cp": 13,
+              "major_rate_pct": 11.5
+            },
+            "late": {
+              "moves": 0,
+              "major_200cp": 0,
+              "major_rate_pct": null
+            }
+          }
+        },
+        "stockfish5": {
+          "analyzed": 175,
+          "nonmate": 173,
+          "major_200cp": 10,
+          "median_cpl": 14,
+          "by_phase": {
+            "opening": {
+              "moves": 60,
+              "major_200cp": 1,
+              "major_rate_pct": 1.7
+            },
+            "middlegame": {
+              "moves": 113,
+              "major_200cp": 9,
+              "major_rate_pct": 8.0
+            },
+            "late": {
+              "moves": 0,
+              "major_200cp": 0,
+              "major_rate_pct": null
+            }
+          }
+        },
+        "castled_early": 4,
+        "mean_queen_moves_first24plies": 1.4,
+        "mean_first_major_ply": 19.8,
+        "games_with_major": 5
+      },
+      "loss": {
+        "games": 6,
+        "ids": [
+          5,
+          13,
+          15,
+          21,
+          33,
+          35
+        ],
+        "ours": {
+          "analyzed": 181,
+          "nonmate": 168,
+          "major_200cp": 15,
+          "median_cpl": 20.0,
+          "by_phase": {
+            "opening": {
+              "moves": 69,
+              "major_200cp": 5,
+              "major_rate_pct": 7.2
+            },
+            "middlegame": {
+              "moves": 99,
+              "major_200cp": 10,
+              "major_rate_pct": 10.1
+            },
+            "late": {
+              "moves": 0,
+              "major_200cp": 0,
+              "major_rate_pct": null
+            }
+          }
+        },
+        "stockfish5": {
+          "analyzed": 181,
+          "nonmate": 168,
+          "major_200cp": 14,
+          "median_cpl": 15.5,
+          "by_phase": {
+            "opening": {
+              "moves": 69,
+              "major_200cp": 5,
+              "major_rate_pct": 7.2
+            },
+            "middlegame": {
+              "moves": 99,
+              "major_200cp": 9,
+              "major_rate_pct": 9.1
+            },
+            "late": {
+              "moves": 0,
+              "major_200cp": 0,
+              "major_rate_pct": null
+            }
+          }
+        },
+        "castled_early": 3,
+        "mean_queen_moves_first24plies": 1.5,
+        "mean_first_major_ply": 27.33,
+        "games_with_major": 6
+      }
+    }
+  },
+  "black_loss_examples": [
+    {
+      "game": 4,
+      "full_plies": 45,
+      "first_major": {
+        "ply": 16,
+        "move_no": 16,
+        "phase": "opening",
+        "ours": true,
+        "san": "O-O",
+        "uci": "e8g8",
+        "best_san": "e4",
+        "best_uci": "e5e4",
+        "best_cp": 115,
+        "played_cp": -426,
+        "cp_loss": 541,
+        "mate_related": false,
+        "piece": "k",
+        "capture": false,
+        "best_capture": false,
+        "fen": "r2qk2r/1b4pp/1pn1p3/p2pp3/3P1P2/6QN/PP4PP/1BR1K2R b Kkq - 1 16"
+      },
+      "three_earliest_major": [
+        {
+          "ply": 16,
+          "move_no": 16,
+          "phase": "opening",
+          "ours": true,
+          "san": "O-O",
+          "uci": "e8g8",
+          "best_san": "e4",
+          "best_uci": "e5e4",
+          "best_cp": 115,
+          "played_cp": -426,
+          "cp_loss": 541,
+          "mate_related": false,
+          "piece": "k",
+          "capture": false,
+          "best_capture": false,
+          "fen": "r2qk2r/1b4pp/1pn1p3/p2pp3/3P1P2/6QN/PP4PP/1BR1K2R b Kkq - 1 16"
+        },
+        {
+          "ply": 20,
+          "move_no": 18,
+          "phase": "opening",
+          "ours": true,
+          "san": "Re8",
+          "uci": "f8e8",
+          "best_san": "Ne7",
+          "best_uci": "c6e7",
+          "best_cp": -362,
+          "played_cp": -730,
+          "cp_loss": 368,
+          "mate_related": false,
+          "piece": "r",
+          "capture": false,
+          "best_capture": false,
+          "fen": "r2q1rk1/1b4p1/1pn1p1Qp/p2pP3/5P2/7N/PP4PP/1BR1K2R b K - 1 18"
+        },
+        {
+          "ply": 22,
+          "move_no": 19,
+          "phase": "opening",
+          "ours": true,
+          "san": "Nd4",
+          "uci": "c6d4",
+          "best_san": "Qc7",
+          "best_uci": "d8c7",
+          "best_cp": -739,
+          "played_cp": -946,
+          "cp_loss": 207,
+          "mate_related": false,
+          "piece": "n",
+          "capture": false,
+          "best_capture": false,
+          "fen": "r2qr1k1/1b4p1/1pn1p1Qp/p2pP3/5P2/7N/PP4PP/1BR2RK1 b - - 3 19"
+        }
+      ],
+      "castled_early": true,
+      "queen_moves_first24plies": 0
+    },
+    {
+      "game": 10,
+      "full_plies": 97,
+      "first_major": {
+        "ply": 20,
+        "move_no": 16,
+        "phase": "opening",
+        "ours": true,
+        "san": "Rc8",
+        "uci": "a8c8",
+        "best_san": "Nde7",
+        "best_uci": "d5e7",
+        "best_cp": -194,
+        "played_cp": -639,
+        "cp_loss": 445,
+        "mate_related": false,
+        "piece": "r",
+        "capture": false,
+        "best_capture": false,
+        "fen": "r3k2r/3p2pp/1pnpq3/p2n1p2/8/P4PP1/1P2BP1P/R1BQ1RK1 b kq - 8 16"
+      },
+      "three_earliest_major": [
+        {
+          "ply": 20,
+          "move_no": 16,
+          "phase": "opening",
+          "ours": true,
+          "san": "Rc8",
+          "uci": "a8c8",
+          "best_san": "Nde7",
+          "best_uci": "d5e7",
+          "best_cp": -194,
+          "played_cp": -639,
+          "cp_loss": 445,
+          "mate_related": false,
+          "piece": "r",
+          "capture": false,
+          "best_capture": false,
+          "fen": "r3k2r/3p2pp/1pnpq3/p2n1p2/8/P4PP1/1P2BP1P/R1BQ1RK1 b kq - 8 16"
+        },
+        {
+          "ply": 54,
+          "move_no": 33,
+          "phase": "middlegame",
+          "ours": true,
+          "san": "Nxh2+",
+          "uci": "g4h2",
+          "best_san": "Ne5",
+          "best_uci": "g4e5",
+          "best_cp": -307,
+          "played_cp": -535,
+          "cp_loss": 228,
+          "mate_related": false,
+          "piece": "n",
+          "capture": true,
+          "best_capture": false,
+          "fen": "1r1k3r/3p4/1p1p1q1p/p4p2/P1Q3n1/1P4P1/R4P1P/2B1RK2 b - - 4 33"
+        },
+        {
+          "ply": 70,
+          "move_no": 41,
+          "phase": "middlegame",
+          "ours": true,
+          "san": "Rxe5",
+          "uci": "e8e5",
+          "best_san": "Kg7",
+          "best_uci": "f7g7",
+          "best_cp": -730,
+          "played_cp": -933,
+          "cp_loss": 203,
+          "mate_related": false,
+          "piece": "r",
+          "capture": true,
+          "best_capture": false,
+          "fen": "1r2r3/3p1k2/1p1p3p/p2qPp2/P7/1P4P1/2Q2R1K/2B1R3 b - - 6 41"
+        }
+      ],
+      "castled_early": false,
+      "queen_moves_first24plies": 2
+    },
+    {
+      "game": 16,
+      "full_plies": 67,
+      "first_major": {
+        "ply": 14,
+        "move_no": 15,
+        "phase": "opening",
+        "ours": true,
+        "san": "Bd5",
+        "uci": "b7d5",
+        "best_san": "Nxe5",
+        "best_uci": "d7e5",
+        "best_cp": -24,
+        "played_cp": -277,
+        "cp_loss": 253,
+        "mate_related": false,
+        "piece": "b",
+        "capture": false,
+        "best_capture": true,
+        "fen": "r2q1rk1/1bpn1p2/p2bp3/P3N1pp/1pBPn3/1P2P3/1B2NPPP/R2Q1RK1 b - - 1 15"
+      },
+      "three_earliest_major": [
+        {
+          "ply": 14,
+          "move_no": 15,
+          "phase": "opening",
+          "ours": true,
+          "san": "Bd5",
+          "uci": "b7d5",
+          "best_san": "Nxe5",
+          "best_uci": "d7e5",
+          "best_cp": -24,
+          "played_cp": -277,
+          "cp_loss": 253,
+          "mate_related": false,
+          "piece": "b",
+          "capture": false,
+          "best_capture": true,
+          "fen": "r2q1rk1/1bpn1p2/p2bp3/P3N1pp/1pBPn3/1P2P3/1B2NPPP/R2Q1RK1 b - - 1 15"
+        }
+      ],
+      "castled_early": true,
+      "queen_moves_first24plies": 1
+    },
+    {
+      "game": 20,
+      "full_plies": 59,
+      "first_major": {
+        "ply": 34,
+        "move_no": 27,
+        "phase": "middlegame",
+        "ours": true,
+        "san": "Nc4",
+        "uci": "b6c4",
+        "best_san": "Qc4",
+        "best_uci": "c6c4",
+        "best_cp": -504,
+        "played_cp": -823,
+        "cp_loss": 319,
+        "mate_related": false,
+        "piece": "n",
+        "capture": false,
+        "best_capture": false,
+        "fen": "r5k1/6p1/pnqp1r2/3np1Np/3P1p1P/6P1/3QPPB1/RR4K1 b - - 1 27"
+      },
+      "three_earliest_major": [
+        {
+          "ply": 34,
+          "move_no": 27,
+          "phase": "middlegame",
+          "ours": true,
+          "san": "Nc4",
+          "uci": "b6c4",
+          "best_san": "Qc4",
+          "best_uci": "c6c4",
+          "best_cp": -504,
+          "played_cp": -823,
+          "cp_loss": 319,
+          "mate_related": false,
+          "piece": "n",
+          "capture": false,
+          "best_capture": false,
+          "fen": "r5k1/6p1/pnqp1r2/3np1Np/3P1p1P/6P1/3QPPB1/RR4K1 b - - 1 27"
+        }
+      ],
+      "castled_early": false,
+      "queen_moves_first24plies": 0
+    },
+    {
+      "game": 22,
+      "full_plies": 55,
+      "first_major": {
+        "ply": 12,
+        "move_no": 15,
+        "phase": "opening",
+        "ours": true,
+        "san": "Nf6",
+        "uci": "d7f6",
+        "best_san": "Qf7",
+        "best_uci": "e7f7",
+        "best_cp": 0,
+        "played_cp": -218,
+        "cp_loss": 218,
+        "mate_related": false,
+        "piece": "n",
+        "capture": false,
+        "best_capture": false,
+        "fen": "r1b2rk1/3nq1pp/p1pbp3/1p3pB1/Pn1PP3/1BN2P1N/1PQ3PP/1K1R3R b - - 2 15"
+      },
+      "three_earliest_major": [
+        {
+          "ply": 12,
+          "move_no": 15,
+          "phase": "opening",
+          "ours": true,
+          "san": "Nf6",
+          "uci": "d7f6",
+          "best_san": "Qf7",
+          "best_uci": "e7f7",
+          "best_cp": 0,
+          "played_cp": -218,
+          "cp_loss": 218,
+          "mate_related": false,
+          "piece": "n",
+          "capture": false,
+          "best_capture": false,
+          "fen": "r1b2rk1/3nq1pp/p1pbp3/1p3pB1/Pn1PP3/1BN2P1N/1PQ3PP/1K1R3R b - - 2 15"
+        },
+        {
+          "ply": 20,
+          "move_no": 19,
+          "phase": "opening",
+          "ours": true,
+          "san": "Qe8",
+          "uci": "e7e8",
+          "best_san": "Bc7",
+          "best_uci": "d6c7",
+          "best_cp": -153,
+          "played_cp": -538,
+          "cp_loss": 385,
+          "mate_related": false,
+          "piece": "q",
+          "capture": false,
+          "best_capture": false,
+          "fen": "r1b3k1/4q1pp/p1pbpr2/8/Nn1PP3/1B5N/1P4PP/1KQR3R b - - 0 19"
+        },
+        {
+          "ply": 44,
+          "move_no": 31,
+          "phase": "middlegame",
+          "ours": true,
+          "san": "Qc7",
+          "uci": "d8c7",
+          "best_san": "Be8",
+          "best_uci": "d7e8",
+          "best_cp": -490,
+          "played_cp": -698,
+          "cp_loss": 208,
+          "mate_related": false,
+          "piece": "q",
+          "capture": false,
+          "best_capture": false,
+          "fen": "r2q2k1/3b2pp/p1pNp3/3n4/N7/1B3R2/1P5P/K5Q1 b - - 0 31"
+        }
+      ],
+      "castled_early": false,
+      "queen_moves_first24plies": 3
+    },
+    {
+      "game": 28,
+      "full_plies": 85,
+      "first_major": {
+        "ply": 32,
+        "move_no": 22,
+        "phase": "middlegame",
+        "ours": true,
+        "san": "Bxh6",
+        "uci": "e3h6",
+        "best_san": "a5",
+        "best_uci": "a6a5",
+        "best_cp": -74,
+        "played_cp": -464,
+        "cp_loss": 390,
+        "mate_related": false,
+        "piece": "b",
+        "capture": true,
+        "best_capture": false,
+        "fen": "r1b2r1k/5p1p/pqp2n1P/8/1p2P3/1N2bP1N/PPQ5/1K2RB1R b - - 2 22"
+      },
+      "three_earliest_major": [
+        {
+          "ply": 32,
+          "move_no": 22,
+          "phase": "middlegame",
+          "ours": true,
+          "san": "Bxh6",
+          "uci": "e3h6",
+          "best_san": "a5",
+          "best_uci": "a6a5",
+          "best_cp": -74,
+          "played_cp": -464,
+          "cp_loss": 390,
+          "mate_related": false,
+          "piece": "b",
+          "capture": true,
+          "best_capture": false,
+          "fen": "r1b2r1k/5p1p/pqp2n1P/8/1p2P3/1N2bP1N/PPQ5/1K2RB1R b - - 2 22"
+        },
+        {
+          "ply": 34,
+          "move_no": 23,
+          "phase": "middlegame",
+          "ours": true,
+          "san": "Bf4",
+          "uci": "h6f4",
+          "best_san": "Ng8",
+          "best_uci": "f6g8",
+          "best_cp": -265,
+          "played_cp": -529,
+          "cp_loss": 264,
+          "mate_related": false,
+          "piece": "b",
+          "capture": false,
+          "best_capture": false,
+          "fen": "r1b2r1k/5p1p/pqp2n1b/8/1p2P3/1N3P2/PPQ2N2/1K2RB1R b - - 1 23"
+        },
+        {
+          "ply": 52,
+          "move_no": 32,
+          "phase": "middlegame",
+          "ours": true,
+          "san": "Be6",
+          "uci": "c8e6",
+          "best_san": "Ng8",
+          "best_uci": "f6g8",
+          "best_cp": -241,
+          "played_cp": -480,
+          "cp_loss": 239,
+          "mate_related": false,
+          "piece": "b",
+          "capture": false,
+          "best_capture": false,
+          "fen": "r1b2r2/5pk1/p1N2n1p/2p1N3/1pB1P2Q/4qP2/PP6/1K5R b - - 1 32"
+        }
+      ],
+      "castled_early": true,
+      "queen_moves_first24plies": 2
+    },
+    {
+      "game": 30,
+      "full_plies": 73,
+      "first_major": {
+        "ply": 20,
+        "move_no": 15,
+        "phase": "opening",
+        "ours": true,
+        "san": "g5",
+        "uci": "g7g5",
+        "best_san": "Rhe8",
+        "best_uci": "h8e8",
+        "best_cp": 489,
+        "played_cp": 282,
+        "cp_loss": 207,
+        "mate_related": false,
+        "piece": "p",
+        "capture": false,
+        "best_capture": false,
+        "fen": "2kr3r/pp3ppp/3b1n2/2pqn3/3p4/1P6/P1PN1PPP/R1BQRNK1 b - - 2 15"
+      },
+      "three_earliest_major": [
+        {
+          "ply": 20,
+          "move_no": 15,
+          "phase": "opening",
+          "ours": true,
+          "san": "g5",
+          "uci": "g7g5",
+          "best_san": "Rhe8",
+          "best_uci": "h8e8",
+          "best_cp": 489,
+          "played_cp": 282,
+          "cp_loss": 207,
+          "mate_related": false,
+          "piece": "p",
+          "capture": false,
+          "best_capture": false,
+          "fen": "2kr3r/pp3ppp/3b1n2/2pqn3/3p4/1P6/P1PN1PPP/R1BQRNK1 b - - 2 15"
+        },
+        {
+          "ply": 22,
+          "move_no": 16,
+          "phase": "opening",
+          "ours": true,
+          "san": "h5",
+          "uci": "h7h5",
+          "best_san": "Bc7",
+          "best_uci": "d6c7",
+          "best_cp": 354,
+          "played_cp": 120,
+          "cp_loss": 234,
+          "mate_related": false,
+          "piece": "p",
+          "capture": false,
+          "best_capture": false,
+          "fen": "2kr3r/pp3p1p/3b1n2/2pqn1p1/3p4/1P4N1/P1PN1PPP/R1BQR1K1 b - - 1 16"
+        },
+        {
+          "ply": 38,
+          "move_no": 24,
+          "phase": "middlegame",
+          "ours": true,
+          "san": "Rg6",
+          "uci": "d6g6",
+          "best_san": "Rd7",
+          "best_uci": "d6d7",
+          "best_cp": 423,
+          "played_cp": 50,
+          "cp_loss": 373,
+          "mate_related": false,
+          "piece": "r",
+          "capture": false,
+          "best_capture": false,
+          "fen": "2k4r/1p6/3r4/p2q1p1p/Ppnp1Bp1/8/2P1QPPP/R3R1K1 b - - 3 24"
+        }
+      ],
+      "castled_early": true,
+      "queen_moves_first24plies": 2
+    },
+    {
+      "game": 32,
+      "full_plies": 159,
+      "first_major": {
+        "ply": 4,
+        "move_no": 7,
+        "phase": "opening",
+        "ours": true,
+        "san": "Nxe4",
+        "uci": "f6e4",
+        "best_san": "Bxd6",
+        "best_uci": "f8d6",
+        "best_cp": -293,
+        "played_cp": -569,
+        "cp_loss": 276,
+        "mate_related": false,
+        "piece": "n",
+        "capture": true,
+        "best_capture": true,
+        "fen": "rnb1kb1r/pp1p1p1p/1q1P1np1/2p5/4P3/5N2/PP3PPP/RNBQKB1R b KQkq - 0 7"
+      },
+      "three_earliest_major": [
+        {
+          "ply": 4,
+          "move_no": 7,
+          "phase": "opening",
+          "ours": true,
+          "san": "Nxe4",
+          "uci": "f6e4",
+          "best_san": "Bxd6",
+          "best_uci": "f8d6",
+          "best_cp": -293,
+          "played_cp": -569,
+          "cp_loss": 276,
+          "mate_related": false,
+          "piece": "n",
+          "capture": true,
+          "best_capture": true,
+          "fen": "rnb1kb1r/pp1p1p1p/1q1P1np1/2p5/4P3/5N2/PP3PPP/RNBQKB1R b KQkq - 0 7"
+        },
+        {
+          "ply": 10,
+          "move_no": 10,
+          "phase": "opening",
+          "ours": true,
+          "san": "Nc6",
+          "uci": "b8c6",
+          "best_san": "Be5",
+          "best_uci": "d6e5",
+          "best_cp": -119,
+          "played_cp": -327,
+          "cp_loss": 208,
+          "mate_related": false,
+          "piece": "n",
+          "capture": false,
+          "best_capture": false,
+          "fen": "rnb1k2r/pp1p3p/1q1b2p1/2p2pN1/4n3/2N5/PP2QPPP/R1B1KB1R b KQkq - 1 10"
+        },
+        {
+          "ply": 16,
+          "move_no": 13,
+          "phase": "opening",
+          "ours": true,
+          "san": "Qxb2",
+          "uci": "b6b2",
+          "best_san": "Qc6",
+          "best_uci": "b6c6",
+          "best_cp": -151,
+          "played_cp": -754,
+          "cp_loss": 603,
+          "mate_related": false,
+          "piece": "q",
+          "capture": true,
+          "best_capture": false,
+          "fen": "r1b1k2r/pp1pn2p/1q1b2p1/2p5/4Q3/2N5/PP1B1PPP/R3KB1R b KQkq - 2 13"
+        }
+      ],
+      "castled_early": false,
+      "queen_moves_first24plies": 3
+    },
+    {
+      "game": 34,
+      "full_plies": 149,
+      "first_major": {
+        "ply": 28,
+        "move_no": 24,
+        "phase": "middlegame",
+        "ours": true,
+        "san": "g5",
+        "uci": "g7g5",
+        "best_san": "Nb4",
+        "best_uci": "c6b4",
+        "best_cp": 51,
+        "played_cp": -157,
+        "cp_loss": 208,
+        "mate_related": false,
+        "piece": "p",
+        "capture": false,
+        "best_capture": false,
+        "fen": "6k1/1p1r1qpp/2n5/pR1r1p2/P2Pp3/BQ2P1P1/5P1P/5K1R b - - 5 24"
+      },
+      "three_earliest_major": [
+        {
+          "ply": 28,
+          "move_no": 24,
+          "phase": "middlegame",
+          "ours": true,
+          "san": "g5",
+          "uci": "g7g5",
+          "best_san": "Nb4",
+          "best_uci": "c6b4",
+          "best_cp": 51,
+          "played_cp": -157,
+          "cp_loss": 208,
+          "mate_related": false,
+          "piece": "p",
+          "capture": false,
+          "best_capture": false,
+          "fen": "6k1/1p1r1qpp/2n5/pR1r1p2/P2Pp3/BQ2P1P1/5P1P/5K1R b - - 5 24"
+        },
+        {
+          "ply": 30,
+          "move_no": 25,
+          "phase": "middlegame",
+          "ours": true,
+          "san": "g4",
+          "uci": "g5g4",
+          "best_san": "Nb4",
+          "best_uci": "c6b4",
+          "best_cp": -91,
+          "played_cp": -354,
+          "cp_loss": 263,
+          "mate_related": false,
+          "piece": "p",
+          "capture": false,
+          "best_capture": false,
+          "fen": "6k1/1p1r1q1p/2n5/pR1r1pp1/P2Pp2P/BQ2P1P1/5P2/5K1R b - - 0 25"
+        },
+        {
+          "ply": 100,
+          "move_no": 60,
+          "phase": "late",
+          "ours": true,
+          "san": "Kb7",
+          "uci": "c6b7",
+          "best_san": "Kd5",
+          "best_uci": "c6d5",
+          "best_cp": -1097,
+          "played_cp": -1604,
+          "cp_loss": 507,
+          "mate_related": false,
+          "piece": "k",
+          "capture": false,
+          "best_capture": false,
+          "fen": "4Q3/8/2kr4/7p/6pP/4B3/5PK1/8 b - - 4 60"
+        }
+      ],
+      "castled_early": false,
+      "queen_moves_first24plies": 3
+    },
+    {
+      "game": 36,
+      "full_plies": 85,
+      "first_major": {
+        "ply": 68,
+        "move_no": 42,
+        "phase": "middlegame",
+        "ours": true,
+        "san": "Rc6",
+        "uci": "a6c6",
+        "best_san": "Kf8",
+        "best_uci": "g8f8",
+        "best_cp": -1002,
+        "played_cp": -1449,
+        "cp_loss": 447,
+        "mate_related": false,
+        "piece": "r",
+        "capture": false,
+        "best_capture": false,
+        "fen": "6k1/1p6/r2p1q2/3Rp2Q/p7/P5p1/1P4P1/1K5R b - - 1 42"
+      },
+      "three_earliest_major": [
+        {
+          "ply": 68,
+          "move_no": 42,
+          "phase": "middlegame",
+          "ours": true,
+          "san": "Rc6",
+          "uci": "a6c6",
+          "best_san": "Kf8",
+          "best_uci": "g8f8",
+          "best_cp": -1002,
+          "played_cp": -1449,
+          "cp_loss": 447,
+          "mate_related": false,
+          "piece": "r",
+          "capture": false,
+          "best_capture": false,
+          "fen": "6k1/1p6/r2p1q2/3Rp2Q/p7/P5p1/1P4P1/1K5R b - - 1 42"
+        }
+      ],
+      "castled_early": true,
+      "queen_moves_first24plies": 3
+    }
+  ],
+  "black_wins_examples": [
+    {
+      "game": 2,
+      "first_major": {
+        "ply": 6,
+        "move_no": 7,
+        "phase": "opening",
+        "ours": true,
+        "san": "Qxb2",
+        "uci": "b6b2",
+        "best_san": "Nh5",
+        "best_uci": "f6h5",
+        "best_cp": -41,
+        "played_cp": -257,
+        "cp_loss": 216,
+        "mate_related": false,
+        "piece": "q",
+        "capture": true,
+        "best_capture": false,
+        "fen": "r1b1kb1r/pp2pppp/1qn2n2/3p4/3P1B2/P1N2N2/1P2PPPP/R2QKB1R b KQkq - 4 7"
+      }
+    },
+    {
+      "game": 6,
+      "first_major": {
+        "ply": 26,
+        "move_no": 22,
+        "phase": "middlegame",
+        "ours": true,
+        "san": "Nxe2+",
+        "uci": "d4e2",
+        "best_san": "Qe3+",
+        "best_uci": "e5e3",
+        "best_cp": 511,
+        "played_cp": 174,
+        "cp_loss": 337,
+        "mate_related": false,
+        "piece": "n",
+        "capture": true,
+        "best_capture": false,
+        "fen": "r5k1/pp3rp1/4p2p/4q3/2Qn1P2/2p3PB/P3P2P/R4RK1 b - - 0 22"
+      }
+    },
+    {
+      "game": 24,
+      "first_major": null
+    },
+    {
+      "game": 26,
+      "first_major": {
+        "ply": 34,
+        "move_no": 25,
+        "phase": "middlegame",
+        "ours": true,
+        "san": "f5",
+        "uci": "f7f5",
+        "best_san": "Bxb1",
+        "best_uci": "d3b1",
+        "best_cp": 934,
+        "played_cp": 608,
+        "cp_loss": 326,
+        "mate_related": false,
+        "piece": "p",
+        "capture": false,
+        "best_capture": true,
+        "fen": "1r1r2k1/pp2npqp/6p1/2Q5/P3NP2/3b1BP1/7P/1R5K b - - 7 25"
+      }
+    },
+    {
+      "game": 40,
+      "first_major": {
+        "ply": 32,
+        "move_no": 24,
+        "phase": "middlegame",
+        "ours": true,
+        "san": "Rxe4",
+        "uci": "f4e4",
+        "best_san": "Rh4",
+        "best_uci": "f4h4",
+        "best_cp": 200,
+        "played_cp": -18,
+        "cp_loss": 218,
+        "mate_related": false,
+        "piece": "r",
+        "capture": true,
+        "best_capture": false,
+        "fen": "r3k3/p3bp1p/2p1pp2/1p6/1P2Pr2/2B4P/1P3PK1/R5R1 b q - 1 24"
+      }
+    }
+  ],
+  "limitations": [
+    "Short independent root search vs forced-played search is noisy, not proof of causation.",
+    "Mate-range positions excluded from centipawn mistake counts.",
+    "Only Black games analyzed to completion; White control capped at 70 plies.",
+    "Opening seeds start from mid-opening FENs; phase is relative to seeded starting position.",
+    "Scores are not FIDE Elo and analysis makes no game-engine changes."
+  ]
+}
