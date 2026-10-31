@@ -1,0 +1,1 @@
+Independently re-evaluate the ten earliest 200cp Black-side errors plus suspicious follow-up moves in data/native_v06_black_forensic_summary.json with official Stockfish 19 Skill20 at one second for best-root and forced-played root. Preserve viable-position deterioration vs already-lost status, distinguish incorrect short-time engine evaluations; no engine changes.
