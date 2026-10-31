@@ -42,7 +42,7 @@ def run(args):
                       'Round':str(idx+1),'White':variant if gm_color else 'Stockfish5',
                       'Black':'Stockfish5' if gm_color else variant,
                       'TimeSeconds':str(args.seconds),'SkillLevel':'5',
-                      'Memory':'both off','Variant':variant})
+                      'Memory':'both off','EngineVariant':variant})
                     node=game;token=object();error=None
                     for ply in range(args.max_plies):
                         if board.is_game_over(claim_draw=True):break
