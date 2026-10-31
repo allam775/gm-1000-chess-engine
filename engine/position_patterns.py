@@ -25,9 +25,9 @@ def expanded(epd: str):
                 squares.append(c)
     if len(squares) != 64:
         raise ValueError("Bad EPD board")
-    pawns = tuple((i, c) for i, c in enumerate(squares) if c in "pP")
+    pawn_files = tuple(sorted((c, i % 8) for i, c in enumerate(squares) if c in "pP"))
     material = "".join(sorted(c for c in squares if c.isalpha() and c not in "pP"))
-    return ((parts[1], parts[2], pawns, material), tuple(squares))
+    return ((parts[1], parts[2], pawn_files, material), tuple(squares))
 
 
 def build_index(positions: dict) -> dict:
@@ -46,7 +46,7 @@ def build_index(positions: dict) -> dict:
 
 
 def pattern_candidates(board: chess.Board, index: dict,
-                       *, max_difference: int = 4, max_moves: int = 3):
+                       *, max_difference: int = 10, max_moves: int = 3):
     """Legality-checked short candidate list, never a forced playing decision."""
     from .search import book_key
     signature, squares = expanded(book_key(board))
