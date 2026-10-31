@@ -69,7 +69,7 @@ struct Searcher {
   }
   Movelist moves;
   if(checknow)movegen::legalmoves(moves,b);
-  else movegen::legalmoves<MoveGenType::CAPTURE>(moves,b);
+  else movegen::legalmoves<movegen::MoveGenType::CAPTURE>(moves,b);
   if(moves.empty()&&checknow)return -MATE+ply;
   // Quiet promotion may be important in endgames; fully covered by main search.
   std::vector<std::pair<int,Move>> order;
