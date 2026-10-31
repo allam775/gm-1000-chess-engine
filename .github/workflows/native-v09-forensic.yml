@@ -1,0 +1,121 @@
+name: GM-1000 forensic audit of losses AND draws against Stockfish5 and Stockfish10
+on:
+  push:
+    branches: [experiment/native-tactical-v09]
+    paths: ['.github/launch-native-v09-audit.txt']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: native-v09-forensic-immutable-280
+  cancel-in-progress: false
+jobs:
+  audit:
+    name: 'Skill ${{ matrix.item.level }} batch ${{ matrix.item.shard }}'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        item:
+          - {level: 5, shard: 0}
+          - {level: 5, shard: 1}
+          - {level: 5, shard: 2}
+          - {level: 5, shard: 3}
+          - {level: 5, shard: 4}
+          - {level: 10, shard: 0}
+          - {level: 10, shard: 1}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install independent Stockfish 17.1 teacher and chess dependencies
+        run: |
+          python -m pip install -r requirements.txt
+          sudo apt-get update -qq
+          sudo apt-get install -y stockfish
+          python -m py_compile scripts/audit_skill10_failures.py
+      - name: Fetch ORIGINAL immutable 280-game PGN from historical run
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41213837106
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: gm1000-v08-skill${{ matrix.item.level }}-shard-${{ matrix.item.shard }}
+          path: reports/forensic-original/
+      - name: Independently evaluate v0.8 losses and draws and matched v0.7 controls
+        env:
+          LEVEL: ${{ matrix.item.level }}
+          SHARD: ${{ matrix.item.shard }}
+        run: |
+          set -euo pipefail
+          python -m scripts.audit_skill10_failures \
+            --level "$LEVEL" --shard "$SHARD" \
+            --pgn reports/forensic-original/all-games.pgn \
+            --summary reports/forensic-original/summary.json \
+            --out "reports/native-v09-forensic/skill${LEVEL}/shard-${SHARD}" \
+            --seconds 0.08 --deep-seconds 0.6
+      - name: Preserve per-move evidence even if an analysis job fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-v09-forensic-skill${{ matrix.item.level }}-shard-${{ matrix.item.shard }}
+          path: reports/native-v09-forensic/
+          retention-days: 90
+          if-no-files-found: warn
+  summary:
+    needs: audit
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: native-v09-forensic-skill*-shard-*
+          path: reports/collected/
+      - name: Aggregate all original losses and draws for both levels
+        run: |
+          python - <<'PY'
+          import datetime,json,pathlib,collections
+          roots=pathlib.Path('reports/collected')
+          reports=[]
+          for level,shards in ((5,5),(10,2)):
+              for i in range(shards):
+                  matches=list((roots/f'native-v09-forensic-skill{level}-shard-{i}').rglob('summary.json'))
+                  assert len(matches)==1,(level,i,matches)
+                  r=json.loads(matches[0].read_text())
+                  assert r['verified_games']==40 and r['shard']==i and r['level']==level
+                  reports.append(r)
+          assert len(reports)==7 and sum(r['verified_games'] for r in reports)==280
+          summary={}
+          for level in (5,10):
+              sample=[r for r in reports if r['level']==level]
+              checks=[x for r in sample for x in r['deep_checks']]
+              g=[x for r in sample for x in r['games']]
+              summary[str(level)]={'verified_games':len(g),'v08_nonwins_analyzed':sum(x['version']=='v08' and x['outcome']!='win' for x in g),
+                'deep_checks':len(checks),'confirmed_major_200cp':sum(x['confirmed_major'] for x in checks),
+                'early_still_viable_major':sum(x['confirmed_major'] and x['viable_before'] for x in checks),
+                'first_major_examples':[{'opening':x['opening'],'color':x['color'],'outcome':x['outcome'],
+                   'san':x['san'],'best':x['deeper']['best_san'],'cp_loss':x['deeper']['cp_loss'],
+                   'fen':x['fen']} for x in checks if x['confirmed_major'] and x['viable_before']][:22],
+                'phase_counts':{ver:collections.Counter(x['outcome'] for x in g if x['version']==ver) for ver in ('v07','v08')}}
+          final={'schema':1,'created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            'original_match_run':41213837106,'games_verified':280,'summary':summary,
+            'limitations':'Diagnostic set from old v0.8 tournament. Postgame Stockfish 17.1 full-strength search is noisy, even at 0.6 seconds; correlation not causal proof. Fresh holdout match separate.'}
+          out=pathlib.Path('reports/native-v09-forensic-final/summary.json')
+          out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_text(json.dumps(final,indent=2)+'\n')
+          print('GM1000_V09_FORENSIC_FINAL',json.dumps(summary,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v09-280games-forensic-summary
+          path: reports/native-v09-forensic-final/
+          retention-days: 90

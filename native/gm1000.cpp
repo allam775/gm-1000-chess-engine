@@ -1,4 +1,4 @@
-/* GM-1000 v0.8 experimental threat-aware native search (independent implementation).
+/* GM-1000 v0.9 experimental persistent, selective search (independent implementation).
  * Rule generation: pinned MIT Disservin/chess-library, NOT Stockfish search.
  * This engine intentionally has no historical move memories: isolates search.
  */
@@ -92,6 +92,72 @@ int evaluate(const Board& b) {
     return b.sideToMove() == Color::WHITE ? white_score : -white_score;
 }
 
+// Standalone static-exchange evaluation. It simulates a least-valuable-attacker
+// recapture sequence with x-rays on a changing occupancy, independently of the
+// position's strategic/king-safety evaluation. Not an oracle: pinned recaptures
+// and complex promotion lines are fully resolved by the later legal search.
+int static_exchange(const Board& b, Move m) {
+    if (!b.isCapture(m)) return 0;
+    const Square target = m.to();
+    const PieceType victim = b.getCapturing<PieceType>(m);
+    auto value = [](PieceType p) {
+        int k = static_cast<int>(p.internal());
+        return k == 5 ? 20000 : VALUE[k];
+    };
+    PieceType occupying = m.typeOf() == Move::PROMOTION ? m.promotionType() : b.at<PieceType>(m.from());
+    int gain[24] = {};
+    gain[0] = value(victim);
+    if (m.typeOf() == Move::PROMOTION) gain[0] += value(occupying) - VALUE[0];
+    Bitboard occ = b.occ();
+    occ.clear(m.from().index());
+    if (m.typeOf() == Move::ENPASSANT) occ.clear(m.to().ep_square().index());
+    Color side = ~b.sideToMove();
+    int depth = 0;
+    for (; depth < 22; ) {
+        const auto attackers = [&](PieceType pt) -> Bitboard {
+            Bitboard attacks_to = 0ull;
+            switch (pt.internal()) {
+                case PieceType::PAWN: attacks_to = attacks::pawn(~side, target); break;
+                case PieceType::KNIGHT: attacks_to = attacks::knight(target); break;
+                case PieceType::BISHOP: attacks_to = attacks::bishop(target, occ); break;
+                case PieceType::ROOK: attacks_to = attacks::rook(target, occ); break;
+                case PieceType::QUEEN: attacks_to = attacks::queen(target, occ); break;
+                case PieceType::KING: attacks_to = attacks::king(target); break;
+                default: return Bitboard(0ull);
+            }
+            return attacks_to & b.pieces(pt, side) & occ;
+        };
+        int origin = -1;
+        PieceType next;
+        for (int type = 0; type != 6; ++type) {
+            const PieceType pt(static_cast<PieceType::underlying>(type));
+            Bitboard possible = attackers(pt);
+            if (possible) {
+                origin = possible.lsb(); next = pt; break;
+            }
+        }
+        if (origin < 0) break;
+        ++depth;
+        gain[depth] = value(occupying) - gain[depth-1];
+        if (next == PieceType::KING) {
+            // A king cannot legally recapture if target is still defended.
+            // Only trust the king exchange at zero additional attacker depth.
+            occ.clear(origin);
+            occupying = next;
+            side = ~side;
+            break;
+        }
+        occ.clear(origin);
+        occupying = next;
+        side = ~side;
+    }
+    while (depth > 0) {
+        --depth;
+        gain[depth] = -std::max(-gain[depth], gain[depth+1]);
+    }
+    return gain[0];
+}
+
 bool is_draw(const Board& board) {
     return board.isInsufficientMaterial() || board.isHalfMoveDraw() ||
            (board.halfMoveClock() >= 8 && board.isRepetition(2));
@@ -124,6 +190,26 @@ struct Search {
     bool interrupted = false;
     bool null_verification = false;
 
+    // The previous engine rebuilt the 2^18-entry table and all search heuristics
+    // on EVERY MOVE. Search is now persistent for a single UCI game, but gets
+    // cleared at ucinewgame to prevent accidental cross-game influence.
+    void reset_game() {
+        std::fill(tt.begin(), tt.end(), Entry{});
+        killers = {};
+        history = {};
+        null_verification = false;
+    }
+    static int to_tt(int score, int ply) {
+        if (score >= MATE - 256) return score + ply;
+        if (score <= -MATE + 256) return score - ply;
+        return score;
+    }
+    static int from_tt(int score, int ply) {
+        if (score >= MATE - 256) return score - ply;
+        if (score <= -MATE + 256) return score + ply;
+        return score;
+    }
+
     explicit Search(std::atomic<bool>& s, size_t tt_entries=1 << 18) :
         tt(tt_entries), stop(s) {}
 
@@ -141,6 +227,10 @@ struct Search {
         if (b.isCapture(m)) {
             auto victim = b.getCapturing<PieceType>(m);
             auto attacker = b.at<PieceType>(m.from());
+            // Bad captures belong behind genuinely useful quiet moves.
+            // Do not discard them: sacrifices may be tactically correct.
+            const int net = static_exchange(b, m);
+            if (net < 0) return -20000 + net;
             return 100000 + 16 * VALUE[static_cast<int>(victim.internal())] - VALUE[static_cast<int>(attacker.internal())];
         }
         if (ply < 128) {
@@ -207,18 +297,24 @@ struct Search {
             b.hasNonPawnMaterial(b.sideToMove())) {
             Movelist checks;
             movegen::legalmoves<movegen::MoveGenType::QUIET>(checks, b);
-            int added = 0;
+            // Add legal quiet checks, but only at the first quiescence node.
+            // Ordering happens once alongside all forcing captures. This
+            // avoids arbitrarily taking the first three generator-order checks.
             for (Move m : checks) {
-                if (m.typeOf() == Move::PROMOTION) continue; // already included
-                if (b.givesCheck(m) == CheckType::NO_CHECK) continue;
-                moves.add(m);
-                if (++added == 3) break;
+                if (m.typeOf() == Move::PROMOTION) continue;
+                if (b.givesCheck(m) != CheckType::NO_CHECK) moves.add(m);
             }
         }
         order(moves, b, Move{}, ply);
         for (Move m : moves) {
             if (!checked && !b.isCapture(m) && m.typeOf() != Move::PROMOTION &&
                 !(qdepth == 0 && b.givesCheck(m) != CheckType::NO_CHECK)) continue;
+            // At noisy leaves, ignore clearly losing recaptures, but never
+            // discard promotions, checking captures, or in-check evasions.
+            if (!checked && qdepth >= 1 && b.isCapture(m) &&
+                m.typeOf() != Move::PROMOTION &&
+                static_exchange(b, m) < -160 &&
+                b.givesCheck(m) == CheckType::NO_CHECK) continue;
             b.makeMove(m);
             int score;
             try { score = -quiescence(b, -beta, -alpha, ply+1, qdepth+1); }
@@ -268,11 +364,12 @@ struct Search {
         Move hashmove{};
         if (entry.key == b.hash()) {
             hashmove = entry.move;
-            if (entry.depth >= depth && std::abs(entry.score) < MATE - 200) {
-                if (entry.flag == 0) return entry.score;
-                if (entry.flag == 1) alpha = std::max(alpha, static_cast<int>(entry.score));
-                if (entry.flag == 2) beta = std::min(beta, static_cast<int>(entry.score));
-                if (alpha >= beta) return entry.score;
+            if (entry.depth >= depth) {
+                const int tt_score = from_tt(entry.score, ply);
+                if (entry.flag == 0) return tt_score;
+                if (entry.flag == 1) alpha = std::max(alpha, tt_score);
+                if (entry.flag == 2) beta = std::min(beta, tt_score);
+                if (alpha >= beta) return tt_score;
             }
         }
         const int original_beta = beta;
@@ -316,7 +413,7 @@ struct Search {
         }
         // Only completed subtrees reach here; interruptions never poison TT.
         if (depth >= entry.depth || entry.key != b.hash()) {
-            entry.key = b.hash(); entry.score = best; entry.depth = depth;
+            entry.key = b.hash(); entry.score = to_tt(best, ply); entry.depth = depth;
             entry.move = selected;
             entry.flag = best <= old_alpha ? 2 : (best >= original_beta ? 1 : 0);
         }
@@ -325,6 +422,8 @@ struct Search {
     Result run(Board position, int max_depth, int millis,
                const std::function<void(const Result&)>& report = {}) {
         nodes = 0;
+        interrupted = false;
+        null_verification = false;
         timed = millis > 0;
         if (timed) deadline = std::chrono::steady_clock::now() + std::chrono::milliseconds(millis);
         const auto start = std::chrono::steady_clock::now();
@@ -352,8 +451,16 @@ struct Search {
                 for (Move m : legal) {
                     position.makeMove(m);
                     int score;
-                    try { score = -negamax(position, depth-1, -INF, -alpha, 1); }
-                    catch (...) { position.unmakeMove(m); throw; }
+                    try {
+                        if (alpha == -INF) {
+                            score = -negamax(position, depth-1, -INF, -alpha, 1);
+                        } else {
+                            score = -negamax(position, depth-1, -alpha-1, -alpha, 1);
+                            if (score > alpha) {
+                                score = -negamax(position, depth-1, -INF, -alpha, 1);
+                            }
+                        }
+                    } catch (...) { position.unmakeMove(m); throw; }
                     position.unmakeMove(m);
                     if (score > best) { best = score; chosen = m; }
                     alpha = std::max(alpha, score);
@@ -366,7 +473,7 @@ struct Search {
             if (report) report(completed);
             auto &entry = tt[position.hash() & (tt.size()-1)];
             entry.key = position.hash(); entry.move = chosen; entry.depth = depth;
-            entry.score = best; entry.flag = 0;
+            entry.score = to_tt(best, 0); entry.flag = 0;
             if (std::abs(best) > MATE - 150) break;
         }
         completed.nodes = nodes;
@@ -422,6 +529,16 @@ int go_time(const Board& board, const std::vector<std::string>& tokens, int& dep
 } // namespace
 
 int main(int argc, char** argv) {
+    if (argc > 1 && std::string(argv[1])=="--see") {
+        if (argc < 4) return 2;
+        Board b(argv[2]);
+        const Move m = uci::uciToMove(b, argv[3]);
+        Movelist legal;
+        movegen::legalmoves(legal,b);
+        if (m.move()==Move::NO_MOVE || std::find(legal.begin(),legal.end(),m)==legal.end()) return 3;
+        std::cout << static_exchange(b,m) << '\n';
+        return 0;
+    }
     if (argc > 1 && std::string(argv[1])=="--perft") {
         if(argc<4) return 2;
         Board b(argv[2]);
@@ -443,13 +560,14 @@ int main(int argc, char** argv) {
     Board board;
     std::thread worker;
     std::atomic<bool> stop{false};
+    Search engine(stop);  // Persistent TT, killers and history across moves.
     auto join = [&] {stop.store(true); if(worker.joinable())worker.join(); stop.store(false);};
     std::string line;
     while (std::getline(std::cin,line)) {
         std::istringstream stream(line);
         std::string cmd; stream >> cmd;
         if(cmd=="uci") {
-            output("id name GM-1000 v0.8 King Safety Candidate");
+            output("id name GM-1000 v0.9 Persistent Search Candidate");
             output("id author GM-1000 project");
             output("uciok");
         } else if(cmd=="isready") output("readyok");
@@ -457,7 +575,7 @@ int main(int argc, char** argv) {
             // No user-configurable engine options yet; fail closed rather than claiming support.
         } else if(cmd=="stop") join();
         else if(cmd=="quit") {join();break;}
-        else if(cmd=="ucinewgame") {join();board=Board();}
+        else if(cmd=="ucinewgame") {join();board=Board();engine.reset_game();}
         else if(cmd=="position") {
             join();
             std::string type;stream>>type;
@@ -486,9 +604,8 @@ int main(int argc, char** argv) {
             std::string s;while(stream>>s)args.push_back(s);
             int depth=64,millis=go_time(board,args,depth);
             Board copy=board;
-            worker=std::thread([copy,depth,millis,&stop]() mutable {
+            worker=std::thread([copy,depth,millis,&engine]() mutable {
                 try {
-                    Search engine(stop);
                     auto r=engine.run(copy,depth,millis,[](const Result& r){
                         std::ostringstream out;
                         out<<"info depth "<<r.depth<<" nodes "<<r.nodes<<" score "<<score_uci(r.score)
