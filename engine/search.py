@@ -53,7 +53,8 @@ def book_key(board: chess.Board) -> str:
 # Tunable non-material feature multipliers; material is fixed for stability.
 LEARNABLE_FEATURES = ('bishop_pair', 'minor_center', 'queen_center',
                       'pawn_progress', 'pawn_center', 'rook_activity',
-                      'king_safety', 'pawn_structure', 'passed_pawns')
+                      'king_safety', 'pawn_structure', 'passed_pawns',
+                      'development', 'hanging_pieces')
 
 
 def evaluate_components(board: chess.Board) -> dict[str, int]:
@@ -109,6 +110,33 @@ def evaluate_components(board: chess.Board) -> dict[str, int]:
                 if passed:
                     advancement = our_rank if color == chess.WHITE else 7 - our_rank
                     features['passed_pawns'] += sign * (10 + advancement * advancement * 2)
+    # Opening development and undefended hanging minor/major pieces.
+    # These modest bonuses complement (rather than replace) tactical search.
+    for color in chess.COLORS:
+        sign = 1 if color == chess.WHITE else -1
+        back = 0 if color == chess.WHITE else 7
+        for file in (1, 6):
+            sq = chess.square(file, back)
+            if board.piece_type_at(sq) == chess.KNIGHT and board.color_at(sq) == color:
+                features['development'] -= sign * 9
+        for file in (2, 5):
+            sq = chess.square(file, back)
+            if board.piece_type_at(sq) == chess.BISHOP and board.color_at(sq) == color:
+                features['development'] -= sign * 7
+        king = board.king(color)
+        if king is not None and board.queens:
+            kr, kf = chess.square_rank(king), chess.square_file(king)
+            if kr == back and kf in (2, 6):
+                features['development'] += sign * 18
+            elif kr == back and kf in (3, 4) and not (
+                board.has_kingside_castling_rights(color)
+                or board.has_queenside_castling_rights(color)
+            ):
+                features['king_safety'] -= sign * 25
+        for kind in (chess.KNIGHT, chess.BISHOP, chess.ROOK, chess.QUEEN):
+            for sq in board.pieces(kind, color):
+                if board.is_attacked_by(not color, sq) and not board.is_attacked_by(color, sq):
+                    features['hanging_pieces'] -= sign * min(40, PIECE_VALUES[kind] // 12)
     return features
 
 
@@ -146,6 +174,7 @@ class Engine:
         self.stockfish_memory_path = Path(stockfish_memory_path)
         self.stockfish_memory_enabled = True
         self._stockfish_memory: dict | None = None
+        self._stockfish_pattern_index: dict | None = None
 
     def new_game(self) -> None:
         self.table.clear()
@@ -153,6 +182,7 @@ class Engine:
         self._learning = None  # Approved model updates are reloaded between games.
         self._memory = None  # New memory database becomes visible next game.
         self._stockfish_memory = None
+        self._stockfish_pattern_index = None
 
     def _load_book(self) -> dict:
         if self._book is None:
@@ -216,6 +246,40 @@ class Engine:
             return move if move in board.legal_moves else None
         except ValueError:
             return None
+
+    def _pattern_recalled(self, board: chess.Board) -> list[tuple[chess.Move, int]]:
+        """Use *conservative* same-pawn-and-material patterns as search hints.
+
+        Near positions are not identical positions: no borrowed move is played
+        without being legal, and completed root search still scores every move.
+        """
+        if not (self.stockfish_memory_enabled and self.memory_enabled):
+            return []
+        if self._stockfish_memory is None:
+            self._stockfish_preferred(board)  # Lazy-load the certified overlay.
+        if self._stockfish_pattern_index is None:
+            from .position_patterns import build_index
+            self._stockfish_pattern_index = build_index(
+                self._stockfish_memory.get('positions', {}))
+        from .position_patterns import pattern_candidates
+        return pattern_candidates(board, self._stockfish_pattern_index)
+
+    def _static_fallback(self, board: chess.Board, moves: list[chess.Move]) -> chess.Move:
+        """Never default to the first/memorized move when no iteration finishes."""
+        best = (-INF, '', moves[0])
+        for move in moves:
+            board.push(move)
+            try:
+                if board.is_checkmate():
+                    score = MATE
+                else:
+                    score = -self.evaluation(board)
+            finally:
+                board.pop()
+            candidate = (score, move.uci(), move)
+            if candidate[:2] > best[:2]:
+                best = candidate
+        return best[2]
 
     def book_move(self, board: chess.Board) -> chess.Move | None:
         if not self.own_book:
@@ -282,7 +346,7 @@ class Engine:
     def _quiescence(self, board: chess.Board, alpha: int, beta: int, ply: int,
                     qdepth: int = 0) -> int:
         self.nodes += 1
-        if self.nodes % 256 == 0:
+        if self.nodes % 32 == 0:
             self._check_time()
         if board.is_checkmate():
             return -MATE + ply
@@ -294,12 +358,26 @@ class Engine:
             if stand_pat >= beta:
                 return beta
             alpha = max(alpha, stand_pat)
-        if qdepth >= 8:
-            # In check, cannot treat an attacked king as a quiet position.
-            if not in_check:
-                return alpha
-            if qdepth >= 12:
-                return stand_pat
+        if qdepth >= 8 and not in_check:
+            return alpha
+        if qdepth >= 12 and in_check:
+            # At the emergency horizon, standing pat in check is illegal.
+            # Score *legal evasions* rather than an attacked-king position.
+            legal = list(board.legal_moves)
+            if not legal:
+                return -MATE + ply
+            best = -INF
+            for evasion in legal:
+                board.push(evasion)
+                try:
+                    val = MATE - ply - 1 if board.is_checkmate() else -self.evaluation(board)
+                finally:
+                    board.pop()
+                best = max(best, val)
+                alpha = max(alpha, val)
+                if alpha >= beta:
+                    break
+            return best
         if in_check:
             moves = list(board.legal_moves)
         else:
@@ -317,7 +395,7 @@ class Engine:
 
     def _negamax(self, board: chess.Board, depth: int, alpha: int, beta: int, ply: int) -> int:
         self.nodes += 1
-        if self.nodes % 256 == 0:
+        if self.nodes % 32 == 0:
             self._check_time()
         if board.is_checkmate():
             return -MATE + ply
@@ -387,7 +465,8 @@ class Engine:
                info: Callable[[SearchResult], None] | None = None,
                allow_book: bool = True) -> SearchResult:
         self.nodes = 0
-        self.deadline = time.monotonic() + max(0.01, time_limit) if time_limit is not None else None
+        # Load memory before starting the thinking clock; I/O is not search.
+        self.deadline = None
         if board.is_game_over(claim_draw=True):
             return SearchResult(None)
         recalled = self.memory_moves(board) if allow_book else []
@@ -398,6 +477,9 @@ class Engine:
             existing = [(m, n) for m, n in recalled if m != sf_preferred]
             recalled = [(sf_preferred, max([n for _, n in existing] or [0]) + 100000)] + existing
         if allow_book and not recalled:
+            # No exact hit: try cautious near-position hints first.
+            recalled = self._pattern_recalled(board)
+        if allow_book and not recalled:
             bm = self.book_move(board)
             if bm:
                 return SearchResult(bm, book=True, pv=(bm,))
@@ -405,7 +487,10 @@ class Engine:
         if not legal:
             return SearchResult(None)
         # Recalled moves have priority for examination, not automatic play.
-        result = SearchResult(recalled[0][0] if recalled else legal[0])
+        fallback = self._static_fallback(board, legal)
+        result = SearchResult(fallback, score=0, depth=0)
+        self.deadline = (time.monotonic() + max(0.01, time_limit)
+                         if time_limit is not None else None)
         for current_depth in range(1, min(depth, 64) + 1):
             if self.stop_event.is_set():
                 break
