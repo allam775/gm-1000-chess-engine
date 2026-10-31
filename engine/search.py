@@ -476,9 +476,11 @@ class Engine:
             # still rejects it when it scores more than 20cp below the best.
             existing = [(m, n) for m, n in recalled if m != sf_preferred]
             recalled = [(sf_preferred, max([n for _, n in existing] or [0]) + 100000)] + existing
+        pattern_only = False
         if allow_book and not recalled:
-            # No exact hit: try cautious near-position hints first.
+            # Approximate recall is ordering evidence ONLY, never a move override.
             recalled = self._pattern_recalled(board)
+            pattern_only = bool(recalled)
         if allow_book and not recalled:
             bm = self.book_move(board)
             if bm:
@@ -521,7 +523,7 @@ class Engine:
                     original_alpha = max(original_alpha, score)
                 if best_move is None:
                     break
-                if recalled:
+                if recalled and not pattern_only:
                     from .position_memory import choose_safe_recalled_move
                     master_choice = choose_safe_recalled_move(recalled, scores, best_score)
                     if master_choice is not None:
