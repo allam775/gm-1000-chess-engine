@@ -1,0 +1,247 @@
+name: GM1000 v0.8 extended Stockfish Skill5 200 and Skill10 80
+on:
+  push:
+    branches:
+      - experiment/native-tactical-v08
+    paths:
+      - '.github/launch-native-v08-expanded.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: gm1000-v08-expanded-validation
+  cancel-in-progress: false
+jobs:
+  skill5:
+    name: 'Skill5 batch ${{ matrix.shard }}: 40 games'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        shard: [0, 1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Verify engine sources, install chess dependency and run core tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install -r requirements.txt pytest
+          python -m py_compile scripts/validate_v08_stockfish_levels.py
+          python -m pytest -q tests/test_v08_expanded_validation.py
+          mkdir -p build/tournament
+          git show 26cdee9b59641a24be88a8574418d9d12e25c3e0:native/gm1000.cpp > build/tournament/v07.cpp
+          git show 043c2c2a22e854ddba30a9e05938787a68d7163f:native/gm1000.cpp > build/tournament/v08.cpp
+          test "$(sha256sum build/tournament/v07.cpp | cut -d' ' -f1)" != "$(sha256sum build/tournament/v08.cpp | cut -d' ' -f1)"
+          for v in v07 v08; do
+            g++ -std=c++17 -O3 -DNDEBUG -pthread -Wall -Wextra -Werror \
+              -I native/third_party "build/tournament/$v.cpp" -o "build/tournament/$v"
+          done
+          python - <<'PY'
+          import json,subprocess,chess
+          for v in ('v07','v08'):
+              r=json.loads(subprocess.check_output(['build/tournament/'+v,'--bench',chess.STARTING_FEN,'100'],text=True,timeout=10))
+              assert chess.Move.from_uci(r['bestmove']) in chess.Board().legal_moves
+              print(v,'legal opening move',r['bestmove'])
+          PY
+      - name: Install opponent Stockfish and record version
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y stockfish
+          echo 'STOCKFISH_PATH=/usr/games/stockfish' >> "$GITHUB_ENV"
+      - name: Play 40 games on fresh, exactly matched Skill5 openings
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          python -m scripts.validate_v08_stockfish_levels play --skill 5 --shard "$SHARD"
+      - name: Archive PGN, progressive scorecards and full results even if job fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v08-skill5-shard-${{ matrix.shard }}
+          path: reports/v08-independent/skill5/shard-${{ matrix.shard }}/
+          retention-days: 90
+          if-no-files-found: warn
+
+  aggregate5:
+    name: Validate all 200 Skill5 games from original PGN
+    needs: skill5
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: gm1000-v08-skill5-shard-*
+          path: reports/v08-independent-collected/
+          merge-multiple: false
+      - name: Revalidate PGN legality, 100 games per version and confidence interval
+        run: |
+          python -m scripts.validate_v08_stockfish_levels aggregate --skill 5 --output reports/v08-levels/skill5/summary.json
+      - name: Archive validated Skill5 report and all original source games
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v08-skill5-stage-report
+          path: |
+            reports/v08-levels/skill5/
+            reports/v08-independent-collected/
+          retention-days: 90
+          if-no-files-found: warn
+
+  skill10:
+    name: 'Skill10 batch ${{ matrix.shard }}: 40 games'
+    needs: aggregate5
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        shard: [0, 1]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Compile same frozen source engines, no model changes
+        run: |
+          set -euo pipefail
+          python -m pip install -r requirements.txt pytest
+          python -m pytest -q tests/test_v08_expanded_validation.py
+          mkdir -p build/tournament
+          git show 26cdee9b59641a24be88a8574418d9d12e25c3e0:native/gm1000.cpp > build/tournament/v07.cpp
+          git show 043c2c2a22e854ddba30a9e05938787a68d7163f:native/gm1000.cpp > build/tournament/v08.cpp
+          for v in v07 v08; do
+            g++ -std=c++17 -O3 -DNDEBUG -pthread -Wall -Wextra -Werror \
+              -I native/third_party "build/tournament/$v.cpp" -o "build/tournament/$v"
+          done
+      - name: Install same Stockfish distribution
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y stockfish
+          echo 'STOCKFISH_PATH=/usr/games/stockfish' >> "$GITHUB_ENV"
+      - name: First fresh Skill10 test, both engines and both colors
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          python -m scripts.validate_v08_stockfish_levels play --skill 10 --shard "$SHARD"
+      - name: Preserve all raw match evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v08-skill10-shard-${{ matrix.shard }}
+          path: reports/v08-independent/skill10/shard-${{ matrix.shard }}/
+          retention-days: 90
+          if-no-files-found: warn
+
+  aggregate10:
+    name: Validate all 80 Skill10 games from original PGN
+    needs: skill10
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: gm1000-v08-skill10-shard-*
+          path: reports/v08-independent-collected/
+          merge-multiple: false
+      - name: Revalidate PGN legality and score 40 games per version
+        run: |
+          python -m scripts.validate_v08_stockfish_levels aggregate --skill 10 --output reports/v08-levels/skill10/summary.json
+      - name: Archive independently validated Skill10 report and original games
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v08-skill10-stage-report
+          path: |
+            reports/v08-levels/skill10/
+            reports/v08-independent-collected/
+          retention-days: 90
+          if-no-files-found: warn
+
+  publish:
+    name: Publish full 280-game independent audit, no automatic promotion
+    needs: [aggregate5, aggregate10]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: gm1000-v08-skill5-stage-report
+          path: reports/validated-skill5/
+      - uses: actions/download-artifact@v4
+        with:
+          name: gm1000-v08-skill10-stage-report
+          path: reports/validated-skill10/
+      - name: Confirm both complete stages and write permanent report
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,pathlib,datetime
+          stage={}
+          for level,total in ((5,200),(10,80)):
+              src=pathlib.Path(f'reports/validated-skill{level}/v08-levels/skill{level}/summary.json')
+              d=json.loads(src.read_text())
+              assert d['total_games']==total and d['games_per_version']==total//2
+              assert d['versions']=={'v07':'26cdee9b59641a24be88a8574418d9d12e25c3e0','v08':'043c2c2a22e854ddba30a9e05938787a68d7163f'}
+              assert all(s['errors']==0 and s['incomplete']==0 and s['completed']==total//2 for s in d['scores'].values())
+              stage[f'skill{level}']=d
+          report={'schema':1,'created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                  'study':'Native v0.8 vs v0.7 fresh Stockfish holdout: Skill5 200 + Skill10 80',
+                  'total_verified_games':280,'per_version_verified_games':140,
+                  'stages':stage,'promotion':'Not automatic; samples cannot establish calibrated Elo.'}
+          target=pathlib.Path('data/native_v08_skill5_skill10_extended_report.json')
+          target.write_text(json.dumps(report,indent=2)+'\n')
+          print('FINAL_V08_EXPANDED',json.dumps({k:{'scores':v['scores'],'delta':v['score_advantage_v08_percentage_points'],
+                  'approx_CI':v['approximate_95pct_ci_opening_clustered_pct'} for k,v in stage.items()},indent=2))
+          PY
+      - name: Archive final report and both source-stage reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v08-skill5-skill10-280games-final
+          path: |
+            data/native_v08_skill5_skill10_extended_report.json
+            reports/validated-skill5/
+            reports/validated-skill10/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Commit report to experimental branch only
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/native_v08_skill5_skill10_extended_report.json
+          git commit -m 'Audit 280 matched Stockfish games for frozen GM1000 v08 and v07'
+          git fetch origin experiment/native-tactical-v08
+          git rebase origin/experiment/native-tactical-v08
+          git push origin HEAD:experiment/native-tactical-v08
