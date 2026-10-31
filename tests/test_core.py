@@ -224,3 +224,16 @@ def test_legacy_trainer_cannot_run_on_incomplete_games(tmp_path):
     with pytest.raises(RuntimeError, match='retired'):
         train_completed_pgn(p, state)
     assert state['epochs'] == 0
+
+
+def test_round_robin_can_select_subset_of_gm_player_archives():
+    from scripts.build_book import Candidate, select_round_robin
+    players = {
+        'Carlsen': [Candidate('Carlsen', {}, ('e2e4',), 'a', 1.0),
+                    Candidate('Carlsen', {}, ('d2d4',), 'b', 1.0)],
+        'Kasparov': [Candidate('Kasparov', {}, ('c2c4',), 'c', 1.0)],
+    }
+    # Restricted player groups should not require Capablanca/Morphy entries.
+    result = select_round_robin(players, 3)
+    assert len(result) == 3
+    assert {x.fingerprint for x in result} == {'a', 'b', 'c'}
