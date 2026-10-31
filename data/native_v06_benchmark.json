@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "timestamp_utc": "2026-10-31T12:48:01.356194+00:00",
+  "experiment": "C++17 independent alpha-beta vs original Python search; both memories off",
+  "seconds_per_move": 0.2,
+  "positions": [
+    {
+      "case": 0,
+      "python_depth": 3,
+      "python_nodes": 2848,
+      "native_depth": 7,
+      "native_elapsed_including_spawn": 0.2024,
+      "native_move": "g1f3",
+      "python_move": "g1f3"
+    },
+    {
+      "case": 1,
+      "python_depth": 2,
+      "python_nodes": 2304,
+      "native_depth": 5,
+      "native_elapsed_including_spawn": 0.2014,
+      "native_move": "f1c4",
+      "python_move": "d2d4"
+    },
+    {
+      "case": 2,
+      "python_depth": 1,
+      "python_nodes": 1504,
+      "native_depth": 5,
+      "native_elapsed_including_spawn": 0.2013,
+      "native_move": "a2a4",
+      "python_move": "c1e3"
+    },
+    {
+      "case": 3,
+      "python_depth": 1,
+      "python_nodes": 1536,
+      "native_depth": 5,
+      "native_elapsed_including_spawn": 0.2013,
+      "native_move": "b2b4",
+      "python_move": "e1g1"
+    }
+  ],
+  "median_python_depth": 1.5,
+  "median_native_depth": 5.0,
+  "limitations": "Four positions, different handcrafted evaluators; raw nodes and Elo not comparable. No promotion absent paired games."
+}
