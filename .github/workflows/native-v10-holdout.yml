@@ -1,0 +1,105 @@
+name: GM1000 v0.10 independent Skill5 200-game validation vs frozen v0.8
+on:
+  push:
+    branches:
+      - experiment/native-tactical-v10
+    paths:
+      - '.github/launch-native-v10-holdout.txt'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: gm1000-v10-frozen-holdout-validation
+  cancel-in-progress: false
+jobs:
+  skill5:
+    name: 'Skill5 batch ${{ matrix.shard }}: 40 games'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        shard: [0, 1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Verify engine sources, install chess dependency and run core tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install -r requirements.txt pytest
+          python -m py_compile scripts/validate_v10_stockfish_levels.py
+          python -m pytest -q tests/test_v09_holdout.py
+          mkdir -p build/tournament native/bin
+          git show 043c2c2a22e854ddba30a9e05938787a68d7163f:native/gm1000.cpp > build/tournament/v08.cpp
+          git show a65726cba4ff28eaee581f9e11fca05820b644f7:native/gm1000.cpp > build/tournament/v10.cpp
+          test "$(sha256sum build/tournament/v08.cpp | cut -d' ' -f1)" != "$(sha256sum build/tournament/v10.cpp | cut -d' ' -f1)"
+          for v in v08 v10; do
+            g++ -std=c++17 -O3 -DNDEBUG -pthread -Wall -Wextra -Werror \
+              -I native/third_party "build/tournament/$v.cpp" -o "build/tournament/$v"
+          done
+          cp build/tournament/v10 native/bin/gm1000-native
+          python -m pytest -q tests/test_native_v09.py tests/test_native_v010_draw.py tests/test_native_core.py
+          python - <<'PY'
+          import json,subprocess,chess
+          for v in ('v08','v10'):
+              r=json.loads(subprocess.check_output(['build/tournament/'+v,'--bench',chess.STARTING_FEN,'100'],text=True,timeout=10))
+              assert chess.Move.from_uci(r['bestmove']) in chess.Board().legal_moves
+              print(v,'legal opening move',r['bestmove'])
+          PY
+      - name: Install opponent Stockfish and record version
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y stockfish
+          echo 'STOCKFISH_PATH=/usr/games/stockfish' >> "$GITHUB_ENV"
+      - name: Play 40 games on fresh, exactly matched Skill5 openings
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          python -m scripts.validate_v10_stockfish_levels play --skill 5 --shard "$SHARD"
+      - name: Archive PGN, progressive scorecards and full results even if job fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v10-skill5-shard-${{ matrix.shard }}
+          path: reports/v10-independent/skill5/shard-${{ matrix.shard }}/
+          retention-days: 90
+          if-no-files-found: warn
+
+  aggregate5:
+    name: Validate all 200 Skill5 games from original PGN
+    needs: skill5
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: gm1000-v10-skill5-shard-*
+          path: reports/v10-independent-collected/
+          merge-multiple: false
+      - name: Revalidate PGN legality, 100 games per version and confidence interval
+        run: |
+          python -m scripts.validate_v10_stockfish_levels aggregate --skill 5 --output reports/v10-levels/skill5/summary.json
+      - name: Archive validated Skill5 report and all original source games
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v10-skill5-stage-report
+          path: |
+            reports/v10-levels/skill5/
+            reports/v10-independent-collected/
+          retention-days: 90
+          if-no-files-found: warn
