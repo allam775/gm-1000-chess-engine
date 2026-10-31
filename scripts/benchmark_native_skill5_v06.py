@@ -21,9 +21,9 @@ def run(args):
     assert Path(sf).is_file(), 'Stockfish executable not found'
     assert args.native.is_file(), 'GM-1000 native executable not found'
     book=json.loads((ROOT/'data/opening_book.json').read_text(encoding='utf-8'))
-    seeds=varied_opening_positions(book,pairs=args.pairs,seed=260637)
+    seeds=varied_opening_positions(book,pairs=args.pairs,seed=args.seed)
     results={};all_games=[]
-    for variant in ('python','native'):
+    for variant in (('native',) if args.native_only else ('python','native')):
         cmd=([sys.executable,'-u','-m','engine.uci'] if variant=='python' else str(args.native))
         record=Counter();games=[]
         with chess.engine.SimpleEngine.popen_uci(cmd,cwd=str(ROOT),timeout=15) as gm, \
@@ -79,7 +79,8 @@ def run(args):
                           'score_percent':round(100*(record['wins']+.5*record['draws'])/completed,2) if completed else None,
                           'games':games}
     report={'schema':1,'created_utc':datetime.now(timezone.utc).isoformat(),
-            'study':'native vs Python GM-1000 independent Stockfish Skill 5 A/B',
+            'study':('native GM-1000 independent extended Stockfish Skill 5 tournament' if args.native_only else 'native vs Python GM-1000 independent Stockfish Skill 5 A/B'),
+            'opening_seed':args.seed,'native_only':args.native_only,'pairs':args.pairs,
             'seconds_per_move':args.seconds,'skill_level':5,'paired_opening_fens':[x['fen'] for x in seeds],
             'variants':results,'limitations':'16 games per version, stochastic opponent, 0.2s/move. Native has different simplified handcrafted evaluator; neither has memories. Not an Elo estimate. No promotion without larger replica.'}
     (out/'summary.json').write_text(json.dumps(report,indent=2)+'\n')
@@ -91,6 +92,8 @@ if __name__=='__main__':
     parser.add_argument('--stockfish',default=None)
     parser.add_argument('--seconds',type=float,default=.2)
     parser.add_argument('--pairs',type=int,default=8)
+    parser.add_argument('--seed',type=int,default=260637)
+    parser.add_argument('--native-only',action='store_true')
     parser.add_argument('--max-plies',type=int,default=220)
     parser.add_argument('--out',type=Path,default=ROOT/'reports/native-v06-skill5')
     args=parser.parse_args()
