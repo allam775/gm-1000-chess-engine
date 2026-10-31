@@ -19,7 +19,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Frozen baseline must be present in local history.
-        with:
           persist-credentials: true
       - uses: actions/setup-python@v5
         with:
