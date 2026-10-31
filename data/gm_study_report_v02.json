@@ -1,0 +1,180 @@
+{
+  "schema": 2,
+  "utc": "2026-10-31T10:04:13.920589+00:00",
+  "source": "PGN Mentor titled GM player archives",
+  "players": [
+    "Carlsen",
+    "Kasparov",
+    "Fischer",
+    "Karpov",
+    "Anand",
+    "Tal",
+    "Botvinnik",
+    "Alekhine"
+  ],
+  "selected_unique_games": 200,
+  "train_games": 160,
+  "holdout_games": 40,
+  "train_position_samples": 1587,
+  "holdout_position_samples": 396,
+  "train_game_ids_sha256": "a9fcb57b7b0901ffc9e62c8abbe6a6ed2228b3be7ee23c8d67f576c5f969c54c",
+  "holdout_game_ids_sha256": "471b88de9bc68cc26244691028b5b124b55d273d7ce2ecbc70ea9adf4122be74",
+  "selection_by_player": {
+    "Alekhine": 25,
+    "Anand": 25,
+    "Botvinnik": 25,
+    "Carlsen": 25,
+    "Fischer": 25,
+    "Karpov": 25,
+    "Kasparov": 25,
+    "Tal": 25
+  },
+  "sampling": "Up to ten positions per game beyond ply 24; one named grandmaster side per game; 4 highest baseline-ranked legal alternatives per position",
+  "training_objective": "pairwise logistic imitation of played GM move, fixed material, regularized bounded evaluation weights",
+  "holdout_control": {
+    "positions": 396,
+    "comparisons": 1542,
+    "pairwise_accuracy_pct": 20.62,
+    "top1_pct_against_hard_negatives": 21.21,
+    "mean_pairwise_log_loss": 0.836599
+  },
+  "holdout_candidate": {
+    "positions": 396,
+    "comparisons": 1542,
+    "pairwise_accuracy_pct": 20.56,
+    "top1_pct_against_hard_negatives": 21.46,
+    "mean_pairwise_log_loss": 0.83322
+  },
+  "offline_validation_gate": {
+    "passes": false,
+    "minimum_improvement_pp": 1.0
+  },
+  "promotion": "NOT PROMOTED: offline move imitation alone cannot prove playing strength; a separate paired match evaluation is mandatory",
+  "optimizer_epochs": 8,
+  "weights": {
+    "bishop_pair": 0.998584,
+    "minor_center": 0.875197,
+    "queen_center": 0.997578,
+    "pawn_progress": 0.863772,
+    "pawn_center": 0.967273,
+    "rook_activity": 0.980967,
+    "king_safety": 0.997164,
+    "pawn_structure": 0.969124,
+    "passed_pawns": 0.941733
+  },
+  "optimizer_history": [
+    {
+      "epoch": 1,
+      "weights": {
+        "bishop_pair": 0.999804,
+        "minor_center": 0.982674,
+        "queen_center": 0.999631,
+        "pawn_progress": 0.980998,
+        "pawn_center": 0.995456,
+        "rook_activity": 0.997392,
+        "king_safety": 0.999564,
+        "pawn_structure": 0.995596,
+        "passed_pawns": 0.992123
+      }
+    },
+    {
+      "epoch": 2,
+      "weights": {
+        "bishop_pair": 0.999615,
+        "minor_center": 0.965888,
+        "queen_center": 0.999324,
+        "pawn_progress": 0.96267,
+        "pawn_center": 0.99105,
+        "rook_activity": 0.994818,
+        "king_safety": 0.999367,
+        "pawn_structure": 0.991485,
+        "passed_pawns": 0.984233
+      }
+    },
+    {
+      "epoch": 3,
+      "weights": {
+        "bishop_pair": 0.99943,
+        "minor_center": 0.949594,
+        "queen_center": 0.999042,
+        "pawn_progress": 0.945112,
+        "pawn_center": 0.986843,
+        "rook_activity": 0.99233,
+        "king_safety": 0.999014,
+        "pawn_structure": 0.987491,
+        "passed_pawns": 0.976524
+      }
+    },
+    {
+      "epoch": 4,
+      "weights": {
+        "bishop_pair": 0.999249,
+        "minor_center": 0.933831,
+        "queen_center": 0.998751,
+        "pawn_progress": 0.927896,
+        "pawn_center": 0.982657,
+        "rook_activity": 0.989948,
+        "king_safety": 0.998611,
+        "pawn_structure": 0.983571,
+        "passed_pawns": 0.969159
+      }
+    },
+    {
+      "epoch": 5,
+      "weights": {
+        "bishop_pair": 0.999076,
+        "minor_center": 0.918698,
+        "queen_center": 0.998469,
+        "pawn_progress": 0.911041,
+        "pawn_center": 0.978619,
+        "rook_activity": 0.987654,
+        "king_safety": 0.998281,
+        "pawn_structure": 0.979656,
+        "passed_pawns": 0.961928
+      }
+    },
+    {
+      "epoch": 6,
+      "weights": {
+        "bishop_pair": 0.998907,
+        "minor_center": 0.903912,
+        "queen_center": 0.998196,
+        "pawn_progress": 0.894878,
+        "pawn_center": 0.974724,
+        "rook_activity": 0.985356,
+        "king_safety": 0.997896,
+        "pawn_structure": 0.976061,
+        "passed_pawns": 0.954911
+      }
+    },
+    {
+      "epoch": 7,
+      "weights": {
+        "bishop_pair": 0.998743,
+        "minor_center": 0.889493,
+        "queen_center": 0.99793,
+        "pawn_progress": 0.879127,
+        "pawn_center": 0.970959,
+        "rook_activity": 0.98319,
+        "king_safety": 0.997525,
+        "pawn_structure": 0.97252,
+        "passed_pawns": 0.948195
+      }
+    },
+    {
+      "epoch": 8,
+      "weights": {
+        "bishop_pair": 0.998584,
+        "minor_center": 0.875197,
+        "queen_center": 0.997578,
+        "pawn_progress": 0.863772,
+        "pawn_center": 0.967273,
+        "rook_activity": 0.980967,
+        "king_safety": 0.997164,
+        "pawn_structure": 0.969124,
+        "passed_pawns": 0.941733
+      }
+    }
+  ],
+  "limitations": "GM-played moves can be suboptimal. One-ply feature imitation is not game-tree search, not Stockfish-supervised and not evidence of higher Elo."
+}
