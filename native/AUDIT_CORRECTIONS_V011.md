@@ -18,6 +18,12 @@ between different reversible move orders. This may reduce effective depth and
 playing strength. Initial timings already show substantial throughput costs.
 Correctness regressions passing do not imply improved game strength.
 
+A local cold-search check on the first twenty frozen opening positions returned
+median reported NPS of 4.22M (v0.8), 3.82M (v0.10), 2.54M (SEE repair), and
+2.61M (both), with median completed depths 6, 6, 6, and 5.5. Raw records are in
+`data/v11_audit_speed_local.json`. This measures a cost, not a playing improvement;
+the CPU is shared, nodes include quiescence transitions, and timings are noisy.
+
 ## Frozen comparison
 
 The 400-game workflow tests four arms: v0.8 baseline, v0.10 control, SEE repair

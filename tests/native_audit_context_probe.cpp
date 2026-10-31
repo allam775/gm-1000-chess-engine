@@ -45,6 +45,16 @@ int main() {
     Board reset = a.first; const auto parent = reset.hash();
     reset.makeMove(uci::uciToMove(reset,"e2e4"));
     assert(next_context(a.second,parent,reset) == 0);
+
+    // The audit capture must actually reach quiescence, not just get a nicer
+    // ordering score while an old SEE rejection still discards it.
+    Board exchange("5k2/4p3/8/8/1B6/8/8/K3R3 w - - 0 1");
+    const Move capture = uci::uciToMove(exchange,"e1e7");
+    Board after = exchange; after.makeMove(capture);
+    Search tactical(stop);
+    const int full_q = tactical.quiescence(exchange,-INF,INF,0,1);
+    const int forced_q = -tactical.quiescence(after,-INF,INF,1,2);
+    assert(full_q >= forced_q);
     std::cout << "fresh=" << score << " warm99=" << warm_old
               << " cold99=" << cold_old << " history_guard=" << guarded_score << '\n';
 }

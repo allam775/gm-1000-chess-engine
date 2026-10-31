@@ -1,0 +1,920 @@
+{
+  "versions": {
+    "v08": "043c2c2a22e854ddba30a9e05938787a68d7163f",
+    "v10": "a65726cba4ff28eaee581f9e11fca05820b644f7",
+    "see": "9fed02ad37f7f82096755056164005379821e742",
+    "both": "fa0925956188518134ed081de69cb3543753b03d"
+  },
+  "positions": [
+    {
+      "id": 0,
+      "fen": "rnbqk2r/p1p2pp1/4pn1p/1p6/1bpP1B2/4P3/PP1N1PPP/RN1QKB1R w KQkq - 0 8"
+    },
+    {
+      "id": 1,
+      "fen": "rnbqk2r/ppp2ppp/1b1p1n2/8/1PBNP3/8/P1P2PPP/RNBQK2R w KQkq - 1 7"
+    },
+    {
+      "id": 2,
+      "fen": "rnb2rk1/ppp1q1bp/3p2p1/3Ppp1n/2P1P3/2N1BPP1/PP1Q3P/2KR1BNR w - - 0 11"
+    },
+    {
+      "id": 3,
+      "fen": "rnbqk1nr/pp2ppbp/3p2p1/2pP4/8/6P1/PPP1PPBP/RNBQK1NR w KQkq - 0 5"
+    },
+    {
+      "id": 4,
+      "fen": "r2q1rk1/1p2bppp/p1np1n2/2p5/4PPb1/2NBBN2/PPP3PP/R2Q1RK1 w - - 0 11"
+    },
+    {
+      "id": 5,
+      "fen": "r2q1rk1/pp2bppp/2n2n2/2p5/3p2b1/NP2PNP1/PB1P1PBP/R2Q1RK1 w - - 5 11"
+    },
+    {
+      "id": 6,
+      "fen": "r2qk2r/pp1nnppp/2pb4/3p4/3P4/3BBb1P/PPPN1PP1/R2QR1K1 w kq - 0 11"
+    },
+    {
+      "id": 7,
+      "fen": "rnbq1rk1/1pp1ppbp/1n1p2p1/p3P3/3P4/1B3N1P/PPPN1PP1/R1BQK2R w KQ - 0 9"
+    },
+    {
+      "id": 8,
+      "fen": "rn2k2r/ppp2pp1/3b1q1p/3p4/3P4/4PN2/PP3PPP/RQ1K1B1R w kq - 0 11"
+    },
+    {
+      "id": 9,
+      "fen": "rn1qk2r/pp3ppp/4bn2/2bp2B1/8/2N2N2/PP2PPPP/R2QKB1R w KQkq - 0 8"
+    },
+    {
+      "id": 10,
+      "fen": "r1bq1rk1/pp1nb1pp/2p1pn2/3p1pB1/2PP4/2N2NP1/PP2PPBP/R2Q1RK1 w - - 2 9"
+    },
+    {
+      "id": 11,
+      "fen": "rnbqkb1r/pp3ppp/5n2/2pp4/3P4/5NP1/PP2PP1P/RNBQKB1R w KQkq - 1 6"
+    },
+    {
+      "id": 12,
+      "fen": "rnbq1rk1/pp1p1ppp/4pn2/2p5/1bPP4/2NBP3/PP3PPP/R1BQK1NR w KQ - 0 6"
+    },
+    {
+      "id": 13,
+      "fen": "rnbqk2r/pp2bppp/4pn2/2pp4/2PP4/2N1PN2/PP3PPP/R1BQKB1R w KQkq - 2 6"
+    },
+    {
+      "id": 14,
+      "fen": "r1bqk1nr/pp2ppbp/2np2p1/2p5/4PP2/3P2P1/PPP3BP/RNBQK1NR w KQkq - 0 6"
+    },
+    {
+      "id": 15,
+      "fen": "r1bq1rk1/pppnbppp/5n2/3p4/3P1B2/2N1P3/PP3PPP/2RQKBNR w K - 0 8"
+    },
+    {
+      "id": 16,
+      "fen": "rnbqkb1r/pp3pp1/2p1pn1p/8/2pP3B/2N2N2/PP2PPPP/R2QKB1R w KQkq - 0 7"
+    },
+    {
+      "id": 17,
+      "fen": "r2qkb1r/pb1n2pp/1p3p2/2pp4/3P1B2/P4N2/1PQ1PPPP/R3KB1R w KQkq - 0 11"
+    },
+    {
+      "id": 18,
+      "fen": "rn1qkb1r/pbpp2pp/1p2pn2/3P1p2/2P5/P1N5/1P2PPPP/R1BQKBNR w KQkq - 1 6"
+    },
+    {
+      "id": 19,
+      "fen": "r3kb1r/ppqn1ppp/4p2n/3p4/Q1pP1P2/2P1P3/PP2B1PP/RNB1K2R w KQkq - 2 11"
+    }
+  ],
+  "rows": [
+    {
+      "depth": 6,
+      "nodes": 850688,
+      "seconds": 0.200198,
+      "nps": 4249240,
+      "bestmove": "a2a3",
+      "score": -93,
+      "variant": "v08",
+      "opening_id": 0
+    },
+    {
+      "depth": 6,
+      "nodes": 724736,
+      "seconds": 0.200209,
+      "nps": 3619893,
+      "bestmove": "b1c3",
+      "score": -97,
+      "variant": "v10",
+      "opening_id": 0
+    },
+    {
+      "depth": 5,
+      "nodes": 488192,
+      "seconds": 0.200204,
+      "nps": 2438472,
+      "bestmove": "d1f3",
+      "score": -90,
+      "variant": "see",
+      "opening_id": 0
+    },
+    {
+      "depth": 5,
+      "nodes": 468736,
+      "seconds": 0.200206,
+      "nps": 2341263,
+      "bestmove": "d1f3",
+      "score": -90,
+      "variant": "both",
+      "opening_id": 0
+    },
+    {
+      "depth": 5,
+      "nodes": 905728,
+      "seconds": 0.200127,
+      "nps": 4525768,
+      "bestmove": "b1c3",
+      "score": 46,
+      "variant": "v08",
+      "opening_id": 1
+    },
+    {
+      "depth": 5,
+      "nodes": 783616,
+      "seconds": 0.200143,
+      "nps": 3915279,
+      "bestmove": "b1c3",
+      "score": 46,
+      "variant": "v10",
+      "opening_id": 1
+    },
+    {
+      "depth": 5,
+      "nodes": 559360,
+      "seconds": 0.200116,
+      "nps": 2795181,
+      "bestmove": "b1c3",
+      "score": 46,
+      "variant": "see",
+      "opening_id": 1
+    },
+    {
+      "depth": 5,
+      "nodes": 568576,
+      "seconds": 0.200175,
+      "nps": 2840390,
+      "bestmove": "b1c3",
+      "score": 46,
+      "variant": "both",
+      "opening_id": 1
+    },
+    {
+      "depth": 6,
+      "nodes": 876800,
+      "seconds": 0.200138,
+      "nps": 4380970,
+      "bestmove": "e4f5",
+      "score": 62,
+      "variant": "v08",
+      "opening_id": 2
+    },
+    {
+      "depth": 7,
+      "nodes": 896768,
+      "seconds": 0.200133,
+      "nps": 4480868,
+      "bestmove": "e4f5",
+      "score": 63,
+      "variant": "v10",
+      "opening_id": 2
+    },
+    {
+      "depth": 6,
+      "nodes": 544768,
+      "seconds": 0.20013,
+      "nps": 2722069,
+      "bestmove": "e4f5",
+      "score": 62,
+      "variant": "see",
+      "opening_id": 2
+    },
+    {
+      "depth": 6,
+      "nodes": 569344,
+      "seconds": 0.200171,
+      "nps": 2844281,
+      "bestmove": "e4f5",
+      "score": 62,
+      "variant": "both",
+      "opening_id": 2
+    },
+    {
+      "depth": 6,
+      "nodes": 870144,
+      "seconds": 0.200128,
+      "nps": 4347930,
+      "bestmove": "g1f3",
+      "score": 0,
+      "variant": "v08",
+      "opening_id": 3
+    },
+    {
+      "depth": 7,
+      "nodes": 845056,
+      "seconds": 0.200214,
+      "nps": 4220759,
+      "bestmove": "g1f3",
+      "score": 21,
+      "variant": "v10",
+      "opening_id": 3
+    },
+    {
+      "depth": 6,
+      "nodes": 581632,
+      "seconds": 0.200186,
+      "nps": 2905463,
+      "bestmove": "g1f3",
+      "score": 0,
+      "variant": "see",
+      "opening_id": 3
+    },
+    {
+      "depth": 6,
+      "nodes": 562688,
+      "seconds": 0.200249,
+      "nps": 2809937,
+      "bestmove": "g1f3",
+      "score": 0,
+      "variant": "both",
+      "opening_id": 3
+    },
+    {
+      "depth": 6,
+      "nodes": 837120,
+      "seconds": 0.200126,
+      "nps": 4182974,
+      "bestmove": "h2h3",
+      "score": 38,
+      "variant": "v08",
+      "opening_id": 4
+    },
+    {
+      "depth": 6,
+      "nodes": 809984,
+      "seconds": 0.200163,
+      "nps": 4046620,
+      "bestmove": "h2h3",
+      "score": 38,
+      "variant": "v10",
+      "opening_id": 4
+    },
+    {
+      "depth": 6,
+      "nodes": 524544,
+      "seconds": 0.200217,
+      "nps": 2619873,
+      "bestmove": "h2h3",
+      "score": 38,
+      "variant": "see",
+      "opening_id": 4
+    },
+    {
+      "depth": 6,
+      "nodes": 527616,
+      "seconds": 0.200248,
+      "nps": 2634818,
+      "bestmove": "h2h3",
+      "score": 38,
+      "variant": "both",
+      "opening_id": 4
+    },
+    {
+      "depth": 5,
+      "nodes": 699136,
+      "seconds": 0.201826,
+      "nps": 3464056,
+      "bestmove": "h2h3",
+      "score": -28,
+      "variant": "v08",
+      "opening_id": 5
+    },
+    {
+      "depth": 6,
+      "nodes": 778240,
+      "seconds": 0.200174,
+      "nps": 3887807,
+      "bestmove": "e3d4",
+      "score": -34,
+      "variant": "v10",
+      "opening_id": 5
+    },
+    {
+      "depth": 5,
+      "nodes": 462080,
+      "seconds": 0.200128,
+      "nps": 2308920,
+      "bestmove": "h2h3",
+      "score": -28,
+      "variant": "see",
+      "opening_id": 5
+    },
+    {
+      "depth": 5,
+      "nodes": 446464,
+      "seconds": 0.20015,
+      "nps": 2230649,
+      "bestmove": "h2h3",
+      "score": -28,
+      "variant": "both",
+      "opening_id": 5
+    },
+    {
+      "depth": 6,
+      "nodes": 869376,
+      "seconds": 0.200397,
+      "nps": 4338267,
+      "bestmove": "d1f3",
+      "score": 35,
+      "variant": "v08",
+      "opening_id": 6
+    },
+    {
+      "depth": 6,
+      "nodes": 806400,
+      "seconds": 0.200217,
+      "nps": 4027620,
+      "bestmove": "d1f3",
+      "score": 35,
+      "variant": "v10",
+      "opening_id": 6
+    },
+    {
+      "depth": 6,
+      "nodes": 657920,
+      "seconds": 0.200186,
+      "nps": 3286546,
+      "bestmove": "d1f3",
+      "score": 35,
+      "variant": "see",
+      "opening_id": 6
+    },
+    {
+      "depth": 6,
+      "nodes": 566016,
+      "seconds": 0.20016,
+      "nps": 2827811,
+      "bestmove": "d1f3",
+      "score": 35,
+      "variant": "both",
+      "opening_id": 6
+    },
+    {
+      "depth": 6,
+      "nodes": 863744,
+      "seconds": 0.200161,
+      "nps": 4315235,
+      "bestmove": "e5d6",
+      "score": 9,
+      "variant": "v08",
+      "opening_id": 7
+    },
+    {
+      "depth": 6,
+      "nodes": 722944,
+      "seconds": 0.200122,
+      "nps": 3612520,
+      "bestmove": "e5d6",
+      "score": 9,
+      "variant": "v10",
+      "opening_id": 7
+    },
+    {
+      "depth": 6,
+      "nodes": 473344,
+      "seconds": 0.200264,
+      "nps": 2363602,
+      "bestmove": "e5d6",
+      "score": 9,
+      "variant": "see",
+      "opening_id": 7
+    },
+    {
+      "depth": 5,
+      "nodes": 476672,
+      "seconds": 0.200164,
+      "nps": 2381404,
+      "bestmove": "a2a4",
+      "score": 19,
+      "variant": "both",
+      "opening_id": 7
+    },
+    {
+      "depth": 5,
+      "nodes": 910336,
+      "seconds": 0.200141,
+      "nps": 4548477,
+      "bestmove": "e3e4",
+      "score": 24,
+      "variant": "v08",
+      "opening_id": 8
+    },
+    {
+      "depth": 7,
+      "nodes": 877312,
+      "seconds": 0.200126,
+      "nps": 4383808,
+      "bestmove": "e3e4",
+      "score": 32,
+      "variant": "v10",
+      "opening_id": 8
+    },
+    {
+      "depth": 6,
+      "nodes": 613120,
+      "seconds": 0.200156,
+      "nps": 3063216,
+      "bestmove": "e3e4",
+      "score": 14,
+      "variant": "see",
+      "opening_id": 8
+    },
+    {
+      "depth": 6,
+      "nodes": 595712,
+      "seconds": 0.200144,
+      "nps": 2976416,
+      "bestmove": "e3e4",
+      "score": 14,
+      "variant": "both",
+      "opening_id": 8
+    },
+    {
+      "depth": 5,
+      "nodes": 862208,
+      "seconds": 0.200179,
+      "nps": 4307183,
+      "bestmove": "d1b3",
+      "score": 30,
+      "variant": "v08",
+      "opening_id": 9
+    },
+    {
+      "depth": 6,
+      "nodes": 744448,
+      "seconds": 0.200257,
+      "nps": 3717454,
+      "bestmove": "d1b3",
+      "score": 17,
+      "variant": "v10",
+      "opening_id": 9
+    },
+    {
+      "depth": 5,
+      "nodes": 515072,
+      "seconds": 0.200187,
+      "nps": 2572949,
+      "bestmove": "d1b3",
+      "score": 30,
+      "variant": "see",
+      "opening_id": 9
+    },
+    {
+      "depth": 5,
+      "nodes": 444160,
+      "seconds": 0.200124,
+      "nps": 2219420,
+      "bestmove": "d1b3",
+      "score": 30,
+      "variant": "both",
+      "opening_id": 9
+    },
+    {
+      "depth": 6,
+      "nodes": 803328,
+      "seconds": 0.20019,
+      "nps": 4012830,
+      "bestmove": "c4d5",
+      "score": -13,
+      "variant": "v08",
+      "opening_id": 10
+    },
+    {
+      "depth": 6,
+      "nodes": 705280,
+      "seconds": 0.200171,
+      "nps": 3523395,
+      "bestmove": "c4d5",
+      "score": -13,
+      "variant": "v10",
+      "opening_id": 10
+    },
+    {
+      "depth": 6,
+      "nodes": 563968,
+      "seconds": 0.200162,
+      "nps": 2817553,
+      "bestmove": "c4d5",
+      "score": -13,
+      "variant": "see",
+      "opening_id": 10
+    },
+    {
+      "depth": 5,
+      "nodes": 521216,
+      "seconds": 0.20016,
+      "nps": 2603990,
+      "bestmove": "c4d5",
+      "score": -7,
+      "variant": "both",
+      "opening_id": 10
+    },
+    {
+      "depth": 6,
+      "nodes": 840960,
+      "seconds": 0.200216,
+      "nps": 4200264,
+      "bestmove": "c1e3",
+      "score": 10,
+      "variant": "v08",
+      "opening_id": 11
+    },
+    {
+      "depth": 6,
+      "nodes": 724480,
+      "seconds": 0.200173,
+      "nps": 3619269,
+      "bestmove": "c1e3",
+      "score": 10,
+      "variant": "v10",
+      "opening_id": 11
+    },
+    {
+      "depth": 5,
+      "nodes": 474112,
+      "seconds": 0.200242,
+      "nps": 2367693,
+      "bestmove": "b1c3",
+      "score": 25,
+      "variant": "see",
+      "opening_id": 11
+    },
+    {
+      "depth": 5,
+      "nodes": 522496,
+      "seconds": 0.200142,
+      "nps": 2610623,
+      "bestmove": "b1c3",
+      "score": 25,
+      "variant": "both",
+      "opening_id": 11
+    },
+    {
+      "depth": 6,
+      "nodes": 838400,
+      "seconds": 0.200249,
+      "nps": 4186784,
+      "bestmove": "g1f3",
+      "score": 25,
+      "variant": "v08",
+      "opening_id": 12
+    },
+    {
+      "depth": 6,
+      "nodes": 751616,
+      "seconds": 0.20017,
+      "nps": 3754894,
+      "bestmove": "g1e2",
+      "score": 25,
+      "variant": "v10",
+      "opening_id": 12
+    },
+    {
+      "depth": 6,
+      "nodes": 481536,
+      "seconds": 0.200146,
+      "nps": 2405926,
+      "bestmove": "g1e2",
+      "score": 25,
+      "variant": "see",
+      "opening_id": 12
+    },
+    {
+      "depth": 6,
+      "nodes": 526336,
+      "seconds": 0.200234,
+      "nps": 2628605,
+      "bestmove": "g1e2",
+      "score": 25,
+      "variant": "both",
+      "opening_id": 12
+    },
+    {
+      "depth": 6,
+      "nodes": 892160,
+      "seconds": 0.200145,
+      "nps": 4457562,
+      "bestmove": "c4d5",
+      "score": 33,
+      "variant": "v08",
+      "opening_id": 13
+    },
+    {
+      "depth": 6,
+      "nodes": 796928,
+      "seconds": 0.200116,
+      "nps": 3982325,
+      "bestmove": "c4d5",
+      "score": 33,
+      "variant": "v10",
+      "opening_id": 13
+    },
+    {
+      "depth": 5,
+      "nodes": 477184,
+      "seconds": 0.200349,
+      "nps": 2381767,
+      "bestmove": "c4d5",
+      "score": 68,
+      "variant": "see",
+      "opening_id": 13
+    },
+    {
+      "depth": 5,
+      "nodes": 481024,
+      "seconds": 0.200146,
+      "nps": 2403370,
+      "bestmove": "c4d5",
+      "score": 68,
+      "variant": "both",
+      "opening_id": 13
+    },
+    {
+      "depth": 6,
+      "nodes": 809472,
+      "seconds": 0.200142,
+      "nps": 4044486,
+      "bestmove": "g1f3",
+      "score": -10,
+      "variant": "v08",
+      "opening_id": 14
+    },
+    {
+      "depth": 6,
+      "nodes": 713216,
+      "seconds": 0.200198,
+      "nps": 3562550,
+      "bestmove": "g1f3",
+      "score": -10,
+      "variant": "v10",
+      "opening_id": 14
+    },
+    {
+      "depth": 6,
+      "nodes": 553728,
+      "seconds": 0.200214,
+      "nps": 2765684,
+      "bestmove": "g1f3",
+      "score": -10,
+      "variant": "see",
+      "opening_id": 14
+    },
+    {
+      "depth": 6,
+      "nodes": 572160,
+      "seconds": 0.200196,
+      "nps": 2858000,
+      "bestmove": "g1f3",
+      "score": -10,
+      "variant": "both",
+      "opening_id": 14
+    },
+    {
+      "depth": 5,
+      "nodes": 718336,
+      "seconds": 0.200123,
+      "nps": 3589469,
+      "bestmove": "g1f3",
+      "score": 26,
+      "variant": "v08",
+      "opening_id": 15
+    },
+    {
+      "depth": 6,
+      "nodes": 765952,
+      "seconds": 0.200118,
+      "nps": 3827506,
+      "bestmove": "g1f3",
+      "score": 1,
+      "variant": "v10",
+      "opening_id": 15
+    },
+    {
+      "depth": 5,
+      "nodes": 416768,
+      "seconds": 0.200362,
+      "nps": 2080070,
+      "bestmove": "g1f3",
+      "score": 26,
+      "variant": "see",
+      "opening_id": 15
+    },
+    {
+      "depth": 6,
+      "nodes": 474112,
+      "seconds": 0.200161,
+      "nps": 2368658,
+      "bestmove": "f1d3",
+      "score": 14,
+      "variant": "both",
+      "opening_id": 15
+    },
+    {
+      "depth": 6,
+      "nodes": 745216,
+      "seconds": 0.201673,
+      "nps": 3695173,
+      "bestmove": "f3e5",
+      "score": -55,
+      "variant": "v08",
+      "opening_id": 16
+    },
+    {
+      "depth": 6,
+      "nodes": 669184,
+      "seconds": 0.200331,
+      "nps": 3340390,
+      "bestmove": "f3e5",
+      "score": -55,
+      "variant": "v10",
+      "opening_id": 16
+    },
+    {
+      "depth": 6,
+      "nodes": 470016,
+      "seconds": 0.200165,
+      "nps": 2348147,
+      "bestmove": "f3e5",
+      "score": -55,
+      "variant": "see",
+      "opening_id": 16
+    },
+    {
+      "depth": 6,
+      "nodes": 449536,
+      "seconds": 0.200246,
+      "nps": 2244916,
+      "bestmove": "f3e5",
+      "score": -55,
+      "variant": "both",
+      "opening_id": 16
+    },
+    {
+      "depth": 5,
+      "nodes": 826112,
+      "seconds": 0.200293,
+      "nps": 4124508,
+      "bestmove": "h2h4",
+      "score": 16,
+      "variant": "v08",
+      "opening_id": 17
+    },
+    {
+      "depth": 6,
+      "nodes": 787200,
+      "seconds": 0.20014,
+      "nps": 3933250,
+      "bestmove": "c2f5",
+      "score": 9,
+      "variant": "v10",
+      "opening_id": 17
+    },
+    {
+      "depth": 5,
+      "nodes": 533504,
+      "seconds": 0.200216,
+      "nps": 2664638,
+      "bestmove": "h2h4",
+      "score": 16,
+      "variant": "see",
+      "opening_id": 17
+    },
+    {
+      "depth": 5,
+      "nodes": 494080,
+      "seconds": 0.200133,
+      "nps": 2468763,
+      "bestmove": "h2h4",
+      "score": 16,
+      "variant": "both",
+      "opening_id": 17
+    },
+    {
+      "depth": 6,
+      "nodes": 890112,
+      "seconds": 0.200177,
+      "nps": 4446623,
+      "bestmove": "g1f3",
+      "score": 21,
+      "variant": "v08",
+      "opening_id": 18
+    },
+    {
+      "depth": 6,
+      "nodes": 752384,
+      "seconds": 0.200149,
+      "nps": 3759126,
+      "bestmove": "g1f3",
+      "score": 21,
+      "variant": "v10",
+      "opening_id": 18
+    },
+    {
+      "depth": 6,
+      "nodes": 500736,
+      "seconds": 0.200259,
+      "nps": 2500440,
+      "bestmove": "g1f3",
+      "score": 21,
+      "variant": "see",
+      "opening_id": 18
+    },
+    {
+      "depth": 6,
+      "nodes": 538112,
+      "seconds": 0.200109,
+      "nps": 2689097,
+      "bestmove": "g1f3",
+      "score": 21,
+      "variant": "both",
+      "opening_id": 18
+    },
+    {
+      "depth": 6,
+      "nodes": 826880,
+      "seconds": 0.200149,
+      "nps": 4131314,
+      "bestmove": "g2g4",
+      "score": 30,
+      "variant": "v08",
+      "opening_id": 19
+    },
+    {
+      "depth": 6,
+      "nodes": 761856,
+      "seconds": 0.200121,
+      "nps": 3806971,
+      "bestmove": "b2b3",
+      "score": 18,
+      "variant": "v10",
+      "opening_id": 19
+    },
+    {
+      "depth": 5,
+      "nodes": 466432,
+      "seconds": 0.200166,
+      "nps": 2330229,
+      "bestmove": "b2b3",
+      "score": 49,
+      "variant": "see",
+      "opening_id": 19
+    },
+    {
+      "depth": 5,
+      "nodes": 452352,
+      "seconds": 0.200202,
+      "nps": 2259482,
+      "bestmove": "b2b3",
+      "score": 49,
+      "variant": "both",
+      "opening_id": 19
+    }
+  ],
+  "medians": {
+    "v08": {
+      "depth": 6.0,
+      "nps": 4224752.0,
+      "nodes": 845824.0,
+      "seconds": 0.20016899999999999
+    },
+    "v10": {
+      "depth": 6.0,
+      "nps": 3817238.5,
+      "nodes": 763904.0,
+      "seconds": 0.2001665
+    },
+    "see": {
+      "depth": 6.0,
+      "nps": 2536694.5,
+      "nodes": 507904.0,
+      "seconds": 0.2001865
+    },
+    "both": {
+      "depth": 5.5,
+      "nps": 2607306.5,
+      "nodes": 521856.0,
+      "seconds": 0.20016250000000002
+    }
+  },
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "limitations": "Cold FEN searches on a shared virtual CPU; no game-strength inference; ordered history TT is conservative."
+}
