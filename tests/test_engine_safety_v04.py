@@ -62,3 +62,17 @@ def test_illegal_or_bad_moves_are_not_suggested():
     after.push_san("Nf6")
     index = build_index({book_key(after): {"preferred_move": "e7e5"}})
     assert pattern_candidates(b, index) == []
+
+
+def test_opening_book_is_a_search_hint_not_automatic_move(tmp_path):
+    import json
+    from engine.search import book_key
+    b = chess.Board()
+    bk = {"positions": {book_key(b): {"a2a3": 100000}}}
+    path = tmp_path / "book.json"
+    path.write_text(json.dumps(bk))
+    e = Engine(book_path=path, memory_path=tmp_path / "missing-gm.json",
+               stockfish_memory_path=tmp_path / "missing-sf.json")
+    res = e.search(b, depth=1, time_limit=None, allow_book=True)
+    assert res.depth == 1 and not res.book
+    assert res.move in b.legal_moves
