@@ -1,0 +1,62 @@
+name: GM-1000 v0.6 compiled native search verification
+on:
+  push:
+    paths:
+      - '.github/launch-native-v06.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install dependencies and test Python fallback
+        run: |
+          python -m pip install -r requirements.txt pytest
+          python -m pytest -q
+      - name: Fetch PINNED chess rule library and compile independent GM1000 C++ search
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/native
+          curl -fsSL --retry 3 https://raw.githubusercontent.com/Disservin/chess-library/53e6a841dcda7059a2af363d85f785ef1817304a/include/chess.hpp -o build/native/chess.hpp
+          g++ -std=c++17 -O3 -DNDEBUG -Wall -Wextra -Ibuild/native native/gm1000_native.cpp -o build/native/gm1000_native
+          test "$(build/native/gm1000_native --perft 3)" = "8902"
+          test "$(build/native/gm1000_native --perft 4)" = "197281"
+      - name: Test legal UCI moves on old Skill-5 tournament positions
+        env:
+          NATIVE_ENGINE: build/native/gm1000_native
+        run: python -m pytest -q tests/test_native_v06.py
+      - name: Compare native and Python completed depths at 200ms
+        env:
+          NATIVE_ENGINE: build/native/gm1000_native
+        run: python scripts/benchmark_native_v06.py
+      - name: Archive native build and benchmark report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v06-native-compiled-and-benchmark
+          path: |
+            build/native/gm1000_native
+            reports/native_v06_benchmark.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Commit transparent benchmark summary only
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp reports/native_v06_benchmark.json data/native_v06_benchmark.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/native_v06_benchmark.json
+          git commit -m 'Record native v0.6 search depth vs Python'
+          git fetch origin main
+          git rebase origin/main
+          git push
