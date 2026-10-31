@@ -1,0 +1,1 @@
+Launch one-time v0.6 search performance audit on 16 historical Skill-5-game positions, 0.2-second/move baseline and cProfile tactical search hotspots, with both memories and learned evaluator off. Record search depth and NPS with no changes to playing strength or evaluator.
