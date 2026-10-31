@@ -296,9 +296,12 @@ python scripts/learn_series.py --rounds 20 --games 4 --stockfish-skill 0 --secon
 
 ## Position memory — v0.3 (exact grandmaster positions)
 
+**Current verified database: 560 distinct source games, 32,233 exact positions, 32,728 position–move pairs and 35,157 observations.** The expansion is append-only; new game fingerprints and provenance are in `data/position_memory_expansion_index.json`, with a complete count audit in `data/position_memory_report.json`.
+
+
 In addition to the 24-ply opening book, the engine supports a **persistent database of exact board positions from studied grandmaster games**, including middlegame positions. To build it, run **Build GM position memory from 200-game study** in GitHub Actions.
 
-- The database is stored in `data/position_memory.json` and its provenance/counts in `data/position_memory_report.json`. It is built exclusively from the **160 training games** of the reproducible 200-game grandmaster study; the **40 validation games remain excluded**.
+- The database is stored in `data/position_memory.json` and its provenance/counts in `data/position_memory_report.json`. It initially used the **160 training games** of the reproducible 200-game grandmaster study. The audited [400-game expansion](https://github.com/allam775/gm-1000-chess-engine/actions/runs/41192151772) added **400 completely different grandmaster games**, excluding all 200 original study games and the separate 1,000 opening-book study games. The **40 validation games remain excluded**.
 - For each position (EPD: board, turn, castling and legal en passant), it stores legal move UCI IDs, the number of times a **named grandmaster** made the move, and player counts; positions beyond the opening book are included (up to ply 180). It does not store raw chess engine scores or assert that any observed move is objectively best.
 - On each move, UCI GM-1000 first looks up the current position. If found, remembered moves are searched first by alpha-beta; they can be preferred **only within 20 centipawns of the best searched move**, never over detected mates. If the position is unknown, it uses its existing historical opening book or regular alpha-beta search. This is **exact position lookup**, not fuzzy generalization.
 - UCI toggle: `setoption name PositionMemory value false` to disable memory and run the same engine as a control. The on-disk database is reloaded on `ucinewgame`. No rejected evaluation-weight candidates are deployed.
