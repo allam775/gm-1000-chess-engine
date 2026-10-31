@@ -1,1 +1,3 @@
 Audit exact and approximate Stockfish-19 memory coverage against 16 original real Skill Level 5 tournament games, with no training changes.
+
+Recheck after pawn-file matching and safe move-order-only approximate hints.
