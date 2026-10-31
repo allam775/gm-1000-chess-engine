@@ -1,5 +1,8 @@
 name: Engine arena
 on:
+  push:
+    paths:
+      - '.github/bootstrap-arena.txt'
   workflow_dispatch:
     inputs:
       games:
@@ -38,9 +41,9 @@ jobs:
       - name: Run matches
         env:
           STOCKFISH_PATH: /usr/games/stockfish
-          ARENA_GAMES: ${{ inputs.games }}
-          ARENA_SKILL: ${{ inputs.stockfish_skill }}
-          ARENA_SECONDS: ${{ inputs.seconds_per_move }}
+          ARENA_GAMES: ${{ inputs.games || '4' }}
+          ARENA_SKILL: ${{ inputs.stockfish_skill || '0' }}
+          ARENA_SECONDS: ${{ inputs.seconds_per_move || '0.2' }}
         run: |
           python scripts/arena.py \
             --games "$ARENA_GAMES" \
