@@ -1,0 +1,69 @@
+name: Expand GM memory by 400 new grandmaster games
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/launch-memory-plus400.txt'
+permissions:
+  contents: write
+concurrency:
+  group: gm1000-position-memory
+  cancel-in-progress: false
+jobs:
+  expand:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt pytest
+      - name: Unit and memory regression tests
+        run: python -m pytest -q
+      - name: Append 400 unique grandmaster games while preserving original memory
+        run: python scripts/expand_position_memory.py --additional 400 --max-plies 180 --pool-per-player 500
+      - name: Verify append-only memory integrity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('data/position_memory.json').read_text())
+          r=json.loads(Path('data/position_memory_report.json').read_text())
+          i=json.loads(Path('data/position_memory_expansion_index.json').read_text())
+          assert d['schema']==1
+          assert d['source_games']==r['source_games']==560
+          assert r['previous_source_games']==160 and r['new_games_this_run']==400
+          assert d['holdout_games_excluded']==40
+          assert d['positions_count']>=10539 and d['observations']>11276
+          assert r['original_opening_book_games_excluded']==1000
+          hashes=[x['sha256'] for x in i['games']]
+          assert len(hashes)==len(set(hashes))==400
+          assert sum(len(m) for m in d['positions'].values())==d['move_pairs_count']
+          assert sum(v['count'] for m in d['positions'].values() for v in m.values())==d['observations']
+          assert len(r['new_game_distribution'])==8
+          print('Verified',d['source_games'],'source games,',d['positions_count'],'positions,',d['observations'],'observations')
+          PY
+      - name: Upload complete expanded memory and provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-memory-plus400
+          path: |
+            data/position_memory.json
+            data/position_memory_report.json
+            data/position_memory_expansion_index.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Commit cumulative learned positions and new game index
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/position_memory.json data/position_memory_report.json data/position_memory_expansion_index.json
+          git commit -m "Add 400 unique grandmaster games to persistent position memory"
+          git push
