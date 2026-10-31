@@ -1,0 +1,56 @@
+name: GM-1000 v0.4 post-fix Skill 5 validation
+on:
+  push:
+    paths:
+      - '.github/launch-v04-skill5.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: gm1000-v04-skill5-test
+  cancel-in-progress: false
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Run engine regression suite
+        run: |
+          python -m pip install -r requirements.txt pytest
+          python -m pytest -q
+      - name: Install identical Stockfish Skill 5 opponent
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y stockfish
+          echo 'STOCKFISH_PATH=/usr/games/stockfish' >> "$GITHUB_ENV"
+      - name: Four 4-game Skill Level 5 tournaments after engine fixes
+        run: |
+          python scripts/run_stockfish5_four_tournaments.py \
+            --tournaments 4 --games-per-tournament 4 --skill 5 \
+            --seconds-per-move 0.2 --max-plies 300
+      - name: Archive all new PGNs, partial and final results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v04-skill5-validation
+          path: reports/stockfish-skill5-four/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Publish separate post-fix scorecard without overwriting baseline
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp reports/stockfish-skill5-four/summary.json data/skill5_v04_validation_report.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/skill5_v04_validation_report.json
+          git commit -m 'Record independent v0.4 Skill-5 validation without overwriting baseline'
+          git push
