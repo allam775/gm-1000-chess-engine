@@ -1,0 +1,446 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-31T13:11:35.087198+00:00",
+  "study": "native GM-1000 independent extended Stockfish Skill 5 tournament",
+  "opening_seed": 26103153,
+  "native_only": true,
+  "pairs": 20,
+  "seconds_per_move": 0.2,
+  "skill_level": 5,
+  "paired_opening_fens": [
+    "rnbqkb1r/pp2pppp/5n2/3p4/3P4/2N5/PP2PPPP/R1BQKBNR w KQkq - 2 5",
+    "r2qk2r/pb1p1ppp/1pn1pn2/8/1b1PP3/3BB2N/PP1N1PPP/R2QK2R w KQkq - 1 9",
+    "r1bq1rk1/pp2bppp/2n2n2/3p2B1/3p4/2N2NP1/PP2PPBP/R2Q1RK1 w - - 0 10",
+    "r1bqk1nr/pp2ppbp/2np2p1/8/3NP3/2N1B3/PPP2PPP/R2QKB1R w KQkq - 0 7",
+    "rn1qkb1r/1bpp2pp/1p2pn2/p2P1p2/2P5/P1N3P1/1P2PP1P/R1BQKBNR w KQkq - 0 7",
+    "rn1qkbnr/pb1p1ppp/1p2p3/2p5/3PP3/3B3N/PPP2PPP/RNBQK2R w KQkq - 0 5",
+    "r1b1k2r/ppq1npbp/2n1p1p1/2ppP3/8/3P1NP1/PPP1QPBP/RNB2RK1 w kq - 1 9",
+    "rn1qkb1r/1bp2ppp/p3pn2/8/Pp1P4/2NBPN2/1P3PPP/R1BQK2R w KQkq - 0 9",
+    "rnbq1rk1/pp3pbp/4pnp1/3pN3/3P4/2N3P1/PP2PPBP/R1BQK2R w KQ - 0 9",
+    "rn1q1rk1/1pp2ppp/p1bbpn2/8/P1QP1B2/5NP1/1P2PPBP/RN3RK1 w - - 3 11",
+    "rnb2rk1/pp2q1pp/2pbpn2/5p2/2pP4/2N1PP1N/PPQB2PP/2KR1B1R w - - 0 10",
+    "r2qkb1r/pp1n1p1p/4pnp1/2p5/3pPP2/5N2/PPPPN1PP/R1BQK2R w KQkq - 2 9",
+    "1rbq1rk1/pp2ppbp/2np1np1/2p5/4PP2/2PP1NP1/PP4BP/RNBQ1RK1 w - - 1 9",
+    "rnbqk2r/1p2ppbp/p1pp1np1/8/2PPP3/2N1BP2/PP4PP/R2QKBNR w KQkq - 0 7",
+    "r1bqkb1r/ppp2ppp/5n2/n2Pp1N1/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+    "rnbqkb1r/pp1p1p1p/5np1/2pP4/8/5N2/PP2PPPP/RNBQKB1R w KQkq - 0 6",
+    "rn1q1rk1/ppp3pp/3bb3/5p2/3Pp3/P1P1P3/3NBPPP/R1BQK2R w KQ - 0 11",
+    "r1bqk2r/pp2ppbp/3p1np1/n7/3NP3/2N1B3/PPP1BPPP/R2QK2R w KQkq - 0 9",
+    "rnbqkb1r/ppp1pp1p/3p2p1/3nP3/3P4/5N2/PPP2PPP/RNBQKB1R w KQkq - 0 5",
+    "rn1qk2r/pp2bppp/2p1pn2/7b/2BP4/2N1PN1P/PP3PP1/R1BQ1RK1 w kq - 3 9"
+  ],
+  "variants": {
+    "native": {
+      "wins": 14,
+      "draws": 10,
+      "losses": 16,
+      "completed": 40,
+      "errors": 0,
+      "incomplete": 0,
+      "score_percent": 47.5,
+      "games": [
+        {
+          "variant": "native",
+          "game": 1,
+          "paired_opening": 1,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 67,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 2,
+          "paired_opening": 1,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 40,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 3,
+          "paired_opening": 2,
+          "gm_color": "white",
+          "result": "1/2-1/2",
+          "plies": 117,
+          "termination": "THREEFOLD_REPETITION",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 4,
+          "paired_opening": 2,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 61,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 5,
+          "paired_opening": 3,
+          "gm_color": "white",
+          "result": "0-1",
+          "plies": 168,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 6,
+          "paired_opening": 3,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 80,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 7,
+          "paired_opening": 4,
+          "gm_color": "white",
+          "result": "1/2-1/2",
+          "plies": 101,
+          "termination": "THREEFOLD_REPETITION",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 8,
+          "paired_opening": 4,
+          "gm_color": "black",
+          "result": "1/2-1/2",
+          "plies": 78,
+          "termination": "THREEFOLD_REPETITION",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 9,
+          "paired_opening": 5,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 79,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 10,
+          "paired_opening": 5,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 109,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 11,
+          "paired_opening": 6,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 79,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 12,
+          "paired_opening": 6,
+          "gm_color": "black",
+          "result": "1/2-1/2",
+          "plies": 154,
+          "termination": "THREEFOLD_REPETITION",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 13,
+          "paired_opening": 7,
+          "gm_color": "white",
+          "result": "0-1",
+          "plies": 176,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 14,
+          "paired_opening": 7,
+          "gm_color": "black",
+          "result": "1/2-1/2",
+          "plies": 48,
+          "termination": "THREEFOLD_REPETITION",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 15,
+          "paired_opening": 8,
+          "gm_color": "white",
+          "result": "0-1",
+          "plies": 150,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 16,
+          "paired_opening": 8,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 83,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 17,
+          "paired_opening": 9,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 91,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 18,
+          "paired_opening": 9,
+          "gm_color": "black",
+          "result": "1/2-1/2",
+          "plies": 106,
+          "termination": "THREEFOLD_REPETITION",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 19,
+          "paired_opening": 10,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 127,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 20,
+          "paired_opening": 10,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 79,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 21,
+          "paired_opening": 11,
+          "gm_color": "white",
+          "result": "0-1",
+          "plies": 194,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 22,
+          "paired_opening": 11,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 73,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 23,
+          "paired_opening": 12,
+          "gm_color": "white",
+          "result": "1/2-1/2",
+          "plies": 107,
+          "termination": "THREEFOLD_REPETITION",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 24,
+          "paired_opening": 12,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 64,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 25,
+          "paired_opening": 13,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 69,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 26,
+          "paired_opening": 13,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 62,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 27,
+          "paired_opening": 14,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 81,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 28,
+          "paired_opening": 14,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 97,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 29,
+          "paired_opening": 15,
+          "gm_color": "white",
+          "result": "1/2-1/2",
+          "plies": 121,
+          "termination": "THREEFOLD_REPETITION",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 30,
+          "paired_opening": 15,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 83,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 31,
+          "paired_opening": 16,
+          "gm_color": "white",
+          "result": "1/2-1/2",
+          "plies": 141,
+          "termination": "THREEFOLD_REPETITION",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 32,
+          "paired_opening": 16,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 169,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 33,
+          "paired_opening": 17,
+          "gm_color": "white",
+          "result": "0-1",
+          "plies": 48,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 34,
+          "paired_opening": 17,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 169,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 35,
+          "paired_opening": 18,
+          "gm_color": "white",
+          "result": "0-1",
+          "plies": 70,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 36,
+          "paired_opening": 18,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 101,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 37,
+          "paired_opening": 19,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 93,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 38,
+          "paired_opening": 19,
+          "gm_color": "black",
+          "result": "1/2-1/2",
+          "plies": 66,
+          "termination": "THREEFOLD_REPETITION",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 39,
+          "paired_opening": 20,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 61,
+          "termination": "CHECKMATE",
+          "error": null
+        },
+        {
+          "variant": "native",
+          "game": 40,
+          "paired_opening": 20,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 130,
+          "termination": "CHECKMATE",
+          "error": null
+        }
+      ]
+    }
+  },
+  "limitations": "16 games per version, stochastic opponent, 0.2s/move. Native has different simplified handcrafted evaluator; neither has memories. Not an Elo estimate. No promotion without larger replica."
+}
