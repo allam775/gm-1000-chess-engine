@@ -339,7 +339,7 @@ struct Search {
         // something better than beta without making any move, searching all
         // ordinary moves is usually unnecessary. Forbid in-check and
         // pawn-only endings (zugzwang), and never trust mate-range bounds.
-        if (!null_verification && depth >= 3 && ply >= 1 && !checked &&
+        if (!null_verification && depth >= 4 && ply >= 1 && !checked &&
             b.hasNonPawnMaterial(b.sideToMove()) &&
             beta < MATE - 512 && alpha > -MATE + 512) {
             b.makeNullMove();
@@ -348,7 +348,8 @@ struct Search {
             catch (...) { b.unmakeNullMove(); throw; }
             b.unmakeNullMove();
             if (null_score >= beta) {
-                if (depth <= 4) return beta;
+                // Every null-move cutoff must be confirmed by legal moves.
+                // The former shallow shortcut could wrongly prune a necessary defense.
                 // A null pass can overlook only-move defenses. Confirm a
                 // depth-reduced ordinary search, without recursive null moves.
                 null_verification = true;
