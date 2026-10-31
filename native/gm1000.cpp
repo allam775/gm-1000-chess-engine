@@ -536,7 +536,7 @@ int main(int argc, char** argv) {
             if (m.move()==Move::NO_MOVE || !b.isLegal(m)) return 3;
             b.makeMove(m);
         }
-        std::cout << (is_draw(b) ? "draw" : "live") << '\\n';
+        std::cout << (is_draw(b) ? "draw" : "live") << '\n';
         return 0;
     }
     if (argc > 1 && std::string(argv[1])=="--see") {
