@@ -142,12 +142,16 @@ class Engine:
         self.memory_path = Path(memory_path)
         self.memory_enabled = True
         self._memory: dict | None = None
+        self.stockfish_memory_path = Path('data/stockfish19_position_memory.json')
+        self.stockfish_memory_enabled = True
+        self._stockfish_memory: dict | None = None
 
     def new_game(self) -> None:
         self.table.clear()
         self.killers.clear()
         self._learning = None  # Approved model updates are reloaded between games.
         self._memory = None  # New memory database becomes visible next game.
+        self._stockfish_memory = None
 
     def _load_book(self) -> dict:
         if self._book is None:
@@ -183,6 +187,34 @@ class Engine:
                 self._memory = {'schema': 1, 'positions': {}}
         from .position_memory import legal_memory_moves
         return legal_memory_moves(board, self._memory)
+
+    def _stockfish_preferred(self, board: chess.Board) -> chess.Move | None:
+        """Recall independently reconciled Stockfish 19 position evidence.
+
+        The overlay never bypasses normal legal-move checks or alpha-beta:
+        root search evaluates this move alongside every alternative.
+        """
+        if not self.stockfish_memory_enabled or not self.memory_enabled:
+            return None
+        if self._stockfish_memory is None:
+            try:
+                raw = json.loads(self.stockfish_memory_path.read_text(encoding='utf-8'))
+                if raw.get('schema') != 1 or not isinstance(raw.get('positions'), dict):
+                    raise ValueError('Invalid Stockfish evidence schema')
+                self._stockfish_memory = raw
+            except (OSError, ValueError, TypeError):
+                self._stockfish_memory = {'positions': {}}
+        entry = self._stockfish_memory['positions'].get(book_key(board))
+        if not isinstance(entry, dict):
+            return None
+        uci = entry.get('preferred_move')
+        if not isinstance(uci, str):
+            return None
+        try:
+            move = chess.Move.from_uci(uci)
+            return move if move in board.legal_moves else None
+        except ValueError:
+            return None
 
     def book_move(self, board: chess.Board) -> chess.Move | None:
         if not self.own_book:
@@ -358,6 +390,12 @@ class Engine:
         if board.is_game_over(claim_draw=True):
             return SearchResult(None)
         recalled = self.memory_moves(board) if allow_book else []
+        sf_preferred = self._stockfish_preferred(board) if allow_book else None
+        if sf_preferred is not None:
+            # This is a search preference, not a forced move. Root alpha-beta
+            # still rejects it when it scores more than 20cp below the best.
+            existing = [(m, n) for m, n in recalled if m != sf_preferred]
+            recalled = [(sf_preferred, max([n for _, n in existing] or [0]) + 100000)] + existing
         if allow_book and not recalled:
             bm = self.book_move(board)
             if bm:
