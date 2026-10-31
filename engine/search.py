@@ -331,10 +331,14 @@ class Engine:
             raise SearchTimeout()
 
     def _drawn(self, board: chess.Board) -> bool:
-        return (board.is_stalemate() or board.is_insufficient_material()
-                or board.is_fivefold_repetition() or board.is_seventyfive_moves()
-                or (board.halfmove_clock >= 8 and board.is_repetition(3))
-                or board.halfmove_clock >= 100)
+        # Threefold/50-move claims subsume fivefold/75-move automatic draws.
+        # Avoid scanning the full repetition stack and checking stalemate first
+        # at every single alpha-beta node. This preserves the previous outcomes.
+        if board.halfmove_clock >= 100 or board.is_insufficient_material():
+            return True
+        if board.halfmove_clock >= 8 and board.is_repetition(3):
+            return True
+        return board.is_stalemate()
 
     def _ordered(self, board: chess.Board, moves: list[chess.Move], ply: int,
                  preferred: chess.Move | None = None) -> list[chess.Move]:
