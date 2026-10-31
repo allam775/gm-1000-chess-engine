@@ -1,0 +1,1 @@
+Run four 4-game tournaments against Stockfish Skill Level 0: rounds 1/3 with the 560-game grandmaster position memory enabled, rounds 2/4 disabled, both with 0.2 seconds per move; archive each PGN and comparisons.
