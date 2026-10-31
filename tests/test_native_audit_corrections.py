@@ -16,6 +16,12 @@ VALUES = {chess.PAWN: 100, chess.KNIGHT: 320, chess.BISHOP: 335,
           chess.ROOK: 500, chess.QUEEN: 900, chess.KING: 20000}
 
 
+@pytest.fixture(scope='module', autouse=True)
+def compiled_engine():
+    if not ENGINE.is_file():
+        pytest.skip('Native build is exercised by the audit-corrections workflow')
+
+
 def captured_value(board, move):
     return VALUES[chess.PAWN] if board.is_en_passant(move) else VALUES[board.piece_type_at(move.to_square)]
 

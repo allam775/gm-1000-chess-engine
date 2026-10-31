@@ -1,0 +1,92 @@
+name: GM1000 audit corrections - four frozen arms, 400 Skill5 games
+on:
+  push:
+    branches: [experiment/v011-audit-corrections]
+    paths: ['.github/launch-native-v11-audit.txt']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: gm1000-v11-frozen-audit
+  cancel-in-progress: false
+jobs:
+  tournament:
+    name: 'Audit shard ${{ matrix.shard }}: 40 games'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build immutable sources and verify correctness regressions
+        run: |
+          set -euo pipefail
+          python -m pip install -r requirements.txt pytest
+          python -m scripts.build_v11_audit
+          mkdir -p native/bin
+          cp build/v11/both native/bin/gm1000-native
+          python -m pytest -q tests/test_native_audit_corrections.py tests/test_native_core.py tests/test_native_v09.py tests/test_native_v010_draw.py tests/test_v11_audit_protocol.py
+      - name: Install exact official Stockfish 17.1 opponent
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 'https://github.com/official-stockfish/Stockfish/releases/download/sf_17.1/stockfish-ubuntu-x86-64-avx2.tar' -o build/stockfish.tar
+          echo '09e953222dbe80aaea5c33dab265413b295cb8376418445c877708c61e31987d  build/stockfish.tar' | sha256sum -c -
+          mkdir -p build/opponent
+          tar -xf build/stockfish.tar -C build/opponent
+          chmod +x build/opponent/stockfish/stockfish-ubuntu-x86-64-avx2
+      - name: Play four arms with matched colors and per-move telemetry
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          python -m scripts.validate_v11_audit play --shard "$SHARD" --stockfish build/opponent/stockfish/stockfish-ubuntu-x86-64-avx2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gm1000-v11-shard-${{ matrix.shard }}
+          path: |
+            reports/v11/shard-${{ matrix.shard }}/
+            build/v11/provenance.json
+          retention-days: 90
+          if-no-files-found: warn
+  aggregate:
+    name: Revalidate 400 original PGNs and report actual wins
+    needs: tournament
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: gm1000-v11-shard-*
+          path: reports/v11-downloaded
+      - name: Normalize artifact paths and independently replay all games
+        run: |
+          set -euo pipefail
+          mkdir -p reports/v11-collected
+          for shard in {0..9}; do
+            mkdir -p "reports/v11-collected/gm1000-v11-shard-$shard"
+            cp reports/v11-downloaded/gm1000-v11-shard-$shard/reports/v11/shard-$shard/* "reports/v11-collected/gm1000-v11-shard-$shard/"
+          done
+          python -m scripts.validate_v11_audit aggregate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gm1000-v11-400game-audit-final
+          path: |
+            reports/v11-final.json
+            reports/v11-collected/
+          retention-days: 90
+          if-no-files-found: error
