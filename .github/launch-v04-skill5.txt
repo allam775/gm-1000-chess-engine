@@ -1,1 +1,3 @@
 One-time benchmark on corrected GM-1000 engine after search, king safety and position-pattern improvements: 4 tournaments of 4 games each versus Stockfish Skill Level 5, same opponent package, both GM and Stockfish 19 memories enabled, 0.2 seconds per move, alternate colors. Save new report under skill5_v04_validation_report.json; preserve original 16-game baseline report.
+
+Final v0.4 validation after adding search-verification for all historical opening-book moves; run after the earlier in-flight job, keep distinct artifact and report. Do not claim gains without completed audit.
