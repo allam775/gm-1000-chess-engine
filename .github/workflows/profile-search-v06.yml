@@ -1,0 +1,46 @@
+name: Profile GM-1000 Search Performance v0.6
+on:
+  push:
+    paths:
+      - '.github/launch-search-profile-v06.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  profile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install and run tests
+        run: |
+          python -m pip install -r requirements.txt pytest
+          python -m pytest -q
+      - name: Baseline 0.2-second search profiling
+        run: python -m scripts.profile_search_v06 --seconds 0.2 --positions 16
+      - name: Archive performance report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-v06-search-baseline-profile
+          path: reports/search_v06_profile.json
+          retention-days: 90
+      - name: Commit baseline profile report
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp reports/search_v06_profile.json data/search_v06_profile.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/search_v06_profile.json
+          git commit -m 'Record v0.6 search-depth and CPU hotspot baseline'
+          git fetch origin main
+          git rebase origin/main
+          git push
