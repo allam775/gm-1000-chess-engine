@@ -1,0 +1,1 @@
+One-time study: play 400 newly generated Stockfish 19 maximum-skill (Skill Level 20) self-play games from 200 opening seeds, record outcomes and every position, compare duplicates and conflicting memorized GM moves using Stockfish19 analysis, keep historical evidence intact, save audited recommendations and all PGNs.
