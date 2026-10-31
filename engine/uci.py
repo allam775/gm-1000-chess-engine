@@ -14,7 +14,8 @@ class UCI:
         self.board = chess.Board()
         self.engine = Engine(book_path=Path(__file__).resolve().parents[1] / 'data/opening_book.json',
                              learning_path=Path(__file__).resolve().parents[1] / 'data/approved_model.json',
-                             memory_path=Path(__file__).resolve().parents[1] / 'data/position_memory.json')
+                             memory_path=Path(__file__).resolve().parents[1] / 'data/position_memory.json',
+                             stockfish_memory_path=Path(__file__).resolve().parents[1] / 'data/stockfish19_position_memory.json')
         self.worker: threading.Thread | None = None
         self.print_lock = threading.Lock()
 
