@@ -1,0 +1,320 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-31T12:26:26.298985+00:00",
+  "experiment": "GM-1000 v0.5 baseline independent search profile",
+  "code_version": "main",
+  "time_limit_seconds": 0.2,
+  "sample_positions": 16,
+  "median_depth": 2.0,
+  "median_nps": 15339,
+  "min_depth": 1,
+  "max_depth": 3,
+  "depth_distribution": {
+    "1": 5,
+    "2": 6,
+    "3": 5
+  },
+  "timed_runs": [
+    {
+      "id": "T1G1-P20",
+      "phase": "opening",
+      "depth": 1,
+      "nodes": 2400,
+      "wall_seconds": 0.204,
+      "nps": 11763,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T1G1-P36",
+      "phase": "middlegame",
+      "depth": 3,
+      "nodes": 3584,
+      "wall_seconds": 0.2025,
+      "nps": 17702,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T1G2-P20",
+      "phase": "opening",
+      "depth": 1,
+      "nodes": 2432,
+      "wall_seconds": 0.203,
+      "nps": 11978,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T1G2-P36",
+      "phase": "middlegame",
+      "depth": 2,
+      "nodes": 3648,
+      "wall_seconds": 0.2047,
+      "nps": 17818,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T1G3-P20",
+      "phase": "opening",
+      "depth": 1,
+      "nodes": 2368,
+      "wall_seconds": 0.2049,
+      "nps": 11555,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T1G3-P36",
+      "phase": "middlegame",
+      "depth": 2,
+      "nodes": 2816,
+      "wall_seconds": 0.2032,
+      "nps": 13861,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T1G4-P20",
+      "phase": "opening",
+      "depth": 1,
+      "nodes": 2400,
+      "wall_seconds": 0.2029,
+      "nps": 11826,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T1G4-P36",
+      "phase": "middlegame",
+      "depth": 2,
+      "nodes": 3488,
+      "wall_seconds": 0.2024,
+      "nps": 17237,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T2G1-P20",
+      "phase": "opening",
+      "depth": 3,
+      "nodes": 3680,
+      "wall_seconds": 0.2024,
+      "nps": 18184,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T2G1-P36",
+      "phase": "middlegame",
+      "depth": 3,
+      "nodes": 3488,
+      "wall_seconds": 0.2004,
+      "nps": 17402,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T2G2-P13",
+      "phase": "opening",
+      "depth": 3,
+      "nodes": 3360,
+      "wall_seconds": 0.2035,
+      "nps": 16511,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T2G2-P25",
+      "phase": "middlegame",
+      "depth": 2,
+      "nodes": 113,
+      "wall_seconds": 0.0065,
+      "nps": 17312,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T2G3-P20",
+      "phase": "opening",
+      "depth": 2,
+      "nodes": 2560,
+      "wall_seconds": 0.2005,
+      "nps": 12769,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T2G3-P36",
+      "phase": "middlegame",
+      "depth": 2,
+      "nodes": 2880,
+      "wall_seconds": 0.2033,
+      "nps": 14167,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T2G4-P20",
+      "phase": "opening",
+      "depth": 3,
+      "nodes": 3808,
+      "wall_seconds": 0.2031,
+      "nps": 18754,
+      "returned_legal_move": true
+    },
+    {
+      "id": "T2G4-P36",
+      "phase": "middlegame",
+      "depth": 1,
+      "nodes": 2624,
+      "wall_seconds": 0.2042,
+      "nps": 12850,
+      "returned_legal_move": true
+    }
+  ],
+  "unclocked_profile": {
+    "depth": 2,
+    "nodes": 4551,
+    "top_self_time": [
+      {
+        "function": "search.py:60:evaluate_components",
+        "calls": 4287,
+        "own_seconds": 0.37432,
+        "cumulative_seconds": 0.82372
+      },
+      {
+        "function": "__init__.py:905:attackers_mask",
+        "calls": 99013,
+        "own_seconds": 0.09238,
+        "cumulative_seconds": 0.09238
+      },
+      {
+        "function": "__init__.py:414:scan_reversed",
+        "calls": 309625,
+        "own_seconds": 0.05983,
+        "cumulative_seconds": 0.06946
+      },
+      {
+        "function": "__init__.py:1819:generate_pseudo_legal_moves",
+        "calls": 87247,
+        "own_seconds": 0.05673,
+        "cumulative_seconds": 0.13925
+      },
+      {
+        "function": "__init__.py:825:piece_at",
+        "calls": 118619,
+        "own_seconds": 0.05477,
+        "cumulative_seconds": 0.09141
+      },
+      {
+        "function": "__init__.py:1188:piece_map",
+        "calls": 4287,
+        "own_seconds": 0.04987,
+        "cumulative_seconds": 0.17795
+      },
+      {
+        "function": "__init__.py:835:piece_type_at",
+        "calls": 193032,
+        "own_seconds": 0.04323,
+        "cumulative_seconds": 0.04323
+      },
+      {
+        "function": "__init__.py:3702:generate_legal_moves",
+        "calls": 86901,
+        "own_seconds": 0.03279,
+        "cumulative_seconds": 0.24014
+      },
+      {
+        "function": "__init__.py:3311:is_capture",
+        "calls": 81802,
+        "own_seconds": 0.0283,
+        "cumulative_seconds": 0.03421
+      },
+      {
+        "function": "__init__.py:3664:_is_safe",
+        "calls": 80985,
+        "own_seconds": 0.0265,
+        "cumulative_seconds": 0.05037
+      },
+      {
+        "function": "__init__.py:405:scan_forward",
+        "calls": 106914,
+        "own_seconds": 0.02131,
+        "cumulative_seconds": 0.0242
+      },
+      {
+        "function": "search.py:398:<listcomp>",
+        "calls": 2160,
+        "own_seconds": 0.0211,
+        "cumulative_seconds": 0.24955
+      },
+      {
+        "function": "__init__.py:817:pieces",
+        "calls": 42870,
+        "own_seconds": 0.01929,
+        "cumulative_seconds": 0.0374
+      },
+      {
+        "function": "__init__.py:262:square_rank",
+        "calls": 343550,
+        "own_seconds": 0.01928,
+        "cumulative_seconds": 0.01928
+      },
+      {
+        "function": "__init__.py:2310:push",
+        "calls": 4352,
+        "own_seconds": 0.01815,
+        "cumulative_seconds": 0.04344
+      },
+      {
+        "function": "__init__.py:925:is_attacked_by",
+        "calls": 66748,
+        "own_seconds": 0.01777,
+        "cumulative_seconds": 0.07903
+      },
+      {
+        "function": "search.py:360:_quiescence",
+        "calls": 4256,
+        "own_seconds": 0.01414,
+        "cumulative_seconds": 1.23886
+      },
+      {
+        "function": "__init__.py:875:attacks_mask",
+        "calls": 20337,
+        "own_seconds": 0.01279,
+        "cumulative_seconds": 0.01279
+      },
+      {
+        "function": "__init__.py:3304:is_en_passant",
+        "calls": 142075,
+        "own_seconds": 0.01254,
+        "cumulative_seconds": 0.01254
+      },
+      {
+        "function": "__init__.py:864:king",
+        "calls": 30541,
+        "own_seconds": 0.01188,
+        "cumulative_seconds": 0.0197
+      },
+      {
+        "function": "__init__.py:799:pieces_mask",
+        "calls": 42870,
+        "own_seconds": 0.01023,
+        "cumulative_seconds": 0.01023
+      },
+      {
+        "function": "__init__.py:258:square_file",
+        "calls": 142915,
+        "own_seconds": 0.01009,
+        "cumulative_seconds": 0.01009
+      },
+      {
+        "function": "__init__.py:4039:__init__",
+        "calls": 51444,
+        "own_seconds": 0.00969,
+        "cumulative_seconds": 0.00969
+      },
+      {
+        "function": "__init__.py:411:msb",
+        "calls": 48154,
+        "own_seconds": 0.00914,
+        "cumulative_seconds": 0.01148
+      },
+      {
+        "function": "__init__.py:3738:generate_castling_moves",
+        "calls": 3284,
+        "own_seconds": 0.00897,
+        "cumulative_seconds": 0.02347
+      }
+    ]
+  },
+  "limitations": "Small diagnostic sample from old matches, baseline only. Profiling changes timings. No strength or Elo claim."
+}
