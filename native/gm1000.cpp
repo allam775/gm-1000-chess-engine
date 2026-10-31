@@ -141,8 +141,25 @@ bool is_draw(const Board& board) {
            (board.halfMoveClock() >= 8 && board.isRepetition(2));
 }
 
+// Score reuse requires the same reversible history, not merely the same board.
+// Ordered rolling fingerprints are deliberately conservative: move ordering can
+// reuse a position match, but score cutoffs cannot cross different histories.
+uint64_t mix_context(uint64_t x) {
+    x ^= x >> 30; x *= 0xbf58476d1ce4e5b9ULL;
+    x ^= x >> 27; x *= 0x94d049bb133111ebULL;
+    return x ^ (x >> 31);
+}
+uint64_t next_context(uint64_t context, uint64_t parent_key, const Board& child) {
+    if (child.halfMoveClock() == 0) return 0;  // Irreversible move clears repetition history.
+    return mix_context(context ^ parent_key ^ 0x9e3779b97f4a7c15ULL);
+}
+uint64_t score_context(const Board& board, uint64_t context) {
+    return mix_context(context ^ (uint64_t(board.halfMoveClock()) * 0xd6e8feb86659fd93ULL));
+}
+
 struct Entry {
     uint64_t key = 0;
+    uint64_t context = 0;
     int32_t score = 0;
     int16_t depth = -1;
     uint8_t flag = 0;  // 0 exact, 1 lower bound, 2 upper bound
@@ -299,7 +316,7 @@ struct Search {
         }
         return alpha;
     }
-    int negamax(Board& b, int depth, int alpha, int beta, int ply) {
+    int negamax(Board& b, int depth, int alpha, int beta, int ply, uint64_t context = 0) {
         node();
         if (ply >= 120) return evaluate(b);
         const bool checked = b.inCheck();
@@ -316,9 +333,10 @@ struct Search {
         if (!null_verification && depth >= 4 && ply >= 1 && !checked &&
             b.hasNonPawnMaterial(b.sideToMove()) &&
             beta < MATE - 512 && alpha > -MATE + 512) {
+            const uint64_t null_context = mix_context(context ^ b.hash() ^ 0xa0761d6478bd642fULL);
             b.makeNullMove();
             int null_score;
-            try { null_score = -negamax(b, depth - 3, -beta, -beta + 1, ply + 1); }
+            try { null_score = -negamax(b, depth - 3, -beta, -beta + 1, ply + 1, null_context); }
             catch (...) { b.unmakeNullMove(); throw; }
             b.unmakeNullMove();
             if (null_score >= beta) {
@@ -328,18 +346,19 @@ struct Search {
                 // depth-reduced ordinary search, without recursive null moves.
                 null_verification = true;
                 int verify;
-                try { verify = negamax(b, depth-3, beta-1, beta, ply); }
+                try { verify = negamax(b, depth-3, beta-1, beta, ply, context); }
                 catch (...) { null_verification = false; throw; }
                 null_verification = false;
                 if (verify >= beta) return beta;
             }
         }
         const int old_alpha = alpha;
+        const uint64_t context_key = score_context(b, context);
         auto& entry = tt[b.hash() & (tt.size()-1)];
         Move hashmove{};
         if (entry.key == b.hash()) {
             hashmove = entry.move;
-            if (entry.depth >= depth) {
+            if (entry.context == context_key && entry.depth >= depth) {
                 const int tt_score = from_tt(entry.score, ply);
                 if (entry.flag == 0) return tt_score;
                 if (entry.flag == 1) alpha = std::max(alpha, tt_score);
@@ -357,7 +376,9 @@ struct Search {
         int searched_moves = 0;
         for (Move m : moves) {
             const bool quiet = !b.isCapture(m) && m.typeOf()!=Move::PROMOTION;
+            const uint64_t parent_key = b.hash();
             b.makeMove(m);
+            const uint64_t child_context = next_context(context, parent_key, b);
             int score;
             try {
                 // Late-move reduction with mandatory full-depth verification
@@ -366,9 +387,9 @@ struct Search {
                     !checked && quiet && !b.inCheck() &&
                     alpha > -MATE+512 && beta < MATE-512;
                 if (reduce) {
-                    score = -negamax(b, depth-2, -alpha-1, -alpha, ply+1);
-                    if (score>alpha) score = -negamax(b, depth-1, -beta, -alpha, ply+1);
-                } else score = -negamax(b, depth-1, -beta, -alpha, ply+1);
+                    score = -negamax(b, depth-2, -alpha-1, -alpha, ply+1, child_context);
+                    if (score>alpha) score = -negamax(b, depth-1, -beta, -alpha, ply+1, child_context);
+                } else score = -negamax(b, depth-1, -beta, -alpha, ply+1, child_context);
             } catch (...) { b.unmakeMove(m); throw; }
             b.unmakeMove(m);
             ++searched_moves;
@@ -387,15 +408,15 @@ struct Search {
             }
         }
         // Only completed subtrees reach here; interruptions never poison TT.
-        if (depth >= entry.depth || entry.key != b.hash()) {
-            entry.key = b.hash(); entry.score = to_tt(best, ply); entry.depth = depth;
+        if (depth >= entry.depth || entry.key != b.hash() || entry.context != context_key) {
+            entry.key = b.hash(); entry.context = context_key; entry.score = to_tt(best, ply); entry.depth = depth;
             entry.move = selected;
             entry.flag = best <= old_alpha ? 2 : (best >= original_beta ? 1 : 0);
         }
         return best;
     }
     Result run(Board position, int max_depth, int millis,
-               const std::function<void(const Result&)>& report = {}) {
+               const std::function<void(const Result&)>& report = {}, uint64_t context = 0) {
         nodes = 0;
         interrupted = false;
         null_verification = false;
@@ -424,15 +445,17 @@ struct Search {
             Move chosen{};
             try {
                 for (Move m : legal) {
+                    const uint64_t parent_key = position.hash();
                     position.makeMove(m);
+                    const uint64_t child_context = next_context(context, parent_key, position);
                     int score;
                     try {
                         if (alpha == -INF) {
-                            score = -negamax(position, depth-1, -INF, -alpha, 1);
+                            score = -negamax(position, depth-1, -INF, -alpha, 1, child_context);
                         } else {
-                            score = -negamax(position, depth-1, -alpha-1, -alpha, 1);
+                            score = -negamax(position, depth-1, -alpha-1, -alpha, 1, child_context);
                             if (score > alpha) {
-                                score = -negamax(position, depth-1, -INF, -alpha, 1);
+                                score = -negamax(position, depth-1, -INF, -alpha, 1, child_context);
                             }
                         }
                     } catch (...) { position.unmakeMove(m); throw; }
@@ -447,7 +470,7 @@ struct Search {
             completed.seconds = std::chrono::duration<double>(std::chrono::steady_clock::now()-start).count();
             if (report) report(completed);
             auto &entry = tt[position.hash() & (tt.size()-1)];
-            entry.key = position.hash(); entry.move = chosen; entry.depth = depth;
+            entry.key = position.hash(); entry.context = score_context(position, context); entry.move = chosen; entry.depth = depth;
             entry.score = to_tt(best, 0); entry.flag = 0;
             if (std::abs(best) > MATE - 150) break;
         }
@@ -543,6 +566,7 @@ int main(int argc, char** argv) {
         return 0;
     }
     Board board;
+    uint64_t board_context = 0;
     std::thread worker;
     std::atomic<bool> stop{false};
     Search engine(stop);  // Persistent TT, killers and history across moves.
@@ -560,16 +584,16 @@ int main(int argc, char** argv) {
             // No user-configurable engine options yet; fail closed rather than claiming support.
         } else if(cmd=="stop") join();
         else if(cmd=="quit") {join();break;}
-        else if(cmd=="ucinewgame") {join();board=Board();engine.reset_game();}
+        else if(cmd=="ucinewgame") {join();board=Board();board_context=0;engine.reset_game();}
         else if(cmd=="position") {
             join();
             std::string type;stream>>type;
             try {
-                if (type=="startpos") board=Board();
+                if (type=="startpos") {board=Board();board_context=0;}
                 else if(type=="fen") {
                     std::string fen,part;
                     for(int i=0;i<6;i++){if(!(stream>>part)) throw std::runtime_error("bad fen"); if(i)fen+=' ';fen+=part;}
-                    board=Board(fen);
+                    board=Board(fen);board_context=0;
                 } else {output("info string invalid position command");continue;}
                 std::string keyword;stream>>keyword;
                 if(keyword=="moves") {
@@ -579,7 +603,9 @@ int main(int argc, char** argv) {
                         Movelist legal;movegen::legalmoves(legal,board);
                         if(m.move()==Move::NO_MOVE || std::find(legal.begin(),legal.end(),m)==legal.end())
                             throw std::runtime_error("illegal UCI move: "+u);
+                        const uint64_t parent_key = board.hash();
                         board.makeMove(m);
+                        board_context = next_context(board_context, parent_key, board);
                     }
                 }
             } catch(const std::exception& e) {output(std::string("info string position error: ")+e.what());}
@@ -589,14 +615,14 @@ int main(int argc, char** argv) {
             std::string s;while(stream>>s)args.push_back(s);
             int depth=64,millis=go_time(board,args,depth);
             Board copy=board;
-            worker=std::thread([copy,depth,millis,&engine]() mutable {
+            worker=std::thread([copy,depth,millis,board_context,&engine]() mutable {
                 try {
                     auto r=engine.run(copy,depth,millis,[](const Result& r){
                         std::ostringstream out;
                         out<<"info depth "<<r.depth<<" nodes "<<r.nodes<<" score "<<score_uci(r.score)
                            <<" time "<<int(r.seconds*1000)<<" nps "<<uint64_t(r.nodes/std::max(1e-9,r.seconds));
                         output(out.str());
-                    });
+                    }, board_context);
                     output(std::string("bestmove ")+(r.move.move()==Move::NO_MOVE?"0000":uci::moveToUci(r.move)));
                 } catch (const std::exception& e) {
                     output(std::string("info string native search error: ")+e.what());

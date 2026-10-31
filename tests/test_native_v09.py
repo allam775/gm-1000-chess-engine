@@ -55,7 +55,7 @@ def test_forced_mate_and_queen_promotion():
 def test_no_game_state_leak_through_ucinewgame():
     import chess.engine
     with chess.engine.SimpleEngine.popen_uci(str(ENGINE),timeout=15) as sf:
-        assert 'v0.9' in sf.id.get('name','')
+        assert 'GM-1000' in sf.id.get('name','')
         first=object();second=object()
         for round_id in (first,first,second):
             b=chess.Board()

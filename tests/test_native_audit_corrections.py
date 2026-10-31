@@ -53,3 +53,15 @@ def test_legal_exchange_against_capture_tree(fen, uci, expected):
     assert exchange_oracle(board, move) == expected
     answer = subprocess.check_output([str(ENGINE), '--see', fen, uci], text=True, timeout=5)
     assert int(answer) == expected
+
+
+def test_tt_clock_and_history_context(tmp_path):
+    binary = tmp_path / 'context-probe'
+    subprocess.run([
+        'g++', '-O2', '-std=c++17', '-pthread', '-Wno-return-type',
+        '-I', str(ROOT / 'native/third_party'),
+        str(ROOT / 'tests/native_audit_context_probe.cpp'), '-o', str(binary),
+    ], check=True, timeout=60)
+    # Assertions deliberately enabled in this diagnostic executable.
+    output = subprocess.check_output([str(binary)], text=True, timeout=10)
+    assert 'warm99=0 cold99=0' in output
