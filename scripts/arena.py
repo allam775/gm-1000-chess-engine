@@ -34,8 +34,11 @@ def run(args: argparse.Namespace) -> dict:
         stockfish.configure({'Skill Level': args.stockfish_skill, 'Threads': 1, 'Hash': 16})
         with (args.output_dir / 'matches.pgn').open('w', encoding='utf-8') as stream:
             for index in range(args.games):
-                board = chess.Board()
+                starts = getattr(args, 'starting_fens', None)
+                board = chess.Board(starts[index] if starts else chess.STARTING_FEN)
                 game = chess.pgn.Game()
+                if starts:
+                    game.setup(board)
                 game.headers['Event'] = 'GM-1000 Baseline Arena'
                 game.headers['Round'] = str(index + 1)
                 gm_color = chess.WHITE if index % 2 == 0 else chess.BLACK
@@ -45,11 +48,13 @@ def run(args: argparse.Namespace) -> dict:
                 game.headers['StockfishSkill'] = str(args.stockfish_skill)
                 game.headers['PositionMemory'] = 'enabled' if getattr(args, 'position_memory', True) else 'disabled'
                 game.headers['StockfishMemory'] = 'enabled' if getattr(args, 'stockfish_memory', True) else 'disabled'
+                game.headers['LearnedEval'] = 'enabled' if getattr(args, 'learned_eval', False) else 'disabled'
                 game.headers['SecondsPerMove'] = str(args.seconds_per_move)
                 gm.configure({'OwnBook': args.own_book,
                               'Learning': getattr(args, 'learning', True),
                               'PositionMemory': getattr(args, 'position_memory', True),
-                              'StockfishMemory': getattr(args, 'stockfish_memory', True)})
+                              'StockfishMemory': getattr(args, 'stockfish_memory', True),
+                              'LearnedEval': getattr(args, 'learned_eval', False)})
                 game_token = object()  # python-chess sends ucinewgame on token change.
                 node = game
                 errors = []
@@ -105,7 +110,9 @@ def run(args: argparse.Namespace) -> dict:
                    'seconds_per_move': args.seconds_per_move,
                    'max_plies': args.max_plies, 'own_book': args.own_book,
                    'position_memory': getattr(args, 'position_memory', True),
-                   'stockfish_memory': getattr(args, 'stockfish_memory', True)},
+                   'stockfish_memory': getattr(args, 'stockfish_memory', True),
+                   'learned_eval': getattr(args, 'learned_eval', False),
+                   'paired_opening_fens': bool(getattr(args, 'starting_fens', None))},
         'completed_games': completed, 'wins': counts['wins'], 'draws': counts['draws'],
         'losses': counts['losses'], 'errors': counts['errors'],
         'incomplete': counts['incomplete'],
@@ -128,6 +135,7 @@ def main() -> None:
     parser.add_argument('--learning', action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument('--position-memory', action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument('--stockfish-memory', action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument('--learned-eval', action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument('--output-dir', type=Path, default=ROOT / 'reports')
     args = parser.parse_args()
     if not 0 <= args.stockfish_skill <= 20:
