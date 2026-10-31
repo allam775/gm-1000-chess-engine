@@ -1,0 +1,64 @@
+name: GM-1000 native v0.6 extended 40-game tournament vs Stockfish Skill 5
+on:
+  push:
+    paths:
+      - '.github/launch-native-skill5-40games.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: gm1000-native-skill5-40games
+  cancel-in-progress: false
+jobs:
+  tournament:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install dependencies and run full test suite
+        run: |
+          python -m pip install -r requirements.txt pytest
+          python -m pytest -q
+      - name: Compile GM-1000 native C++ v0.6
+        run: |
+          mkdir -p native/bin
+          g++ -std=c++17 -O3 -DNDEBUG -pthread -Wall -Wextra -Werror \
+            -I native/third_party native/gm1000.cpp -o native/bin/gm1000-native
+      - name: Install same Stockfish Skill 5 opponent
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y stockfish
+          echo 'STOCKFISH_PATH=/usr/games/stockfish' >> "$GITHUB_ENV"
+      - name: Run 40 fresh-opening games with alternating colors
+        run: |
+          python -m scripts.benchmark_native_skill5_v06 \
+            --native-only --pairs 20 --seed 26103153 \
+            --seconds 0.2 --max-plies 220 \
+            --out reports/native-v06-skill5-40games
+      - name: Archive original PGNs, progress and scores
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-native-v06-stockfish5-40games
+          path: reports/native-v06-skill5-40games/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Publish new independent scorecard, keep old reports unchanged
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp reports/native-v06-skill5-40games/summary.json data/native_v06_stockfish5_40games_report.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/native_v06_stockfish5_40games_report.json
+          git commit -m 'Record native v0.6 40-game Stockfish Skill5 fresh-opening tournament'
+          git fetch origin main
+          git rebase origin/main
+          git push
