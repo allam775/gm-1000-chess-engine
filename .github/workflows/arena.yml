@@ -1,0 +1,56 @@
+name: Engine arena
+on:
+  workflow_dispatch:
+    inputs:
+      games:
+        description: 'Number of matches (even recommended for color balance)'
+        required: true
+        default: '4'
+        type: string
+      stockfish_skill:
+        description: 'Stockfish Skill Level (0-20, NOT Elo)'
+        required: true
+        default: '0'
+        type: string
+      seconds_per_move:
+        description: 'Fixed thinking time per move in seconds'
+        required: true
+        default: '0.2'
+        type: string
+permissions:
+  contents: read
+jobs:
+  arena:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: python -m pip install -r requirements.txt
+      - name: Install stockfish
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y stockfish
+          echo '/usr/games' >> "$GITHUB_PATH"
+      - name: Run matches
+        env:
+          STOCKFISH_PATH: /usr/games/stockfish
+          ARENA_GAMES: ${{ inputs.games }}
+          ARENA_SKILL: ${{ inputs.stockfish_skill }}
+          ARENA_SECONDS: ${{ inputs.seconds_per_move }}
+        run: |
+          python scripts/arena.py \
+            --games "$ARENA_GAMES" \
+            --stockfish-skill "$ARENA_SKILL" \
+            --seconds-per-move "$ARENA_SECONDS"
+      - name: Upload tournament report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tournament-results
+          path: reports/
+          if-no-files-found: warn
+          retention-days: 30
