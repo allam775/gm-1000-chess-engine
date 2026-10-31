@@ -1,0 +1,1 @@
+Launch four new 4-game GM-1000 versus Stockfish Skill Level 0 mini-tournaments, 0.2 seconds/move, standard opening, alternating colors; rounds A/B/B/A enable vs disable newly committed Stockfish19 Skill20 400-game position overlay, while keeping historical 560-game grandmaster memory enabled in both. Save distinct report and PGNs without overwriting baseline.
