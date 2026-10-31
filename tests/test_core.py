@@ -233,7 +233,69 @@ def test_round_robin_can_select_subset_of_gm_player_archives():
                     Candidate('Carlsen', {}, ('d2d4',), 'b', 1.0)],
         'Kasparov': [Candidate('Kasparov', {}, ('c2c4',), 'c', 1.0)],
     }
-    # Restricted player groups should not require Capablanca/Morphy entries.
+    # A subset should not need synthetic Capablanca/Morphy entries.
     result = select_round_robin(players, 3)
     assert len(result) == 3
     assert {x.fingerprint for x in result} == {'a', 'b', 'c'}
+
+
+def test_grandmaster_position_memory_records_correct_color_and_counts(tmp_path):
+    from engine.position_memory import build_position_memory, legal_memory_moves
+    from scripts.build_book import Candidate
+    moves = ('e2e4', 'e7e5', 'g1f3', 'b8c6', 'f1c4', 'f8c5')
+    game_a = Candidate('Carlsen', {'White':'Magnus Carlsen', 'Black':'Opp'}, moves, 'a', 1.0)
+    game_b = Candidate('Carlsen', {'White':'Magnus Carlsen', 'Black':'Opp'}, moves, 'b', 1.0)
+    memory = build_position_memory([game_a, game_b], max_plies=6)
+    assert memory['source_games'] == 2
+    assert memory['observations'] == 6
+    assert memory['positions_count'] == 3
+    assert memory['move_pairs_count'] == 3
+    assert legal_memory_moves(chess.Board(), memory) == [(chess.Move.from_uci('e2e4'), 2)]
+    board = chess.Board()
+    board.push_uci('e2e4')
+    # Black moves are absent: it was not the named grandmaster's turn.
+    assert legal_memory_moves(board, memory) == []
+    out = tmp_path / 'memory.json'
+    out.write_text(json.dumps(memory))
+    bot = Engine(book_path=tmp_path/'absent.json', memory_path=out)
+    assert bot.memory_moves(chess.Board()) == [(chess.Move.from_uci('e2e4'), 2)]
+    bot.memory_enabled = False
+    assert bot.memory_moves(chess.Board()) == []
+
+
+def test_position_memory_search_only_overrides_nearly_equal_evaluation(tmp_path):
+    from engine.position_memory import choose_safe_recalled_move
+    good = chess.Move.from_uci('e2e4')
+    bad = chess.Move.from_uci('a2a3')
+    memory = [(bad, 100), (good, 1)]
+    assert choose_safe_recalled_move(memory, {bad: 20, good: 60}, 60) == good
+    assert choose_safe_recalled_move(memory, {bad: 48, good: 60}, 60) == bad
+    assert choose_safe_recalled_move(memory, {bad: -29999, good: -29995}, -29995) is None
+    assert choose_safe_recalled_move(memory, {bad: 100, good: 29999}, 29999) is None
+
+
+def test_search_recalled_positions_still_search_not_direct_book(tmp_path):
+    from engine.position_memory import build_position_memory
+    from scripts.build_book import Candidate
+    game = Candidate('Carlsen', {'White':'Magnus Carlsen','Black':'Opp'},
+                     ('e2e4','e7e5','g1f3','b8c6'), 'unique-gm', 1.0)
+    memory = build_position_memory([game])
+    path = tmp_path/'memory.json'
+    path.write_text(json.dumps(memory))
+    bot = Engine(book_path=tmp_path/'no-book.json', memory_path=path)
+    result = bot.search(chess.Board(), depth=1, time_limit=None)
+    assert result.depth == 1 and not result.book
+    assert result.move in chess.Board().legal_moves
+    bot.new_game()
+    assert bot._memory is None
+
+
+def test_memory_builder_rejects_duplicate_games_and_illegal_moves():
+    from engine.position_memory import build_position_memory
+    from scripts.build_book import Candidate
+    one = Candidate('Tal', {'White':'Tal', 'Black':'Other'}, ('e2e4',), 'fingerprint', 1.0)
+    with pytest.raises(ValueError, match='Duplicate'):
+        build_position_memory([one, one])
+    bad = Candidate('Tal', {'White':'Tal','Black':'Other'}, ('e2e5',), 'bad', 1.0)
+    with pytest.raises(ValueError, match='Illegal'):
+        build_position_memory([bad])

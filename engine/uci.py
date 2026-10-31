@@ -13,7 +13,8 @@ class UCI:
     def __init__(self) -> None:
         self.board = chess.Board()
         self.engine = Engine(book_path=Path(__file__).resolve().parents[1] / 'data/opening_book.json',
-                             learning_path=Path(__file__).resolve().parents[1] / 'data/approved_model.json')
+                             learning_path=Path(__file__).resolve().parents[1] / 'data/approved_model.json',
+                             memory_path=Path(__file__).resolve().parents[1] / 'data/position_memory.json')
         self.worker: threading.Thread | None = None
         self.print_lock = threading.Lock()
 
@@ -84,6 +85,7 @@ class UCI:
             self.output('option name Hash type spin default 32 min 1 max 512')
             self.output('option name OwnBook type check default true')
             self.output('option name Learning type check default true')
+            self.output('option name PositionMemory type check default true')
             self.output('uciok')
         elif command == 'isready':
             self.output('readyok')
@@ -101,6 +103,8 @@ class UCI:
                     pass
             if 'name learning' in lower and ' value ' in lower:
                 self.engine.learning_enabled = lower.split(' value ')[-1].strip() in ('1', 'true', 'yes', 'on')
+            if 'name positionmemory' in lower and ' value ' in lower:
+                self.engine.memory_enabled = lower.split(' value ')[-1].strip() in ('1', 'true', 'yes', 'on')
             if 'name ownbook' in lower and ' value ' in lower:
                 self.engine.own_book = lower.split(' value ')[-1].strip() in ('1', 'true', 'yes', 'on')
         elif command == 'position':

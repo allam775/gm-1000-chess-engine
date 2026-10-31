@@ -1,0 +1,66 @@
+name: Build GM position memory from 200-game study
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/launch-position-memory.txt'
+permissions:
+  contents: write
+concurrency:
+  group: gm1000-position-memory
+  cancel-in-progress: false
+jobs:
+  memory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt pytest
+      - name: Run tests
+        run: python -m pytest -q
+      - name: Build and verify exact position memory (train games only)
+        run: |
+          python scripts/build_position_memory.py \
+            --games 200 --seed 2026 --holdout-fraction 0.2 --max-plies 180
+      - name: Verify generated memory
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          memory = json.loads(Path('data/position_memory.json').read_text())
+          report = json.loads(Path('data/gm_study_report_v02.json').read_text())
+          assert memory['schema'] == 1
+          assert memory['source_games'] == report['train_games'] == 160
+          assert memory['holdout_games_excluded'] == report['holdout_games'] == 40
+          assert memory['training_games_sha256'] == report['train_game_ids_sha256']
+          assert memory['validation_games_sha256'] == report['holdout_game_ids_sha256']
+          assert memory['positions_count'] > 0 and memory['move_pairs_count'] > 0
+          assert memory['observations'] >= 160
+          assert sum(len(moves) for moves in memory['positions'].values()) == memory['move_pairs_count']
+          print('Verified:', memory['positions_count'], 'positions and', memory['observations'], 'GM move observations')
+          PY
+      - name: Upload position-memory artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-position-memory
+          path: |
+            data/position_memory.json
+            data/position_memory_report.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Persist approved historical position memory in repository
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/position_memory.json data/position_memory_report.json
+          git commit -m 'Record verified grandmaster positions for runtime recall' || exit 0
+          git push

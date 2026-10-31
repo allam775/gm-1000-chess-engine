@@ -292,3 +292,14 @@ python scripts/learn_series.py --rounds 20 --games 4 --stockfish-skill 0 --secon
 ```
 
 `Engine` additionally recognizes UCI `setoption name Learning value true|false`; material coefficients are fixed and learned non-material coefficients are clipped in `[0.4, 1.6]`. The feature-learning rule is deliberately simple, with no claim of stable generalization, NNUE or Elo calibration. This workflow is a **bounded batch experiment**, not a background cloud worker.
+
+
+## Position memory — v0.3 (exact grandmaster positions)
+
+In addition to the 24-ply opening book, the engine supports a **persistent database of exact board positions from studied grandmaster games**, including middlegame positions. To build it, run **Build GM position memory from 200-game study** in GitHub Actions.
+
+- The database is stored in `data/position_memory.json` and its provenance/counts in `data/position_memory_report.json`. It is built exclusively from the **160 training games** of the reproducible 200-game grandmaster study; the **40 validation games remain excluded**.
+- For each position (EPD: board, turn, castling and legal en passant), it stores legal move UCI IDs, the number of times a **named grandmaster** made the move, and player counts; positions beyond the opening book are included (up to ply 180). It does not store raw chess engine scores or assert that any observed move is objectively best.
+- On each move, UCI GM-1000 first looks up the current position. If found, remembered moves are searched first by alpha-beta; they can be preferred **only within 20 centipawns of the best searched move**, never over detected mates. If the position is unknown, it uses its existing historical opening book or regular alpha-beta search. This is **exact position lookup**, not fuzzy generalization.
+- UCI toggle: `setoption name PositionMemory value false` to disable memory and run the same engine as a control. The on-disk database is reloaded on `ucinewgame`. No rejected evaluation-weight candidates are deployed.
+- Actual performance versus the memory-disabled control still requires paired playing-strength tests. The database's mere existence is not proof the engine got stronger.

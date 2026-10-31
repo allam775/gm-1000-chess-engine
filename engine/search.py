@@ -125,7 +125,8 @@ def evaluate(board: chess.Board, weights: dict[str, float] | None = None) -> int
 
 class Engine:
     def __init__(self, hash_mb: int = 32, book_path: str | Path = "data/opening_book.json",
-                 learning_path: str | Path = "data/approved_model.json"):
+                 learning_path: str | Path = "data/approved_model.json",
+                 memory_path: str | Path = "data/position_memory.json"):
         self.hash_mb = max(1, hash_mb)
         self.table: dict[int, TTEntry] = {}
         self.killers: dict[int, list[chess.Move]] = {}
@@ -138,11 +139,15 @@ class Engine:
         self.learning_path = Path(learning_path)
         self._learning: dict | None = None
         self._book: dict | None = None
+        self.memory_path = Path(memory_path)
+        self.memory_enabled = True
+        self._memory: dict | None = None
 
     def new_game(self) -> None:
         self.table.clear()
         self.killers.clear()
         self._learning = None  # Approved model updates are reloaded between games.
+        self._memory = None  # New memory database becomes visible next game.
 
     def _load_book(self) -> dict:
         if self._book is None:
@@ -163,6 +168,21 @@ class Engine:
             except (OSError, ValueError, TypeError):
                 self._learning = {'weights': {}, 'opening_moves': {}}
         return self._learning
+
+    def memory_moves(self, board: chess.Board) -> list[tuple[chess.Move, int]]:
+        """Look up exact studied positions; never trust a stored move blindly."""
+        if not self.memory_enabled:
+            return []
+        if self._memory is None:
+            try:
+                raw = json.loads(self.memory_path.read_text(encoding='utf-8'))
+                if raw.get('schema') != 1 or not isinstance(raw.get('positions'), dict):
+                    raise ValueError('Unsupported position-memory schema')
+                self._memory = raw
+            except (OSError, ValueError, TypeError):
+                self._memory = {'schema': 1, 'positions': {}}
+        from .position_memory import legal_memory_moves
+        return legal_memory_moves(board, self._memory)
 
     def book_move(self, board: chess.Board) -> chess.Move | None:
         if not self.own_book:
@@ -337,14 +357,16 @@ class Engine:
         self.deadline = time.monotonic() + max(0.01, time_limit) if time_limit is not None else None
         if board.is_game_over(claim_draw=True):
             return SearchResult(None)
-        if allow_book:
+        recalled = self.memory_moves(board) if allow_book else []
+        if allow_book and not recalled:
             bm = self.book_move(board)
             if bm:
                 return SearchResult(bm, book=True, pv=(bm,))
         legal = list(board.legal_moves)
         if not legal:
             return SearchResult(None)
-        result = SearchResult(legal[0])
+        # Recalled moves have priority for examination, not automatic play.
+        result = SearchResult(recalled[0][0] if recalled else legal[0])
         for current_depth in range(1, min(depth, 64) + 1):
             if self.stop_event.is_set():
                 break
@@ -355,20 +377,32 @@ class Engine:
                 best_move = None
                 key = chess.polyglot.zobrist_hash(board)
                 preferred = self.table.get(key)
-                for move in self._ordered(board, legal, 0, preferred.move if preferred else result.move):
+                scores = {}
+                ordered = self._ordered(board, legal, 0, preferred.move if preferred else result.move)
+                if recalled:
+                    # Examine known master choices first to improve alpha-beta ordering.
+                    master_order = {m: n for m, n in recalled}
+                    ordered.sort(key=lambda m: (m in master_order, master_order.get(m, 0)), reverse=True)
+                for move in ordered:
                     board.push(move)
                     try:
                         score = -self._negamax(board, current_depth - 1, -beta, -original_alpha, 1)
                     finally:
                         board.pop()
+                    scores[move] = score
                     if score > best_score:
                         best_score, best_move = score, move
                     original_alpha = max(original_alpha, score)
                 if best_move is None:
                     break
+                if recalled:
+                    from .position_memory import choose_safe_recalled_move
+                    master_choice = choose_safe_recalled_move(recalled, scores, best_score)
+                    if master_choice is not None:
+                        best_move = master_choice
                 self.table[key] = TTEntry(current_depth, best_score, 'exact', best_move)
                 pv = self._pv(board, current_depth)
-                result = SearchResult(best_move, best_score, current_depth, self.nodes, pv or (best_move,))
+                result = SearchResult(best_move, scores[best_move], current_depth, self.nodes, pv or (best_move,))
                 if info:
                     info(result)
                 if abs(best_score) >= MATE - 100:
