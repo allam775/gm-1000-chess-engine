@@ -12,12 +12,15 @@ import json
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from engine.position_memory import build_position_memory
 from scripts.build_book import get_source, parse_candidates, select_round_robin
 from scripts.study_gm_games import GRANDMASTERS
-
-ROOT = Path(__file__).resolve().parents[1]
 
 
 def load_json(path: Path):
