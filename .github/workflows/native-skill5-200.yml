@@ -1,0 +1,128 @@
+name: GM-1000 v0.6 vs v0.7 - 200 Stockfish Skill5 matched games
+on:
+  push:
+    branches:
+      - experiment/native-tactical-v07
+    paths:
+      - '.github/launch-native-skill5-200.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: gm1000-skill5-independent-200
+  cancel-in-progress: false
+jobs:
+  tournament:
+    name: 'Games ${{ matrix.shard }} (40 per shard)'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        shard: [0, 1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Run full Python baseline test suite
+        run: |
+          python -m pip install -r requirements.txt pytest
+          python -m pytest -q
+          python -m py_compile scripts/skill5_200_match.py
+      - name: Compile two FROZEN native commits with identical flags
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/tournament
+          git cat-file -e 0d5568e39c643a657d669b320e9463359bab06be:native/gm1000.cpp
+          git cat-file -e 26cdee9b59641a24be88a8574418d9d12e25c3e0:native/gm1000.cpp
+          git show 0d5568e39c643a657d669b320e9463359bab06be:native/gm1000.cpp > build/tournament/v06.cpp
+          git show 26cdee9b59641a24be88a8574418d9d12e25c3e0:native/gm1000.cpp > build/tournament/v07.cpp
+          test "$(sha256sum build/tournament/v06.cpp | cut -d' ' -f1)" != "$(sha256sum build/tournament/v07.cpp | cut -d' ' -f1)"
+          g++ -std=c++17 -O3 -DNDEBUG -pthread -Wall -Wextra -Werror \
+            -I native/third_party build/tournament/v06.cpp -o build/tournament/v06
+          g++ -std=c++17 -O3 -DNDEBUG -pthread -Wall -Wextra -Werror \
+            -I native/third_party build/tournament/v07.cpp -o build/tournament/v07
+          python - <<'PY'
+          import subprocess, chess
+          for version in ('v06','v07'):
+              fen=chess.STARTING_FEN
+              r=subprocess.run(['build/tournament/'+version,'--bench',fen,'100'],capture_output=True,text=True,check=True,timeout=10)
+              import json
+              move=json.loads(r.stdout)['bestmove']
+              assert chess.Move.from_uci(move) in chess.Board().legal_moves
+              print(version,'verified legal root move:',move)
+          PY
+      - name: Install common Stockfish Level 5 opponent
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y stockfish
+          echo 'STOCKFISH_PATH=/usr/games/stockfish' >> "$GITHUB_ENV"
+      - name: Play matched openings, 20 games per engine per shard
+        shell: bash
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          set -euo pipefail
+          python -m scripts.skill5_200_match shard --shard "$SHARD"
+      - name: Save complete original PGN, intermediate state and summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-skill5-200-shard-${{ matrix.shard }}
+          path: reports/skill5-200/shard-${{ matrix.shard }}/
+          retention-days: 90
+          if-no-files-found: warn
+  aggregate:
+    name: Verify 200 games and publish complete A/B scorecard
+    needs: tournament
+    if: success()
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install analysis requirements
+        run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: gm1000-skill5-200-shard-*
+          path: reports/skill5-200-downloaded
+          merge-multiple: false
+      - name: Validate paired coverage and aggregate completed outcomes
+        run: |
+          python -m scripts.skill5_200_match aggregate
+      - name: Archive full consolidated source and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-skill5-200-final-report
+          path: |
+            reports/skill5-200-downloaded/
+            reports/skill5-200-final/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Publish audit report only on experimental branch
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp reports/skill5-200-final/summary.json data/native_v07_vs_v06_skill5_200_report.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/native_v07_vs_v06_skill5_200_report.json
+          git commit -m 'Report complete 200-game independent Stockfish Skill5 v06/v07 A/B'
+          git fetch origin experiment/native-tactical-v07
+          git rebase origin/experiment/native-tactical-v07
+          git push origin HEAD:experiment/native-tactical-v07
