@@ -1,0 +1,223 @@
+{
+  "schema": 1,
+  "timestamp_utc": "2026-10-31T11:08:39.319638+00:00",
+  "study": "400 games Stockfish 19 Skill Level 20 self-play (position overlay)",
+  "opponent": "Stockfish installed Ubuntu package (Skill Level 0)",
+  "stockfish_skill": 0,
+  "games_per_tournament": 4,
+  "tournaments": 4,
+  "games_scheduled": 16,
+  "seconds_per_move": 0.2,
+  "max_plies": 300,
+  "grandmaster_memory": "enabled in both groups",
+  "grandmaster_memory_positions": 32233,
+  "stockfish19_memory_positions": 43702,
+  "stockfish19_study_games": 400,
+  "stockfish19_overlay_enabled": {
+    "wins": 8,
+    "draws": 0,
+    "losses": 0,
+    "completed_games": 8,
+    "errors": 0,
+    "incomplete": 0,
+    "score_percent": 100.0,
+    "tournaments": 2
+  },
+  "stockfish19_overlay_disabled": {
+    "wins": 6,
+    "draws": 0,
+    "losses": 2,
+    "completed_games": 8,
+    "errors": 0,
+    "incomplete": 0,
+    "score_percent": 75.0,
+    "tournaments": 2
+  },
+  "rounds": [
+    {
+      "tournament": 1,
+      "stockfish19_overlay": "enabled",
+      "grandmaster_memory": "enabled",
+      "wins": 4,
+      "draws": 0,
+      "losses": 0,
+      "completed_games": 4,
+      "errors": 0,
+      "incomplete": 0,
+      "score_percent": 100.0,
+      "games": [
+        {
+          "game": 1,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 65,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 2,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 46,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 3,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 45,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 4,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 54,
+          "termination": "CHECKMATE",
+          "errors": []
+        }
+      ]
+    },
+    {
+      "tournament": 2,
+      "stockfish19_overlay": "disabled",
+      "grandmaster_memory": "enabled",
+      "wins": 3,
+      "draws": 0,
+      "losses": 1,
+      "completed_games": 4,
+      "errors": 0,
+      "incomplete": 0,
+      "score_percent": 75.0,
+      "games": [
+        {
+          "game": 1,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 63,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 2,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 71,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 3,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 123,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 4,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 60,
+          "termination": "CHECKMATE",
+          "errors": []
+        }
+      ]
+    },
+    {
+      "tournament": 3,
+      "stockfish19_overlay": "disabled",
+      "grandmaster_memory": "enabled",
+      "wins": 3,
+      "draws": 0,
+      "losses": 1,
+      "completed_games": 4,
+      "errors": 0,
+      "incomplete": 0,
+      "score_percent": 75.0,
+      "games": [
+        {
+          "game": 1,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 85,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 2,
+          "gm_color": "black",
+          "result": "1-0",
+          "plies": 37,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 3,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 79,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 4,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 56,
+          "termination": "CHECKMATE",
+          "errors": []
+        }
+      ]
+    },
+    {
+      "tournament": 4,
+      "stockfish19_overlay": "enabled",
+      "grandmaster_memory": "enabled",
+      "wins": 4,
+      "draws": 0,
+      "losses": 0,
+      "completed_games": 4,
+      "errors": 0,
+      "incomplete": 0,
+      "score_percent": 100.0,
+      "games": [
+        {
+          "game": 1,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 55,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 2,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 86,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 3,
+          "gm_color": "white",
+          "result": "1-0",
+          "plies": 51,
+          "termination": "CHECKMATE",
+          "errors": []
+        },
+        {
+          "game": 4,
+          "gm_color": "black",
+          "result": "0-1",
+          "plies": 90,
+          "termination": "CHECKMATE",
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "limitation": "8 games per variant from standard startpos, Stockfish skill-0 may vary; not a statistically controlled Elo estimate or paired-opening benchmark. Model and memory files are not changed."
+}
