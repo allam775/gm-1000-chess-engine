@@ -1,8 +1,10 @@
 """Compare actual completed depths, not misleading raw node counts."""
-import json,os,re,statistics,time
+import json,os,re,statistics,time,sys
 from datetime import datetime,timezone
 from pathlib import Path
 import chess,chess.engine
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from engine.search import Engine
 
 ROOT=Path(__file__).resolve().parents[1]
