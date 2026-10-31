@@ -160,7 +160,7 @@ int static_exchange(const Board& b, Move m) {
 
 bool is_draw(const Board& board) {
     return board.isInsufficientMaterial() || board.isHalfMoveDraw() ||
-           (board.halfMoveClock() >= 8 && board.isRepetition(2));
+           (board.halfMoveClock() >= 8 && board.isRepetition(3));
 }
 
 struct Entry {
@@ -529,6 +529,16 @@ int go_time(const Board& board, const std::vector<std::string>& tokens, int& dep
 } // namespace
 
 int main(int argc, char** argv) {
+    if (argc > 1 && std::string(argv[1])=="--draw-status") {
+        Board b;
+        for (int i=2; i<argc; ++i) {
+            const Move m = uci::uciToMove(b, argv[i]);
+            if (m.move()==Move::NO_MOVE || !b.isLegal(m)) return 3;
+            b.makeMove(m);
+        }
+        std::cout << (is_draw(b) ? "draw" : "live") << '\\n';
+        return 0;
+    }
     if (argc > 1 && std::string(argv[1])=="--see") {
         if (argc < 4) return 2;
         Board b(argv[2]);
