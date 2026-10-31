@@ -1,0 +1,2808 @@
+{
+  "schema": 1,
+  "original_training_games": 160,
+  "original_holdout_games_excluded": 40,
+  "original_opening_book_games_excluded": 1000,
+  "games": [
+    {
+      "sha256": "1ef359173bc3ca80786d945ac89f7ae819470c2c93fab8fdf37d5845c7d30eb6",
+      "player": "Carlsen",
+      "event": "Blindfold World Cup",
+      "date": "2007.10.17",
+      "plies": 136
+    },
+    {
+      "sha256": "820eae93cac5a25b7804fbfa02381be915693e215177252da1aaf54bff7af92d",
+      "player": "Kasparov",
+      "event": "World Championship 33th-KK3",
+      "date": "1986.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "d5655402508f2549fe100a0cb9897637273392830119ff3b8e22a598b42467f2",
+      "player": "Fischer",
+      "event": "Belgrade URS-World",
+      "date": "1970.??.??",
+      "plies": 104
+    },
+    {
+      "sha256": "73cb03b991d25c51bef9f743c93a4ed8bc5676e37abee5572f230cd2cbb67410",
+      "player": "Karpov",
+      "event": "Linares",
+      "date": "1992.??.??",
+      "plies": 114
+    },
+    {
+      "sha256": "f6bf904d9a5e1d26f79c670e9a5c8a986bb27d8325a5114669996c64bd94ed7b",
+      "player": "Anand",
+      "event": "Tata Steel India Blitz",
+      "date": "2018.11.13",
+      "plies": 130
+    },
+    {
+      "sha256": "690ccc0ef321cdfe62056ad1c9c8fb2d03b18813501cc4fde2e3a1a9f1e08bb2",
+      "player": "Tal",
+      "event": "Riga Interzonal",
+      "date": "1979.??.??",
+      "plies": 113
+    },
+    {
+      "sha256": "ca8368e323f14b19023b0d8794d02ff6236cce18f4a02852ff0dcfbc29a1ccc0",
+      "player": "Botvinnik",
+      "event": "World Championship 22th",
+      "date": "1958.??.??",
+      "plies": 69
+    },
+    {
+      "sha256": "13e56e049080941787c023d7699a8e5851326a78732b0e047f20ee864b333d45",
+      "player": "Alekhine",
+      "event": "Salzburg",
+      "date": "1942.??.??",
+      "plies": 159
+    },
+    {
+      "sha256": "109d5cd1c41bd097b0e2bc1e85ab8b0967e06a52cfa64c042b677be269d69079",
+      "player": "Carlsen",
+      "event": "FIDE World Rapid Team",
+      "date": "2024.08.03",
+      "plies": 127
+    },
+    {
+      "sha256": "9adfc9c6e940e6b1df25037ccebb5f9886a60c406c1e85793bc90ab291e8e416",
+      "player": "Kasparov",
+      "event": "World Championship 33th-KK3",
+      "date": "1986.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "51a0b32e6f05ba4292ba9ebf31db87296886457f47f2568714bf23562a8ce5f2",
+      "player": "Fischer",
+      "event": "Mar del Plata",
+      "date": "1959.??.??",
+      "plies": 131
+    },
+    {
+      "sha256": "b0c14fb292a299bc548f2e5bc9a4975c54904abf5034f407efce992d8e8dcd00",
+      "player": "Karpov",
+      "event": "World Blitz",
+      "date": "2007.11.22",
+      "plies": 112
+    },
+    {
+      "sha256": "cb1383c5e9d440422d0bb6fc027e4d11749ebc6046f30cab3f2ee2356dba28e6",
+      "player": "Anand",
+      "event": "Tata Steel India Blitz TB",
+      "date": "2018.11.14",
+      "plies": 109
+    },
+    {
+      "sha256": "a766413c158fa8ee815dbb2bfb01427562d2ba51c3981a2884184fcca25201dd",
+      "player": "Tal",
+      "event": "World Cup",
+      "date": "1988.??.??",
+      "plies": 83
+    },
+    {
+      "sha256": "5b01d6121d602419cd470fc77162f47578b81582d6d232ccd14e4baee8ea0d87",
+      "player": "Botvinnik",
+      "event": "World Championship 23th",
+      "date": "1960.??.??",
+      "plies": 88
+    },
+    {
+      "sha256": "35606d21faaba51cf1b09d95b42d7a27a90350afd4ad45c84b0efafae122dfa2",
+      "player": "Alekhine",
+      "event": "London",
+      "date": "1932.??.??",
+      "plies": 159
+    },
+    {
+      "sha256": "b228d3eea94e3defd17852e44a3a24d89eeeeed494672d24cb9e3458feb3e38c",
+      "player": "Carlsen",
+      "event": "World Blitz Final KO 2025",
+      "date": "2025.12.30",
+      "plies": 124
+    },
+    {
+      "sha256": "c91626ccf173906d3685f24c4843ba492ac71f31ecffe7f213757749954f763e",
+      "player": "Kasparov",
+      "event": "World Championship 33th-KK3",
+      "date": "1986.??.??",
+      "plies": 61
+    },
+    {
+      "sha256": "740bfdf302ebfe925709c87754ba1cc7416cc7f59671fc8a97d96d51af099647",
+      "player": "Fischer",
+      "event": "Candidats Tournament",
+      "date": "1962.??.??",
+      "plies": 131
+    },
+    {
+      "sha256": "e1c54309f08246b1378c8a0958f1583f8a77158bd30e26dc96c95794d8838c91",
+      "player": "Karpov",
+      "event": "World Blitz",
+      "date": "2009.11.18",
+      "plies": 117
+    },
+    {
+      "sha256": "be3d9718e2d6320ce32305eec5c8ace47b5b1f9a038ea688e0ba77e2da1b4a60",
+      "player": "Anand",
+      "event": "7th Gashimov Mem Rapid",
+      "date": "2021.12.19",
+      "plies": 238
+    },
+    {
+      "sha256": "de2dbe09859f82b9b2fda1aa959a7c4a214b52f7a4687720074d6719b5bcba47",
+      "player": "Tal",
+      "event": "Albena",
+      "date": "1984.??.??",
+      "plies": 122
+    },
+    {
+      "sha256": "f2772d533dfd5e41748948c7cef61d12ad2381164bc96692bc7be093d25c5fd6",
+      "player": "Botvinnik",
+      "event": "World Championship 18th",
+      "date": "1948.??.??",
+      "plies": 88
+    },
+    {
+      "sha256": "4a65172824c4a7bcb61c920cb738111744049e4c7dd037abd7d44a1f01ec603f",
+      "player": "Alekhine",
+      "event": "Bradley Beach",
+      "date": "1929.??.??",
+      "plies": 159
+    },
+    {
+      "sha256": "157f2d66b2be89cd18fce2be0f6cc5cf86345df221697f70f8b2d2a45ba816d4",
+      "player": "Carlsen",
+      "event": "World Blitz 2016",
+      "date": "2016.12.29",
+      "plies": 130
+    },
+    {
+      "sha256": "8df053d6f873a935b0114f3855e1d6b770c89337f58b94a8cb3d7e2d78366bc1",
+      "player": "Kasparov",
+      "event": "PCA-World Championship",
+      "date": "1993.??.??",
+      "plies": 80
+    },
+    {
+      "sha256": "2204702a68395b783dcab23754d67a65d6e038c8b60ff66ff7390c703f6d28b9",
+      "player": "Fischer",
+      "event": "Siegen olm",
+      "date": "1970.??.??",
+      "plies": 130
+    },
+    {
+      "sha256": "aa5bfc198fa1c86293b685fa24656ff434dc3665fffd521ca2176f0549c94cfe",
+      "player": "Karpov",
+      "event": "World Championship 30th",
+      "date": "1981.??.??",
+      "plies": 84
+    },
+    {
+      "sha256": "aa4e5c3801543aeb9c9c9e30c0fe122feb4da1cdca05691cd0d911013ca146e1",
+      "player": "Anand",
+      "event": "XXVI SuperGM",
+      "date": "2009.02.25",
+      "plies": 154
+    },
+    {
+      "sha256": "ae3e6114814f3c1cfaf1b37d89b60b8f6014d555b33d0e0f16724858aaf618f2",
+      "player": "Tal",
+      "event": "Sochi",
+      "date": "1973.??.??",
+      "plies": 136
+    },
+    {
+      "sha256": "c16e3842e363ca7cde9c306893b2a8381a299f97d5a0ee817edf963e25cf5335",
+      "player": "Botvinnik",
+      "event": "World Championship 22th",
+      "date": "1958.??.??",
+      "plies": 87
+    },
+    {
+      "sha256": "833434622d7d858a5bb2583b8a3ceb56b453e5dee1e13d1a66d9e8ea2289af07",
+      "player": "Alekhine",
+      "event": "World Championship 15th",
+      "date": "1934.??.??",
+      "plies": 83
+    },
+    {
+      "sha256": "15fb23a01a1912a6adc0241a4b1c5c221de493733be70d36baedb9b48b12afca",
+      "player": "Carlsen",
+      "event": "World Blitz 2017",
+      "date": "2017.12.30",
+      "plies": 129
+    },
+    {
+      "sha256": "fe8c8832fb6a76a3939780a90e7c76e5c7856e1ca194a7e56daad59f5f506a57",
+      "player": "Kasparov",
+      "event": "World Championship 31th-KK1",
+      "date": "1984.??.??",
+      "plies": 82
+    },
+    {
+      "sha256": "f622ed7a25c51abc7230e939322203239c12bc3dae99a02f821f40601957f820",
+      "player": "Fischer",
+      "event": "La Habana olm fin-A",
+      "date": "1966.??.??",
+      "plies": 150
+    },
+    {
+      "sha256": "26000b38d641d01fee699d82125887d8f025954a294588708e3409fc7a00a3a6",
+      "player": "Karpov",
+      "event": "Cap d'Agde-A",
+      "date": "1998.10.27",
+      "plies": 173
+    },
+    {
+      "sha256": "5d2426b4be54784ec76bd5998dff9e158160b7264c37941f189179657c8c7454",
+      "player": "Anand",
+      "event": "Linares16th",
+      "date": "1999.02.25",
+      "plies": 130
+    },
+    {
+      "sha256": "b8c9f863c83f1ee176124404ec1a46ad652dc066604a2e61f818425199764a86",
+      "player": "Tal",
+      "event": "Saint John op-2",
+      "date": "1988.??.??",
+      "plies": 118
+    },
+    {
+      "sha256": "7a41e01b09d821eda1180bea72f10b7808290e40cc7594a9d618feeac2d74da8",
+      "player": "Botvinnik",
+      "event": "World Championship 25th",
+      "date": "1963.??.??",
+      "plies": 86
+    },
+    {
+      "sha256": "68bd466a3190e21c81b23732bda397f289becd439bc1be5139326617666c4074",
+      "player": "Alekhine",
+      "event": "Amsterdam",
+      "date": "1936.??.??",
+      "plies": 158
+    },
+    {
+      "sha256": "7bebb8ca4b6f3b71620b5643c94f7b712a153970ee65f361434932a1df6b1eff",
+      "player": "Carlsen",
+      "event": "World Blitz",
+      "date": "2009.11.17",
+      "plies": 126
+    },
+    {
+      "sha256": "41ff2a59ab6264c7109a777eb93de5e12cfae8808bb6a5406cc71652ae9bab20",
+      "player": "Kasparov",
+      "event": "x3dworld rapid",
+      "date": "2002.12.19",
+      "plies": 104
+    },
+    {
+      "sha256": "759617ae1ef1d92e0301d322f93cd1c5f0b356ef0b71330cb99f800ac4f3d35f",
+      "player": "Fischer",
+      "event": "Zuerich",
+      "date": "1959.??.??",
+      "plies": 129
+    },
+    {
+      "sha256": "2a41dea2c0a925bfa4f4ae5c2a61f5993c45b7daec45836085c3fb8898d0d70a",
+      "player": "Karpov",
+      "event": "World Championship 29th",
+      "date": "1978.??.??",
+      "plies": 84
+    },
+    {
+      "sha256": "17e9ef04669b5172060acb2f2c03c18142e0c292b1fb8866105ab09e50e398d9",
+      "player": "Anand",
+      "event": "11th Tal Mem Blitz 2018",
+      "date": "2018.03.05",
+      "plies": 157
+    },
+    {
+      "sha256": "f186a2f107df73b7720f9d6f0a01e45cf39ddfc640a0d97dffd6e7877d4b97c7",
+      "player": "Tal",
+      "event": "Hoogovens",
+      "date": "1982.??.??",
+      "plies": 113
+    },
+    {
+      "sha256": "847ebdf7bba9d9380b458870e62cf76565180c60d3d70876edf1c8d3ff3b48c9",
+      "player": "Botvinnik",
+      "event": "World Championship 20th",
+      "date": "1954.??.??",
+      "plies": 66
+    },
+    {
+      "sha256": "31acb587754a45ccfaa553ca6fc8640ba293a75e897b5bcf80173f139adeabd8",
+      "player": "Alekhine",
+      "event": "World Championship 17th",
+      "date": "1937.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "bea8ef2d2169f349b70babf594b1186d2c3de20f11c7d870036c46225f04b49a",
+      "player": "Carlsen",
+      "event": "83rd Tata Steel Masters",
+      "date": "2021.01.26",
+      "plies": 129
+    },
+    {
+      "sha256": "fc6ba950e6fb3f618484adae2866633825f4ae76cd78e56d782d44532f0fb4e3",
+      "player": "Kasparov",
+      "event": "World Championship 33th-KK3",
+      "date": "1986.??.??",
+      "plies": 80
+    },
+    {
+      "sha256": "a5b1d914e90c180d83e1f5c9a9703e765241aa30b88e2b11386322ed11c1e93a",
+      "player": "Fischer",
+      "event": "Solingen sim",
+      "date": "1970.??.??",
+      "plies": 128
+    },
+    {
+      "sha256": "37a139698c0536c27e5332fb483f18392fd95fc5784295599e05d5be0f2bffa0",
+      "player": "Karpov",
+      "event": "FIDE GP",
+      "date": "2002.04.03",
+      "plies": 166
+    },
+    {
+      "sha256": "75639aaab0d0a2e07b674e1fb00d5ead2d58e4800d21bbfc9473ab2d0e386816",
+      "player": "Anand",
+      "event": "Linares",
+      "date": "1998.02.22",
+      "plies": 110
+    },
+    {
+      "sha256": "f6d67b577369004e304a147c71f8c510f58d02ded8cf88d77c8184cae9b6366f",
+      "player": "Tal",
+      "event": "URS-ch41",
+      "date": "1973.??.??",
+      "plies": 127
+    },
+    {
+      "sha256": "491cd02fda6a9ebd8eb27cd9920b5cf2bc03264a834cdacab83894cfb19a19f0",
+      "player": "Botvinnik",
+      "event": "World Championship 24th",
+      "date": "1961.??.??",
+      "plies": 65
+    },
+    {
+      "sha256": "b65210a828d7fe3a799ffda1414aa736da95ac9f8d24d43278197aa5efe1ac0b",
+      "player": "Alekhine",
+      "event": "World Championship 17th",
+      "date": "1937.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "e9546fecf1a89067065f31dbb4fdfec80fedc6f02244e54e8997857cd49bbddc",
+      "player": "Carlsen",
+      "event": "World Rapid 2018",
+      "date": "2018.12.27",
+      "plies": 130
+    },
+    {
+      "sha256": "677216f04814531246f57e14e868740dc6fe60a116d3e85cebb6b3abf507f6fa",
+      "player": "Kasparov",
+      "event": "World Championship 31th-KK1",
+      "date": "1984.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "43a374a066b0b54f495a11805e7b225ad7ab14780f1c3bfe2221c74635521d59",
+      "player": "Fischer",
+      "event": "Herceg Novi blitz",
+      "date": "1970.??.??",
+      "plies": 127
+    },
+    {
+      "sha256": "8855a454cf98c4a33d37d95ddecae97444d58a34462ea1bdd1970a179e0d014a",
+      "player": "Karpov",
+      "event": "Linares",
+      "date": "1989.??.??",
+      "plies": 113
+    },
+    {
+      "sha256": "f0c91065c7e3798167021464812a2e3d58f21709eddfc8ebe598ea494e6d5d45",
+      "player": "Anand",
+      "event": "FIDE World Rapid 2014",
+      "date": "2014.06.18",
+      "plies": 125
+    },
+    {
+      "sha256": "51f3189f33474a268ae524057ff4da876324ba0268abeed7a12cb7edc2d5a944",
+      "player": "Tal",
+      "event": "Moscow",
+      "date": "1971.??.??",
+      "plies": 117
+    },
+    {
+      "sha256": "780deefee60d904a076da22569fd3fd32061219109bf62330061ae71a87ce1a9",
+      "player": "Botvinnik",
+      "event": "World Championship 23th",
+      "date": "1960.??.??",
+      "plies": 85
+    },
+    {
+      "sha256": "04653318302c65a3be7766811a47c0bf4b6a67f4685974373f1199ca0b13e8f3",
+      "player": "Alekhine",
+      "event": "World Championship 14th",
+      "date": "1929.??.??",
+      "plies": 60
+    },
+    {
+      "sha256": "2e7e030a55caf7b8d2bf21ec3cf6491d06ad0e86305c2c68501d94b921f9c009",
+      "player": "Carlsen",
+      "event": "75th Tata Steel GpA",
+      "date": "2013.01.22",
+      "plies": 132
+    },
+    {
+      "sha256": "beaec76c360a619710f6a0a1202d1e20cc2e7a0fec84bd5c033276d943479391",
+      "player": "Kasparov",
+      "event": "World Championship 34th-KK4",
+      "date": "1987.??.??",
+      "plies": 80
+    },
+    {
+      "sha256": "69e90151af6827f9a90188d4a1ffdaf67d7001f1d038833d8843b391f8fcac58",
+      "player": "Fischer",
+      "event": "Stockholm Interzonal",
+      "date": "1962.??.??",
+      "plies": 127
+    },
+    {
+      "sha256": "5701dad1f67e41e5686a40b17a3d6ccb93bba34ee00a018c53f36659a6462748",
+      "player": "Karpov",
+      "event": "World Championship 29th",
+      "date": "1978.??.??",
+      "plies": 83
+    },
+    {
+      "sha256": "26bab3b740d326270b5d2f3b076c4983dc41f9921bc3416b43909e4db055beca",
+      "player": "Anand",
+      "event": "Amber Blindfold",
+      "date": "2003.03.25",
+      "plies": 185
+    },
+    {
+      "sha256": "15d32ec21861097248d11b0b92aef4acb4b60f16a82580018bf9c00cd8415291",
+      "player": "Tal",
+      "event": "Brussels blitz",
+      "date": "1987.??.??",
+      "plies": 111
+    },
+    {
+      "sha256": "9c430671c12b171edbbbd89cec1578d1af6cd4608a40cd38f2b0613363082c7c",
+      "player": "Botvinnik",
+      "event": "World Championship 24th",
+      "date": "1961.??.??",
+      "plies": 65
+    },
+    {
+      "sha256": "0b6c8bf60eb1a7475e7ffd1147f4f3ffcd6ab7ddf9a9ad213699ce634c7635ab",
+      "player": "Alekhine",
+      "event": "World Championship 16th",
+      "date": "1935.??.??",
+      "plies": 79
+    },
+    {
+      "sha256": "73a10255aaa5478e1a40e84d175fa663f5ab90310c36fc23d994bf9dddbde4d5",
+      "player": "Carlsen",
+      "event": "FIDE World Cup 2021",
+      "date": "2021.07.27",
+      "plies": 127
+    },
+    {
+      "sha256": "c01f13c10ad09c31de76091a716114f73a42493b94caf4b910392d9b48c5d232",
+      "player": "Kasparov",
+      "event": "World Championship 32th-KK2",
+      "date": "1985.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "748b2c255e0d333eebefcf083403753d040186a3cd08b0dc5e53e5fcd326552c",
+      "player": "Fischer",
+      "event": "St Stefan/Belgrade m",
+      "date": "1992.??.??",
+      "plies": 78
+    },
+    {
+      "sha256": "8579a92cdf5dbc853b7dd6dece906dd863f8e5c72a6a30511eb9a8b2c245784e",
+      "player": "Karpov",
+      "event": "Amber-blind 5th",
+      "date": "1996.??.??",
+      "plies": 187
+    },
+    {
+      "sha256": "33b0ac0ce1609845e16558964cdfd14e802f128d5b6b3f9d6c81d62ee7df5ffe",
+      "player": "Anand",
+      "event": "Online Olym KO Stage 2020",
+      "date": "2020.08.29",
+      "plies": 156
+    },
+    {
+      "sha256": "00fe4959b7f9706b81337eaaeab15f166b4b9633e40a13cb418b398d4fedae75",
+      "player": "Tal",
+      "event": "Nice olm fin-A",
+      "date": "1974.??.??",
+      "plies": 140
+    },
+    {
+      "sha256": "1a07f705826f6ed732d449553b94788d4b1ba573cf4e7b44f2521438b8f7ba44",
+      "player": "Botvinnik",
+      "event": "Leningrad-5ch sf",
+      "date": "1926.??.??",
+      "plies": 193
+    },
+    {
+      "sha256": "b13e4ad299aa148792df7a0cc0ab4e465d44954fee89ebfc2ff1ac05ce1dd2cc",
+      "player": "Alekhine",
+      "event": "World Championship 16th",
+      "date": "1935.??.??",
+      "plies": 59
+    },
+    {
+      "sha256": "bd2f6081a5834b3fdc1444e3c5c1bb190e6064553e571d2ea6e939575f80fc2e",
+      "player": "Carlsen",
+      "event": "81st Tata Steel GpA",
+      "date": "2019.01.19",
+      "plies": 147
+    },
+    {
+      "sha256": "ee1a80a68e8a9ce59af59204d159a22d7657e8f6b32bd529758c927fa4ad0d8d",
+      "player": "Kasparov",
+      "event": "World Championship 31th-KK1",
+      "date": "1984.??.??",
+      "plies": 61
+    },
+    {
+      "sha256": "cfd4e26656562cda5fc7fd761c56b7d20a4271c1631e8d34366d5eede0d31f70",
+      "player": "Fischer",
+      "event": "St Stefan/Belgrade m",
+      "date": "1992.??.??",
+      "plies": 78
+    },
+    {
+      "sha256": "964f92d02ae61a0cf1a960d0d03c8c6c962ba6d89f05356b80643ced9105a5d4",
+      "player": "Karpov",
+      "event": "World Championship 29th",
+      "date": "1978.??.??",
+      "plies": 83
+    },
+    {
+      "sha256": "da901b7f3658a6ea35523715228cc6ba1423330dc426020c4b66555beacd36ab",
+      "player": "Anand",
+      "event": "8th Tal Mem Blitz",
+      "date": "2013.06.12",
+      "plies": 154
+    },
+    {
+      "sha256": "551c1c647edc5990b76cde6e69f8b163d8f13f2070a5f068a06e61149dd2cd7a",
+      "player": "Tal",
+      "event": "URS-ch47",
+      "date": "1979.??.??",
+      "plies": 113
+    },
+    {
+      "sha256": "1b71dd176bd6b85a81e0b2a41fd25251bb9dbf9dfd6a778c8690f7dd6efda6f4",
+      "player": "Botvinnik",
+      "event": "Leningrad/Moscow",
+      "date": "1941.??.??",
+      "plies": 177
+    },
+    {
+      "sha256": "4acb7fdf761b7232d6fd4af7f8a5ecb67a4a450c38b40aacde73bcc20245fc85",
+      "player": "Alekhine",
+      "event": "Karlsbad",
+      "date": "1911.??.??",
+      "plies": 154
+    },
+    {
+      "sha256": "d2ebe307bda803b6a25723118c0b295e5ec6c3c464662d3a1aa8a23020e210f4",
+      "player": "Carlsen",
+      "event": "World Blitz",
+      "date": "2009.11.18",
+      "plies": 147
+    },
+    {
+      "sha256": "f55b62def1c9e5bef32cd42f856a245f19dd38946b4a515de8b2b7359ef3c6ce",
+      "player": "Kasparov",
+      "event": "World Championship 31th-KK1",
+      "date": "1984.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "19cdff9328b01031634c53854b549d77b533dbe0dea2aa97a274e722f376f640",
+      "player": "Fischer",
+      "event": "Candidats Tournament",
+      "date": "1962.??.??",
+      "plies": 125
+    },
+    {
+      "sha256": "369c71c40645a3270a165df427d4d6d51e0f82fc209c5a97a0b69ccdd9a20a8e",
+      "player": "Karpov",
+      "event": "Linares",
+      "date": "1983.??.??",
+      "plies": 133
+    },
+    {
+      "sha256": "5dd760cc6194c499ab69ad107141331f2a8d73125ad5726cf51d78ce83ddca2d",
+      "player": "Anand",
+      "event": "Amber Rapidplay",
+      "date": "2000.03.19",
+      "plies": 225
+    },
+    {
+      "sha256": "7ee5d4ae0f7375f312f66e124c5eb2d2120ebcd36a565aa3d6218290575dacd3",
+      "player": "Tal",
+      "event": "Tallinn",
+      "date": "1977.??.??",
+      "plies": 113
+    },
+    {
+      "sha256": "cfd2fb73e81b14735e28899e94b2eb4bc7fd90681b82d2492b07145c6259508c",
+      "player": "Botvinnik",
+      "event": "URS-ch19",
+      "date": "1951.??.??",
+      "plies": 173
+    },
+    {
+      "sha256": "5db49d78592a1bcfa608238ddab609ca06df2ec2a34182880d84bf473a70e4c1",
+      "player": "Alekhine",
+      "event": "World Championship 14th",
+      "date": "1929.??.??",
+      "plies": 76
+    },
+    {
+      "sha256": "949687e0466885417b1cbe0202b68d60162ea756d5213e68fbe51f8300a5e65b",
+      "player": "Carlsen",
+      "event": "FIDE World Rapid Team",
+      "date": "2026.06.19",
+      "plies": 124
+    },
+    {
+      "sha256": "29e47a3ff387a268d7e1504dacf117a62ec16059990c9e5f9c7280cb676d840a",
+      "player": "Kasparov",
+      "event": "Linares16th",
+      "date": "1999.03.05",
+      "plies": 100
+    },
+    {
+      "sha256": "31fd9c667cd3fd509c2c7b7f94e1a0cd3994963ed87e5e9ca8d9fb018acce7c5",
+      "player": "Fischer",
+      "event": "Portoroz Interzonal",
+      "date": "1958.??.??",
+      "plies": 145
+    },
+    {
+      "sha256": "323d93b085d2757bd2924222db05e6ea5b6835437c5e9f22e47e94dc67444d4b",
+      "player": "Karpov",
+      "event": "World Championship 29th",
+      "date": "1978.??.??",
+      "plies": 82
+    },
+    {
+      "sha256": "623e3d495df70bca7ab0e4b5a6a7453ae14d821517aa0190d8d9cf9e91254d05",
+      "player": "Anand",
+      "event": "AZE vs World Rapid",
+      "date": "2009.05.09",
+      "plies": 111
+    },
+    {
+      "sha256": "93561269600c9d07b9eda68f2a628becf2892e5f5fbd98599817291ac060e206",
+      "player": "Tal",
+      "event": "Subotica Interzonal",
+      "date": "1987.??.??",
+      "plies": 118
+    },
+    {
+      "sha256": "ebcca4d651d6dee45014e62ed271ce1ee9cee8bf6a667f34163dcc91bfaa1924",
+      "player": "Botvinnik",
+      "event": "Leningrad",
+      "date": "1934.??.??",
+      "plies": 175
+    },
+    {
+      "sha256": "cda09bec59cef31b43b324680535c91636af343ff9df0dbe6336d458839b69e5",
+      "player": "Alekhine",
+      "event": "Vienna",
+      "date": "1922.??.??",
+      "plies": 152
+    },
+    {
+      "sha256": "32f3b524735b9b2378beae8e654de19c17d83ef6db9bba3f7fadf3a985247537",
+      "player": "Carlsen",
+      "event": "FIDE World Rapid 2014",
+      "date": "2014.06.18",
+      "plies": 121
+    },
+    {
+      "sha256": "5a67f4227049cbbdff956eb5e776024aed9de5b5ad561fb50ee8271d08b1c2b6",
+      "player": "Kasparov",
+      "event": "World Cup",
+      "date": "1988.??.??",
+      "plies": 111
+    },
+    {
+      "sha256": "5fc0a6ad38ba4037d0e046cc028d025ea641ff60dddc83e586e3801c884541b5",
+      "player": "Fischer",
+      "event": "Belgrade URS-World",
+      "date": "1970.??.??",
+      "plies": 77
+    },
+    {
+      "sha256": "e67d1926018b9a7b8dc928495bbdddc8b0261e8cc73da243347df0241e2d7216",
+      "player": "Karpov",
+      "event": "St Martin simul",
+      "date": "1992.??.??",
+      "plies": 155
+    },
+    {
+      "sha256": "0b8dc7aa35f7ca337973bb50e0c9949bdfa5a917cd0cd2e02da97b408b72c386",
+      "player": "Anand",
+      "event": "Tata Steel India Blitz",
+      "date": "2019.11.26",
+      "plies": 101
+    },
+    {
+      "sha256": "d129052f455e10ac713785ae28e08f78386768afd33947cecbdc5daad8822859",
+      "player": "Tal",
+      "event": "Luzern ol (Men)",
+      "date": "1982.??.??",
+      "plies": 114
+    },
+    {
+      "sha256": "ef0be69e905af8fbf036467ea3e647dc0a7036d563af1b8474a03295cbdca09c",
+      "player": "Botvinnik",
+      "event": "Amsterdam olm",
+      "date": "1954.??.??",
+      "plies": 181
+    },
+    {
+      "sha256": "6fab7c2fa2baed43a87c27072cfdc71b9646a4e1b5f482c3dc75b28eb991003c",
+      "player": "Alekhine",
+      "event": "Karlsbad",
+      "date": "1911.??.??",
+      "plies": 151
+    },
+    {
+      "sha256": "ef1060f651020853f8f33c7f0e2d6a98531e48f1fd154fc333061088eaf993ca",
+      "player": "Carlsen",
+      "event": "World Cup",
+      "date": "2007.11.24",
+      "plies": 144
+    },
+    {
+      "sha256": "25ca1def323eb34e38194e1ae1a2ec239de702228e070ede6a6d74c6431d3a6c",
+      "player": "Kasparov",
+      "event": "World Cup",
+      "date": "1989.??.??",
+      "plies": 110
+    },
+    {
+      "sha256": "c4f32e938c8a114edd1318d459fd818b0627a24c72c602ff9dd6ce6663a0c239",
+      "player": "Fischer",
+      "event": "Rovinj/Zagreb",
+      "date": "1970.??.??",
+      "plies": 145
+    },
+    {
+      "sha256": "fb0fd22a7a961a23f2963e2365a253d35870aff1796edb0774b670c22f983d2a",
+      "player": "Karpov",
+      "event": "World Championship 29th",
+      "date": "1978.??.??",
+      "plies": 82
+    },
+    {
+      "sha256": "93fbd16a77473bbf45bce96d3f44de05a704c7cc57e30605a2eb17c5be60e163",
+      "player": "Anand",
+      "event": "10th Norway Armageddon",
+      "date": "2022.06.10",
+      "plies": 174
+    },
+    {
+      "sha256": "73072defc33098e71d1d9323b1bf844c58b610ae806f74479ac5fc65d2fb1b1f",
+      "player": "Tal",
+      "event": "Moscow",
+      "date": "1971.??.??",
+      "plies": 131
+    },
+    {
+      "sha256": "f1316c6343d5ab0e5dee5581a57610c5345bc081b5943384467d6c3c535736fd",
+      "player": "Botvinnik",
+      "event": "Belgrade",
+      "date": "1969.??.??",
+      "plies": 193
+    },
+    {
+      "sha256": "a2bd869495fa340c13fa0f7496b4a9bf46f2656a05acd8dca98bfe30ba49489f",
+      "player": "Alekhine",
+      "event": "Dresden",
+      "date": "1936.??.??",
+      "plies": 150
+    },
+    {
+      "sha256": "0c3c43fa114d63f6153bd9d6b3b5fe680d4420be839f3ae5439ed549744f57bf",
+      "player": "Carlsen",
+      "event": "39th Olympiad Men",
+      "date": "2010.09.24",
+      "plies": 127
+    },
+    {
+      "sha256": "bcc1b4aa008c1ef5533801374a9fcfd19f82d9a63a030fd2074fb48fbc96f393",
+      "player": "Kasparov",
+      "event": "PCA-World Championship",
+      "date": "1993.??.??",
+      "plies": 78
+    },
+    {
+      "sha256": "e538f18af7e22c6d22550191ce1ebb0f60296bfa5eab370b2ae936c78c1dc561",
+      "player": "Fischer",
+      "event": "Candidats final",
+      "date": "1971.??.??",
+      "plies": 75
+    },
+    {
+      "sha256": "695c771f53ac393aa1f1d6b2f8c86e671aecb8a8b473d49e863b81b945a0dc8c",
+      "player": "Karpov",
+      "event": "SWIFT",
+      "date": "1986.??.??",
+      "plies": 209
+    },
+    {
+      "sha256": "a4121f9ba3bf6b6a339832de7194e09c9b0f05769bdaf066a705b120958c173b",
+      "player": "Anand",
+      "event": "36th Olympiad",
+      "date": "2004.10.20",
+      "plies": 109
+    },
+    {
+      "sha256": "893f25b1f357372c5f255ae705ebdacfa9351ef32665e7a11be9b5622d6a5090",
+      "player": "Tal",
+      "event": "World Cup",
+      "date": "1989.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "08bdb7a7ce700dac8af03b0913155638ea6f14fcdb161e33d75a624163519861",
+      "player": "Botvinnik",
+      "event": "World Championship 18th",
+      "date": "1948.??.??",
+      "plies": 63
+    },
+    {
+      "sha256": "bc95b734cd9502a0aac343215ca3b2edec459e6a7ea276ef0e1f0c2145df5734",
+      "player": "Alekhine",
+      "event": "Kecskemet-A",
+      "date": "1927.??.??",
+      "plies": 150
+    },
+    {
+      "sha256": "2ae812cfe1de70939b66d76ab40385006e479b35fb9bff65068444154c604aee",
+      "player": "Carlsen",
+      "event": "WCh Candidates s/f",
+      "date": "2007.06.03",
+      "plies": 131
+    },
+    {
+      "sha256": "442c4668ff714c5f03b4fbd443d42aa9d043a85a3041e9a60f27210d256c12e4",
+      "player": "Kasparov",
+      "event": "World Championship 35th-KK5",
+      "date": "1990.??.??",
+      "plies": 73
+    },
+    {
+      "sha256": "d9f1305f8268730d8e7c9ff2e2c1435d3319fa19b43edccde96e07dd6c170c14",
+      "player": "Fischer",
+      "event": "USA-ch",
+      "date": "1963.??.??",
+      "plies": 124
+    },
+    {
+      "sha256": "7234cf5c60560365dfef1a943e6b0c4b83ae4b346c73e27ac1f2b35d1325ed69",
+      "player": "Karpov",
+      "event": "Amber-rapid 7th",
+      "date": "1998.03.25",
+      "plies": 265
+    },
+    {
+      "sha256": "0aa28484ba48a217d79dccc0777bdceebe8ad44c12032f1acbd07202aae17675",
+      "player": "Anand",
+      "event": "Amber-blind 5th",
+      "date": "1996.??.??",
+      "plies": 186
+    },
+    {
+      "sha256": "9b3c3955268facf4d4d02bebcf614b8c2ed07cf395fba7dc1d213dd0f5856768",
+      "player": "Tal",
+      "event": "Sochi",
+      "date": "1977.??.??",
+      "plies": 130
+    },
+    {
+      "sha256": "8783d659a1270f132335d408e3445a03a379b40d8d1d545b52b8292d8196fc28",
+      "player": "Botvinnik",
+      "event": "World Championship 23th",
+      "date": "1960.??.??",
+      "plies": 63
+    },
+    {
+      "sha256": "b9dfc3809b8595c31e7192bc18e7c3753a613d47fe66bf5eeade0d3a4547e574",
+      "player": "Alekhine",
+      "event": "Bad Pistyan",
+      "date": "1922.??.??",
+      "plies": 149
+    },
+    {
+      "sha256": "5e511d8094dcc642d7d3ec9ab125e83e8698c0530f8ca4c2ab56f672e2e51f91",
+      "player": "Carlsen",
+      "event": "75th Tata Steel GpA",
+      "date": "2013.01.23",
+      "plies": 129
+    },
+    {
+      "sha256": "590664fbb08aa6af87ea80b37e2cb4269afde31c0084bb431f74830b6f51ef69",
+      "player": "Kasparov",
+      "event": "Philadelphia m",
+      "date": "1996.??.??",
+      "plies": 146
+    },
+    {
+      "sha256": "ed7887e5b764c6086543c85b9720b60ff64fcee43a642d7c67b2a4741587a557",
+      "player": "Fischer",
+      "event": "CAN-op",
+      "date": "1956.??.??",
+      "plies": 124
+    },
+    {
+      "sha256": "b9df2356adb71571b7096690f5b45a99e7af991d7760439120990295a4a1675a",
+      "player": "Karpov",
+      "event": "World Blitz",
+      "date": "2009.11.16",
+      "plies": 142
+    },
+    {
+      "sha256": "a0814cfca4053f63678c59ba1c27ec4eb1574da07410d3d944710f731e6cb088",
+      "player": "Anand",
+      "event": "World Blitz",
+      "date": "2009.11.18",
+      "plies": 108
+    },
+    {
+      "sha256": "ac372be44d13d3a2a09c84884ad947af801efd1a10c6a2543ec4e8df62543d94",
+      "player": "Tal",
+      "event": "URS-ch47",
+      "date": "1979.??.??",
+      "plies": 115
+    },
+    {
+      "sha256": "8dd1b443bcb108c96291f71c7971c9a731dc8e3edab8a64f416b9e7903051be1",
+      "player": "Botvinnik",
+      "event": "Chigorin mem",
+      "date": "1947.??.??",
+      "plies": 159
+    },
+    {
+      "sha256": "3919d3aa374c46dbd5496144a047ffd0ecde14cadcff7b3621391859f52cd4a1",
+      "player": "Alekhine",
+      "event": "Folkestone ol",
+      "date": "1933.??.??",
+      "plies": 148
+    },
+    {
+      "sha256": "81da7cd528bef599e86dc7482c675dfc6aea665d7ae0a343137e3c7861e09d56",
+      "player": "Carlsen",
+      "event": "World Blitz 2017",
+      "date": "2017.12.29",
+      "plies": 129
+    },
+    {
+      "sha256": "d60283349170610e308d7bf0b6446b95c841c4dffcff912f3c68f5ba5b0bb583",
+      "player": "Kasparov",
+      "event": "Linares",
+      "date": "1990.??.??",
+      "plies": 107
+    },
+    {
+      "sha256": "2592a586578a22e77eacb1fec983ed767ef06db07401aebf2be607a74035aa11",
+      "player": "Fischer",
+      "event": "Portoroz Interzonal",
+      "date": "1958.??.??",
+      "plies": 123
+    },
+    {
+      "sha256": "5bf595ffb11fbed24a554ef9a8b18c58288ddfe9beaf5a3ea537444b4ae809db",
+      "player": "Karpov",
+      "event": "SuperGM",
+      "date": "2001.03.04",
+      "plies": 159
+    },
+    {
+      "sha256": "83146483751077bb0d2930285068ed491219c79a713e9e4e7546467e2e76bf4b",
+      "player": "Anand",
+      "event": "Global Chess League 2023",
+      "date": "2023.06.26",
+      "plies": 155
+    },
+    {
+      "sha256": "81ee3aa3ca8c85598a1ad1dcf8535eaed292ad6ee2d60d5830d26cc8b4bc0311",
+      "player": "Tal",
+      "event": "Varese playoff",
+      "date": "1976.??.??",
+      "plies": 128
+    },
+    {
+      "sha256": "b43c8c3523934b0e4871de0b3d320dda4ba20e5bb959a9b1dd702c99bdfb44de",
+      "player": "Botvinnik",
+      "event": "World Championship 18th",
+      "date": "1948.??.??",
+      "plies": 63
+    },
+    {
+      "sha256": "a8d79b56cb4b805e146fe581c41bfa93e6be87a9a8f3e35220054171afcd20a9",
+      "player": "Alekhine",
+      "event": "Triberg",
+      "date": "1921.??.??",
+      "plies": 148
+    },
+    {
+      "sha256": "295d2cc0829214498cbec20626fa9e3c46de43275677511408c26f1abb130e55",
+      "player": "Carlsen",
+      "event": "41st Olympiad Open 2014",
+      "date": "2014.08.09",
+      "plies": 124
+    },
+    {
+      "sha256": "f20bb5853bb8ece79ba532ce66bd7a68f7519beb8131f0997735f34b3f4520f2",
+      "player": "Kasparov",
+      "event": "Linares",
+      "date": "1993.??.??",
+      "plies": 105
+    },
+    {
+      "sha256": "08b3e0327d0d1371f0505ac9af331a3254ff4461ef3d8336d8c7b1aa35b8f4a4",
+      "player": "Fischer",
+      "event": "Santa Monica",
+      "date": "1966.??.??",
+      "plies": 142
+    },
+    {
+      "sha256": "e5cbd742d8bbf741a4ea6cb773f8c79c8837301abcef2ed1bdf77ea9807ba6c0",
+      "player": "Karpov",
+      "event": "World Championship 30th",
+      "date": "1981.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "659dd0893e2d48e7a9e1a5084ca8ae9282ac082e16800d73c13f8702459d2955",
+      "player": "Anand",
+      "event": "73rd Tata Steel GMA",
+      "date": "2011.01.15",
+      "plies": 104
+    },
+    {
+      "sha256": "f5114cc69db68c7eb84196ab0574c2e8fb999b16062c282296330f0a6151ee2d",
+      "player": "Tal",
+      "event": "Hoogovens",
+      "date": "1976.??.??",
+      "plies": 113
+    },
+    {
+      "sha256": "415ff2928ca935f627196935ab50aaceb2d37f4e08910a223db0f2b2554b5bce",
+      "player": "Botvinnik",
+      "event": "World Championship 19th",
+      "date": "1951.??.??",
+      "plies": 82
+    },
+    {
+      "sha256": "41a30f0538aa15539145d2890d70bc56db2fa990b651c4c7cf3c8ef4234d3671",
+      "player": "Alekhine",
+      "event": "World Championship 17th",
+      "date": "1937.??.??",
+      "plies": 51
+    },
+    {
+      "sha256": "32ce3c82ab52b4ebc433737768a836d9b904a01fc8a08229ba37e29faf323551",
+      "player": "Carlsen",
+      "event": "FIDE World Rapid Team",
+      "date": "2024.08.04",
+      "plies": 125
+    },
+    {
+      "sha256": "779e46806d1855537ed6625a14a77fd5525ab1922c74d1df3698683f968a6a6c",
+      "player": "Kasparov",
+      "event": "World Cup of Rapid Chess Gp A",
+      "date": "2001.03.22",
+      "plies": 100
+    },
+    {
+      "sha256": "79b83ddbf076bf1f735d8c3dad8f285d32f35b7ee01913972d1e356d7e3fca16",
+      "player": "Fischer",
+      "event": "Mar del Plata",
+      "date": "1959.??.??",
+      "plies": 122
+    },
+    {
+      "sha256": "eeac498ee7a45d2e88c726da8ea035ca6c8da048f2d32b48e5b2697f92739945",
+      "player": "Karpov",
+      "event": "World Championship 30th",
+      "date": "1981.??.??",
+      "plies": 61
+    },
+    {
+      "sha256": "021d30f5b8f7e0794ed7120abe9d32a148aa7c0595d23f1058caccf6cf046f17",
+      "player": "Anand",
+      "event": "World Blitz",
+      "date": "2009.11.17",
+      "plies": 124
+    },
+    {
+      "sha256": "5ce927f0ea500b23a584db503998ab4883d0eecd5d6bf9675fac1d4f46b67564",
+      "player": "Tal",
+      "event": "Leningrad Interzonal",
+      "date": "1973.??.??",
+      "plies": 113
+    },
+    {
+      "sha256": "693d69f62b9206d82576ea66ee431ce44d5a57d7d49c1a32ed475570d0c4bfce",
+      "player": "Botvinnik",
+      "event": "World Championship 23th",
+      "date": "1960.??.??",
+      "plies": 82
+    },
+    {
+      "sha256": "a2dbd2ba529f8570d075678d9daa9b5c878414bf128459bfb8ba1001252a2cc1",
+      "player": "Alekhine",
+      "event": "World Championship 14th",
+      "date": "1929.??.??",
+      "plies": 51
+    },
+    {
+      "sha256": "961b722ba7bb441ba3392e9ac7f6184a94684f927af07c34785213c85d0a3646",
+      "player": "Carlsen",
+      "event": "World Rapid Final",
+      "date": "2012.07.06",
+      "plies": 128
+    },
+    {
+      "sha256": "178a0e7ce3b5224f7f14493f306a86c83745e35d734cc4528961d86754a8db60",
+      "player": "Kasparov",
+      "event": "PCA-World Championship",
+      "date": "1995.??.??",
+      "plies": 72
+    },
+    {
+      "sha256": "a660b0b19e5efe29414736f471a3fe23e8840cc66bc209c9eeea11d54573cd46",
+      "player": "Fischer",
+      "event": "Monte Carlo",
+      "date": "1967.??.??",
+      "plies": 122
+    },
+    {
+      "sha256": "9cf4032f09e1bab5d524623bd4233081061847d4183ab200db46bffa6b115ae7",
+      "player": "Karpov",
+      "event": "Linares",
+      "date": "1995.??.??",
+      "plies": 108
+    },
+    {
+      "sha256": "a6cc6b95ea21176e8fd20b702f9de3de0094660af442e77f32ea709e28945f4b",
+      "player": "Anand",
+      "event": "Tata Steel India Blitz",
+      "date": "2026.01.10",
+      "plies": 109
+    },
+    {
+      "sha256": "2cc8722743cb850c77dada186431505c32a416f3f987bec43e156ecc3eca49b6",
+      "player": "Tal",
+      "event": "Subotica Interzonal",
+      "date": "1987.??.??",
+      "plies": 114
+    },
+    {
+      "sha256": "7b73571c6368f6971003a1ecf8e77e4cead45baf243a6c324ae44e10b9bf9fd1",
+      "player": "Botvinnik",
+      "event": "World Championship 25th",
+      "date": "1963.??.??",
+      "plies": 82
+    },
+    {
+      "sha256": "4ba0890ecfc5504589f9a846889b69171b0ec981fd2958ede05927344516de55",
+      "player": "Alekhine",
+      "event": "World Championship 16th",
+      "date": "1935.??.??",
+      "plies": 68
+    },
+    {
+      "sha256": "9b13453e9e98573811b444d4b4807b0289e810ff6ba9a18727ad7b48a1402729",
+      "player": "Carlsen",
+      "event": "World Blitz",
+      "date": "2009.11.18",
+      "plies": 126
+    },
+    {
+      "sha256": "64d5ef2b633ae5ac4ad7a84ee0608325a88bc1a5829c121c3a9502e2c1785ad2",
+      "player": "Kasparov",
+      "event": "Brussels blitz",
+      "date": "1987.??.??",
+      "plies": 164
+    },
+    {
+      "sha256": "79828215afd9d56f3453ec8d7b4b740a3b91b5640885c97d37aa4a41a88d6d62",
+      "player": "Fischer",
+      "event": "St Stefan/Belgrade m",
+      "date": "1992.??.??",
+      "plies": 54
+    },
+    {
+      "sha256": "77883c00b41cef63bb38b234868f57273728cf37aa1729090a654ceab00f4819",
+      "player": "Karpov",
+      "event": "Amber Blindfold",
+      "date": "2000.03.18",
+      "plies": 185
+    },
+    {
+      "sha256": "0e3d11564b60b56a9a69d7928d3d5aa33e917f269355f37abf9f5e1fc99d2821",
+      "player": "Anand",
+      "event": "FIDE World Rapid 2014",
+      "date": "2014.06.18",
+      "plies": 121
+    },
+    {
+      "sha256": "9b7e51b686867c4509ea1b5662b69133c047b0682c6f501f30bfd6b5a2a61f50",
+      "player": "Tal",
+      "event": "Manila Interzonal",
+      "date": "1990.??.??",
+      "plies": 110
+    },
+    {
+      "sha256": "ab120d89a2e1e75ccc5b5dd0cca1908fd7a7aa8578eebf88a01da548ad6746c5",
+      "player": "Botvinnik",
+      "event": "World Championship 24th",
+      "date": "1961.??.??",
+      "plies": 82
+    },
+    {
+      "sha256": "e14f9d59187b5f8c0b52a3ac41b404e9e594509d796e6d871085eff93a28584f",
+      "player": "Alekhine",
+      "event": "Paris",
+      "date": "1925.??.??",
+      "plies": 144
+    },
+    {
+      "sha256": "fbdea15afbcc4f23f4c5cd1cb2bef61bb2f8e18868b2aed1e9f62973da77cb32",
+      "player": "Carlsen",
+      "event": "FIDE World Rapid 2014",
+      "date": "2014.06.17",
+      "plies": 125
+    },
+    {
+      "sha256": "64d0c3e9c6fd785fac93b1d281fd1102e81755a72655b526370aa1d0afbf794a",
+      "player": "Kasparov",
+      "event": "World Championship 35th-KK5",
+      "date": "1990.??.??",
+      "plies": 71
+    },
+    {
+      "sha256": "1a8306ee4d56e5f6a3989c02b01c9baef947e8af00e857aeaca0c1c139787c8d",
+      "player": "Fischer",
+      "event": "USA-ch",
+      "date": "1965.??.??",
+      "plies": 121
+    },
+    {
+      "sha256": "b88b21dc4b8f63fe66b896b320f44ed32d5e3d6b3bf33a7ca8a8fee5c36424ba",
+      "player": "Karpov",
+      "event": "Brussels SWIFT rapid",
+      "date": "1992.??.??",
+      "plies": 164
+    },
+    {
+      "sha256": "ce4ebac5ab5cab19d2e065413214a63ad6e6b98ecc0f5eda9f625711d13226af",
+      "player": "Anand",
+      "event": "World Blitz 2016",
+      "date": "2016.12.30",
+      "plies": 132
+    },
+    {
+      "sha256": "d336787f5f83bb82fde7175a370ba3f400401ccb08e64a50db78e391ced5963c",
+      "player": "Tal",
+      "event": "Brussels blitz",
+      "date": "1987.??.??",
+      "plies": 127
+    },
+    {
+      "sha256": "13582e7306bbf3c450b8ab3f54a8e0ec01438d2ffd6764f60c1c1ebfc97793f2",
+      "player": "Botvinnik",
+      "event": "World Championship 19th",
+      "date": "1951.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "1e16dc18add0c5718a277e5b5361fe27edc5fa5e037d1637e4bd1ad78d79d102",
+      "player": "Alekhine",
+      "event": "New York sim",
+      "date": "1929.??.??",
+      "plies": 143
+    },
+    {
+      "sha256": "8ab5347267ea35bfb5a57fce7b86c864304fbc316accf742b7cf730e6eeaab28",
+      "player": "Carlsen",
+      "event": "World Rapid 2018",
+      "date": "2018.12.27",
+      "plies": 131
+    },
+    {
+      "sha256": "741d22be059ff338a1a77ca84ec83780284e1ac739850fd36e532ae73d02538f",
+      "player": "Kasparov",
+      "event": "World Championship 35th-KK5",
+      "date": "1990.??.??",
+      "plies": 71
+    },
+    {
+      "sha256": "79db44e5106caf4944af6784f44368057ceca4431d87f8e11b4fc77162ce6177",
+      "player": "Fischer",
+      "event": "St Stefan/Belgrade m",
+      "date": "1992.??.??",
+      "plies": 72
+    },
+    {
+      "sha256": "dd67e6e1406267d0c188f07a4aa6b843d0983911873def8708f95dba693aba2b",
+      "player": "Karpov",
+      "event": "Biel",
+      "date": "1992.??.??",
+      "plies": 192
+    },
+    {
+      "sha256": "dddfb1cfde85b36c5d9c92b2a299f47deaa637344787a028b3bff19cba48fa09",
+      "player": "Anand",
+      "event": "WCh Rapid Tiebreak",
+      "date": "2012.05.30",
+      "plies": 153
+    },
+    {
+      "sha256": "2dbc79cd1952bde24851154abd5fa148b1f28ba9c8c4edb4f79ddb132c312b50",
+      "player": "Tal",
+      "event": "Sochi",
+      "date": "1984.??.??",
+      "plies": 133
+    },
+    {
+      "sha256": "57f96d57d035f0dc9454c46e809a2ad8280e67c6b2b57979fb4b8f65c318c91f",
+      "player": "Botvinnik",
+      "event": "World Championship 23th",
+      "date": "1960.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "967c61a658df381e219b290fa0f76f358c4d42a9cd58eda4552924220bd04d14",
+      "player": "Alekhine",
+      "event": "Prague",
+      "date": "1943.??.??",
+      "plies": 143
+    },
+    {
+      "sha256": "e66816e714f0ed41792c285e3cc2f9c70847ab04aa87a0248bce463bfe69d866",
+      "player": "Carlsen",
+      "event": "World Blitz Final KO 2025",
+      "date": "2025.12.30",
+      "plies": 124
+    },
+    {
+      "sha256": "89873bfeeb26e6e3952746875df64dc3462fd515bf43dc1af2bc90d82693df4d",
+      "player": "Kasparov",
+      "event": "PCA/Intel-GP",
+      "date": "1994.??.??",
+      "plies": 147
+    },
+    {
+      "sha256": "93751ddaa8a4aca944765caf3efc72c5f2f08811271816803d9d523a7350d1c8",
+      "player": "Fischer",
+      "event": "Herceg Novi blitz",
+      "date": "1970.??.??",
+      "plies": 119
+    },
+    {
+      "sha256": "e809cf8d30060c5a7afe7ed3549200e127152323c35507b5f418d7fe5f65604a",
+      "player": "Karpov",
+      "event": "Japfa Classic",
+      "date": "2000.04.29",
+      "plies": 165
+    },
+    {
+      "sha256": "812ef7a7bddd2edfe837689835a2aa977fb300297ff4afc64318190bb0804905",
+      "player": "Anand",
+      "event": "Tata Steel India Rapid",
+      "date": "2019.11.23",
+      "plies": 104
+    },
+    {
+      "sha256": "9ecfff466e12e6068d9b6949207f1431e0642e1cec410ccd20a2b0c5d22ca254",
+      "player": "Tal",
+      "event": "World Cup",
+      "date": "1988.??.??",
+      "plies": 58
+    },
+    {
+      "sha256": "680bd8aac3ce5d7a9297c98e64a8f7344e94145d3a4cad4335a08766d4739597",
+      "player": "Botvinnik",
+      "event": "World Championship 22th",
+      "date": "1958.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "dde2e0c859e6579adf3403ed9c09d644a0265e3dcdff8556a18775862467b911",
+      "player": "Alekhine",
+      "event": "Amsterdam",
+      "date": "1936.??.??",
+      "plies": 143
+    },
+    {
+      "sha256": "f3facabcd6072c4d9d089150c0c1ded134f8c5aa166cd54d6d7bd32888ee840b",
+      "player": "Carlsen",
+      "event": "38th Olympiad",
+      "date": "2008.11.25",
+      "plies": 134
+    },
+    {
+      "sha256": "c26ee4e3cca15f5c9d2fabef0ac87c7116a77c68c8e8144df6719be13615cdf6",
+      "player": "Kasparov",
+      "event": "World Cup",
+      "date": "1988.??.??",
+      "plies": 123
+    },
+    {
+      "sha256": "f51d08c289f54f50791cc28ba9d093ebf3c914ca0e9b2eea4eb41cdaf86d4cdb",
+      "player": "Fischer",
+      "event": "New York/Los Angeles m",
+      "date": "1961.??.??",
+      "plies": 119
+    },
+    {
+      "sha256": "7367b11c116418ca6d893c7bef7cb3775f35d0f4d1a6b83dfc09437e31b12efb",
+      "player": "Karpov",
+      "event": "World Blitz",
+      "date": "2009.11.16",
+      "plies": 109
+    },
+    {
+      "sha256": "86522bd4e30c9c940b49ee37d0eacd2a3d025b97b8f5c96a011c3031fd0a60a6",
+      "player": "Anand",
+      "event": "FIDE World Blitz 2014",
+      "date": "2014.06.19",
+      "plies": 108
+    },
+    {
+      "sha256": "21af24eee73695d063c518d828bce205c7cf51c3a9304d2862ec1aa6152a9742",
+      "player": "Tal",
+      "event": "Brussels blitz",
+      "date": "1987.??.??",
+      "plies": 129
+    },
+    {
+      "sha256": "72dcb5ba146959f6abc2bf9d1b43302b09dd844cb4f7e1daff00275a1cc84218",
+      "player": "Botvinnik",
+      "event": "World Championship 21th",
+      "date": "1957.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "19d813fff56c65413da88fd498b0e0e6e5de3b87e221029c55d1b5f9b3fd810e",
+      "player": "Alekhine",
+      "event": "Amsterdam m2",
+      "date": "1926.??.??",
+      "plies": 142
+    },
+    {
+      "sha256": "95765f9a239ba47f478ad05b72dc4ab4f7555ef32101ad39eaab18a79cc167ef",
+      "player": "Carlsen",
+      "event": "World Blitz",
+      "date": "2009.11.17",
+      "plies": 128
+    },
+    {
+      "sha256": "29a3cb7e59c9fd33881356ccdf80196ef54a649e6deb1f25c59917ca82fdacb1",
+      "player": "Kasparov",
+      "event": "World Championship 34th-KK4",
+      "date": "1987.??.??",
+      "plies": 74
+    },
+    {
+      "sha256": "fb343f1d5a077b532bf11f323b8dcf3876aedf96a5699a0e43155ff705bfad6a",
+      "player": "Fischer",
+      "event": "USA-ch",
+      "date": "1959.??.??",
+      "plies": 119
+    },
+    {
+      "sha256": "0479e350c89825e052922a393eb820822234b5a54b34c2d1e26b41637a30cd5d",
+      "player": "Karpov",
+      "event": "Tilburg",
+      "date": "1980.??.??",
+      "plies": 161
+    },
+    {
+      "sha256": "d59565621aa98cf17db12bdef79cfa1764106555c15020d60d44bbe9f561b6ef",
+      "player": "Anand",
+      "event": "Linares",
+      "date": "1994.??.??",
+      "plies": 109
+    },
+    {
+      "sha256": "6daeb396b4b92a01de1fb5d6a7c615a946b82c99bc110cf718a4c9164fc85e23",
+      "player": "Tal",
+      "event": "Wch-blitz",
+      "date": "1988.??.??",
+      "plies": 108
+    },
+    {
+      "sha256": "a29bfa03e74a960c3e7d01826efdd432d60900e02c1aa38fec354115d05611e8",
+      "player": "Botvinnik",
+      "event": "World Championship 20th",
+      "date": "1954.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "b870f247d7c70e123b896b3dbb9af2c64a8073d59c211b6d9cc21605414fbab7",
+      "player": "Alekhine",
+      "event": "Duesseldorf",
+      "date": "1908.??.??",
+      "plies": 142
+    },
+    {
+      "sha256": "f05ba73e31f208e587ef71b4928b4b8e92142240e106a82a65b3109d058721fd",
+      "player": "Carlsen",
+      "event": "VI World Blitz",
+      "date": "2010.11.16",
+      "plies": 145
+    },
+    {
+      "sha256": "a194b92f63e75c61935b6b0c29d6426402cc6c979deb382cbda3c797ba36b2a0",
+      "player": "Kasparov",
+      "event": "World Championship 31th-KK1",
+      "date": "1984.??.??",
+      "plies": 75
+    },
+    {
+      "sha256": "89b1b9c75e212b2e5fa543c46e1ba909ad9d507b5958e601a0474cf3192433bf",
+      "player": "Fischer",
+      "event": "Team championchip",
+      "date": "1957.??.??",
+      "plies": 118
+    },
+    {
+      "sha256": "56b471f2f22c204dc044b1169370a0ff84cef14255853873750f31faed422e67",
+      "player": "Karpov",
+      "event": "Thessaloniki ol (Men)",
+      "date": "1988.??.??",
+      "plies": 185
+    },
+    {
+      "sha256": "de5bf501baff757faa3d8af9c480dd1492e406f0a042649aea404b03a9eae882",
+      "player": "Anand",
+      "event": "Hoogovens",
+      "date": "1996.??.??",
+      "plies": 213
+    },
+    {
+      "sha256": "de39258c03346178dbe04f35b023a0d1fa62cb034f72b246e9e3e2eb8ea7de73",
+      "player": "Tal",
+      "event": "Sochi",
+      "date": "1986.??.??",
+      "plies": 113
+    },
+    {
+      "sha256": "a7d2592ec081f51c26e1039328d325fcf608ca420838b4d89fc49a23796169f1",
+      "player": "Botvinnik",
+      "event": "World Championship 22th",
+      "date": "1958.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "094a88a23b77163e14759a623948665c30540a3c67e54775db922949b681c1ad",
+      "player": "Alekhine",
+      "event": "World Championship 17th",
+      "date": "1937.??.??",
+      "plies": 45
+    },
+    {
+      "sha256": "97570d000e11b490d9bc8e049a1c75780f7589e5f0e0a5c5caa1af28912286af",
+      "player": "Carlsen",
+      "event": "World Blitz 2021",
+      "date": "2021.12.30",
+      "plies": 144
+    },
+    {
+      "sha256": "f26f6b4efaac41cb7c513e2c607ce5dd50c451df1142cbb799becc872e58017d",
+      "player": "Kasparov",
+      "event": "PCA-World Championship",
+      "date": "1995.??.??",
+      "plies": 50
+    },
+    {
+      "sha256": "deb7e7c1d0e43710695d85bc842ab55273ea456dde8413c7a67e2b56d68bae19",
+      "player": "Fischer",
+      "event": "USA-ch",
+      "date": "1960.??.??",
+      "plies": 118
+    },
+    {
+      "sha256": "f00c2de83d32addd65d674446cfe5c8812f1f893c384e9fd81f8d42e89823379",
+      "player": "Karpov",
+      "event": "World Championship 30th",
+      "date": "1981.??.??",
+      "plies": 80
+    },
+    {
+      "sha256": "4e2ba34026c40cfdf80bb4538e19f5c1da70cc6a3ef67d72ce86c8630515d8a5",
+      "player": "Anand",
+      "event": "World Blitz 2015",
+      "date": "2015.10.13",
+      "plies": 109
+    },
+    {
+      "sha256": "f4c398024432d47080f3f034f08f1247f9fa6d93633911c74a7abca37fa9c2fb",
+      "player": "Tal",
+      "event": "Moscow4",
+      "date": "1991.??.??",
+      "plies": 121
+    },
+    {
+      "sha256": "bdfba0b0acdf8111c739f6e499711bf22cd0d6182c92290ccb69dd7f7f91bf46",
+      "player": "Botvinnik",
+      "event": "World Championship 22th",
+      "date": "1958.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "2fba4ce1cea3428cf57037447a0054472dc4a37dce3977b44776fd73f79d42c5",
+      "player": "Alekhine",
+      "event": "World Championship 16th",
+      "date": "1935.??.??",
+      "plies": 65
+    },
+    {
+      "sha256": "e5e4a61cc0138f08c4962961c0771ddafc3cc163fc050a9186c7af37517f9c6f",
+      "player": "Carlsen",
+      "event": "World Blitz Final",
+      "date": "2012.07.09",
+      "plies": 125
+    },
+    {
+      "sha256": "f6d89e66586f72120176e7a397cbb9768d0ecda53a0f0dd575950d4e2415c159",
+      "player": "Kasparov",
+      "event": "Internet",
+      "date": "1998.05.26",
+      "plies": 151
+    },
+    {
+      "sha256": "1a7e201d8e1491a293a0cd45981720c9b3f9413b374673f3c077ae1cf6b13558",
+      "player": "Fischer",
+      "event": "St Stefan/Belgrade m",
+      "date": "1992.??.??",
+      "plies": 70
+    },
+    {
+      "sha256": "869a9d2648231b7d2a66d10ea934543ecc1b7fcf0473c7d8ddc8445aedb00077",
+      "player": "Karpov",
+      "event": "Candidats final",
+      "date": "1974.??.??",
+      "plies": 157
+    },
+    {
+      "sha256": "49a1f6c1596265883bda09dbf39dcb83eacb2fee8d062be1c9d04c7a1d89891e",
+      "player": "Anand",
+      "event": "FIDE World Bl Team Pool B",
+      "date": "2025.06.14",
+      "plies": 110
+    },
+    {
+      "sha256": "893029459dc4590b1379ad9096cf062849e1f110cc49798f441a61f601e910ed",
+      "player": "Tal",
+      "event": "EU-chT",
+      "date": "1973.??.??",
+      "plies": 127
+    },
+    {
+      "sha256": "c3b07ce35d09220164f9ce5914eaa3d3d456597c860f4008ed6b6136190855ed",
+      "player": "Botvinnik",
+      "event": "World Championship 20th",
+      "date": "1954.??.??",
+      "plies": 81
+    },
+    {
+      "sha256": "5d9781c9844f96feb6d5eda7d9529fef12fcb1de5ab2814f0fa51dca0f66140b",
+      "player": "Alekhine",
+      "event": "Hastings3637",
+      "date": "1936.??.??",
+      "plies": 141
+    },
+    {
+      "sha256": "460e34418e874cccc417ba6c01cf5b9cd9b9f17b2dc4d4eaf749a8b7d99e6c4a",
+      "player": "Carlsen",
+      "event": "World Rapid 2023",
+      "date": "2023.12.26",
+      "plies": 152
+    },
+    {
+      "sha256": "1a5bbae269afce6a85d5aac65d14105873e4c13bc449df82679321282e7c2f0f",
+      "player": "Kasparov",
+      "event": "Linares",
+      "date": "1992.??.??",
+      "plies": 122
+    },
+    {
+      "sha256": "30b0d5a21de728570f8abe7af561fad2867a3811b256de4c400b48b125a12450",
+      "player": "Fischer",
+      "event": "Capablanca mem",
+      "date": "1965.??.??",
+      "plies": 137
+    },
+    {
+      "sha256": "94ac07d616e1f54bc32832d3c8c52917a66c6b34f412fc6fe99a7213b7a3d635",
+      "player": "Karpov",
+      "event": "Hamburg TV-1pl",
+      "date": "1982.??.??",
+      "plies": 167
+    },
+    {
+      "sha256": "95eb254286f945f107c921f360a85ebbe76831a1a99ab3816d8125648c1e0adc",
+      "player": "Anand",
+      "event": "80th Tata Steel GpA",
+      "date": "2018.01.13",
+      "plies": 105
+    },
+    {
+      "sha256": "306185c5c8cddea76551ccd8101eeadce3db54c9237c968312e30a0bc3430c27",
+      "player": "Tal",
+      "event": "Brussels blitz",
+      "date": "1987.??.??",
+      "plies": 101
+    },
+    {
+      "sha256": "0cf558ac9121cc8c78e453b418fafb3718ed78b03ee1d823865be088f6e9119e",
+      "player": "Botvinnik",
+      "event": "Tel Aviv olm fin-A",
+      "date": "1964.??.??",
+      "plies": 156
+    },
+    {
+      "sha256": "617cd3c680818b9fe3261d953baedcd99104cd9d23e29279c27c866ac32602f1",
+      "player": "Alekhine",
+      "event": "Mexico sim",
+      "date": "1929.??.??",
+      "plies": 141
+    },
+    {
+      "sha256": "9363990b618ef437a8b843cc4646caeea2794c53d6169dd5f557366b1b8a00fd",
+      "player": "Carlsen",
+      "event": "Tata Steel India Rapid",
+      "date": "2019.11.24",
+      "plies": 118
+    },
+    {
+      "sha256": "8afbade9d8ac2c91f8e8ec2e854d2c18e12fe6dbbb2a63cfd77860d43f7e2dd0",
+      "player": "Kasparov",
+      "event": "Paris Immopar rapid",
+      "date": "1991.??.??",
+      "plies": 150
+    },
+    {
+      "sha256": "3b2e1286d5dcdc9fd67817baf4659512c35500174dfbad2a7c7376149e78fb85",
+      "player": "Fischer",
+      "event": "Candidats final",
+      "date": "1971.??.??",
+      "plies": 66
+    },
+    {
+      "sha256": "679504a200c08d0259108f5637b71b3f7b3bfb53ab34843832f1d24d3fdbb5e4",
+      "player": "Karpov",
+      "event": "Bugojno",
+      "date": "1986.??.??",
+      "plies": 171
+    },
+    {
+      "sha256": "d03f37e8b969a991866664d4dea92e20c38c6643cf2c845d7dca8eb21c1f1319",
+      "player": "Anand",
+      "event": "World Rapid 2015",
+      "date": "2015.10.10",
+      "plies": 106
+    },
+    {
+      "sha256": "b1941d0a43377a914ef2c89db8f1d4aef7822c76c382b4102d7f6a172836b332",
+      "player": "Tal",
+      "event": "URS-ch46",
+      "date": "1978.??.??",
+      "plies": 128
+    },
+    {
+      "sha256": "3c060572a9c22b8a2004cda98f99bd535c09d5c2270beac8995a65320e06252c",
+      "player": "Botvinnik",
+      "event": "World Championship 22th",
+      "date": "1958.??.??",
+      "plies": 80
+    },
+    {
+      "sha256": "1730112801e87d9d4db9707b6a684d60e68952e9558c82bef0e6a4fef7716dcd",
+      "player": "Alekhine",
+      "event": "Krakow",
+      "date": "1941.??.??",
+      "plies": 163
+    },
+    {
+      "sha256": "d2d4a6f53174eb89de07f44348964aa68fb16e988252b380740fb6acb0291fce",
+      "player": "Carlsen",
+      "event": "World Blitz",
+      "date": "2007.11.22",
+      "plies": 149
+    },
+    {
+      "sha256": "4ae9dff5d6c393cd43aee32302e34bc54c0faa66a0c1911139b113b0c22a91f8",
+      "player": "Kasparov",
+      "event": "Candidats sf1",
+      "date": "1983.??.??",
+      "plies": 156
+    },
+    {
+      "sha256": "715d193a8042d45c452930dfff691de1d4d426a1b59713f259228b54954eff21",
+      "player": "Fischer",
+      "event": "Buenos Aires",
+      "date": "1960.??.??",
+      "plies": 116
+    },
+    {
+      "sha256": "75e409e38efd29777bdea08b170fdbe7c1afba81ca3cd97eb2437dc6128bf4ae",
+      "player": "Karpov",
+      "event": "Amber-blind 3rd",
+      "date": "1994.??.??",
+      "plies": 152
+    },
+    {
+      "sha256": "dcc6a676172a63c99036e2b0a02b67b445027dc813de113a69354ef0d1c7c67c",
+      "player": "Anand",
+      "event": "7th London Classic 2015",
+      "date": "2015.12.08",
+      "plies": 147
+    },
+    {
+      "sha256": "1a8b9682232d98751849ed15a105127ba92fbb35c6f6fe0d8197dedf546f9c21",
+      "player": "Tal",
+      "event": "Biel Interzonal",
+      "date": "1976.??.??",
+      "plies": 114
+    },
+    {
+      "sha256": "5a1f737bc56da90e28b8c9c3fa3b9d9b29006acace8ac166baaf0ffe376135ac",
+      "player": "Botvinnik",
+      "event": "World Championship 18th",
+      "date": "1948.??.??",
+      "plies": 80
+    },
+    {
+      "sha256": "1984e0873b82943dcdc9daa2ca20b45ae6240ed0ed70026bf52686c09e1a3f8c",
+      "player": "Alekhine",
+      "event": "Bled",
+      "date": "1931.??.??",
+      "plies": 197
+    },
+    {
+      "sha256": "b6338b08ae35e79343272b631613d589e9479069f7f91a8048bbc2618ed83e77",
+      "player": "Carlsen",
+      "event": "FIDE World Cup 2021",
+      "date": "2021.07.27",
+      "plies": 123
+    },
+    {
+      "sha256": "50eee11f3002d3eaa1784f2909beb3792403075fdb7a432bca9bff14f5ef05ac",
+      "player": "Kasparov",
+      "event": "World Cup",
+      "date": "1989.??.??",
+      "plies": 101
+    },
+    {
+      "sha256": "bcd92b7918432a90ce815b63fd9262d177378563f8d5a3a88231af872b59c032",
+      "player": "Fischer",
+      "event": "Buenos Aires",
+      "date": "1960.??.??",
+      "plies": 116
+    },
+    {
+      "sha256": "a0988b1a35311cb473c50e883dfdb3005e379649c9c0637d06d57e915b83067c",
+      "player": "Karpov",
+      "event": "World Blitz",
+      "date": "2009.11.17",
+      "plies": 129
+    },
+    {
+      "sha256": "a85a5d6f8d84c99391474c06dd63bc293638a82137f7248d4d415fab02751b64",
+      "player": "Anand",
+      "event": "Grand Slam Final",
+      "date": "2008.09.10",
+      "plies": 150
+    },
+    {
+      "sha256": "9ae7b729e7c6d0d7d994425a991e2178e209a875e3a5ed179bc39d54068204c7",
+      "player": "Tal",
+      "event": "Brussels",
+      "date": "1987.??.??",
+      "plies": 120
+    },
+    {
+      "sha256": "8c824e7ad8f806093addfc39960e92320e29a473d55a994f8804a833fe012afb",
+      "player": "Botvinnik",
+      "event": "World Championship 23th",
+      "date": "1960.??.??",
+      "plies": 80
+    },
+    {
+      "sha256": "2619f16ed3295923ecef04c2ab8c52bf7ce28909adc46386329cdbe05925f1c0",
+      "player": "Alekhine",
+      "event": "Munich",
+      "date": "1941.??.??",
+      "plies": 140
+    },
+    {
+      "sha256": "5a872925599b41c288857bcf3c853ce5eb4d9570314d9eb900f4e1d772714a7d",
+      "player": "Carlsen",
+      "event": "World Rapid 2021",
+      "date": "2021.12.27",
+      "plies": 140
+    },
+    {
+      "sha256": "2d2675f257f53f6ad9f91ca192c36bbc1b8ef88942ee97e51af6fe2aaefe0528",
+      "player": "Kasparov",
+      "event": "World Championship 32th-KK2",
+      "date": "1985.??.??",
+      "plies": 73
+    },
+    {
+      "sha256": "3bcb583c0f513c9327bf43d08f98b03123210f93c1286d8a89d099fd93f974ae",
+      "player": "Fischer",
+      "event": "USA-ch",
+      "date": "1958.??.??",
+      "plies": 115
+    },
+    {
+      "sha256": "35adf681ed49df95c917fa9d972c6aa1e94a16cbceb435be8de0bcaa791b72ff",
+      "player": "Karpov",
+      "event": "3rd ACP World Rapid Cup",
+      "date": "2009.05.22",
+      "plies": 128
+    },
+    {
+      "sha256": "6aa6826d5a656766576c1f11c1d87edd855ddf5ba0ce2404bbbc4e8c025c543d",
+      "player": "Anand",
+      "event": "FIDE World Bl Team Pool A",
+      "date": "2026.06.20",
+      "plies": 115
+    },
+    {
+      "sha256": "ce9ca2fdba10c82034342f4bf3b8a2bcf252639b3f6bcdb618bfb9f668c9c5e5",
+      "player": "Tal",
+      "event": "URS-ch42",
+      "date": "1974.??.??",
+      "plies": 107
+    },
+    {
+      "sha256": "0075b4a2193ebd0aeeef3206a786efd760060354583dc7f25871d9889e1a7e48",
+      "player": "Botvinnik",
+      "event": "World Championship 20th",
+      "date": "1954.??.??",
+      "plies": 79
+    },
+    {
+      "sha256": "2cae29626a1d05de3e4f49344154417de5a0a78bca4c7ba8fca98e2f220fbaac",
+      "player": "Alekhine",
+      "event": "Buenos Aires ol f-A",
+      "date": "1939.??.??",
+      "plies": 166
+    },
+    {
+      "sha256": "6d6143c1a47579989a0649c713a17cf90431d0410ab0332e87e66724fb99becb",
+      "player": "Carlsen",
+      "event": "44th Olympiad 2022",
+      "date": "2022.08.05",
+      "plies": 137
+    },
+    {
+      "sha256": "4f248e2f10faa6678b73eafff451cb5bb2230675d27cc9e97bfa55c1a9c49e8f",
+      "player": "Kasparov",
+      "event": "PCA-World Championship",
+      "date": "1993.??.??",
+      "plies": 71
+    },
+    {
+      "sha256": "bf7fa0b0d0f43b719e9189917895210e44fcf4a1f3749da75267567dadba8c98",
+      "player": "Fischer",
+      "event": "Palma de Mallorca Interzonal",
+      "date": "1970.??.??",
+      "plies": 115
+    },
+    {
+      "sha256": "aa73cec5218442cfc03c40a800a28840ddb6973ba3f26bb772793b930a6a9de5",
+      "player": "Karpov",
+      "event": "Linares",
+      "date": "1992.??.??",
+      "plies": 109
+    },
+    {
+      "sha256": "450dc18501f7266c0c477c478f20a05d9d5015978525b2a10142a567a44eeec0",
+      "player": "Anand",
+      "event": "World Blitz 2017",
+      "date": "2017.12.30",
+      "plies": 100
+    },
+    {
+      "sha256": "feabc4d54c96aac9f9afe0ee2c532a7bc99d38e96f28a2b0010db5a0af97ccca",
+      "player": "Tal",
+      "event": "Riga Interzonal",
+      "date": "1979.??.??",
+      "plies": 107
+    },
+    {
+      "sha256": "8b8e7290905d9f8f6879b9035fc0fda0e4551f79fc65dc740a27aa2058ffb585",
+      "player": "Botvinnik",
+      "event": "World Championship 20th",
+      "date": "1954.??.??",
+      "plies": 59
+    },
+    {
+      "sha256": "4529a38fba72691877b7c58710af2046c40f9979ab54c91be1321caa181087c6",
+      "player": "Alekhine",
+      "event": "Munich",
+      "date": "1941.??.??",
+      "plies": 208
+    },
+    {
+      "sha256": "d3b6c0090b4544b104c4bc3754be98bb8a2d2f4f53ae6bec8abeea26290f3ac8",
+      "player": "Carlsen",
+      "event": "World Blitz 2018",
+      "date": "2018.12.30",
+      "plies": 118
+    },
+    {
+      "sha256": "609f6e58e0409655cd29d66a69c8b18bf379ac25fcbed8d3af4bd1ce2ccf6fb7",
+      "player": "Kasparov",
+      "event": "World Championship 34th-KK4",
+      "date": "1987.??.??",
+      "plies": 72
+    },
+    {
+      "sha256": "e117f74db6d4c47c8c7fa5cefb5418ad31005d9dfdeccbc50446879c132684ff",
+      "player": "Fischer",
+      "event": "East Orange",
+      "date": "1957.??.??",
+      "plies": 115
+    },
+    {
+      "sha256": "b3673a5ae22c60f290990e1b021405354fb0711be3ef9b26be59d479a659041f",
+      "player": "Karpov",
+      "event": "WchT",
+      "date": "1985.??.??",
+      "plies": 179
+    },
+    {
+      "sha256": "1f15048fc8847885d7479951dbf3184de77b8698ddf02135bed2653533309f46",
+      "player": "Anand",
+      "event": "Tata Steel India Blitz",
+      "date": "2018.11.14",
+      "plies": 109
+    },
+    {
+      "sha256": "45831fc5c75a0203afd0627bb52c5b5b725e7f4fcbef6ea05a34a2a87aea88a7",
+      "player": "Tal",
+      "event": "October Revolution 60",
+      "date": "1977.??.??",
+      "plies": 120
+    },
+    {
+      "sha256": "bf7272b34b0c7c3f800a941b26491a6f4d56e17ad12036cc7f8fb5d4feecb440",
+      "player": "Botvinnik",
+      "event": "Moscow/Leningrad m",
+      "date": "1937.??.??",
+      "plies": 155
+    },
+    {
+      "sha256": "529808e5d6072760ab6dc2ab5f06afa51c0cdc86186544c46958c357369782aa",
+      "player": "Alekhine",
+      "event": "Semmering",
+      "date": "1926.??.??",
+      "plies": 205
+    },
+    {
+      "sha256": "c348a9a757257f6600baf7c5daa99de887066e2bebd1597e577d0905fb9d1a3b",
+      "player": "Carlsen",
+      "event": "World Rapid 2017",
+      "date": "2017.12.28",
+      "plies": 120
+    },
+    {
+      "sha256": "004e335ce7dddb1d465ba2ba62d158ef080b18906e6790efa36192d83311fec1",
+      "player": "Kasparov",
+      "event": "World Cup of Rapid Chess 1/2 Final",
+      "date": "2001.03.24",
+      "plies": 116
+    },
+    {
+      "sha256": "e74bf6d68a766582194da52a53adc82edc72e7eb4400d4b9f25e17eb3edeb269",
+      "player": "Fischer",
+      "event": "Varna olm",
+      "date": "1962.??.??",
+      "plies": 135
+    },
+    {
+      "sha256": "cc02a0edd6e3aed93de3d85d96d540cad5227ef3134dd7a499b4673678a4c419",
+      "player": "Karpov",
+      "event": "Trophee Karpov Preliminary 2012",
+      "date": "2012.10.28",
+      "plies": 182
+    },
+    {
+      "sha256": "57cfda1f83b863eb9ec8ac6379ef0b8e4c688f5915f67390a9baaf6104f9ec05",
+      "player": "Anand",
+      "event": "World Blitz",
+      "date": "2007.11.21",
+      "plies": 108
+    },
+    {
+      "sha256": "178db6077218638cd102bc160310cdafbd4ae4702561558d2dd3a357aa0282f6",
+      "player": "Tal",
+      "event": "URS-ch47",
+      "date": "1979.??.??",
+      "plies": 106
+    },
+    {
+      "sha256": "f76765641611ad572ad45ba41f17004b20e47f4eb7fbb97d52298540f5192aaf",
+      "player": "Botvinnik",
+      "event": "Munich olm fin-A",
+      "date": "1958.??.??",
+      "plies": 155
+    },
+    {
+      "sha256": "53c2a3854d12b29cc97bc2daff39cb2aaeb581e2491747f1651e759edca8fa6c",
+      "player": "Alekhine",
+      "event": "Duras 60 mem ",
+      "date": "1942.??.??",
+      "plies": 140
+    },
+    {
+      "sha256": "05ed039c88ef6194f33b4facc4789a078edbda33e1c55124507a4dcf017deeff",
+      "player": "Carlsen",
+      "event": "World Rapid 2019",
+      "date": "2019.12.28",
+      "plies": 118
+    },
+    {
+      "sha256": "4677842c67a86cec1ead419bc1cc46d31210697417d75fc4756cd61b59cc11d5",
+      "player": "Kasparov",
+      "event": "World Championship 35th-KK5",
+      "date": "1990.??.??",
+      "plies": 67
+    },
+    {
+      "sha256": "29c655f1ab488f375dba007914d4e256425eafb30ad2fe21ca6c191d8eea81e2",
+      "player": "Fischer",
+      "event": "Monte Carlo",
+      "date": "1967.??.??",
+      "plies": 114
+    },
+    {
+      "sha256": "60ccf94ea40df70127f6b86403e705b62759353f1ca9864cb814ee9635f40df4",
+      "player": "Karpov",
+      "event": "Reggio Emilia91 Top16",
+      "date": "1991.??.??",
+      "plies": 155
+    },
+    {
+      "sha256": "274226c9e115548942330394cd4a0ed5e41e3bb996ef02f620b0257592e1e001",
+      "player": "Anand",
+      "event": "Glitnir Blitz",
+      "date": "2006.03.16",
+      "plies": 155
+    },
+    {
+      "sha256": "5d430c64889971c8eb265255e66400d94d82d08c777c0a8b1d84213ff7e2e52f",
+      "player": "Tal",
+      "event": "Las Palmas",
+      "date": "1977.??.??",
+      "plies": 103
+    },
+    {
+      "sha256": "3083ca25bee6c931568dee5208c8079dae580a008225222e4d5081a418765264",
+      "player": "Botvinnik",
+      "event": "EU-chT",
+      "date": "1965.??.??",
+      "plies": 154
+    },
+    {
+      "sha256": "615948a5b7fe7678aeb987d0d855de6824da010ed1c01481beef947504823c22",
+      "player": "Alekhine",
+      "event": "New York",
+      "date": "1924.??.??",
+      "plies": 170
+    },
+    {
+      "sha256": "697c5fa10cfe27973df6f25e5511d058378dc5f7179e431ce68fb5d997b12c7c",
+      "player": "Carlsen",
+      "event": "FIDE World Cup 2023",
+      "date": "2023.08.20",
+      "plies": 147
+    },
+    {
+      "sha256": "fca6005671060a5506ff192098c5f0562f552e5a6833de1937ee40a4c2abf1fa",
+      "player": "Kasparov",
+      "event": "XX SuperGM",
+      "date": "2003.02.24",
+      "plies": 173
+    },
+    {
+      "sha256": "2be1fcb27993bd51a8b8c5cc3539571747c20b1f15e69714fc7754770fc70156",
+      "player": "Fischer",
+      "event": "Zuerich",
+      "date": "1959.??.??",
+      "plies": 134
+    },
+    {
+      "sha256": "d049d2a0e2b64439e0fff4713ec21232ac314227f1f01f9b443a01a02fec0017",
+      "player": "Karpov",
+      "event": "Match g/25",
+      "date": "2000.02.26",
+      "plies": 159
+    },
+    {
+      "sha256": "17311a0b0522959f3bd70279e943aa89fdae0cd2d4e2ae082fb6a54dee6d187e",
+      "player": "Anand",
+      "event": "18th Amber Rapid",
+      "date": "2009.03.20",
+      "plies": 148
+    },
+    {
+      "sha256": "ba3d8663b7a69d782ce0662c40b3c083a68957228e5ba1bf03f6772d4b5c71a6",
+      "player": "Tal",
+      "event": "Tbilisi",
+      "date": "1988.??.??",
+      "plies": 109
+    },
+    {
+      "sha256": "3db71a1ff167b1a4a0356268a51205d2c55045a7b5b4a4aba487da341f637cbd",
+      "player": "Botvinnik",
+      "event": "Belgrade URS-World",
+      "date": "1970.??.??",
+      "plies": 126
+    },
+    {
+      "sha256": "2d5ecf2d74c0477552ff3140cce5bb8aba5c2a48837757758d6c10e5c638967b",
+      "player": "Alekhine",
+      "event": "Salzburg",
+      "date": "1943.??.??",
+      "plies": 138
+    },
+    {
+      "sha256": "06f517c301a48c30dbd0bcadef6f07a5082aabc9d33a38ca17a397a007b6541c",
+      "player": "Carlsen",
+      "event": "World Corporate East D",
+      "date": "2021.02.19",
+      "plies": 143
+    },
+    {
+      "sha256": "48074a1e01eef9b386377cfc65444283d8467313980c827b31d5efc806abcc00",
+      "player": "Kasparov",
+      "event": "World Championship 31th-KK1",
+      "date": "1984.??.??",
+      "plies": 72
+    },
+    {
+      "sha256": "876bb548f74022694f0a6170c525a8409040adfa3e5c0815089c72a899de1821",
+      "player": "Fischer",
+      "event": "New York/Los Angeles m",
+      "date": "1961.??.??",
+      "plies": 114
+    },
+    {
+      "sha256": "983fc8a8355c099bc69075b42449814a309354952afab57754c1ae8870138e76",
+      "player": "Karpov",
+      "event": "Lichthof Champions Blitz",
+      "date": "2006.08.22",
+      "plies": 169
+    },
+    {
+      "sha256": "67af3c6bfd6d6b9cb6ec68ba2a39726bb04a28f2e085b28bf120620984f69299",
+      "player": "Anand",
+      "event": "World Blitz",
+      "date": "2009.11.17",
+      "plies": 101
+    },
+    {
+      "sha256": "c3cc3eae4aaa597acd1da6f8d2a903ede5b25c804c96ca11dd97ea724f52ce96",
+      "player": "Tal",
+      "event": "Lvov",
+      "date": "1984.??.??",
+      "plies": 132
+    },
+    {
+      "sha256": "734563913fd4fbd09a74fe6c0b575be2730493c8f07958390068410cd62009f6",
+      "player": "Botvinnik",
+      "event": "World Championship 25th",
+      "date": "1963.??.??",
+      "plies": 78
+    },
+    {
+      "sha256": "32a97759cf1d4267b8f5d97fa872b4e7adf555afd8ed08c30373a17f7ae121d0",
+      "player": "Alekhine",
+      "event": "Munich",
+      "date": "1941.??.??",
+      "plies": 138
+    },
+    {
+      "sha256": "788cb3ca6051a5e14aa58a2b3d2d800563476896a7edcb2b03239a14a6f17754",
+      "player": "Carlsen",
+      "event": "74th Tata Steel GMA",
+      "date": "2012.01.24",
+      "plies": 120
+    },
+    {
+      "sha256": "7c7c2567c85237e4d685abfaa4454dfea91e13168d70d67997481d08984c33d4",
+      "player": "Kasparov",
+      "event": "World Championship 31th-KK1",
+      "date": "1984.??.??",
+      "plies": 72
+    },
+    {
+      "sha256": "97c338b18394e0a854d406a904966a201347d623bd2928da1730a93532a2b325",
+      "player": "Fischer",
+      "event": "Rovinj/Zagreb",
+      "date": "1970.??.??",
+      "plies": 114
+    },
+    {
+      "sha256": "fd3b301a58a70c51ab6a31fa8f6d9a9a39076fe2a6b428b2933244389e8d36b4",
+      "player": "Karpov",
+      "event": "World Blitz",
+      "date": "2009.11.18",
+      "plies": 110
+    },
+    {
+      "sha256": "4d210aceef17e5ff2a01dfd235024954da7f3b57682f3007c5888edcf6d80623",
+      "player": "Anand",
+      "event": "7th Sinquefield Cup 2019",
+      "date": "2019.08.24",
+      "plies": 119
+    },
+    {
+      "sha256": "c49aa0aa4978a3a5175ac08652358adb6c969bd8ca3f998414a11057b5b1299d",
+      "player": "Tal",
+      "event": "Tallinn",
+      "date": "1979.??.??",
+      "plies": 104
+    },
+    {
+      "sha256": "ca36484dab1ec1e1b4c5d1fe40a02fa749325aef0b671a2b1f86e3257dc52215",
+      "player": "Botvinnik",
+      "event": "Leningrad",
+      "date": "1934.??.??",
+      "plies": 153
+    },
+    {
+      "sha256": "884f155c87d36299ed0326a01264d6500fb3e92ac22a688af92bd0cb6cf1acce",
+      "player": "Alekhine",
+      "event": "Salzburg",
+      "date": "1942.??.??",
+      "plies": 138
+    },
+    {
+      "sha256": "1b62be3ce7ae45faa77a11cf34d63f80d3b6fd7a6925a09009bb60b77073d51e",
+      "player": "Carlsen",
+      "event": "79th Tata Steel GpA",
+      "date": "2017.01.28",
+      "plies": 120
+    },
+    {
+      "sha256": "f953d300a3b050e3eee781be6ceaae161e86e126b67b68e988725793ff5310bd",
+      "player": "Kasparov",
+      "event": "World Cup",
+      "date": "1989.??.??",
+      "plies": 103
+    },
+    {
+      "sha256": "b6d9b51f40b7d44eb768a01626487b925c3336fcffbbf177121f2fcff2f78b1c",
+      "player": "Fischer",
+      "event": "Zuerich",
+      "date": "1959.??.??",
+      "plies": 114
+    },
+    {
+      "sha256": "ee71cc763e8e277eec9ce44ab1bbbf59d7af9778d61ef92b485511ebc2b88fec",
+      "player": "Karpov",
+      "event": "Linares",
+      "date": "1994.??.??",
+      "plies": 104
+    },
+    {
+      "sha256": "2e323f11c104a8e4f01d6d1659f4495ac722855db91f6099f7ac5c9ac0648935",
+      "player": "Anand",
+      "event": "PCA-Wch Candidats m2",
+      "date": "1994.??.??",
+      "plies": 166
+    },
+    {
+      "sha256": "57998f94531c7a4dc179932599936b80a80a7a0fe83548ba9616c422830454a5",
+      "player": "Tal",
+      "event": "Moscow",
+      "date": "1982.??.??",
+      "plies": 109
+    },
+    {
+      "sha256": "ef17b9daa1b83580e47a2b92e19606a5b51b9bcb421246ed61e51a4d64ea1af4",
+      "player": "Botvinnik",
+      "event": "World Championship 24th",
+      "date": "1961.??.??",
+      "plies": 57
+    },
+    {
+      "sha256": "af0849c27308d2e455518dada14710318a493b908d6e6196abe4d5efcb72e399",
+      "player": "Alekhine",
+      "event": "Moscow",
+      "date": "1919.??.??",
+      "plies": 138
+    },
+    {
+      "sha256": "b6e5e19a2f7eb0bd65f25b3b23e31233ab7bf551c107681e72385d21438693dc",
+      "player": "Carlsen",
+      "event": "World Rapid 2016",
+      "date": "2016.12.28",
+      "plies": 124
+    },
+    {
+      "sha256": "56c24abe57b9e770295896e4d3dd3fbd110368c1e69f1e0d1ebc4236e7085a4e",
+      "player": "Kasparov",
+      "event": "World Championship 35th-KK5",
+      "date": "1990.??.??",
+      "plies": 66
+    },
+    {
+      "sha256": "ad26523d8e10dd92d9fbecefa7bd37b40b01a0d04d45d39e53fbd8cdf2d30f35",
+      "player": "Fischer",
+      "event": "St Stefan/Belgrade m",
+      "date": "1992.??.??",
+      "plies": 66
+    },
+    {
+      "sha256": "69e8f6541f42f272358c7c72aec187d54467be734a58b2bb1d760b94c2e15398",
+      "player": "Karpov",
+      "event": "World Blitz",
+      "date": "2009.11.16",
+      "plies": 106
+    },
+    {
+      "sha256": "66a9207e2bbef640f236b113f852a9c8ae31d18dc23225984a3ba82922c7448f",
+      "player": "Anand",
+      "event": "Paris Immopar rapid",
+      "date": "1992.??.??",
+      "plies": 192
+    },
+    {
+      "sha256": "6ed33bab4357cbd6723d6782433ad52b7ed4e497ffac6f552a8f45405edec07b",
+      "player": "Tal",
+      "event": "URS-ch45",
+      "date": "1977.??.??",
+      "plies": 102
+    },
+    {
+      "sha256": "f887f1b9cf2040490b422ae4ef29408bc85e1e5ad9b80f0df99b1d3263393e29",
+      "player": "Botvinnik",
+      "event": "Noordwijk",
+      "date": "1965.??.??",
+      "plies": 105
+    },
+    {
+      "sha256": "0282c3fe7fbfb5ec65902c36014d7af5a0dc5a8736048ed3d8b6ac5e86ae6884",
+      "player": "Alekhine",
+      "event": "Bad Pistyan",
+      "date": "1922.??.??",
+      "plies": 137
+    },
+    {
+      "sha256": "70de07e57be8d54349e89be4071f589baed1742428b07a4760f0d2dd9dd97eaa",
+      "player": "Carlsen",
+      "event": "Esports World Cup 2025",
+      "date": "2025.08.01",
+      "plies": 119
+    },
+    {
+      "sha256": "6ebb3459c25911c52a4202f82121377a2f99ef44a8790e637b72d2037b63fc6e",
+      "player": "Kasparov",
+      "event": "Linares",
+      "date": "1992.??.??",
+      "plies": 120
+    },
+    {
+      "sha256": "3b78be73c6430cf718b63ba2675610f97556218f79b3ce60e89090d4fda8ad08",
+      "player": "Fischer",
+      "event": "Chicago sim",
+      "date": "1964.??.??",
+      "plies": 113
+    },
+    {
+      "sha256": "d3a9dd533b5a7848cfcfab59190abc64602a966ccf0a53a416395c11dddfba51",
+      "player": "Karpov",
+      "event": "Linares",
+      "date": "1995.??.??",
+      "plies": 103
+    },
+    {
+      "sha256": "8b061d65274c3831694c9bbef8392d7a760cdd69efb722bc2da0738358c45a80",
+      "player": "Anand",
+      "event": "75th Tata Steel GpA",
+      "date": "2013.01.26",
+      "plies": 107
+    },
+    {
+      "sha256": "7641f22135ece8a40bb4da39607a4304d6449ab890f0f2cb8ffba54014d0fc34",
+      "player": "Tal",
+      "event": "Yerevan",
+      "date": "1982.??.??",
+      "plies": 116
+    },
+    {
+      "sha256": "47a9d6eda8df177748dd01d0b9679d2e4f9844ba97e743761a9eb8c71462f20e",
+      "player": "Botvinnik",
+      "event": "Noordwijk",
+      "date": "1965.??.??",
+      "plies": 104
+    },
+    {
+      "sha256": "25b40b9b0bd53d0e994e01461a5af4e19fbec76e378d00c851a763f79467d735",
+      "player": "Alekhine",
+      "event": "Munich",
+      "date": "1942.??.??",
+      "plies": 137
+    },
+    {
+      "sha256": "de7c4456f5a70a02665aa7c620357d506dfc581baefcb9703d34a5be22e9d674",
+      "player": "Carlsen",
+      "event": "FIDE World Cup 2023",
+      "date": "2023.08.10",
+      "plies": 123
+    },
+    {
+      "sha256": "7a9b4cad2ace1edf81ae179df2844af8d87d6df7db469be164ece7458160478f",
+      "player": "Kasparov",
+      "event": "Munich Intel Express m",
+      "date": "1994.??.??",
+      "plies": 157
+    },
+    {
+      "sha256": "5f1671f5e751b985679b73abbbcc5ac00e7c83860d674b152b0f85d8fd58ed1f",
+      "player": "Fischer",
+      "event": "Capablanca mem",
+      "date": "1965.??.??",
+      "plies": 113
+    },
+    {
+      "sha256": "133972bfd7e7d52ed09ce815ee37283f7b9756aab3374237c3ca79078f41ae41",
+      "player": "Karpov",
+      "event": "World Championship 29th",
+      "date": "1978.??.??",
+      "plies": 77
+    },
+    {
+      "sha256": "edd57df67ea8dd23a55600a9b974b2548cf71bc015d980d39d6c5067d27cddaa",
+      "player": "Anand",
+      "event": "13th Quenza Open 2024",
+      "date": "2024.07.07",
+      "plies": 156
+    },
+    {
+      "sha256": "05409268f13ecb90e15d488e7be6814788f6eedc9c59a71f27e206f13832cf78",
+      "player": "Tal",
+      "event": "Malmo cm-reserve",
+      "date": "1983.??.??",
+      "plies": 101
+    },
+    {
+      "sha256": "717460d4076ac79b9149e83a57904a1b37b037bf3acdc347b502da7f834882bc",
+      "player": "Botvinnik",
+      "event": "URS-ch20",
+      "date": "1952.??.??",
+      "plies": 152
+    },
+    {
+      "sha256": "2cf14f406e022d006950c429a5756dd0a3bc3e88a7056afc0d09335716ae0bfc",
+      "player": "Alekhine",
+      "event": "Podebrady",
+      "date": "1936.??.??",
+      "plies": 157
+    },
+    {
+      "sha256": "0a8408755bd6cd798453a669284ab21351d95a828ec6cd3367d14d5a9757c697",
+      "player": "Carlsen",
+      "event": "World Rapid Final",
+      "date": "2012.07.07",
+      "plies": 121
+    },
+    {
+      "sha256": "1cc7240a76353945c9a4da270bb8f661c3af77de8455de7205bac2a998ba74fa",
+      "player": "Kasparov",
+      "event": "x3dworld rapid",
+      "date": "2002.12.19",
+      "plies": 94
+    },
+    {
+      "sha256": "710c4faa786ee776c8545aebee82ca13bc3a2d4cf763a751af0a321592cd95f6",
+      "player": "Fischer",
+      "event": "USA-ch",
+      "date": "1958.??.??",
+      "plies": 113
+    },
+    {
+      "sha256": "f3e390af3a769da88d74061239954899894243e743bf1c14003bb46db3ec997b",
+      "player": "Karpov",
+      "event": "Mate of the King Classical",
+      "date": "2009.01.28",
+      "plies": 181
+    },
+    {
+      "sha256": "f0f17524400a433f530e4f6432dd23c03db288bd89ded435ce3a21a67cee1f9f",
+      "player": "Anand",
+      "event": "World Blitz",
+      "date": "2009.11.16",
+      "plies": 101
+    },
+    {
+      "sha256": "33784ea942de4f81a16920118dcb371d7f684b6b59ff604ee4e5771baee3b3ec",
+      "player": "Tal",
+      "event": "Brussels blitz",
+      "date": "1987.??.??",
+      "plies": 102
+    },
+    {
+      "sha256": "853f132f0748545d9a2da8f64f29b133ef7390556c4611752c84c51b5ab7eb4f",
+      "player": "Botvinnik",
+      "event": "World Championship 21th",
+      "date": "1957.??.??",
+      "plies": 76
+    },
+    {
+      "sha256": "4cc1f7b3c70699a9e8bc28a8895e690ecbcb55b2027fa2a6190401f48b4ff54a",
+      "player": "Alekhine",
+      "event": "New York",
+      "date": "1927.??.??",
+      "plies": 137
+    },
+    {
+      "sha256": "ba51a10d099038d8cd19de0909cfa013c96da8c762a491485d636219c5fc911a",
+      "player": "Carlsen",
+      "event": "World Blitz Final",
+      "date": "2012.07.09",
+      "plies": 141
+    },
+    {
+      "sha256": "394d90bcc0de5f61427213ec7bf19e0734eb81371072c440e86a822871155045",
+      "player": "Kasparov",
+      "event": "Novgorod",
+      "date": "1997.??.??",
+      "plies": 145
+    },
+    {
+      "sha256": "8805ae6f38039b08fe9880d5562296d451848355f607bb1294ed742413a356d5",
+      "player": "Fischer",
+      "event": "Portoroz Interzonal",
+      "date": "1958.??.??",
+      "plies": 133
+    },
+    {
+      "sha256": "2a3d10016204e1230e2a2a8d8302a7b2387b8316e4cf161255c02ac1598414aa",
+      "player": "Karpov",
+      "event": "World Blitz",
+      "date": "2007.11.22",
+      "plies": 125
+    },
+    {
+      "sha256": "31eb935b0aedf8f799838d4d96398d394371a91bffb26f2ad8d634c386d1da7e",
+      "player": "Anand",
+      "event": "FIDE World Blitz 2014",
+      "date": "2014.06.19",
+      "plies": 100
+    },
+    {
+      "sha256": "ce186afd947de4d995d6642060f0cb1d23612ce7292360dc9ea29f25f555da29",
+      "player": "Tal",
+      "event": "San Francisco",
+      "date": "1991.??.??",
+      "plies": 109
+    },
+    {
+      "sha256": "a0ae9e91ff0a9517d9c6621e46fd80a949d5aa8f2f7ad4fe310a02de2f12c4d0",
+      "player": "Botvinnik",
+      "event": "URS-ch22",
+      "date": "1955.??.??",
+      "plies": 152
+    },
+    {
+      "sha256": "fb66af98a0e5c40a5fbc2a0a7d54f43166b49e80a4bc9de8e9b8c688dfe78a7f",
+      "player": "Alekhine",
+      "event": "CSR tour sim",
+      "date": "1925.??.??",
+      "plies": 137
+    },
+    {
+      "sha256": "f6139b822eacef774c2bfe2da2250f90c7ec1088f3c922833b2a6021827d6315",
+      "player": "Carlsen",
+      "event": "World Rapid 2021",
+      "date": "2021.12.27",
+      "plies": 118
+    },
+    {
+      "sha256": "d687dfc94877823a0f311233e84762eb2bbfa2555372444e22a808b42e8885ed",
+      "player": "Kasparov",
+      "event": "Ultimate Blitz Challenge",
+      "date": "2016.04.28",
+      "plies": 137
+    },
+    {
+      "sha256": "329907d5dc0f511c1cb163c18be0a5db4ae9316a38e5065ca0cf8f4d5533ea55",
+      "player": "Fischer",
+      "event": "USA-ch",
+      "date": "1963.??.??",
+      "plies": 112
+    },
+    {
+      "sha256": "64afbb43e5e09574ae67f1ed7c001e0c0914258ae887bbeaf6dd2eded5217c0a",
+      "player": "Karpov",
+      "event": "GMA",
+      "date": "2003.01.25",
+      "plies": 151
+    },
+    {
+      "sha256": "53ac662c8d79401c9b739c9d09a8a03aa4843c073fc6f9415a217541b86dacc3",
+      "player": "Anand",
+      "event": "World Rapid 2015",
+      "date": "2015.10.10",
+      "plies": 106
+    },
+    {
+      "sha256": "620ff836cc4721f174e1d53868d3e02aaa1926d1fdc3df02621ad3587417ac8b",
+      "player": "Tal",
+      "event": "Taxco Interzonal",
+      "date": "1985.??.??",
+      "plies": 115
+    },
+    {
+      "sha256": "09cb31acb250799ea920ca3ed7c483c169d1c51995a02e12efd2a6f3254f8d37",
+      "player": "Botvinnik",
+      "event": "World Championship 21th",
+      "date": "1957.??.??",
+      "plies": 55
+    },
+    {
+      "sha256": "1856e8a63c3b194b340ef0d93999a232e93967281780b6f6b3149c8b87b96631",
+      "player": "Alekhine",
+      "event": "New York sim",
+      "date": "1932.??.??",
+      "plies": 136
+    }
+  ]
+}
