@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "architecture": "symmetric_linear_pst_v1",
+  "version": "v0.5-candidate",
+  "trained_utc": "2026-10-31T12:13:16.414298+00:00",
+  "source": "400 Stockfish19 Skill20 self-play games; independent root scores",
+  "source_pgn_sha256": "16877659f6d28613dbd749afb88cdc59e968e2e1a0c8e567896d95df413f5c0f",
+  "teacher": "Stockfish 19",
+  "teacher_seconds_per_position": 0.03,
+  "split": "By original game (every fifth game held out); no exact position duplicates",
+  "train_positions": 6551,
+  "holdout_positions": 1623,
+  "train_source_games": 320,
+  "holdout_source_games": 80,
+  "ridge": 70.0,
+  "holdout": {
+    "learned": {
+      "mae_cp": 160.51,
+      "rmse_cp": 268.69,
+      "median_ae_cp": 95.8
+    },
+    "handcrafted": {
+      "mae_cp": 160.33,
+      "rmse_cp": 270.81,
+      "median_ae_cp": 101.0
+    },
+    "material_only": {
+      "mae_cp": 158.37,
+      "rmse_cp": 276.11,
+      "median_ae_cp": 95.0
+    }
+  },
+  "deployment": "candidate only; UCI LearnedEval defaults OFF; no automatic promotion",
+  "teacher_positions_attempted": {
+    "seen": 8174,
+    "skipped_mate": 281,
+    "skipped_error": 0
+  },
+  "offline_improvement_vs_handcrafted_mae_cp": -0.18,
+  "gate_offline_mae_pass": false
+}
