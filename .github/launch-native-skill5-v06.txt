@@ -1,0 +1,1 @@
+One-time matched-opening Stockfish Skill5 A/B of independent GM-1000 C++ native search versus old GM-1000 Python search. 8 opening FENs twice with alternating colors, 16 games per version, Stockfish Skill5 same package, 0.2s per move, both historical memories and book OFF; save complete PGNs plus scorecard, never assign Elo or auto-promote based on this small sample.
