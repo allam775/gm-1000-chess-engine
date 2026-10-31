@@ -126,7 +126,8 @@ def evaluate(board: chess.Board, weights: dict[str, float] | None = None) -> int
 class Engine:
     def __init__(self, hash_mb: int = 32, book_path: str | Path = "data/opening_book.json",
                  learning_path: str | Path = "data/approved_model.json",
-                 memory_path: str | Path = "data/position_memory.json"):
+                 memory_path: str | Path = "data/position_memory.json",
+                 stockfish_memory_path: str | Path = "data/stockfish19_position_memory.json"):
         self.hash_mb = max(1, hash_mb)
         self.table: dict[int, TTEntry] = {}
         self.killers: dict[int, list[chess.Move]] = {}
@@ -142,7 +143,7 @@ class Engine:
         self.memory_path = Path(memory_path)
         self.memory_enabled = True
         self._memory: dict | None = None
-        self.stockfish_memory_path = Path('data/stockfish19_position_memory.json')
+        self.stockfish_memory_path = Path(stockfish_memory_path)
         self.stockfish_memory_enabled = True
         self._stockfish_memory: dict | None = None
 
