@@ -160,7 +160,7 @@ int static_exchange(const Board& b, Move m) {
 
 bool is_draw(const Board& board) {
     return board.isInsufficientMaterial() || board.isHalfMoveDraw() ||
-           (board.halfMoveClock() >= 8 && board.isRepetition(3));
+           (board.halfMoveClock() >= 8 && board.isRepetition(2));
 }
 
 struct Entry {
