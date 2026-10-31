@@ -141,3 +141,63 @@ def test_uci_fen_position():
     assert uci.board.fen() == board.fen()
     uci.process('position fen 8/8/8/8/8/8/4k3/7K w - - 0 1')
     assert uci.board.king(chess.WHITE) == chess.H1
+
+
+def test_evaluation_components_reconstruct_original():
+    from engine.search import evaluate_components
+    b = chess.Board()
+    b.push_san('e4')
+    b.push_san('e5')
+    b.push_san('Nf3')
+    comps = evaluate_components(b)
+    expected = sum(comps.values()) * (1 if b.turn == chess.WHITE else -1)
+    assert evaluate(b) == expected
+    assert evaluate(b, {name: 1.0 for name in comps}) == expected
+
+
+def test_outcome_learning_persists_and_affects_opening(tmp_path):
+    from engine.learning import empty_state, load_state, save_state, train_completed_pgn
+    from engine.search import LEARNABLE_FEATURES
+    game = chess.pgn.Game()
+    game.headers['White'] = 'GM-1000'
+    game.headers['Black'] = 'Stockfish'
+    game.headers['Result'] = '1-0'
+    board = game.board()
+    node = game
+    for san in ('e4', 'e5', 'Nf3', 'Nc6', 'Bc4', 'Bc5', 'c3', 'Nf6',
+                'd4', 'exd4', 'cxd4', 'Bb4+', 'Nc3', 'Nxe4', 'O-O', 'Bxc3',
+                'bxc3', 'd5', 'Ba3', 'dxc4'):
+        move = board.parse_san(san)
+        node = node.add_variation(move)
+        board.push(move)
+    pgn_path = tmp_path / 'one.pgn'
+    pgn_path.write_text(str(game) + '\n\n', encoding='utf-8')
+    state = empty_state()
+    update = train_completed_pgn(pgn_path, state)
+    assert update['learned_games'] == 1
+    assert state['epochs'] == 1
+    assert update['learning_samples'] > 0
+    first = state['opening_moves'][book_key(chess.Board())]['e2e4']
+    assert first['visits'] == 1 and first['reward_sum'] == 1
+    assert any(state['weights'][k] != 1.0 for k in LEARNABLE_FEATURES)
+    path = tmp_path / 'learning.json'
+    save_state(path, state)
+    assert load_state(path)['epochs'] == 1
+    bot = Engine(book_path=tmp_path / 'missing.json', learning_path=path)
+    assert bot.book_move(chess.Board()) == chess.Move.from_uci('e2e4')
+    bot.learning_enabled = False
+    assert bot.book_move(chess.Board()) is None
+
+
+def test_incomplete_games_do_not_train(tmp_path):
+    from engine.learning import empty_state, train_completed_pgn
+    game = chess.pgn.Game()
+    game.headers['White'] = 'GM-1000'
+    game.headers['Black'] = 'Stockfish'
+    game.headers['Result'] = '*'
+    path = tmp_path / 'incomplete.pgn'
+    path.write_text(str(game) + '\n\n', encoding='utf-8')
+    state = empty_state()
+    with pytest.raises(ValueError, match='No completed games'):
+        train_completed_pgn(path, state)
+    assert state['epochs'] == 0

@@ -4,8 +4,6 @@
 
 > **حالة المشروع:** نموذج أولي قابل للاختبار، وليس محركًا مثبتًا بمستوى Grandmaster. يملك خوارزمية بحث وتقييم خاصة به، ويستخدم مكتبة `python-chess` لتطبيق قواعد اللعبة والتواصل مع محركات الشطرنج. لا يستخدم Stockfish لاتخاذ نقلاته؛ يُستخدم Stockfish **كمنافس** في الاختبارات.
 
-> **نتيجة التشغيل الفعلي — 31 أكتوبر 2026:** نجحت اختبارات GitHub Actions، واختيرت **1,000 مباراة تاريخية فريدة**، وبُني كتاب الافتتاحيات وحُفظ داخل المستودع. انتهت أول بطولة من **4 مباريات ضد Stockfish Skill Level 0** بنتيجة **فوزين وتعادل صفر وخسارتين**، بلا أخطاء محرك مسجلة (نسبة نقاط **50%**). هذه عينة اختبار أولية وليست تقدير Elo أو إثباتًا لمستوى Grandmaster. التفاصيل في [RUN_STATUS.md](RUN_STATUS.md).
-
 ## 🎯 ما الهدف؟
 
 تطوير محرك شطرنج مستقل يتدرج في القوة عبر ثلاث ركائز:
@@ -36,7 +34,7 @@
 | ترتيب النقلات | أساسي | ترتيب الالتقاط والترقية و`Killer Moves` |
 | تقييم الموقف | أولي | قيم القطع، المركز، تقدم البيادق، بنية البيادق وأمان الملك بصورة مبسطة |
 | بروتوكول `UCI` | موجود | التواصل مع واجهات الشطرنج والمحركات المنافسة |
-| كتاب الافتتاحيات | **بُني وتحقق منه على GitHub** | استخراج تكرار النقلات من 1,000 مباراة مختارة |
+| كتاب الافتتاحيات | يُبنى عند تشغيل Workflow | استخراج تكرار النقلات من 1,000 مباراة مختارة |
 | ساحة الاختبار | موجودة | مباريات ضد نسخة Stockfish التي تُثبت في بيئة الاختبار |
 | تعلم عصبي / NNUE | **غير موجود بعد** | مرحلة تطوير مستقبلية |
 | تصنيف Elo موثق | **غير متاح بعد** | يتطلب مباريات ومعايرة إحصائية |
@@ -177,8 +175,8 @@ gm-1000-chess-engine/
 - [x] إضافة تقييم أولي للمواقف وبحث `Alpha-Beta`.
 - [x] تجهيز نظام اختيار 1,000 مباراة وبناء كتاب افتتاحيات.
 - [x] تجهيز `GitHub Actions` للاختبارات والبطولات.
-- [x] تشغيل بناء كتاب الافتتاحيات فعليًا وتوثيق نجاحه على GitHub.
-- [x] تشغيل أول بطولة فعلية وتسجيل خط الأساس (4 مباريات؛ 2 فوز، 0 تعادل، 2 خسارة).
+- [ ] تشغيل بناء كتاب الافتتاحيات فعليًا وتوثيق نجاحه على GitHub.
+- [ ] تشغيل أول بطولة فعلية وتسجيل خط الأساس.
 - [ ] معالجة الأخطاء وتحسين إدارة الوقت والبحث.
 - [ ] نقل الأجزاء الحساسة للأداء إلى **C++** أو **Rust** عند الحاجة.
 - [ ] تطوير **Principal Variation Search** و**Late Move Reductions** وإدارة أفضل لجدول المواقف.
@@ -200,7 +198,7 @@ gm-1000-chess-engine/
 
 ## ⚠️ حدود النسخة `v0.1`
 
-1. **ثبت تشغيل كتاب الافتتاحيات وبطولة أولية على GitHub**، لكن **4 مباريات فقط** لا تكفي لاستنتاج مستوى قوة المحرك أو منح تصنيف Elo.
+1. المشروع **لم يثبت بعد** أنه درس الألف مباراة على GitHub أو فاز على محرك منافس؛ يلزم تشغيل الـWorkflows أولًا.
 2. الاحتفاظ بكتاب افتتاحيات لا يساوي تدريب نموذج يتعلم التخطيط والتكتيك من كل المباراة.
 3. سرعة Python محدودة مقارنة بمحركات C++ المتقدمة؛ تحسين البنية والخوارزميات سيكون ضروريًا.
 4. لا توجد حاليًا شبكة عصبية مدربة أو قيمة Elo موثقة أو ضمان الوصول إلى مستوى Grandmaster.
@@ -237,3 +235,22 @@ python scripts/arena.py --games 4 --stockfish-skill 0 --seconds-per-move 0.2
 أثناء التشغيل اليدوي عبر UCI، أرسل أوامر `uci`، ثم `isready`، ثم `position startpos`، ثم `go movetime 300`، وانتظر رسالة `bestmove` قبل `quit`. تعتمد ساحة الاختبار على وجود برنامج Stockfish ضمن `PATH` أو المتغير `STOCKFISH_PATH`.
 
 **الترخيص والبيانات:** مكتبة `chess` (python-chess) مرخصة وفق GPL-3.0-or-later؛ يُرجى مراعاة التزامات ترخيصها عند توزيع الأعمال المشتقة، والتحقق من شروط نشر مجموعات PGN قبل إعادة نشرها. لا يتضمن الأرشيف بيانات PGN الخام المحمّلة من الإنترنت.
+
+## 🧠 20 tournament incremental learning experiment
+
+This revision adds a **real, auditable online learning loop**, not a neural network and not a guarantee of becoming stronger:
+
+- **20 sequential mini-tournaments × 4 games each**, with colors alternated and unchanged Stockfish Skill 0 and 0.1 seconds per move. It is a total of **80 training games**, plus two independent **8-game holdout comparisons**.
+- After **each** 4-game tournament, GM-1000 records the results of its opening choices (win +1, draw 0, loss -1) and updates nine **bounded non-material positional evaluation weights** via a small outcome-gradient step. Opponent moves and Stockfish analyses are **not** used as oracle labels.
+- The next tournament starts a fresh engine process, loading the **previous round's** saved learned state from `data/learning_state.json`. The engine never trains between games within one mini-tournament.
+- Every round produces its own `matches.pgn`, `results.json`, and `learning_update.json`; `rounds.csv` and `summary.json` provide the full audit trail.
+- Two held-out evaluations at the end use the same conditions **without training**: an untrained version (`Learning = false`) and the learned version (`Learning = true`). Even if the score rises, a small evaluation sample does not prove genuine strength gains.
+- The learning results and weights are saved to `data/learning_report.json` and `data/learning_state.json` once the full workflow succeeds. Full match PGN files are downloadable in the GitHub Actions artifact.
+
+Run **Actions → Learn from 20 Stockfish tournaments → Run workflow**, or run locally (Python dependencies and Stockfish required):
+
+```bash
+python scripts/learn_series.py --rounds 20 --games 4 --stockfish-skill 0 --seconds-per-move 0.1 --eval-games 8
+```
+
+`Engine` additionally recognizes UCI `setoption name Learning value true|false`; material coefficients are fixed and learned non-material coefficients are clipped in `[0.4, 1.6]`. The feature-learning rule is deliberately simple, with no claim of stable generalization, NNUE or Elo calibration. This workflow is a **bounded batch experiment**, not a background cloud worker.

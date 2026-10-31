@@ -44,7 +44,8 @@ def run(args: argparse.Namespace) -> dict:
                 game.headers['GM1000Version'] = '0.1'
                 game.headers['StockfishSkill'] = str(args.stockfish_skill)
                 game.headers['SecondsPerMove'] = str(args.seconds_per_move)
-                gm.configure({'OwnBook': args.own_book})
+                gm.configure({'OwnBook': args.own_book,
+                              'Learning': getattr(args, 'learning', True)})
                 game_token = object()  # python-chess sends ucinewgame on token change.
                 node = game
                 errors = []
@@ -118,6 +119,7 @@ def main() -> None:
     parser.add_argument('--max-plies', type=int, default=300)
     parser.add_argument('--stockfish', default=None)
     parser.add_argument('--own-book', action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument('--learning', action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument('--output-dir', type=Path, default=ROOT / 'reports')
     args = parser.parse_args()
     if not 0 <= args.stockfish_skill <= 20:

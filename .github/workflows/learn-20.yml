@@ -1,0 +1,83 @@
+name: Learn from 20 Stockfish tournaments
+on:
+  workflow_dispatch:
+    inputs:
+      rounds:
+        description: 'Mini-tournaments (default 20; max 100)'
+        required: true
+        default: '20'
+        type: string
+      games:
+        description: 'Even games per mini-tournament'
+        required: true
+        default: '4'
+        type: string
+      seconds_per_move:
+        description: 'Seconds per move for both engines'
+        required: true
+        default: '0.1'
+        type: string
+  push:
+    paths:
+      - '.github/launch-learning-20.txt'
+permissions:
+  contents: write
+concurrency:
+  group: gm1000-learning-training
+  cancel-in-progress: false
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      STOCKFISH_PATH: /usr/games/stockfish
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: python -m pip install -r requirements.txt pytest
+      - name: Install Stockfish
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y stockfish
+      - name: Verify learning unit tests before expensive matches
+        run: python -m pytest -q
+      - name: Run 20 sequential tournaments with outcome learning after each
+        run: |
+          python scripts/learn_series.py \
+            --rounds "${{ inputs.rounds || '20' }}" \
+            --games "${{ inputs.games || '4' }}" \
+            --seconds-per-move "${{ inputs.seconds_per_move || '0.1' }}" \
+            --stockfish-skill 0 \
+            --eval-games 8
+      - name: Upload tournament and model audit trail
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gm1000-learning-20-series
+          path: |
+            reports/learning-series/
+            data/learning_state.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Commit trained weights, opening memory and summary
+        if: success()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('reports/learning-series/summary.json').read_text())
+          assert report['tournaments'] == 20, 'Expected 20 complete learning tournaments'
+          assert report['final_epochs'] - report['initial_epochs'] == 20
+          assert report['total']['completed'] > 0
+          Path('data/learning_report.json').write_text(json.dumps(report, indent=2) + '\n')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/learning_state.json data/learning_report.json
+          git commit -m "Train GM-1000 through 20 Stockfish mini-tournaments" || exit 0
+          git push

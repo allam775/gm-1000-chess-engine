@@ -6,6 +6,7 @@ Scores are centipawns relative to the player to move.
 from __future__ import annotations
 
 import json
+import math
 import threading
 import time
 from collections import defaultdict
@@ -49,49 +50,52 @@ def book_key(board: chess.Board) -> str:
     return board.epd(en_passant="legal")
 
 
-def evaluate(board: chess.Board) -> int:
-    """Lightweight positional evaluation, never calls another chess engine."""
-    score = 0
+# Tunable non-material feature multipliers; material is fixed for stability.
+LEARNABLE_FEATURES = ('bishop_pair', 'minor_center', 'queen_center',
+                      'pawn_progress', 'pawn_center', 'rook_activity',
+                      'king_safety', 'pawn_structure', 'passed_pawns')
+
+
+def evaluate_components(board: chess.Board) -> dict[str, int]:
+    """Break down white-minus-black evaluation into reproducible features."""
+    features = {'material': 0, **{key: 0 for key in LEARNABLE_FEATURES}}
     pawn_files = {chess.WHITE: defaultdict(list), chess.BLACK: defaultdict(list)}
+    pieces = board.piece_map()
     for color in chess.COLORS:
         sign = 1 if color == chess.WHITE else -1
-        bishops = len(board.pieces(chess.BISHOP, color))
-        if bishops >= 2:
-            score += sign * 25
-        for square, piece in board.piece_map().items():
+        if len(board.pieces(chess.BISHOP, color)) >= 2:
+            features['bishop_pair'] += sign * 25
+        for square, piece in pieces.items():
             if piece.color != color:
                 continue
             kind = piece.piece_type
-            score += sign * PIECE_VALUES[kind]
+            features['material'] += sign * PIECE_VALUES[kind]
             file = chess.square_file(square)
             rank = chess.square_rank(square) if color == chess.WHITE else 7 - chess.square_rank(square)
-            # Centralization (reduced for rooks, excluded for king in middlegame).
             center = (3.5 - abs(file - 3.5)) + (3.5 - abs(rank - 3.5))
             if kind in (chess.KNIGHT, chess.BISHOP):
-                score += sign * round(center * (8 if kind == chess.KNIGHT else 5))
+                features['minor_center'] += sign * round(center * (8 if kind == chess.KNIGHT else 5))
             elif kind == chess.QUEEN:
-                score += sign * round(center * 2)
+                features['queen_center'] += sign * round(center * 2)
             elif kind == chess.PAWN:
-                score += sign * (rank * 7 + round((3.5 - abs(file - 3.5)) * 3))
+                features['pawn_progress'] += sign * rank * 7
+                features['pawn_center'] += sign * round((3.5 - abs(file - 3.5)) * 3)
                 pawn_files[color][file].append(square)
             elif kind == chess.ROOK:
-                score += sign * (rank * 2)
+                features['rook_activity'] += sign * rank * 2
         king = board.king(color)
-        if king is not None:
-            kf = chess.square_file(king)
+        if king is not None and board.queens:
             kr = chess.square_rank(king) if color == chess.WHITE else 7 - chess.square_rank(king)
-            # When queens remain, favor secure/less exposed kings.
-            if board.queens:
-                score += sign * (12 if kr <= 1 else -8 * kr)
-                guards = sum(1 for x in board.attackers(color, king) if board.piece_type_at(x) == chess.PAWN)
-                score += sign * (guards * 8)
+            features['king_safety'] += sign * (12 if kr <= 1 else -8 * kr)
+            guards = sum(1 for x in board.attackers(color, king) if board.piece_type_at(x) == chess.PAWN)
+            features['king_safety'] += sign * guards * 8
     for color in chess.COLORS:
         sign = 1 if color == chess.WHITE else -1
         for file, pawns in pawn_files[color].items():
             if len(pawns) > 1:
-                score -= sign * 14 * (len(pawns) - 1)
+                features['pawn_structure'] -= sign * 14 * (len(pawns) - 1)
             if not pawn_files[color].get(file - 1) and not pawn_files[color].get(file + 1):
-                score -= sign * 12 * len(pawns)
+                features['pawn_structure'] -= sign * 12 * len(pawns)
             for square in pawns:
                 our_rank = chess.square_rank(square)
                 passed = True
@@ -104,12 +108,24 @@ def evaluate(board: chess.Board) -> int:
                             passed = False
                 if passed:
                     advancement = our_rank if color == chess.WHITE else 7 - our_rank
-                    score += sign * (10 + advancement * advancement * 2)
-    return score if board.turn == chess.WHITE else -score
+                    features['passed_pawns'] += sign * (10 + advancement * advancement * 2)
+    return features
+
+
+def evaluate(board: chess.Board, weights: dict[str, float] | None = None) -> int:
+    """Return score relative to side-to-move; trained features are bounded."""
+    features = evaluate_components(board)
+    if weights:
+        score = features['material'] + sum(features[k] * weights.get(k, 1.0)
+                                           for k in LEARNABLE_FEATURES)
+    else:
+        score = sum(features.values())
+    return round(score) if board.turn == chess.WHITE else -round(score)
 
 
 class Engine:
-    def __init__(self, hash_mb: int = 32, book_path: str | Path = "data/opening_book.json"):
+    def __init__(self, hash_mb: int = 32, book_path: str | Path = "data/opening_book.json",
+                 learning_path: str | Path = "data/learning_state.json"):
         self.hash_mb = max(1, hash_mb)
         self.table: dict[int, TTEntry] = {}
         self.killers: dict[int, list[chess.Move]] = {}
@@ -118,6 +134,9 @@ class Engine:
         self.stop_event = threading.Event()
         self.book_path = Path(book_path)
         self.own_book = True
+        self.learning_enabled = True
+        self.learning_path = Path(learning_path)
+        self._learning: dict | None = None
         self._book: dict | None = None
 
     def new_game(self) -> None:
@@ -133,18 +152,49 @@ class Engine:
                 self._book = {}
         return self._book
 
+    def _load_learning(self) -> dict:
+        if self._learning is None:
+            try:
+                raw = json.loads(self.learning_path.read_text(encoding='utf-8'))
+                if raw.get('schema') != 1:
+                    raise ValueError('Unsupported learning schema')
+                self._learning = raw
+            except (OSError, ValueError, TypeError):
+                self._learning = {'weights': {}, 'opening_moves': {}}
+        return self._learning
+
     def book_move(self, board: chess.Board) -> chess.Move | None:
         if not self.own_book:
             return None
-        choices = self._load_book().get(book_key(board), {})
-        for uci, _ in sorted(choices.items(), key=lambda item: (-item[1], item[0])):
+        key = book_key(board)
+        choices = self._load_book().get(key, {})
+        learned = (self._load_learning().get('opening_moves', {}).get(key, {})
+                   if self.learning_enabled else {})
+        candidates = set(choices) | set(learned)
+        scores = []
+        for uci in candidates:
             try:
                 move = chess.Move.from_uci(uci)
-                if move in board.legal_moves:
-                    return move
+                if move not in board.legal_moves:
+                    continue
             except ValueError:
                 continue
+            counts = learned.get(uci, {})
+            visits = max(0, int(counts.get('visits', 0)))
+            reward = float(counts.get('reward_sum', 0))
+            # Historical counts are prior, match outcomes are incremental evidence.
+            # No reliance on Stockfish's move suggestions or evaluation.
+            score = .13 * math.log1p(choices.get(uci, 0))
+            if visits:
+                score += reward / (visits + 2) + .035 * math.log1p(visits)
+            scores.append((score, uci, move))
+        if scores:
+            return max(scores, key=lambda item: (item[0], item[1]))[2]
         return None
+
+    def evaluation(self, board: chess.Board) -> int:
+        weights = self._load_learning().get('weights', {}) if self.learning_enabled else {}
+        return evaluate(board, weights)
 
     def _check_time(self) -> None:
         if self.stop_event.is_set() or (self.deadline is not None and time.monotonic() >= self.deadline):
@@ -183,7 +233,7 @@ class Engine:
         if self._drawn(board):
             return 0
         in_check = board.is_check()
-        stand_pat = evaluate(board)
+        stand_pat = self.evaluation(board)
         if not in_check:
             if stand_pat >= beta:
                 return beta
