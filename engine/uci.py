@@ -87,6 +87,7 @@ class UCI:
             self.output('option name OwnBook type check default true')
             self.output('option name Learning type check default true')
             self.output('option name PositionMemory type check default true')
+            self.output('option name StockfishMemory type check default true')
             self.output('uciok')
         elif command == 'isready':
             self.output('readyok')
@@ -104,6 +105,8 @@ class UCI:
                     pass
             if 'name learning' in lower and ' value ' in lower:
                 self.engine.learning_enabled = lower.split(' value ')[-1].strip() in ('1', 'true', 'yes', 'on')
+            if 'name stockfishmemory' in lower and ' value ' in lower:
+                self.engine.stockfish_memory_enabled = lower.split(' value ')[-1].strip() in ('1', 'true', 'yes', 'on')
             if 'name positionmemory' in lower and ' value ' in lower:
                 self.engine.memory_enabled = lower.split(' value ')[-1].strip() in ('1', 'true', 'yes', 'on')
             if 'name ownbook' in lower and ' value ' in lower:
