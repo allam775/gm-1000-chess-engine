@@ -2,7 +2,7 @@ name: GM1000 v0.10 independent Skill5 200-game validation vs frozen v0.8
 on:
   push:
     branches:
-      - experiment/native-tactical-v10
+      - experiment/v010-draw-correctness
     paths:
       - '.github/launch-native-v10-holdout.txt'
   workflow_dispatch:
