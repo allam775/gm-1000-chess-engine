@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-31T15:05:49.122294+00:00",
+  "trial": "v0.8 provisional tactical change from v0.7, main preserved unchanged",
+  "base_v07_sha": "26cdee9b59641a24be88a8574418d9d12e25c3e0",
+  "direct": {
+    "schema": 1,
+    "created_utc": "2026-10-31T15:01:50.867223+00:00",
+    "experiment": "v08 vs frozen v07 direct, paired openings",
+    "frozen_baseline_sha": "26cdee9b59641a24be88a8574418d9d12e25c3e0",
+    "opening_seed": 26103208,
+    "pairs": 16,
+    "seconds_per_move": 0.2,
+    "counts": {
+      "win": 15,
+      "loss": 11,
+      "draw": 6
+    },
+    "completed": 32,
+    "score_percent": 56.25,
+    "by_color": {
+      "white": {
+        "win": 8,
+        "loss": 5,
+        "draw": 3
+      },
+      "black": {
+        "win": 7,
+        "loss": 6,
+        "draw": 3
+      }
+    },
+    "pgn_sha256": "4185378039818e72645c00893f27e1882ad71a83d7fcc668b695a55950a0de7d",
+    "limitations": "Small exploratory sample, independent seed, no Elo. Do not promote without external control."
+  },
+  "skill5": {
+    "schema": 1,
+    "date_utc": "2026-10-31T15:05:39.921870+00:00",
+    "experiment": "v0.8 vs frozen v0.7, matched openings, Stockfish Skill Level 5",
+    "opening_seed": 26103209,
+    "games_per_version": 24,
+    "opponent_skill": 5,
+    "seconds_per_move": 0.2,
+    "scores": {
+      "v07": {
+        "completed": 24,
+        "wins": 8,
+        "draws": 7,
+        "losses": 9,
+        "score_percent": 47.92,
+        "errors": 0,
+        "incomplete": 0,
+        "by_color": {
+          "white": {
+            "wins": 3,
+            "draws": 4,
+            "losses": 5
+          },
+          "black": {
+            "wins": 5,
+            "draws": 3,
+            "losses": 4
+          }
+        }
+      },
+      "v08": {
+        "completed": 24,
+        "wins": 9,
+        "draws": 8,
+        "losses": 7,
+        "score_percent": 54.17,
+        "errors": 0,
+        "incomplete": 0,
+        "by_color": {
+          "white": {
+            "wins": 6,
+            "draws": 2,
+            "losses": 4
+          },
+          "black": {
+            "wins": 3,
+            "draws": 6,
+            "losses": 3
+          }
+        }
+      }
+    },
+    "candidate_minus_baseline_pct": 6.25,
+    "not_elo": "Small exploratory tournament. No automatic promotion or Elo inference."
+  },
+  "promotion": "NOT AUTOMATIC; strength results must be examined including White and Black splits"
+}
