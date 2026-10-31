@@ -1,5 +1,8 @@
 name: Study 1000 master games
 on:
+  push:
+    paths:
+      - '.github/bootstrap-build-book.txt'
   workflow_dispatch:
 permissions:
   contents: write
