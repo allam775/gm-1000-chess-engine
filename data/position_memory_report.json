@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "source": "titled GM moves from game-disjoint training partition of GM-1000 v0.2 200-game study",
+  "source_games": 160,
+  "max_plies": 180,
+  "positions_count": 10539,
+  "move_pairs_count": 10707,
+  "observations": 11276,
+  "holdout_games_excluded": 40,
+  "training_games_sha256": "a9fcb57b7b0901ffc9e62c8abbe6a6ed2228b3be7ee23c8d67f576c5f969c54c",
+  "validation_games_sha256": "471b88de9bc68cc26244691028b5b124b55d273d7ce2ecbc70ea9adf4122be74",
+  "players": [
+    "Carlsen",
+    "Kasparov",
+    "Fischer",
+    "Karpov",
+    "Anand",
+    "Tal",
+    "Botvinnik",
+    "Alekhine"
+  ],
+  "lookup": "Exact EPD key; named-GM moves only; count-weighted bounded search preference",
+  "safety": "Legal moves only; compare with alpha-beta search, prefer memory only within 20 centipawns of searched best score; no automatic candidate weight approval",
+  "limitation": "Recorded GM move is not necessarily best; these are remembered positions, not chess Elo gains or neural network training."
+}
