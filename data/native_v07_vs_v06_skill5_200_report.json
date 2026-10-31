@@ -1,0 +1,2650 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-31T14:27:15.215505+00:00",
+  "experiment": "Frozen v06 vs candidate v07 against Stockfish Skill5, paired independent opening positions",
+  "baseline_sha": "0d5568e39c643a657d669b320e9463359bab06be",
+  "candidate_sha": "26cdee9b59641a24be88a8574418d9d12e25c3e0",
+  "opening_seed": 26103182,
+  "openings": 50,
+  "colors_per_opening": 2,
+  "games_per_version": 100,
+  "total_games": 200,
+  "shards": 5,
+  "seconds_per_move": 0.2,
+  "max_plies_after_seed": 360,
+  "stockfish_skill": 5,
+  "stockfish_threads": 1,
+  "stockfish_hash_mb": 16,
+  "memory_enabled": false,
+  "learned_eval_enabled": false,
+  "scores": {
+    "v06": {
+      "games": 100,
+      "completed": 100,
+      "wins": 41,
+      "draws": 27,
+      "losses": 32,
+      "errors": 0,
+      "incomplete": 0,
+      "score_percent": 54.5,
+      "by_color": {
+        "white": {
+          "games": 50,
+          "completed": 50,
+          "wins": 25,
+          "draws": 11,
+          "losses": 14,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 61.0
+        },
+        "black": {
+          "games": 50,
+          "completed": 50,
+          "wins": 16,
+          "draws": 16,
+          "losses": 18,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 48.0
+        }
+      }
+    },
+    "v07": {
+      "games": 100,
+      "completed": 100,
+      "wins": 44,
+      "draws": 26,
+      "losses": 30,
+      "errors": 0,
+      "incomplete": 0,
+      "score_percent": 57.0,
+      "by_color": {
+        "white": {
+          "games": 50,
+          "completed": 50,
+          "wins": 24,
+          "draws": 11,
+          "losses": 15,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 59.0
+        },
+        "black": {
+          "games": 50,
+          "completed": 50,
+          "wins": 20,
+          "draws": 15,
+          "losses": 15,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 55.0
+        }
+      }
+    }
+  },
+  "paired_score_difference_v07_minus_v06_pct": 2.5,
+  "paired_approx_95pct_ci_for_difference_pct": [
+    -9.02,
+    14.02
+  ],
+  "shard_scorecards": [
+    {
+      "shard": 0,
+      "scores": {
+        "v06": {
+          "games": 20,
+          "completed": 20,
+          "wins": 6,
+          "draws": 7,
+          "losses": 7,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 47.5,
+          "by_color": {
+            "white": {
+              "games": 10,
+              "completed": 10,
+              "wins": 4,
+              "draws": 3,
+              "losses": 3,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 55.0
+            },
+            "black": {
+              "games": 10,
+              "completed": 10,
+              "wins": 2,
+              "draws": 4,
+              "losses": 4,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 40.0
+            }
+          }
+        },
+        "v07": {
+          "games": 20,
+          "completed": 20,
+          "wins": 6,
+          "draws": 4,
+          "losses": 10,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 40.0,
+          "by_color": {
+            "white": {
+              "games": 10,
+              "completed": 10,
+              "wins": 3,
+              "draws": 1,
+              "losses": 6,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 35.0
+            },
+            "black": {
+              "games": 10,
+              "completed": 10,
+              "wins": 3,
+              "draws": 3,
+              "losses": 4,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 45.0
+            }
+          }
+        }
+      },
+      "pgn_sha256": "b420821082be43f067282e9abcbc4cb8fddedcf6d49a2a1eb2875b18b8788ed5"
+    },
+    {
+      "shard": 1,
+      "scores": {
+        "v06": {
+          "games": 20,
+          "completed": 20,
+          "wins": 10,
+          "draws": 4,
+          "losses": 6,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 60.0,
+          "by_color": {
+            "white": {
+              "games": 10,
+              "completed": 10,
+              "wins": 5,
+              "draws": 1,
+              "losses": 4,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 55.0
+            },
+            "black": {
+              "games": 10,
+              "completed": 10,
+              "wins": 5,
+              "draws": 3,
+              "losses": 2,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 65.0
+            }
+          }
+        },
+        "v07": {
+          "games": 20,
+          "completed": 20,
+          "wins": 9,
+          "draws": 6,
+          "losses": 5,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 60.0,
+          "by_color": {
+            "white": {
+              "games": 10,
+              "completed": 10,
+              "wins": 4,
+              "draws": 3,
+              "losses": 3,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 55.0
+            },
+            "black": {
+              "games": 10,
+              "completed": 10,
+              "wins": 5,
+              "draws": 3,
+              "losses": 2,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 65.0
+            }
+          }
+        }
+      },
+      "pgn_sha256": "6bf0d3e4f823add26a50bfecca4abb04a1a2268560950ca68bac99343c0757cf"
+    },
+    {
+      "shard": 2,
+      "scores": {
+        "v06": {
+          "games": 20,
+          "completed": 20,
+          "wins": 5,
+          "draws": 7,
+          "losses": 8,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 42.5,
+          "by_color": {
+            "white": {
+              "games": 10,
+              "completed": 10,
+              "wins": 4,
+              "draws": 4,
+              "losses": 2,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 60.0
+            },
+            "black": {
+              "games": 10,
+              "completed": 10,
+              "wins": 1,
+              "draws": 3,
+              "losses": 6,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 25.0
+            }
+          }
+        },
+        "v07": {
+          "games": 20,
+          "completed": 20,
+          "wins": 12,
+          "draws": 4,
+          "losses": 4,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 70.0,
+          "by_color": {
+            "white": {
+              "games": 10,
+              "completed": 10,
+              "wins": 6,
+              "draws": 2,
+              "losses": 2,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 70.0
+            },
+            "black": {
+              "games": 10,
+              "completed": 10,
+              "wins": 6,
+              "draws": 2,
+              "losses": 2,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 70.0
+            }
+          }
+        }
+      },
+      "pgn_sha256": "b27cbbd3601788275458fa950a29e566ad37b2681d0badb6c8648b120ca2b541"
+    },
+    {
+      "shard": 3,
+      "scores": {
+        "v06": {
+          "games": 20,
+          "completed": 20,
+          "wins": 10,
+          "draws": 5,
+          "losses": 5,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 62.5,
+          "by_color": {
+            "white": {
+              "games": 10,
+              "completed": 10,
+              "wins": 6,
+              "draws": 3,
+              "losses": 1,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 75.0
+            },
+            "black": {
+              "games": 10,
+              "completed": 10,
+              "wins": 4,
+              "draws": 2,
+              "losses": 4,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 50.0
+            }
+          }
+        },
+        "v07": {
+          "games": 20,
+          "completed": 20,
+          "wins": 9,
+          "draws": 6,
+          "losses": 5,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 60.0,
+          "by_color": {
+            "white": {
+              "games": 10,
+              "completed": 10,
+              "wins": 5,
+              "draws": 4,
+              "losses": 1,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 70.0
+            },
+            "black": {
+              "games": 10,
+              "completed": 10,
+              "wins": 4,
+              "draws": 2,
+              "losses": 4,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 50.0
+            }
+          }
+        }
+      },
+      "pgn_sha256": "790d53b88cfb7ca02b68c8b305bca50f9e7ab98efba43a49150c6ac242c8e5a7"
+    },
+    {
+      "shard": 4,
+      "scores": {
+        "v06": {
+          "games": 20,
+          "completed": 20,
+          "wins": 10,
+          "draws": 4,
+          "losses": 6,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 60.0,
+          "by_color": {
+            "white": {
+              "games": 10,
+              "completed": 10,
+              "wins": 6,
+              "draws": 0,
+              "losses": 4,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 60.0
+            },
+            "black": {
+              "games": 10,
+              "completed": 10,
+              "wins": 4,
+              "draws": 4,
+              "losses": 2,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 60.0
+            }
+          }
+        },
+        "v07": {
+          "games": 20,
+          "completed": 20,
+          "wins": 8,
+          "draws": 6,
+          "losses": 6,
+          "errors": 0,
+          "incomplete": 0,
+          "score_percent": 55.0,
+          "by_color": {
+            "white": {
+              "games": 10,
+              "completed": 10,
+              "wins": 6,
+              "draws": 1,
+              "losses": 3,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 65.0
+            },
+            "black": {
+              "games": 10,
+              "completed": 10,
+              "wins": 2,
+              "draws": 5,
+              "losses": 3,
+              "errors": 0,
+              "incomplete": 0,
+              "score_percent": 45.0
+            }
+          }
+        }
+      },
+      "pgn_sha256": "fcf6075f28f25ce152879c85ef96ea3ed662d6c0d95c85a05ab14c75fdc5bad7"
+    }
+  ],
+  "games": [
+    {
+      "shard": 0,
+      "opening_id": 0,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 56,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 0,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 83,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 0,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 80,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 0,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 42,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 1,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 64,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 1,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 162,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 1,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 59,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 1,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 80,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 2,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 107,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 2,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 222,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 2,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 55,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 2,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 72,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 3,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 62,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 3,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 186,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 3,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 148,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 3,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 62,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 4,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 128,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 4,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 45,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 4,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 55,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 4,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 77,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 5,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 145,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 5,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 122,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 5,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 186,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 5,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 63,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 6,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 161,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 6,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 111,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 6,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 84,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 6,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 15,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 7,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 147,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 7,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 68,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 7,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 92,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 7,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 80,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 8,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 61,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 8,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 127,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 8,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 21,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 8,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 27,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 9,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 57,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 9,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 106,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 9,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 98,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 0,
+      "opening_id": 9,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 66,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 10,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 108,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 10,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 59,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 10,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 41,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 10,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 100,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 11,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 99,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 11,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 69,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 11,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 158,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 11,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 51,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 12,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 88,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 12,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 88,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 12,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 46,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 12,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 44,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 13,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 95,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 13,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 40,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 13,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 84,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 13,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 38,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 14,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 85,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 14,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 76,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 14,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 86,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 14,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 249,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 15,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 46,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 15,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 65,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 15,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 154,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 15,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 76,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 16,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 71,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 16,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 51,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 16,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 68,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 16,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 59,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 17,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 133,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 17,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 99,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 17,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 52,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 17,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 43,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 18,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 39,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 18,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 95,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 18,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 52,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 18,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 72,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 19,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 106,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 19,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 105,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 19,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 103,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 1,
+      "opening_id": 19,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 66,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 20,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 75,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 20,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 75,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 20,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 81,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 20,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 38,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 21,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 75,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 21,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 55,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 21,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 73,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 21,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 63,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 22,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 152,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 22,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 178,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 22,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 59,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 22,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 56,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 23,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 84,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 23,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 173,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 23,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 61,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 23,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 104,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 24,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 73,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 24,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 57,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 24,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 67,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 24,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 115,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 25,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 37,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 25,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 67,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 25,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 122,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 25,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 56,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 26,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 103,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 26,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 35,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 26,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 50,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 26,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 60,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 27,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 76,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 27,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 102,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 27,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 178,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 27,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 148,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 28,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 77,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 28,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 51,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 28,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 63,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 28,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 76,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 29,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 95,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 29,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 53,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 29,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 78,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 2,
+      "opening_id": 29,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 52,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 30,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 89,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 30,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 65,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 30,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 88,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 30,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 118,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 31,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 105,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 31,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 139,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 31,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 44,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 31,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 142,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 32,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 61,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 32,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 93,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 32,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 40,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 32,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 37,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 33,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 61,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 33,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 67,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 33,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 69,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 33,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 78,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 34,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 37,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 34,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 23,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 34,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 59,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 34,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 61,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 35,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 66,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 35,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 185,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 35,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 105,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 35,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 153,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 36,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 101,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 36,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 77,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 36,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 60,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 36,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 64,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 37,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 117,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 37,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 44,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 37,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 63,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 37,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 71,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 38,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 71,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 38,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 52,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 38,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 126,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 38,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 72,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 39,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 126,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 39,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 97,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 39,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 189,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 3,
+      "opening_id": 39,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 124,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 40,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 107,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 40,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 81,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 40,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 50,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 40,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 104,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 41,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 68,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 41,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 85,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 41,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 87,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 41,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 105,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 42,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 64,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 42,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 97,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 42,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 70,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 42,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 115,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 43,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 113,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 43,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 92,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 43,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 86,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 43,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 51,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 44,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 68,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 44,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 57,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 44,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 56,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 44,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 152,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 45,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 83,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 45,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 82,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 45,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 92,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 45,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 94,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 46,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 86,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 46,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 93,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 46,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 61,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 46,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "loss",
+      "result": "1-0",
+      "plies_after_seed": 157,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 47,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 79,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 47,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 63,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 47,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 118,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 47,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 48,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 48,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 51,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 48,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 93,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 48,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 48,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 48,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 66,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 49,
+      "variant": "v06",
+      "color": "white",
+      "outcome": "win",
+      "result": "1-0",
+      "plies_after_seed": 41,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 49,
+      "variant": "v07",
+      "color": "white",
+      "outcome": "loss",
+      "result": "0-1",
+      "plies_after_seed": 58,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 49,
+      "variant": "v06",
+      "color": "black",
+      "outcome": "win",
+      "result": "0-1",
+      "plies_after_seed": 56,
+      "termination": "CHECKMATE",
+      "error": null
+    },
+    {
+      "shard": 4,
+      "opening_id": 49,
+      "variant": "v07",
+      "color": "black",
+      "outcome": "draw",
+      "result": "1/2-1/2",
+      "plies_after_seed": 130,
+      "termination": "THREEFOLD_REPETITION",
+      "error": null
+    }
+  ],
+  "limitations": [
+    "Engine strength is assessed against one stochastic skill-level opponent; not calibrated Elo.",
+    "95% normal CI is an approximate descriptive interval over paired slots; shared openings and game dependence limit inference.",
+    "Shards run on separate but nominally equivalent CI machines. No automatic promotion."
+  ]
+}
