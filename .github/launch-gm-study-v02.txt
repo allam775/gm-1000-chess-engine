@@ -1,1 +1,2 @@
 One-time reproducible v0.2 study: analyze 200 unique games from eight titled grandmasters; train on separate games and evaluate held-out positions; report candidate only, never auto-promote.
+Retry 2026-10-31: fix missing player entries in the subset round-robin selector; regression test passed.
