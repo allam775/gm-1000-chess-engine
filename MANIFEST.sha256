@@ -1,9 +1,7 @@
-637938d4829b64b30738f5397787b5b01129b30cf8befd5cc9f6cadee8de8a40  .github/workflows/arena.yml
-1d2274220bb65b0155aaa6f9317eccb6a2540f136707e52de6245b50721c9d49  .github/workflows/build-book.yml
+# SHA-256 baseline for unchanged source files only (31 Oct 2026).
+# Live README, RUN_STATUS, bootstrap workflows and generated opening book are intentionally excluded.
 eb1f75c8c4fdfcc041a66b421ba0b47e103121d24b00b07a09df84e9710e8c7c  .github/workflows/ci.yml
 fd92dede7e0df144ee922334d8a4c8cd2a4c1fa3bb5586128cd558df10f9059c  .gitignore
-40d79f2784f5742217a029b88e8057b721629797a4fb703e04106b08b99ea52d  README.md
-2714ecf606bd9cacca4b97dcb1de8ab4732dd5eaa1f776bc65e290e514c32ddf  RUN_STATUS.md
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  data/.gitkeep
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  engine/__init__.py
 059d9a312093848a78009ffc0159586815b5ff66ea8816e4c984484342dcfc8b  engine/__main__.py
