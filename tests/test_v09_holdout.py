@@ -27,3 +27,15 @@ def test_actual_board_terminal_required():
 
 def test_score_math():
     assert single_score('win')==1. and single_score('draw')==.5 and single_score('loss')==0.
+def test_workflow_shard_matrix_matches_validator():
+    """Guard against missing tournament shards: every opening must be played."""
+    import re
+    from pathlib import Path
+    workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/native-v09-holdout.yml').read_text()
+    for skill in (5, 10):
+        section = workflow.split(f'  skill{skill}:', 1)[1].split(f'  aggregate{skill}:', 1)[0]
+        match = re.search(r'(?m)^\s*shard:\s*\[([0-9, ]+)\]\s*$', section)
+        assert match is not None, f'Skill{skill} matrix not found'
+        actual = [int(x.strip()) for x in match.group(1).split(',')]
+        expected = list(range(SETTINGS[skill]['shards']))
+        assert actual == expected, f'Skill{skill} scheduled {actual}, expected {expected}'
